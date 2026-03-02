@@ -8,6 +8,51 @@
  
   <link rel="icon" type="image/png" href="./ByteEsportLogo.png">
 
+<div style="position:fixed;top:15px;left:15px;z-index:9999;font-family:monospace;">
+
+  <!-- Hamburger Button -->
+  <div onclick="toggleNav()" style="
+    cursor:pointer;
+    background:#0a0a0a;
+    border:1px solid #333;
+    border-radius:6px;
+    padding:8px 12px;
+    font-size:18px;
+    color:white;
+    user-select:none;
+  ">&#9776;</div>
+
+  <!-- Dropdown Menu -->
+  <div id="byteNav" style="
+    display:none;
+    flex-direction:column;
+    gap:8px;
+    margin-top:8px;
+    background:#0a0a0a;
+    border:1px solid #333;
+    border-radius:6px;
+    padding:10px;
+    min-width:160px;
+  ">
+    <a href="https://bytestormcorp.vercel.app" style="color:#fff;text-decoration:none;padding:6px 10px;border-radius:4px;border:1px solid #222;display:flex;align-items:center;gap:8px;">
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width="20" height="20"><text y='.9em' font-size='90' font-family='sans-serif' fill='white'>B</text></svg> Bytestorm Corporation
+    </a>
+    <a href="https://bytestorm-esports.vercel.app" style="color:#fff;text-decoration:none;padding:6px 10px;border-radius:4px;border:1px solid #222;display:flex;align-items:center;gap:8px;">
+      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" width="20" height="20" style="border-radius:3px;">Bytestorm Esports
+    </a>
+    <a href="https://rodss.vercel.app" style="color:#fff;text-decoration:none;padding:6px 10px;border-radius:4px;border:1px solid #222;display:flex;align-items:center;gap:8px;">
+      <img src="https://i.imgur.com/NLz6Jfd.png" width="20" height="20" style="border-radius:3px;"> RODSS Corporation
+    </a>
+  </div>
+</div>
+
+<script>
+  function toggleNav() {
+    const nav = document.getElementById('byteNav');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+  }
+</script>
+
   <style>
     :root{
       --bg:#0b0b0c;
