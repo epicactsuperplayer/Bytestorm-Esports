@@ -1,813 +1,379 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Bytestorm Esports — The True Builders. Competitive-first, brand-driven esports organization." />
-  <title>Bytestorm Esports — The True Builders</title>
- 
-  <link rel="icon" type="image/png" href="./ByteEsportLogo.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png">
+    <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/509cf33812608.js" data-cmp-host="d.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsOrganization",
+  "name": "Bytestorm Esports",
+  "url": "https://bytestorm-esports.vercel.app/",
+  "logo": "https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png",
+  "founder": {
+    "@type": "Person",
+    "name": "Memet"
+  },
+  "description": "A leading competitive gaming organization."
+}
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+  <!-- Google Analytics-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCZ87HM440"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QCZ87HM440');
+    </script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Bytestorm Esports</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#060606;--s1:#0e0e0e;--s2:#141414;--b1:#1c1c1c;--b2:#262626;--txt:#e8e8e8;--m1:#444;--m2:#777}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:#000}::-webkit-scrollbar-thumb{background:#222}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:64px;display:flex;align-items:center;background:rgba(6,6,6,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--b1)}
+.nav-in{max-width:1400px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-left: 50px;}
+.nav-logo img{height:34px;width:auto}
+.nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+.nav-links a{color:var(--m2);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:#fff;color:#000!important;padding:8px 20px;border-radius:3px;font-weight:700!important;cursor:pointer}
+.btn-w{background:#fff;color:#000;padding:12px 28px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;border:none;cursor:pointer;transition:opacity .2s;text-decoration:none;display:inline-block}
+.btn-w:hover{opacity:.82}
+.wrap{max-width:1400px;margin:0 auto;padding:0 28px}
+.s-eye{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--m1);margin-bottom:10px}
+.s-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(30px,4vw,50px);font-weight:900;text-transform:uppercase;color:#fff;line-height:1}
+.divider{height:1px;background:var(--b1);max-width:calc(1400px - 56px);margin:0 auto}
+section.pad{padding:88px 0}
+.s-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:44px;gap:16px}
+.games-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--b1);border:1px solid var(--b1);border-radius:10px;overflow:hidden}
+.game-card{background:var(--s1);cursor:pointer;position:relative;overflow:hidden;display:flex;flex-direction:column;border:none;outline:none;text-align:left;transition:background .25s;padding:0}
+.gc-img-wrap{width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;background:#0a0a0a;display:flex;align-items:center;justify-content:center}
+.gc-img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease,filter .3s ease;filter:brightness(.65) grayscale(15%)}
+.gc-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--b2);text-transform:uppercase;letter-spacing:.08em;transition:color .2s;position:absolute;inset:0}
+.gc-placeholder svg{width:26px;height:26px;stroke:var(--b2);stroke-width:1.5;fill:none;transition:stroke .2s}
+.game-card:hover .gc-img{transform:scale(1.06);filter:brightness(.5)}
+.game-card:hover .gc-placeholder{color:var(--m1)}
+.game-card:hover .gc-placeholder svg{stroke:var(--m1)}
+.gc-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(0,0,0,.88) 100%);opacity:.75;transition:opacity .3s;pointer-events:none}
+.game-card:hover .gc-overlay{opacity:1}
+.gc-label{position:absolute;bottom:0;left:0;right:0;padding:14px 16px 16px;z-index:2}
+.gc-name{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#fff;line-height:1;margin-bottom:3px}
+.gc-sub{font-size:10px;color:rgba(255,255,255,.38);font-weight:500;letter-spacing:.05em}
+.gc-hover-pill{position:absolute;top:12px;right:12px;z-index:3;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:20px;opacity:0;transition:opacity .2s;pointer-events:none}
+.game-card:hover .gc-hover-pill{opacity:1}
+.roster-panel{display:none;background:var(--s2);border:1px solid var(--b2);border-radius:0 0 10px 10px;margin-top:-1px;animation:slideDown .2s ease;overflow:hidden}
+.roster-panel.open{display:block}
+@keyframes slideDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.rp-head{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid var(--b1)}
+.rp-tag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;background:#fff;color:#000;padding:3px 10px;border-radius:2px}
+.rp-game{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#fff}
+.rp-close{margin-left:auto;background:none;border:none;color:var(--m1);font-size:20px;cursor:pointer;padding:4px;line-height:1;transition:color .2s}
+.rp-close:hover{color:#fff}
+.rp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--b1)}
+.rp-card{background:var(--s2);padding:20px 18px;display:flex;flex-direction:column;gap:9px;transition:background .2s}
+.rp-card:hover{background:#181818}
+.rp-top{display:flex;align-items:center;justify-content:space-between}
+.rp-num{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--b2);line-height:1}
+.rp-badge{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m1);border:1px solid var(--b2);padding:2px 7px;border-radius:2px}
+.rp-name{font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:#fff;line-height:1}
+.rp-meta{font-size:11px;color:var(--m1);line-height:1.65}
+.rp-meta b{color:var(--m2);font-weight:500}
+.rp-empty{padding:36px 24px;text-align:center}
+.rp-empty p{font-size:13px;color:var(--m1);margin-bottom:18px;line-height:1.6}
+.soc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b1);border:1px solid var(--b1);border-radius:10px;overflow:hidden}
+.soc-tile{background:var(--s1);padding:32px 28px;text-decoration:none;display:flex;flex-direction:column;gap:14px;transition:background .2s}
+.soc-tile:hover{background:var(--s2)}
+.soc-icon{width:38px;height:38px;border:1px solid var(--b2);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.soc-icon svg{width:16px;height:16px;fill:var(--m2)}
+.soc-tile h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#fff}
+.soc-tile p{font-size:13px;color:var(--m1);line-height:1.7;flex:1}
+.soc-handle{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--m2)}
+.soc-handle::after{content:' →'}
+footer{border-top:1px solid var(--b1);padding:32px 28px}
+.foot-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot-logo{display:flex;align-items:center;gap:9px}
+.foot-logo img{height:24px}
+.foot-brand{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--m1)}
+.foot-copy{font-size:11px;color:#222}
+.m-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);z-index:999;align-items:center;justify-content:center;padding:20px}
+.m-overlay.open{display:flex}
+.modal{background:#111;border:1px solid var(--b2);border-radius:10px;width:100%;max-width:540px;padding:40px;position:relative;animation:mIn .2s ease;max-height:92vh;overflow-y:auto}
+@keyframes mIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+.m-x{position:absolute;top:13px;right:16px;background:none;border:none;color:var(--m1);font-size:24px;cursor:pointer;line-height:1;transition:color .2s}
+.m-x:hover{color:#fff}
+.m-title{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:#fff;margin-bottom:4px}
+.m-sub{font-size:13px;color:var(--m1);margin-bottom:24px}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m1);margin-bottom:6px}
+.fg input,.fg select,.fg textarea{width:100%;background:#080808;border:1px solid var(--b2);color:var(--txt);font-family:'Inter',sans-serif;font-size:14px;padding:10px 13px;border-radius:4px;outline:none;transition:border-color .2s;appearance:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#444}
+.fg textarea{resize:vertical;min-height:76px}
+.fgr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fg-num input{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-align:center;letter-spacing:.04em}
+.m-submit{width:100%;margin-top:6px;padding:13px;font-size:12px;letter-spacing:.12em}
+@media(max-width:1100px){.games-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.nav-links li:not(:last-child){display:none}.games-grid{grid-template-columns:repeat(2,1fr)}.soc-grid{grid-template-columns:1fr}.foot-in{flex-direction:column;text-align:center}.s-head{flex-direction:column;align-items:flex-start}.fgr{grid-template-columns:1fr}.modal{padding:26px 18px}}
+@media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
 
 <div style="position:fixed;top:15px;left:15px;z-index:9999;font-family:monospace;">
-
-  <!-- Hamburger Button -->
-  <div onclick="toggleNav()" style="
-    cursor:pointer;
-    background:#0a0a0a;
-    border:1px solid #333;
-    border-radius:6px;
-    padding:8px 12px;
-    font-size:18px;
-    color:white;
-    user-select:none;
-  ">&#9776;</div>
-
-  <!-- Dropdown Menu -->
-  <div id="byteNav" style="
-    display:none;
-    flex-direction:column;
-    gap:8px;
-    margin-top:8px;
-    background:#0a0a0a;
-    border:1px solid #333;
-    border-radius:6px;
-    padding:10px;
-    min-width:160px;
-  ">
+  <div onclick="toggleNav()" style="cursor:pointer;background:#0a0a0a;border:1px solid #333;border-radius:6px;padding:8px 12px;font-size:18px;color:white;user-select:none;">&#9776;</div>
+  <div id="byteNav" style="display:none;flex-direction:column;gap:8px;margin-top:8px;background:#0a0a0a;border:1px solid #333;border-radius:6px;padding:10px;min-width:160px;">
     <a href="https://bytestormcorp.vercel.app" style="color:#fff;text-decoration:none;padding:6px 10px;border-radius:4px;border:1px solid #222;display:flex;align-items:center;gap:8px;">
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width="20" height="20"><text y='.9em' font-size='90' font-family='sans-serif' fill='white'>B</text></svg> Bytestorm Corporation
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width="20" height="20"><text y='.9em' font-size='90' font-family='sans-serif' fill='white'>B</text></svg> Corp
     </a>
     <a href="https://bytestorm-esports.vercel.app" style="color:#fff;text-decoration:none;padding:6px 10px;border-radius:4px;border:1px solid #222;display:flex;align-items:center;gap:8px;">
-      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" width="20" height="20" style="border-radius:3px;">Bytestorm Esports
+      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" width="20" height="20" style="border-radius:3px;"> Esports
     </a>
     <a href="https://rodss.vercel.app" style="color:#fff;text-decoration:none;padding:6px 10px;border-radius:4px;border:1px solid #222;display:flex;align-items:center;gap:8px;">
-      <img src="https://i.imgur.com/NLz6Jfd.png" width="20" height="20" style="border-radius:3px;"> RODSS Corporation
+      <img src="https://i.imgur.com/NLz6Jfd.png" width="20" height="20" style="border-radius:3px;"> RODSS
     </a>
   </div>
 </div>
 
+<div class="m-overlay" id="applyModal" onclick="overlayClose(event)">
+  <div class="modal">
+    <button class="m-x" onclick="closeModal()">&#215;</button>
+    <div class="m-title">Apply Now</div>
+    <p class="m-sub">Fill it in — we'll reach out if you match the standard.</p>
+    <div class="fg"><label>Player Name</label><input type="text" id="f-name" placeholder="Your name"/></div>
+    <div class="fg"><label>Gamer Tag</label><input type="text" id="f-gtag" placeholder="Your in-game username"/></div>
+    <div class="fg"><label>In-Game Tag</label><input type="text" id="f-tag" placeholder="#TAG"/></div>
+    <div class="fgr">
+      <div class="fg"><label>Game</label><select id="f-game"><option>Fortnite</option><option>Brawl Stars</option><option>Roblox</option><option>CS:GO</option><option>GTA V Online</option><option>Multiple / Other</option></select></div>
+      <div class="fg"><label>Region</label><select id="f-region"><option>EU</option><option>UK</option><option>NA</option><option>Other</option></select></div>
+    </div>
+    <div class="fg"><label>Role</label><select id="f-role"><option>Entry / Fragger</option><option>Flex</option><option>Support</option><option>IGL / Captain</option><option>Editor / Content</option><option>Other</option></select></div>
+    <div class="fg fg-num"><label>Jersey Number — pick your favourite #</label><input type="number" id="f-num" placeholder="63" min="1" max="999"/></div>
+    <div class="fg"><label>Short Message</label><textarea id="f-msg" placeholder="Why do you want to join Bytestorm?"></textarea></div>
+    <button class="btn-w m-submit" onclick="sendApp()">Send Application</button>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-in">
+    <a href="#" class="nav-logo">
+      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm"/>
+      <span class="nav-brand">Bytestorm Esports</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#games">Games</a></li>
+      <li><a href="#socials">Socials</a></li>
+      <li><a href="#" onclick="openModal();return false;" class="nav-cta">Apply</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="pad" id="games" style="padding-top:100px">
+  <div class="wrap">
+    <div class="s-head"><div><div class="s-eye">Competing in</div><div class="s-title">Our Games</div></div></div>
+    <div class="games-grid">
+
+      <button class="game-card" data-img="https://i.ytimg.com/vi/adGdyCdvKz4/maxresdefault.jpg" onclick="toggleRoster('fn')">
+        <div class="gc-img-wrap">
+          <img class="gc-img" src="" alt="Fortnite" style="display:none"/>
+          <div class="gc-placeholder">Fortnite</div>
+          <div class="gc-overlay"></div>
+          <div class="gc-label"><div class="gc-name">Fortnite</div><div class="gc-sub">3 players</div></div>
+          <div class="gc-hover-pill">View Team</div>
+        </div>
+      </button>
+
+      <button class="game-card" data-img="https://www.klicksafe.de/fileadmin/_processed_/0/5/csm_Sharepic_Brawl-Stars_905ff3013c.png" onclick="toggleRoster('bs')">
+        <div class="gc-img-wrap">
+          <img class="gc-img" src="" alt="Brawl Stars" style="display:none"/>
+          <div class="gc-placeholder">Brawl Stars</div>
+          <div class="gc-overlay"></div>
+          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">6 players</div></div>
+          <div class="gc-hover-pill">View Team</div>
+        </div>
+      </button>
+
+      <button class="game-card" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Roblox_%282025%29_%28App_Icon%29.svg/250px-Roblox_%282025%29_%28App_Icon%29.svg.png" onclick="toggleRoster('rb')">
+        <div class="gc-img-wrap">
+          <img class="gc-img" src="" alt="Roblox" style="display:none"/>
+          <div class="gc-placeholder">Roblox</div>
+          <div class="gc-overlay"></div>
+          <div class="gc-label"><div class="gc-name">Roblox</div><div class="gc-sub">2 players</div></div>
+          <div class="gc-hover-pill">View Team</div>
+        </div>
+      </button>
+
+      <button class="game-card" data-img="https://notebookspec.com/web/wp-content/uploads/2017/04/fb_image.png" onclick="toggleRoster('cs')">
+        <div class="gc-img-wrap">
+          <img class="gc-img" src="" alt="CS:GO" style="display:none"/>
+          <div class="gc-placeholder">CS:GO</div>
+          <div class="gc-overlay"></div>
+          <div class="gc-label"><div class="gc-name">CS:GO</div><div class="gc-sub">1 player</div></div>
+          <div class="gc-hover-pill">View Team</div>
+        </div>
+      </button>
+
+      <button class="game-card" data-img="https://images.mein-mmo.de/medien/2022/03/GTA-Online-Next-Gen-Titel-Autos-Polizei.jpg" onclick="toggleRoster('gta')">
+        <div class="gc-img-wrap">
+          <img class="gc-img" src="" alt="GTA V Online" style="display:none"/>
+          <div class="gc-placeholder">GTA V</div>
+          <div class="gc-overlay"></div>
+          <div class="gc-label"><div class="gc-name">GTA V Online</div><div class="gc-sub">1 player</div></div>
+          <div class="gc-hover-pill">View Team</div>
+        </div>
+      </button>
+
+      <button class="game-card" style="background:#1a1a1a" onclick="toggleRoster('staff')">
+        <div class="gc-img-wrap">
+          <div class="gc-placeholder" style="display:flex; color:#fff; opacity:1;">
+            <svg viewBox="0 0 24 24" style="stroke:#fff; width:26px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            STAFF
+          </div>
+          <div class="gc-overlay"></div>
+          <div class="gc-label"><div class="gc-name">Staff</div><div class="gc-sub">Management</div></div>
+          <div class="gc-hover-pill">View Staff</div>
+        </div>
+      </button>
+
+    </div>
+
+    <div class="roster-panel" id="rp-fn">
+      <div class="rp-head"><span class="rp-tag">FN</span><span class="rp-game">Fortnite</span><button class="rp-close" onclick="closeRoster('fn')">&#215;</button></div>
+      <div class="rp-grid">
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> FN, BS, RB, CS, GTA<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge">Captain</span></div><div class="rp-name">Daniel123FMR</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge">Pro</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU</div></div>
+      </div>
+    </div>
+
+    <div class="roster-panel" id="rp-bs">
+      <div class="rp-head"><span class="rp-tag">BS</span><span class="rp-game">Brawl Stars</span><button class="rp-close" onclick="closeRoster('bs')">&#215;</button></div>
+      <div class="rp-grid">
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge">Captain</span></div><div class="rp-name">Daniel123FMR</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge">Pro</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge">Trainee</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Plays:</b> BS, RBLX<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#1</span><span class="rp-badge">Flex</span></div><div class="rp-name">soullyxx</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#17</span><span class="rp-badge">Trainee</span></div><div class="rp-name">Maik</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
+      </div>
+    </div>
+
+    <div class="roster-panel" id="rp-rb">
+      <div class="rp-head"><span class="rp-tag">RBLX</span><span class="rp-game">Roblox</span><button class="rp-close" onclick="closeRoster('rb')">&#215;</button></div>
+      <div class="rp-grid">
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge">Trainee</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Plays:</b> BS, RB<br/><b>Region:</b> EU</div></div>
+      </div>
+    </div>
+
+    <div class="roster-panel" id="rp-cs">
+      <div class="rp-head"><span class="rp-tag">CS</span><span class="rp-game">CS:GO</span><button class="rp-close" onclick="closeRoster('cs')">&#215;</button></div>
+      <div class="rp-grid">
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
+      </div>
+    </div>
+
+    <div class="roster-panel" id="rp-gta">
+      <div class="rp-head"><span class="rp-tag">GTA</span><span class="rp-game">GTA V Online</span><button class="rp-close" onclick="closeRoster('gta')">&#215;</button></div>
+      <div class="rp-grid">
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
+      </div>
+    </div>
+
+    <div class="roster-panel" id="rp-staff">
+      <div class="rp-head"><span class="rp-tag">STAFF</span><span class="rp-game">Management</span><button class="rp-close" onclick="closeRoster('staff')">&#215;</button></div>
+      <div class="rp-grid">
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Role:</b> Founder<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#43</span><span class="rp-badge">Staff</span></div><div class="rp-name">Daris</div><div class="rp-meta"><b>Role:</b> Editor<br/><b>Region:</b> EU</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="pad" id="socials">
+  <div class="wrap">
+    <div class="s-head"><div><div class="s-eye">Connect</div><div class="s-title">Find Us</div></div></div>
+    <div class="soc-grid">
+      <a href="https://www.tiktok.com/@bytestorm_corporation" target="_blank" class="soc-tile">
+        <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></div>
+        <h3>TikTok</h3><p>Jersey reveals, highlights, and recruitment content.</p>
+        <span class="soc-handle">@bytestorm_corporation</span>
+      </a>
+      <a href="https://discord.gg/xfr6WWPCW3" target="_blank" class="soc-tile">
+        <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></div>
+        <h3>Discord</h3><p>Trials, scrims, and team comms.</p>
+        <span class="soc-handle">Join Server</span>
+      </a>
+      <a href="mailto:bytestorm.marketing.team@gmail.com" class="soc-tile">
+        <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+        <h3>Email</h3><p>Business inquiries and partnerships.</p>
+        <span class="soc-handle">Contact Us</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-in">
+    <div class="foot-logo">
+      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm"/>
+      <span class="foot-brand">Bytestorm Esports</span>
+    </div>
+    <span class="foot-copy">&#169; 2026 Bytestorm. All rights reserved.</span>
+  </div>
+</footer>
+
 <script>
-  function toggleNav() {
-    const nav = document.getElementById('byteNav');
-    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+function toggleNav() {
+  const nav = document.getElementById('byteNav');
+  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+}
+
+document.querySelectorAll('.game-card').forEach(function(c){
+  var u=c.getAttribute('data-img');
+  if(u&&u.trim()){
+    var i=c.querySelector('.gc-img'),p=c.querySelector('.gc-placeholder');
+    if(i){
+      i.src=u;i.style.display='block';if(p)p.style.display='none';
+      i.onerror=function(){i.style.display='none';if(p)p.style.display='flex'};
+    }
   }
+});
+
+function openModal(){document.getElementById('applyModal').classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(){document.getElementById('applyModal').classList.remove('open');document.body.style.overflow=''}
+function overlayClose(e){if(e.target===document.getElementById('applyModal'))closeModal()}
+
+function sendApp(){
+  var n=document.getElementById('f-name').value.trim(),t=document.getElementById('f-tag').value.trim();
+  if(!n||!t){alert('Please fill in your name and tag.');return}
+  var body='Player Name: '+n+'\nTag: '+t+'\nGame: '+document.getElementById('f-game').value;
+  window.location.href='mailto:bytestorm.marketing.team@gmail.com?subject=Application&body='+encodeURIComponent(body);
+}
+
+var cur=null;
+function toggleRoster(id){
+  if(cur&&cur!==id)closeRoster(cur);
+  var p=document.getElementById('rp-'+id);
+  if(!p) return;
+  if(p.classList.contains('open')){closeRoster(id);return}
+  p.classList.add('open');cur=id;
+  setTimeout(function(){p.scrollIntoView({behavior:'smooth',block:'nearest'})},60);
+}
+function closeRoster(id){
+  var p=document.getElementById('rp-'+id);if(p)p.classList.remove('open');if(cur===id)cur=null;
+}
 </script>
-
-  <style>
-    :root{
-      --bg:#0b0b0c;
-      --panel:#111113;
-      --text:#f5f5f7;
-      --muted:#b7b7bd;
-      --line:rgba(255,255,255,.12);
-      --line2:rgba(255,255,255,.18);
-      --shadow: 0 16px 60px rgba(0,0,0,.45);
-      --radius: 18px;
-      --radius2: 24px;
-      --max: 1120px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background:
-        radial-gradient(900px 600px at 18% -10%, rgba(255,255,255,.10), transparent 55%),
-        radial-gradient(900px 600px at 80% 20%, rgba(255,255,255,.06), transparent 55%),
-        linear-gradient(180deg, #070707 0%, #0b0b0c 35%, #070707 100%);
-      overflow-x:hidden;
-    }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      background: rgba(11,11,12,.55);
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      height:64px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      font-weight:800;
-      font-size:13px;
-    }
-    .mark{
-      width:34px; height:34px; border-radius:12px;
-      border:1px solid var(--line2);
-      background:
-        radial-gradient(16px 16px at 30% 30%, rgba(255,255,255,.18), transparent 70%),
-        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,0));
-      display:grid; place-items:center;
-      box-shadow: var(--shadow);
-    }
-    .mark svg{opacity:.92}
-    .navlinks{
-      display:flex; align-items:center; gap:14px;
-      font-size:12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-    .navlinks a{
-      padding:10px 10px; border-radius:12px;
-      border:1px solid transparent;
-    }
-    .navlinks a:hover{border-color:var(--line); color:var(--text)}
-    .cta{
-      display:flex; align-items:center; gap:10px;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid var(--line2);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size:12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      cursor:pointer;
-      user-select:none;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.28)}
-    .btn:active{transform: translateY(0px)}
-    .btn.primary{
-      background: rgba(255,255,255,.12);
-      border-color: rgba(255,255,255,.30);
-    }
-    .btn.small{padding:10px 12px; font-size:11px}
-    .menuBtn{display:none}
-
-    /* Hero */
-    .hero{
-      padding:72px 0 34px;
-    }
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    .card{
-      background: rgba(17,17,19,.72);
-      border:1px solid var(--line);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .cardPad{padding:26px}
-    .glow{
-      position:absolute; inset:-200px -200px auto auto;
-      width:520px; height:520px; border-radius:999px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.16), transparent 58%);
-      pointer-events:none;
-      filter: blur(2px);
-    }
-    .kicker{
-      color:var(--muted);
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-size:12px;
-      margin:0 0 10px;
-    }
-    h1{
-      margin:0 0 10px;
-      font-size:46px;
-      line-height:1.05;
-      letter-spacing:-.02em;
-    }
-    .motto{
-      display:inline-flex; gap:10px; align-items:center;
-      margin:10px 0 18px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color:var(--text);
-      font-weight:800;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-size:12px;
-      width:max-content;
-    }
-    .lead{
-      margin:0 0 20px;
-      color:var(--muted);
-      line-height:1.7;
-      font-size:15px;
-      max-width: 62ch;
-    }
-    .heroActions{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
-    .metaRow{
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin-top:18px;
-      color:var(--muted);
-      font-size:12px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .pill{
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-    }
-
-    /* Side card */
-    .side{
-      display:flex; flex-direction:column;
-      min-height: 100%;
-    }
-    .side .cardPad{display:flex; flex-direction:column; gap:12px; height:100%}
-    .stat{
-      padding:14px;
-      border-radius: 16px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-    }
-    .stat b{
-      display:block; font-size:13px; letter-spacing:.12em; text-transform:uppercase;
-    }
-    .stat span{color:var(--muted); font-size:13px; line-height:1.5}
-    .divider{height:1px; background: var(--line); margin:8px 0}
-
-    /* Sections */
-    section{padding:18px 0}
-    .sectionTitle{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
-      margin:14px 0 10px;
-    }
-    .sectionTitle h2{
-      margin:0;
-      font-size:20px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-    }
-    .sectionTitle p{margin:0; color:var(--muted); font-size:13px}
-    .grid3{
-      display:grid; grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    .tile{
-      padding:18px;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      min-height: 128px;
-    }
-    .tile h3{
-      margin:0 0 8px;
-      font-size:14px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-    }
-    .tile p{margin:0; color:var(--muted); line-height:1.6; font-size:13px}
-
-/* Roster */
-    .roster{
-      display:grid; grid-template-columns: repeat(4,1fr);
-      gap:12px;
-    }
-    .player{
-      padding:14px;
-      border-radius: 18px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      display:flex; flex-direction:column; gap:8px;
-    }
-    .player .tag{
-      display:flex; justify-content:space-between; align-items:center;
-      color:var(--muted);
-      font-size:11px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
-    .player .name{
-      font-weight:900;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-    }
-    .player .role{color:var(--muted); font-size:13px}
-
-    /* Footer */
-    footer{
-      margin-top:22px;
-      padding:26px 0 40px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:12px;
-    }
-    .footGrid{
-      display:grid; grid-template-columns: 1.2fr .8fr;
-      gap:18px;
-      align-items:start;
-    }
-    .smallLinks{display:flex; flex-wrap:wrap; gap:10px}
-    .smallLinks a{
-      padding:10px 12px;
-      border:1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,.02);
-      color:var(--muted);
-    }
-    .smallLinks a:hover{color:var(--text); border-color: rgba(255,255,255,.22)}
-    .tiny{margin-top:10px; opacity:.9}
-
-    /* Modal */
-    .modalBack{
-      position:fixed; inset:0;
-      background: rgba(0,0,0,.6);
-      display:none;
-      align-items:center; justify-content:center;
-      padding:18px;
-      z-index:100;
-    }
-    .modal{
-      width:min(720px, 100%);
-      border-radius: 22px;
-      background: rgba(17,17,19,.92);
-      border:1px solid var(--line2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .modalHead{
-      display:flex; justify-content:space-between; align-items:center;
-      padding:16px 18px;
-      border-bottom:1px solid var(--line);
-    }
-    .modalHead b{
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-size:12px;
-    }
-    .modalBody{padding:18px}
-    .formGrid{
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:12px;
-    }
-    label{display:block; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 6px}
-    input, select, textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius: 14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color:var(--text);
-      outline:none;
-      font: inherit;
-    }
-    textarea{min-height:110px; resize:vertical}
-    input:focus, select:focus, textarea:focus{border-color: rgba(255,255,255,.26)}
-    .modalActions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
-    .hint{color:var(--muted); font-size:12px; line-height:1.6; margin-top:10px}
-
-    /* Responsive */
-    @media (max-width: 960px){
-      .heroGrid{grid-template-columns:1fr; }
-      .grid3{grid-template-columns:1fr}
-      .roster{grid-template-columns: repeat(2,1fr)}
-      .footGrid{grid-template-columns:1fr}
-    }
-    @media (max-width: 720px){
-      .navlinks{display:none}
-      .menuBtn{display:inline-flex}
-      h1{font-size:38px}
-      .formGrid{grid-template-columns:1fr}
-      .roster{grid-template-columns:1fr}
-    }
-  </style>
-  <!-- Vercel Web Analytics (works for plain HTML sites deployed on Vercel) -->
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
-</head>
-<body>
-  <div class="topbar">
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="#top">
-          <span class="mark" aria-hidden="true" title="Bytestorm">
-            <!-- Minimal storm mark -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path d="M13 2L3 14h8l-1 8 11-14h-8l0-6z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <span>Bytestorm Esports</span>
-        </a>
-
-        <div class="navlinks" id="navlinks">
-          <a href="#about">About</a>
-          <a href="#recruit">Recruit</a>
-          <a href="#players">Players</a>
-          <a href="#socials">Socials</a>
-        </div>
-
-        <div class="cta">
-          <button class="btn small menuBtn" id="menuBtn" type="button">Menu</button>
-          <button class="btn primary" id="openApply" type="button">Apply</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <main id="top" class="wrap">
-    <div class="hero">
-      <div class="heroGrid">
-        <div class="card">
-          <div class="glow"></div>
-          <div class="cardPad">
-            <p class="kicker">Competitive-first. Brand-driven.</p>
-            <h1>BYTESTORM ESPORTS</h1>
-            <div class="motto">The True Builders</div>
-            <p class="lead">
-              A minimalist esports organization focused on structure, discipline, and long-term growth.
-              We do not chase hype. We build teams, systems, and legacy.
-            </p>
-            <div class="heroActions">
-              <a class="btn primary" href="#recruit">Join the build</a>
-              <a class="btn" href="#socials">View socials</a>
-              <a class="btn" href="#roster">Meet your best team</a>
-            </div>
-            <div class="metaRow">
-              <span class="pill">Region: EU</span>
-              <span class="pill">Style: Black / White</span>
-              <span class="pill">Focus: Tournaments + Content</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card side">
-          <div class="cardPad">
-            <div class="stat">
-              <b>Recruiting</b>
-              <span>Competitive players who want structure, improvement, and consistent scrims.</span>
-            </div>
-            <div class="stat">
-              <b>Jersey</b>
-              <span>Player kit standard: Name + Number. Example: CARLOS — 63.</span>
-            </div>
-            <div class="divider"></div>
-            <div class="stat">
-              <b>How we operate</b>
-              <span>Clear roles, clean comms, consistent practice. No drama. No chaos.</span>
-            </div>
-            <div style="margin-top:auto" class="heroActions">
-              <button class="btn primary" id="openApply2" type="button">Apply now</button>
-              <a class="btn" href="#about">What we build</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <section id="about">
-      <div class="sectionTitle">
-        <h2>About</h2>
-        <p>Minimal. Serious. Scalable.</p>
-      </div>
-      <div class="grid3">
-        <div class="tile">
-          <h3>Identity</h3>
-          <p>Bytestorm Esports is built around discipline and clarity. We keep the brand clean and the execution sharper.</p>
-        </div>
-        <div class="tile">
-          <h3>Performance</h3>
-          <p>Scrims, review, improvement. We focus on fundamentals and repeatable systems, not random hero plays.</p>
-        </div>
-        <div class="tile">
-          <h3>Growth</h3>
-          <p>We build public proof: content, tournament history, and community. That’s how real orgs scale.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="recruit">
-      <div class="sectionTitle">
-        <h2>Recruitment</h2>
-        <p>We don’t rush. We build.</p>
-      </div>
-      <div class="grid3">
-        <div class="tile">
-          <h3>We want</h3>
-          <p>EU players with strong support: consistent schedule, coachable mindset, and respect for others.</p>
-        </div>
-        <div class="tile">
-          <h3>We offer</h3>
-          <p>A real team environment: clear leadership, tournaments,game trainings, clean branding, and content exposure.</p>
-        </div>
-        <div class="tile">
-          <h3>Next step</h3>
-          <p>Fill the application. If you match the standard, we’ll invite you to a trial scrim.</p>
-          <div class="heroActions" style="margin-top:12px">
-            <button class="btn primary" id="openApply3" type="button">Open application</button>
-            <a class="btn" href="#socials">Contact / socials</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="players">
-      <div class="sectionTitle">
-        <h2> Players </h2>
-      </div>
-      <div class="roster">
-        <div class="player">
-          <div class="tag"><span>Support - Esport players</span><span>#17</span></div>
-          <div class="name">Maik</div>
-          <div class="role">Support - Replace player - Brawl Stars - EU</div>
-        </div>
-        <div class="player">
-          <div class="tag"><span>Support - Esports Player</span><span>#52</span></div>
-          <div class="name">Batur</div>
-          <div class="role">Roblox - Trainie - Support - Brawl Stars - EU</div>
-        </div>
-        <div class="player">
-          <div class="tag"><span>Esports Player</span><span>#187</span></div>
-          <div class="name">Daniel123FMR</div>
-          <div class="role">Fortnite - PRO - FN/BS Team Captain - EU</div>
-        </div>
-        <div class="player">
-          <div class="tag"><span>Esports Player</span><span>#1</span></div>
-          <div class="name">soullyxx</div>
-          <div class="role">Brawlstarts Flex / Main Player -EU</div>
-        </div>
-        <div class="player">
-          <div class="tag"><span>Owner</span><span>#63</span></div>
-          <div class="name">Memet Bytestorm</div>
-          <div class="role">All Games - Pro - CEO - EU</div>
-        </div>
-        <div class="player">
-          <div class="tag"><span>Main Esports Player</span><span>#1876</span></div>
-          <div class="name">Julian</div>
-          <div class="role">Brawl Stars - Pro - EU</div>
-        </div>
-                <div class="player">
-          <div class="tag"><span>Game / AD Editor</span><span>#43</span></div>
-          <div class="name">Daris</div>
-          <div class="role">Editor - TikTok - UK</div>
-        </div>
-    </section>
-
-    <section id="socials">
-      <div class="sectionTitle">
-        <h2>Socials</h2>
-        <p>Official links.</p>
-      </div>
-      <div class="grid3">
-        <div class="tile">
-          <h3>TikTok</h3>
-          <p>Post jersey reveals, highlights, and recruitment videos.</p>
-          <div class="heroActions" style="margin-top:12px">
-            <a class="btn" href="https://www.tiktok.com/@bytestorm_corporation" target="_blank" rel="noopener">Open TikTok</a>
-          </div>
-        </div>
-        <div class="tile">
-          <h3>Discord</h3>
-          <p>Your home base for trials, scrims, and announcements.</p>
-          <div class="heroActions" style="margin-top:12px">
-            <a class="btn" href="https://discord.gg/xfr6WWPCW3" target="_blank" rel="noopener">Join Discord</a>
-          </div>
-        </div>
-        <div class="tile">
-          <h3>Contact</h3>
-          <p>Contact us from the email: bytestorm.marketing.team@gmail.com</p>
-          <div class="heroActions" style="margin-top:12px">
-            <a class="btn" href="mailto:bytestorm.marketing.team@gmail.com">Email us</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="wrap" style="padding:0">
-        <div class="footGrid">
-          <div>
-            <div class="brand" style="gap:10px; font-size:12px">
-<span class="mark" aria-hidden="true" title="Bytestorm" style="overflow:hidden;">
-  <img
-    src="./ByteEsportLogo.png"
-    alt="Bytestorm Esports Logo"
-    style="width:100%; height:100%; object-fit:cover;"
-  >
-</span>
-
-              <span>Bytestorm Esports</span>
-            </div>
-            <div class="tiny">Bytestorm <b style="color:var(--text); letter-spacing:.08em">The True Builders</b></div>
-            <div class="tiny">© <span id="year"></span> Bytestorm. All rights reserved.</div>
-          </div>
-          <div class="smallLinks">
-            <a href="#top">Top</a>
-            <a href="#recruit">Recruit</a>
-            <a href="#Players">Players</a>
-            <a href="#socials">Socials</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <!-- Application Modal -->
-  <div class="modalBack" id="modalBack" role="dialog" aria-modal="true" aria-label="Bytestorm application">
-    <div class="modal">
-      <div class="modalHead">
-        <b>Bytestorm Esports — Application</b>
-        <button class="btn small" id="closeModal" type="button">Close</button>
-      </div>
-      <div class="modalBody">
-        <div class="formGrid">
-          <div>
-            <label for="name">Player name</label>
-            <input id="name" placeholder="Carlos" />
-          </div>
-          <div>
-            <label for="tag">In-game tag</label>
-            <input id="tag" placeholder="CARLOS#FAVORITVENUMMBER#GAMES" />
-          </div>
-          <div>
-            <label for="region">Region</label>
-            <select id="region">
-              <option>EU</option>
-              <option>UK</option>
-              <option>NA</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div>
-            <label for="role">Role</label>
-            <select id="role">
-              <option>Entry / Fragger</option>
-              <option>Flex</option>
-              <option>Support</option>
-              <option>IGL / Captain</option>
-              <option>Other</option>
-            </select>
-          </div>
-        </div>
-
-        <div style="margin-top:12px">
-          <label for="aboutYou">Short message</label>
-          <textarea id="aboutYou" placeholder="Tell us your experience, availability, and why you fit Bytestorm."></textarea>
-        </div>
-
-        <div class="modalActions">
-          <button class="btn primary" id="copyApp" type="button">Copy application text</button>
-          <a class="btn" id="mailtoApp" href="#">Email application</a>
-        </div>
-
-        <div class="hint">
-          Tip: Use “Copy application text” and paste it into Discord or email.
-          The email button opens your mail app with everything filled in.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-
-
-    const $ = (id) => document.getElementById(id);
-
-    function runSelfTests(){
-      const assert = (cond, msg) => { if(!cond) throw new Error("Self-test failed: " + msg); };
-
-      // Test 1: Required elements exist
-      assert($("year"), "#year exists");
-      assert($("modalBack"), "#modalBack exists");
-      assert($("openApply"), "#openApply exists");
-      assert($("closeModal"), "#closeModal exists");
-
-      // Test 2: Year is a valid number
-      const y = new Date().getFullYear();
-      assert(Number.isInteger(y) && y > 2000, "year looks valid");
-
-      // Test 3: buildApplicationText contains newlines
-      const sample = ["a","b"].join("\n");
-      assert(sample.includes("\n"), "join(\\n) works");
-    }
-
-    function init(){
-      const modalBack = $("modalBack");
-      const closeBtn = $("closeModal");
-
-      function openModal(){
-        modalBack.style.display = "flex";
-        document.body.style.overflow = "hidden";
-      }
-      function closeModal(){
-        modalBack.style.display = "none";
-        document.body.style.overflow = "";
-      }
-
-      // Wire Apply buttons
-      ["openApply","openApply2","openApply3"].forEach(id=>{
-        const el = $(id);
-        if(el) el.addEventListener("click", openModal);
-      });
-
-      // Close controls
-      if(closeBtn) closeBtn.addEventListener("click", closeModal);
-      modalBack.addEventListener("click", (e)=>{ if(e.target === modalBack) closeModal(); });
-      document.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeModal(); });
-
-      // Footer year
-      const yearEl = $("year");
-      if(yearEl) yearEl.textContent = String(new Date().getFullYear());
-
-      function buildApplicationText(){
-        const name = $("name").value.trim() || "N/A";
-        const tag  = $("tag").value.trim() || "N/A";
-        const region = $("region").value;
-        const role = $("role").value;
-        const about = $("aboutYou").value.trim() || "N/A";
-
-        return [
-          "BYTESTORM ESPORTS — APPLICATION",
-          "Motto: The True Builders",
-          "",
-          "Player Name: " + name,
-          "In-Game Tag: " + tag,
-          "Region: " + region,
-          "Role: " + role,
-          "",
-          "Message:",
-          about,
-          "",
-          "— Sent via Bytestorm Esports site"
-        ].join("\n");
-      }
-
-      // Copy
-      $("copyApp").addEventListener("click", async ()=>{
-        const text = buildApplicationText();
-        try{
-          await navigator.clipboard.writeText(text);
-          alert("Copied. Paste it into Discord or email.");
-        }catch{
-          const ta = document.createElement("textarea");
-          ta.value = text;
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand("copy");
-          document.body.removeChild(ta);
-          alert("Copied. Paste it into Discord or email.");
-        }
-      });
-
-      // Email
-      $("mailtoApp").addEventListener("click", (e)=>{
-        const text = buildApplicationText();
-        const to = "bytestorm.marketing.team@gmail.com";
-        const subject = encodeURIComponent("Bytestorm Esports Application");
-        const body = encodeURIComponent(text);
-        e.currentTarget.href = `mailto:${to}?subject=${subject}&body=${body}`;
-      });
-
-      // Mobile menu quick toggle
-      const menuBtn = $("menuBtn");
-      if(menuBtn){
-        menuBtn.addEventListener("click", ()=>{
-          const links = $("navlinks");
-          const isHidden = getComputedStyle(links).display === "none";
-          links.style.display = isHidden ? "flex" : "none";
-          links.style.flexDirection = "column";
-          links.style.gap = "6px";
-          links.style.position = "absolute";
-          links.style.right = "18px";
-          links.style.top = "70px";
-          links.style.padding = "12px";
-          links.style.borderRadius = "16px";
-          links.style.background = "rgba(17,17,19,.95)";
-          links.style.border = "1px solid rgba(255,255,255,.16)";
-          links.style.boxShadow = "0 18px 60px rgba(0,0,0,.5)";
-        });
-      }
-    }
-
-    // Init after DOM is ready
-    document.addEventListener("DOMContentLoaded", ()=>{
-      runSelfTests();
-      init();
-    });
-  </script>
-
-  <!-- Vercel Web Analytics (works for plain HTML sites deployed on Vercel) -->
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-  
 </body>
 </html>
+
