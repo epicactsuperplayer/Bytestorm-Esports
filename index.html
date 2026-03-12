@@ -122,26 +122,70 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
 .m-submit{width:100%;margin-top:6px;padding:13px;font-size:12px;letter-spacing:.12em}
 @media(max-width:1100px){.games-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:640px){.nav-links li:not(:last-child){display:none}.games-grid{grid-template-columns:repeat(2,1fr)}.soc-grid{grid-template-columns:1fr}.foot-in{flex-direction:column;text-align:center}.s-head{flex-direction:column;align-items:flex-start}.fgr{grid-template-columns:1fr}.modal{padding:26px 18px}}
-@media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}} /* Hamburger nav */
+#hamburgerWrap { position: fixed; top: 15px; left: 15px; z-index: 9999; font-family: monospace; }
+#hamburgerBtn {
+  cursor: pointer; background: #0a0a0a;
+  border: 1px solid #333; border-radius: 6px;
+  padding: 8px 12px; font-size: 18px;
+  color: white; user-select: none;
+}
+#byteNav {
+  display: none; flex-direction: column;
+  gap: 8px; margin-top: 8px;
+  background: #0a0a0a; border: 1px solid #333;
+  border-radius: 6px; padding: 10px; min-width: 180px;
+}
+#byteNav a {
+  color: #fff; text-decoration: none;
+  padding: 6px 10px; border-radius: 4px;
+  border: 1px solid #222;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px;
+}
+#byteNav a:hover { background: #1a1a1a; }
 </style>
 </head>
 <body>
 
-<div style="position:fixed;top:15px;left:15px;z-index:9999;font-family:monospace;">
-  <div onclick="toggleNav()" style="cursor:pointer;background:#0a0a0a;border:1px solid #333;border-radius:6px;padding:8px 12px;font-size:18px;color:white;user-select:none;">&#9776;</div>
-  <div id="byteNav" style="display:none;flex-direction:column;gap:8px;margin-top:8px;background:#0a0a0a;border:1px solid #333;border-radius:6px;padding:10px;min-width:160px;">
-    <a href="https://bytestormcorp.vercel.app" style="color:#fff;text-decoration:none;padding:6px 10px;border-radius:4px;border:1px solid #222;display:flex;align-items:center;gap:8px;">
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width="20" height="20"><text y='.9em' font-size='90' font-family='sans-serif' fill='white'>B</text></svg> Corp
+<!-- Hamburger Menu -->
+<div id="hamburgerWrap">
+  <div id="hamburgerBtn" onclick="toggleNav()">&#9776;</div>
+  <div id="byteNav">
+    <a href="https://bytestormcorp.vercel.app" target="_blank">
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width="20" height="20"><text y='.9em' font-size='90' font-family='sans-serif' fill='white'>B</text></svg>
+      Bytestorm Corporation
     </a>
-    <a href="https://bytestorm-esports.vercel.app" style="color:#fff;text-decoration:none;padding:6px 10px;border-radius:4px;border:1px solid #222;display:flex;align-items:center;gap:8px;">
-      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" width="20" height="20" style="border-radius:3px;"> Esports
+    <a href="https://bytestorm-esports.vercel.app" target="_blank">
+      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" width="20" height="20" style="border-radius:3px;">
+      Bytestorm Esports
     </a>
-    <a href="https://rodss.vercel.app" style="color:#fff;text-decoration:none;padding:6px 10px;border-radius:4px;border:1px solid #222;display:flex;align-items:center;gap:8px;">
-      <img src="https://i.imgur.com/NLz6Jfd.png" width="20" height="20" style="border-radius:3px;"> RODSS
+    <a href="https://rodss.vercel.app" target="_blank">
+      <img src="https://i.imgur.com/NLz6Jfd.png" width="20" height="20" style="border-radius:3px;">
+      RODSS Corporation
+    </a>
+    <a href="https://bytestormchat.vercel.app" target="_blank">
+      <img src="https://i.imgur.com/NLz6Jfd.png" width="20" height="20" style="border-radius:3px;">
+      ByteChat
     </a>
   </div>
 </div>
 
+
+<script>
+function toggleNav() {
+  const nav = document.getElementById('byteNav');
+  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+}
+// Close nav when clicking outside
+document.addEventListener('click', function(e) {
+  const wrap = document.getElementById('hamburgerWrap');
+  if (!wrap.contains(e.target)) {
+    document.getElementById('byteNav').style.display = 'none';
+  }
+});
+</script>
+   
 <div class="m-overlay" id="applyModal" onclick="overlayClose(event)">
   <div class="modal">
     <button class="m-x" onclick="closeModal()">&#215;</button>
