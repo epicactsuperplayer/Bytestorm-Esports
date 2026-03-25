@@ -89,6 +89,10 @@ section.pad{padding:88px 0}
 .rp-meta b{color:var(--m2);font-weight:500}
 .rp-empty{padding:36px 24px;text-align:center}
 .rp-empty p{font-size:13px;color:var(--m1);margin-bottom:18px;line-height:1.6}
+.rp-card{position:relative}
+.rp-remove{position:absolute;top:8px;right:8px;background:none;border:none;color:var(--b2);font-size:13px;cursor:pointer;padding:3px 7px;border-radius:2px;transition:color .2s,background .2s;display:none;line-height:1}
+.rp-remove:hover{color:#ba5d5d;background:#2a1a1a}
+body.admin-mode .rp-remove{display:block}
 .soc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b1);border:1px solid var(--b1);border-radius:10px;overflow:hidden}
 .soc-tile{background:var(--s1);padding:32px 28px;text-decoration:none;display:flex;flex-direction:column;gap:14px;transition:background .2s}
 .soc-tile:hover{background:var(--s2)}
@@ -123,7 +127,7 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
 @media(max-width:1100px){.games-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:640px){.nav-links li:not(:last-child){display:none}.games-grid{grid-template-columns:repeat(2,1fr)}.soc-grid{grid-template-columns:1fr}.foot-in{flex-direction:column;text-align:center}.s-head{flex-direction:column;align-items:flex-start}.fgr{grid-template-columns:1fr}.modal{padding:26px 18px}}
 @media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}}
- 
+
 /* Hamburger nav */
 #hamburgerWrap { position: fixed; top: 15px; left: 15px; z-index: 9999; font-family: monospace; }
 #hamburgerBtn {
@@ -146,13 +150,13 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
   font-size: 13px;
 }
 #byteNav a:hover { background: #1a1a1a; }
- 
+
 /* ── STAFF LOGIN MODAL ── */
 #staffLoginModal .modal { max-width: 400px; }
 .staff-login-logo { text-align: center; margin-bottom: 20px; }
 .staff-login-logo img { height: 48px; }
 .staff-login-logo p { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--m1); margin-top:8px; }
- 
+
 /* ── ADMIN PANEL ── */
 #adminPanel {
   display: none; position: fixed; inset: 0; background: var(--bg);
@@ -213,13 +217,13 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
 </style>
 </head>
 <body>
- 
+
 <!-- Firebase SDK -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getDatabase, ref, push, onValue, update, get } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
   import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
- 
+
   const firebaseConfig = {
     apiKey: "AIzaSyAY49sWaN-DSKV10uyBB3CeOiABLCtFrSI",
     authDomain: "bytestorm-friebase-server.firebaseapp.com",
@@ -230,24 +234,27 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
     appId: "1:400056781433:web:9803b0711d85de437f62a8",
     measurementId: "G-TKJ9JKK7ZF"
   };
- 
+
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
   const auth = getAuth(app);
- 
+
   // Expose to global scope for use in non-module scripts
   window._fb = { db, auth, ref, push, onValue, update, get, signInWithEmailAndPassword, signOut, onAuthStateChanged };
- 
+
   // Auth state listener
   onAuthStateChanged(auth, (user) => {
     window._currentUser = user;
     if (user) {
+      document.body.classList.add('admin-mode');
       document.getElementById('staffLoginModal').classList.remove('open');
       openAdminPanel();
+    } else {
+      document.body.classList.remove('admin-mode');
     }
   });
 </script>
- 
+
 <!-- Hamburger Menu -->
 <div id="hamburgerWrap">
   <div id="hamburgerBtn" onclick="toggleNav()">&#9776;</div>
@@ -274,7 +281,7 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
     </a>
   </div>
 </div>
- 
+
 <!-- Apply Modal -->
 <div class="m-overlay" id="applyModal" onclick="overlayClose(event)">
   <div class="modal">
@@ -294,7 +301,7 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
     <button class="btn-w m-submit" onclick="sendApp()">Send Application</button>
   </div>
 </div>
- 
+
 <!-- Staff Login Modal -->
 <div class="m-overlay" id="staffLoginModal" onclick="staffLoginOverlayClose(event)">
   <div class="modal" style="max-width:380px;">
@@ -311,7 +318,7 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
     <button class="btn-w m-submit" onclick="doStaffLogin()">Sign In</button>
   </div>
 </div>
- 
+
 <!-- Admin Panel -->
 <div id="adminPanel">
   <div class="ap-nav">
@@ -325,14 +332,14 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
   <div class="ap-body">
     <div class="ap-section-title">Applications</div>
     <p class="ap-section-sub">Manage incoming player applications.</p>
- 
+
     <div class="ap-stats">
       <div class="ap-stat"><div class="ap-stat-num" id="stat-total">—</div><div class="ap-stat-label">Total</div></div>
       <div class="ap-stat"><div class="ap-stat-num" id="stat-pending" style="color:#b8b83a;">—</div><div class="ap-stat-label">Pending</div></div>
       <div class="ap-stat"><div class="ap-stat-num" id="stat-accepted" style="color:#5dba5d;">—</div><div class="ap-stat-label">Accepted</div></div>
       <div class="ap-stat"><div class="ap-stat-num" id="stat-denied" style="color:#ba5d5d;">—</div><div class="ap-stat-label">Denied</div></div>
     </div>
- 
+
     <div class="ap-tabs">
       <button class="ap-tab active" onclick="switchTab('pending')">Pending</button>
       <button class="ap-tab" onclick="switchTab('accepted')">Accepted</button>
@@ -340,7 +347,7 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
       <button class="ap-tab" onclick="switchTab('denied')">Denied</button>
       <button class="ap-tab" onclick="switchTab('all')">All</button>
     </div>
- 
+
     <div id="tab-pending" class="ap-tab-content active">
       <div class="app-list" id="list-pending"><div class="ap-loading">Loading…</div></div>
     </div>
@@ -358,9 +365,9 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
     </div>
   </div>
 </div>
- 
+
 <div id="ap-toast" class="ap-toast"></div>
- 
+
 <nav>
   <div class="nav-in">
     <a href="#" class="nav-logo">
@@ -374,12 +381,12 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
     </ul>
   </div>
 </nav>
- 
+
 <section class="pad" id="games" style="padding-top:100px">
   <div class="wrap">
     <div class="s-head"><div><div class="s-eye">Competing in</div><div class="s-title">Our Games</div></div></div>
     <div class="games-grid">
- 
+
       <button class="game-card" data-img="https://i.ytimg.com/vi/adGdyCdvKz4/maxresdefault.jpg" onclick="toggleRoster('fn')">
         <div class="gc-img-wrap">
           <img class="gc-img" src="" alt="Fortnite" style="display:none"/>
@@ -389,7 +396,7 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
- 
+
       <button class="game-card" data-img="https://www.klicksafe.de/fileadmin/_processed_/0/5/csm_Sharepic_Brawl-Stars_905ff3013c.png" onclick="toggleRoster('bs')">
         <div class="gc-img-wrap">
           <img class="gc-img" src="" alt="Brawl Stars" style="display:none"/>
@@ -399,7 +406,7 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
- 
+
       <button class="game-card" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Roblox_%282025%29_%28App_Icon%29.svg/250px-Roblox_%282025%29_%28App_Icon%29.svg.png" onclick="toggleRoster('rb')">
         <div class="gc-img-wrap">
           <img class="gc-img" src="" alt="Roblox" style="display:none"/>
@@ -409,7 +416,7 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
- 
+
       <button class="game-card" data-img="https://notebookspec.com/web/wp-content/uploads/2017/04/fb_image.png" onclick="toggleRoster('cs')">
         <div class="gc-img-wrap">
           <img class="gc-img" src="" alt="CS:GO" style="display:none"/>
@@ -419,7 +426,7 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
- 
+
       <button class="game-card" data-img="https://images.mein-mmo.de/medien/2022/03/GTA-Online-Next-Gen-Titel-Autos-Polizei.jpg" onclick="toggleRoster('gta')">
         <div class="gc-img-wrap">
           <img class="gc-img" src="" alt="GTA V Online" style="display:none"/>
@@ -429,7 +436,7 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
- 
+
       <button class="game-card" style="background:#1a1a1a" onclick="toggleRoster('staff')">
         <div class="gc-img-wrap">
           <div class="gc-placeholder" style="display:flex; color:#fff; opacity:1;">
@@ -441,9 +448,9 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
           <div class="gc-hover-pill">View Staff</div>
         </div>
       </button>
- 
+
     </div>
- 
+
     <div class="roster-panel" id="rp-fn">
       <div class="rp-head"><span class="rp-tag">FN</span><span class="rp-game">Fortnite</span><button class="rp-close" onclick="closeRoster('fn')">&#215;</button></div>
       <div class="rp-grid">
@@ -451,8 +458,9 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge">Captain</span></div><div class="rp-name">Daniel123FMR</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU</div></div>
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge">Pro</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU</div></div>
       </div>
+      <div class="rp-grid" id="dynamic-fn"></div>
     </div>
- 
+
     <div class="roster-panel" id="rp-bs">
       <div class="rp-head"><span class="rp-tag">BS</span><span class="rp-game">Brawl Stars</span><button class="rp-close" onclick="closeRoster('bs')">&#215;</button></div>
       <div class="rp-grid">
@@ -465,30 +473,34 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#??</span><span class="rp-badge">Trial</span></div><div class="rp-name">TT | SRO</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#??</span><span class="rp-badge">Trial</span></div><div class="rp-name">Tomi</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
       </div>
+      <div class="rp-grid" id="dynamic-bs"></div>
     </div>
- 
+
     <div class="roster-panel" id="rp-rb">
       <div class="rp-head"><span class="rp-tag">RBLX</span><span class="rp-game">Roblox</span><button class="rp-close" onclick="closeRoster('rb')">&#215;</button></div>
       <div class="rp-grid">
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge">Trainee</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Plays:</b> BS, RB<br/><b>Region:</b> EU</div></div>
       </div>
+      <div class="rp-grid" id="dynamic-rb"></div>
     </div>
- 
+
     <div class="roster-panel" id="rp-cs">
       <div class="rp-head"><span class="rp-tag">CS</span><span class="rp-game">CS:GO</span><button class="rp-close" onclick="closeRoster('cs')">&#215;</button></div>
       <div class="rp-grid">
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
       </div>
+      <div class="rp-grid" id="dynamic-cs"></div>
     </div>
- 
+
     <div class="roster-panel" id="rp-gta">
       <div class="rp-head"><span class="rp-tag">GTA</span><span class="rp-game">GTA V Online</span><button class="rp-close" onclick="closeRoster('gta')">&#215;</button></div>
       <div class="rp-grid">
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
       </div>
+      <div class="rp-grid" id="dynamic-gta"></div>
     </div>
- 
+
     <div class="roster-panel" id="rp-staff">
       <div class="rp-head"><span class="rp-tag">STAFF</span><span class="rp-game">Management</span><button class="rp-close" onclick="closeRoster('staff')">&#215;</button></div>
       <div class="rp-grid">
@@ -496,12 +508,12 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#43</span><span class="rp-badge">Staff</span></div><div class="rp-name">Daris</div><div class="rp-meta"><b>Role:</b> Editor<br/><b>Region:</b> UK</div></div>
       </div>
     </div>
- 
+
   </div>
 </section>
- 
+
 <div class="divider"></div>
- 
+
 <section class="pad" id="socials">
   <div class="wrap">
     <div class="s-head"><div><div class="s-eye">Connect</div><div class="s-title">Find Us</div></div></div>
@@ -516,7 +528,7 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
         <h3>Discord</h3><p>Trials, scrims, and team comms.</p>
         <span class="soc-handle">Join Server</span>
       </a>
-      <a href="mailto:bytestorm.marketing.team@gmail.com" class="soc-tile">
+      <a href="/cdn-cgi/l/email-protection#5c3e2528392f28332e3172313d2e37392835323b7228393d311c3b313d3530723f3331" class="soc-tile">
         <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
         <h3>Email</h3><p>Business inquiries and partnerships.</p>
         <span class="soc-handle">Contact Us</span>
@@ -524,7 +536,7 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
     </div>
   </div>
 </section>
- 
+
 <footer>
   <div class="foot-in">
     <div class="foot-logo">
@@ -534,8 +546,66 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
     <span class="foot-copy">&#169; 2026 Bytestorm. All rights reserved. &nbsp;·&nbsp; <a href="#" onclick="openStaffLogin();return false;" style="color:#333;text-decoration:none;font-size:11px;transition:color .2s;" onmouseover="this.style.color='#777'" onmouseout="this.style.color='#333'">Staff Login</a></span>
   </div>
 </footer>
- 
-<script>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── Dynamic Rosters from Firebase ──
+// Map game select values to roster panel dynamic div IDs
+var gameToRosterId = {
+  'Fortnite': 'fn',
+  'Brawl Stars': 'bs',
+  'Roblox': 'rb',
+  'CS:GO': 'cs',
+  'GTA V Online': 'gta'
+};
+
+function loadRosters(){
+  var fb = window._fb;
+  if(!fb) { setTimeout(loadRosters, 500); return; }
+  fb.onValue(fb.ref(fb.db, 'applications'), function(snapshot){
+    var data = snapshot.val() || {};
+    // Clear all dynamic grids
+    Object.values(gameToRosterId).forEach(function(rid){
+      var el = document.getElementById('dynamic-'+rid);
+      if(el) el.innerHTML = '';
+    });
+    Object.entries(data).forEach(function(entry){
+      var id = entry[0], a = entry[1];
+      if(a.status !== 'accepted' && a.status !== 'trial') return;
+      var rid = gameToRosterId[a.game];
+      // Handle Multiple/Other — skip (no specific panel)
+      if(!rid) return;
+      var el = document.getElementById('dynamic-'+rid);
+      if(!el) return;
+      var badge = a.status === 'trial' ? 'Trial' : a.role || 'Player';
+      var card = document.createElement('div');
+      card.className = 'rp-card';
+      card.innerHTML = `
+        <button class="rp-remove" onclick="removePlayer('${id}')" title="Remove player">&#215;</button>
+        <div class="rp-top"><span class="rp-num">#${escHtml(String(a.jerseyNum||'??'))}</span><span class="rp-badge">${escHtml(badge)}</span></div>
+        <div class="rp-name">${escHtml(a.name)}</div>
+        <div class="rp-meta"><b>Tag:</b> ${escHtml(a.gamerTag||'—')}<br/><b>Region:</b> ${escHtml(a.region||'—')}</div>
+      `;
+      el.appendChild(card);
+    });
+  });
+}
+
+async function removePlayer(id){
+  if(!window._currentUser){ showToast('Not logged in.'); return; }
+  if(!confirm('Remove this player from the roster?')) return;
+  try {
+    var fb = window._fb;
+    await fb.update(fb.ref(fb.db, 'applications/'+id), {status: 'denied'});
+    showToast('Player removed from roster.');
+  } catch(err){
+    showToast('Error removing player.');
+    console.error(err);
+  }
+}
+
+// Load rosters for public view on page load
+window.addEventListener('load', function(){ setTimeout(loadRosters, 800); });
+
 // ── Hamburger ──
 function toggleNav() {
   const nav = document.getElementById('byteNav');
@@ -547,7 +617,7 @@ document.addEventListener('click', function(e) {
     document.getElementById('byteNav').style.display = 'none';
   }
 });
- 
+
 // ── Game card images ──
 document.querySelectorAll('.game-card').forEach(function(c){
   var u=c.getAttribute('data-img');
@@ -559,18 +629,18 @@ document.querySelectorAll('.game-card').forEach(function(c){
     }
   }
 });
- 
+
 // ── Apply Modal ──
 function openModal(){document.getElementById('applyModal').classList.add('open');document.body.style.overflow='hidden'}
 function closeModal(){document.getElementById('applyModal').classList.remove('open');document.body.style.overflow=''}
 function overlayClose(e){if(e.target===document.getElementById('applyModal'))closeModal()}
- 
+
 async function sendApp(){
   var name=document.getElementById('f-name').value.trim();
   var gtag=document.getElementById('f-gtag').value.trim();
   var tag=document.getElementById('f-tag').value.trim();
   if(!name||!tag){alert('Please fill in your name and tag.');return}
- 
+
   var appData = {
     name: name,
     gamerTag: gtag,
@@ -583,7 +653,7 @@ async function sendApp(){
     status: 'pending',
     submittedAt: new Date().toISOString()
   };
- 
+
   try {
     var fb = window._fb;
     if (!fb) throw new Error('Firebase not ready');
@@ -597,12 +667,12 @@ async function sendApp(){
     alert('Failed to send application. Please try again.');
   }
 }
- 
+
 // ── Staff Login Modal ──
 function openStaffLogin(){document.getElementById('staffLoginModal').classList.add('open');document.body.style.overflow='hidden'}
 function closeStaffLogin(){document.getElementById('staffLoginModal').classList.remove('open');document.body.style.overflow=''}
 function staffLoginOverlayClose(e){if(e.target===document.getElementById('staffLoginModal'))closeStaffLogin()}
- 
+
 async function doStaffLogin(){
   var email = document.getElementById('sl-email').value.trim();
   var pass = document.getElementById('sl-pass').value;
@@ -618,17 +688,17 @@ async function doStaffLogin(){
     errEl.style.display='block';
   }
 }
- 
+
 // ── Admin Panel ──
 var _appsCache = {};
 var _activeTab = 'pending';
- 
+
 function openAdminPanel(){
   document.getElementById('adminPanel').classList.add('open');
   document.body.style.overflow='hidden';
   loadApplications();
 }
- 
+
 function doLogout(){
   var fb = window._fb;
   fb.signOut(fb.auth).then(function(){
@@ -637,7 +707,7 @@ function doLogout(){
     showToast('Signed out.');
   });
 }
- 
+
 function switchTab(tab){
   _activeTab = tab;
   document.querySelectorAll('.ap-tab').forEach(function(t,i){
@@ -649,7 +719,7 @@ function switchTab(tab){
   });
   document.getElementById('tab-'+tab).classList.add('active');
 }
- 
+
 function loadApplications(){
   var fb = window._fb;
   fb.onValue(fb.ref(fb.db, 'applications'), function(snapshot){
@@ -658,28 +728,28 @@ function loadApplications(){
     renderAllLists(data);
   });
 }
- 
+
 function renderAllLists(data){
   var all = Object.entries(data).map(function(e){return Object.assign({_id:e[0]},e[1])});
   all.sort(function(a,b){return new Date(b.submittedAt)-new Date(a.submittedAt)});
- 
+
   var pending = all.filter(function(a){return a.status==='pending'});
   var accepted = all.filter(function(a){return a.status==='accepted'});
   var trial = all.filter(function(a){return a.status==='trial'});
   var denied = all.filter(function(a){return a.status==='denied'});
- 
+
   document.getElementById('stat-total').textContent = all.length;
   document.getElementById('stat-pending').textContent = pending.length;
   document.getElementById('stat-accepted').textContent = accepted.length;
   document.getElementById('stat-denied').textContent = denied.length;
- 
+
   renderList('list-pending', pending, true);
   renderList('list-accepted', accepted, false);
   renderList('list-trial', trial, false);
   renderList('list-denied', denied, false);
   renderList('list-all', all, false);
 }
- 
+
 function renderList(containerId, apps, showActions){
   var el = document.getElementById(containerId);
   if(!apps.length){el.innerHTML='<div class="ap-empty">No applications here.</div>';return}
@@ -709,7 +779,7 @@ function renderList(containerId, apps, showActions){
     </div>`;
   }).join('');
 }
- 
+
 async function setStatus(id, status){
   try {
     var fb = window._fb;
@@ -721,18 +791,18 @@ async function setStatus(id, status){
     console.error(err);
   }
 }
- 
+
 function escHtml(str){
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
- 
+
 // ── Toast ──
 function showToast(msg){
   var t=document.getElementById('ap-toast');
   t.textContent=msg;t.classList.add('show');
   setTimeout(function(){t.classList.remove('show')},2800);
 }
- 
+
 // ── Roster panels ──
 var cur=null;
 function toggleRoster(id){
@@ -741,11 +811,4 @@ function toggleRoster(id){
   if(!p) return;
   if(p.classList.contains('open')){closeRoster(id);return}
   p.classList.add('open');cur=id;
-  setTimeout(function(){p.scrollIntoView({behavior:'smooth',block:'nearest'})},60);
-}
-function closeRoster(id){
-  var p=document.getElementById('rp-'+id);if(p)p.classList.remove('open');if(cur===id)cur=null;
-}
-</script>
-</body>
-</html>
+  setTimeout(function(){p.scrollIntoView({behavior:'smooth',block:'near
