@@ -122,7 +122,9 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
 .m-submit{width:100%;margin-top:6px;padding:13px;font-size:12px;letter-spacing:.12em}
 @media(max-width:1100px){.games-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:640px){.nav-links li:not(:last-child){display:none}.games-grid{grid-template-columns:repeat(2,1fr)}.soc-grid{grid-template-columns:1fr}.foot-in{flex-direction:column;text-align:center}.s-head{flex-direction:column;align-items:flex-start}.fgr{grid-template-columns:1fr}.modal{padding:26px 18px}}
-@media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}} /* Hamburger nav */
+@media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}}
+ 
+/* Hamburger nav */
 #hamburgerWrap { position: fixed; top: 15px; left: 15px; z-index: 9999; font-family: monospace; }
 #hamburgerBtn {
   cursor: pointer; background: #0a0a0a;
@@ -144,10 +146,108 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
   font-size: 13px;
 }
 #byteNav a:hover { background: #1a1a1a; }
+ 
+/* ── STAFF LOGIN MODAL ── */
+#staffLoginModal .modal { max-width: 400px; }
+.staff-login-logo { text-align: center; margin-bottom: 20px; }
+.staff-login-logo img { height: 48px; }
+.staff-login-logo p { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--m1); margin-top:8px; }
+ 
+/* ── ADMIN PANEL ── */
+#adminPanel {
+  display: none; position: fixed; inset: 0; background: var(--bg);
+  z-index: 2000; overflow-y: auto;
+}
+#adminPanel.open { display: block; }
+.ap-nav {
+  background: rgba(6,6,6,0.98); border-bottom: 1px solid var(--b1);
+  padding: 0 28px; height: 60px; display: flex; align-items: center;
+  justify-content: space-between; position: sticky; top: 0; z-index: 10;
+}
+.ap-nav-left { display: flex; align-items: center; gap: 14px; }
+.ap-nav-left img { height: 28px; }
+.ap-nav-title { font-family:'Barlow Condensed',sans-serif; font-size:16px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#fff; }
+.ap-tag { font-size:9px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; background:#fff; color:#000; padding:2px 8px; border-radius:2px; }
+.ap-logout { background: none; border: 1px solid var(--b2); color: var(--m2); font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:6px 14px; border-radius:3px; cursor:pointer; transition: color .2s, border-color .2s; }
+.ap-logout:hover { color:#fff; border-color:#555; }
+.ap-body { max-width: 1100px; margin: 0 auto; padding: 40px 28px; }
+.ap-section-title { font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:900; text-transform:uppercase; color:#fff; margin-bottom:6px; }
+.ap-section-sub { font-size:13px; color:var(--m1); margin-bottom:28px; }
+.ap-tabs { display:flex; gap:1px; background:var(--b1); border:1px solid var(--b1); border-radius:6px; overflow:hidden; margin-bottom:28px; width:fit-content; }
+.ap-tab { background:var(--s1); border:none; color:var(--m2); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; padding:9px 20px; cursor:pointer; transition:background .2s,color .2s; }
+.ap-tab.active { background:#fff; color:#000; }
+.ap-tab-content { display:none; }
+.ap-tab-content.active { display:block; }
+.app-list { display: flex; flex-direction: column; gap: 1px; background: var(--b1); border: 1px solid var(--b1); border-radius:8px; overflow:hidden; }
+.app-item {
+  background: var(--s1); padding: 18px 22px;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 16px; align-items: center;
+}
+.app-item:hover { background: var(--s2); }
+.app-info { display:flex; flex-direction:column; gap:5px; }
+.app-name { font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; color:#fff; }
+.app-meta { font-size:11px; color:var(--m1); line-height:1.7; }
+.app-meta b { color:var(--m2); font-weight:500; }
+.app-msg { font-size:12px; color:var(--m1); margin-top:4px; font-style:italic; border-left:2px solid var(--b2); padding-left:10px; }
+.app-actions { display:flex; gap:8px; flex-shrink:0; }
+.btn-accept { background:#1a3a1a; border:1px solid #2a5a2a; color:#5dba5d; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:7px 14px; border-radius:3px; cursor:pointer; transition:background .2s; }
+.btn-accept:hover { background:#224422; }
+.btn-trial { background:#2a2a1a; border:1px solid #4a4a1a; color:#b8b83a; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:7px 14px; border-radius:3px; cursor:pointer; transition:background .2s; }
+.btn-trial:hover { background:#333320; }
+.btn-deny { background:#3a1a1a; border:1px solid #5a2a2a; color:#ba5d5d; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:7px 14px; border-radius:3px; cursor:pointer; transition:background .2s; }
+.btn-deny:hover { background:#442222; }
+.status-badge { font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:3px 9px; border-radius:2px; }
+.status-pending { background:#222; color:var(--m2); border:1px solid var(--b2); }
+.status-accepted { background:#1a3a1a; color:#5dba5d; border:1px solid #2a5a2a; }
+.status-trial { background:#2a2a1a; color:#b8b83a; border:1px solid #4a4a1a; }
+.status-denied { background:#3a1a1a; color:#ba5d5d; border:1px solid #5a2a2a; }
+.ap-empty { padding:44px; text-align:center; color:var(--m1); font-size:13px; }
+.ap-loading { padding:44px; text-align:center; color:var(--m1); font-size:13px; }
+.ap-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--b1); border:1px solid var(--b1); border-radius:8px; overflow:hidden; margin-bottom:28px; }
+.ap-stat { background:var(--s1); padding:20px 22px; }
+.ap-stat-num { font-family:'Barlow Condensed',sans-serif; font-size:36px; font-weight:900; color:#fff; line-height:1; }
+.ap-stat-label { font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--m1); margin-top:4px; }
+.ap-toast { position:fixed; bottom:24px; right:24px; background:#1a1a1a; border:1px solid var(--b2); color:#fff; font-size:13px; padding:12px 20px; border-radius:6px; z-index:9999; opacity:0; transform:translateY(8px); transition:all .25s; pointer-events:none; }
+.ap-toast.show { opacity:1; transform:none; }
 </style>
 </head>
 <body>
-
+ 
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, push, onValue, update, get } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+ 
+  const firebaseConfig = {
+    apiKey: "AIzaSyAY49sWaN-DSKV10uyBB3CeOiABLCtFrSI",
+    authDomain: "bytestorm-friebase-server.firebaseapp.com",
+    databaseURL: "https://bytestorm-friebase-server-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "bytestorm-friebase-server",
+    storageBucket: "bytestorm-friebase-server.firebasestorage.app",
+    messagingSenderId: "400056781433",
+    appId: "1:400056781433:web:9803b0711d85de437f62a8",
+    measurementId: "G-TKJ9JKK7ZF"
+  };
+ 
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const auth = getAuth(app);
+ 
+  // Expose to global scope for use in non-module scripts
+  window._fb = { db, auth, ref, push, onValue, update, get, signInWithEmailAndPassword, signOut, onAuthStateChanged };
+ 
+  // Auth state listener
+  onAuthStateChanged(auth, (user) => {
+    window._currentUser = user;
+    if (user) {
+      document.getElementById('staffLoginModal').classList.remove('open');
+      openAdminPanel();
+    }
+  });
+</script>
+ 
 <!-- Hamburger Menu -->
 <div id="hamburgerWrap">
   <div id="hamburgerBtn" onclick="toggleNav()">&#9776;</div>
@@ -168,24 +268,14 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
       <img src="https://i.imgur.com/NLz6Jfd.png" width="20" height="20" style="border-radius:3px;">
       ByteChat
     </a>
+    <a href="#" onclick="openStaffLogin(); toggleNav(); return false;">
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width="20" height="20" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      Staff Login
+    </a>
   </div>
 </div>
-
-
-<script>
-function toggleNav() {
-  const nav = document.getElementById('byteNav');
-  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-}
-// Close nav when clicking outside
-document.addEventListener('click', function(e) {
-  const wrap = document.getElementById('hamburgerWrap');
-  if (!wrap.contains(e.target)) {
-    document.getElementById('byteNav').style.display = 'none';
-  }
-});
-</script>
-   
+ 
+<!-- Apply Modal -->
 <div class="m-overlay" id="applyModal" onclick="overlayClose(event)">
   <div class="modal">
     <button class="m-x" onclick="closeModal()">&#215;</button>
@@ -204,7 +294,73 @@ document.addEventListener('click', function(e) {
     <button class="btn-w m-submit" onclick="sendApp()">Send Application</button>
   </div>
 </div>
-
+ 
+<!-- Staff Login Modal -->
+<div class="m-overlay" id="staffLoginModal" onclick="staffLoginOverlayClose(event)">
+  <div class="modal" style="max-width:380px;">
+    <button class="m-x" onclick="closeStaffLogin()">&#215;</button>
+    <div class="staff-login-logo">
+      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm"/>
+      <p>Staff Portal</p>
+    </div>
+    <div class="m-title" style="font-size:22px;">Sign In</div>
+    <p class="m-sub">Admin access only.</p>
+    <div class="fg"><label>Email</label><input type="email" id="sl-email" placeholder="admin@bytestorm.gg"/></div>
+    <div class="fg"><label>Password</label><input type="password" id="sl-pass" placeholder="••••••••"/></div>
+    <p id="sl-error" style="font-size:12px;color:#ba5d5d;margin-bottom:10px;display:none;"></p>
+    <button class="btn-w m-submit" onclick="doStaffLogin()">Sign In</button>
+  </div>
+</div>
+ 
+<!-- Admin Panel -->
+<div id="adminPanel">
+  <div class="ap-nav">
+    <div class="ap-nav-left">
+      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm"/>
+      <span class="ap-nav-title">Bytestorm Esports</span>
+      <span class="ap-tag">Admin</span>
+    </div>
+    <button class="ap-logout" onclick="doLogout()">Sign Out</button>
+  </div>
+  <div class="ap-body">
+    <div class="ap-section-title">Applications</div>
+    <p class="ap-section-sub">Manage incoming player applications.</p>
+ 
+    <div class="ap-stats">
+      <div class="ap-stat"><div class="ap-stat-num" id="stat-total">—</div><div class="ap-stat-label">Total</div></div>
+      <div class="ap-stat"><div class="ap-stat-num" id="stat-pending" style="color:#b8b83a;">—</div><div class="ap-stat-label">Pending</div></div>
+      <div class="ap-stat"><div class="ap-stat-num" id="stat-accepted" style="color:#5dba5d;">—</div><div class="ap-stat-label">Accepted</div></div>
+      <div class="ap-stat"><div class="ap-stat-num" id="stat-denied" style="color:#ba5d5d;">—</div><div class="ap-stat-label">Denied</div></div>
+    </div>
+ 
+    <div class="ap-tabs">
+      <button class="ap-tab active" onclick="switchTab('pending')">Pending</button>
+      <button class="ap-tab" onclick="switchTab('accepted')">Accepted</button>
+      <button class="ap-tab" onclick="switchTab('trial')">Trial</button>
+      <button class="ap-tab" onclick="switchTab('denied')">Denied</button>
+      <button class="ap-tab" onclick="switchTab('all')">All</button>
+    </div>
+ 
+    <div id="tab-pending" class="ap-tab-content active">
+      <div class="app-list" id="list-pending"><div class="ap-loading">Loading…</div></div>
+    </div>
+    <div id="tab-accepted" class="ap-tab-content">
+      <div class="app-list" id="list-accepted"><div class="ap-loading">Loading…</div></div>
+    </div>
+    <div id="tab-trial" class="ap-tab-content">
+      <div class="app-list" id="list-trial"><div class="ap-loading">Loading…</div></div>
+    </div>
+    <div id="tab-denied" class="ap-tab-content">
+      <div class="app-list" id="list-denied"><div class="ap-loading">Loading…</div></div>
+    </div>
+    <div id="tab-all" class="ap-tab-content">
+      <div class="app-list" id="list-all"><div class="ap-loading">Loading…</div></div>
+    </div>
+  </div>
+</div>
+ 
+<div id="ap-toast" class="ap-toast"></div>
+ 
 <nav>
   <div class="nav-in">
     <a href="#" class="nav-logo">
@@ -218,12 +374,12 @@ document.addEventListener('click', function(e) {
     </ul>
   </div>
 </nav>
-
+ 
 <section class="pad" id="games" style="padding-top:100px">
   <div class="wrap">
     <div class="s-head"><div><div class="s-eye">Competing in</div><div class="s-title">Our Games</div></div></div>
     <div class="games-grid">
-
+ 
       <button class="game-card" data-img="https://i.ytimg.com/vi/adGdyCdvKz4/maxresdefault.jpg" onclick="toggleRoster('fn')">
         <div class="gc-img-wrap">
           <img class="gc-img" src="" alt="Fortnite" style="display:none"/>
@@ -233,7 +389,7 @@ document.addEventListener('click', function(e) {
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
-
+ 
       <button class="game-card" data-img="https://www.klicksafe.de/fileadmin/_processed_/0/5/csm_Sharepic_Brawl-Stars_905ff3013c.png" onclick="toggleRoster('bs')">
         <div class="gc-img-wrap">
           <img class="gc-img" src="" alt="Brawl Stars" style="display:none"/>
@@ -243,7 +399,7 @@ document.addEventListener('click', function(e) {
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
-
+ 
       <button class="game-card" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Roblox_%282025%29_%28App_Icon%29.svg/250px-Roblox_%282025%29_%28App_Icon%29.svg.png" onclick="toggleRoster('rb')">
         <div class="gc-img-wrap">
           <img class="gc-img" src="" alt="Roblox" style="display:none"/>
@@ -253,7 +409,7 @@ document.addEventListener('click', function(e) {
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
-
+ 
       <button class="game-card" data-img="https://notebookspec.com/web/wp-content/uploads/2017/04/fb_image.png" onclick="toggleRoster('cs')">
         <div class="gc-img-wrap">
           <img class="gc-img" src="" alt="CS:GO" style="display:none"/>
@@ -263,7 +419,7 @@ document.addEventListener('click', function(e) {
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
-
+ 
       <button class="game-card" data-img="https://images.mein-mmo.de/medien/2022/03/GTA-Online-Next-Gen-Titel-Autos-Polizei.jpg" onclick="toggleRoster('gta')">
         <div class="gc-img-wrap">
           <img class="gc-img" src="" alt="GTA V Online" style="display:none"/>
@@ -273,7 +429,7 @@ document.addEventListener('click', function(e) {
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
-
+ 
       <button class="game-card" style="background:#1a1a1a" onclick="toggleRoster('staff')">
         <div class="gc-img-wrap">
           <div class="gc-placeholder" style="display:flex; color:#fff; opacity:1;">
@@ -285,9 +441,9 @@ document.addEventListener('click', function(e) {
           <div class="gc-hover-pill">View Staff</div>
         </div>
       </button>
-
+ 
     </div>
-
+ 
     <div class="roster-panel" id="rp-fn">
       <div class="rp-head"><span class="rp-tag">FN</span><span class="rp-game">Fortnite</span><button class="rp-close" onclick="closeRoster('fn')">&#215;</button></div>
       <div class="rp-grid">
@@ -296,7 +452,7 @@ document.addEventListener('click', function(e) {
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge">Pro</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU</div></div>
       </div>
     </div>
-
+ 
     <div class="roster-panel" id="rp-bs">
       <div class="rp-head"><span class="rp-tag">BS</span><span class="rp-game">Brawl Stars</span><button class="rp-close" onclick="closeRoster('bs')">&#215;</button></div>
       <div class="rp-grid">
@@ -308,11 +464,9 @@ document.addEventListener('click', function(e) {
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#17</span><span class="rp-badge">Trainee</span></div><div class="rp-name">Maik</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#??</span><span class="rp-badge">Trial</span></div><div class="rp-name">TT | SRO</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#??</span><span class="rp-badge">Trial</span></div><div class="rp-name">Tomi</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
-
-
       </div>
     </div>
-
+ 
     <div class="roster-panel" id="rp-rb">
       <div class="rp-head"><span class="rp-tag">RBLX</span><span class="rp-game">Roblox</span><button class="rp-close" onclick="closeRoster('rb')">&#215;</button></div>
       <div class="rp-grid">
@@ -320,21 +474,21 @@ document.addEventListener('click', function(e) {
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge">Trainee</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Plays:</b> BS, RB<br/><b>Region:</b> EU</div></div>
       </div>
     </div>
-
+ 
     <div class="roster-panel" id="rp-cs">
       <div class="rp-head"><span class="rp-tag">CS</span><span class="rp-game">CS:GO</span><button class="rp-close" onclick="closeRoster('cs')">&#215;</button></div>
       <div class="rp-grid">
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
       </div>
     </div>
-
+ 
     <div class="roster-panel" id="rp-gta">
       <div class="rp-head"><span class="rp-tag">GTA</span><span class="rp-game">GTA V Online</span><button class="rp-close" onclick="closeRoster('gta')">&#215;</button></div>
       <div class="rp-grid">
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
       </div>
     </div>
-
+ 
     <div class="roster-panel" id="rp-staff">
       <div class="rp-head"><span class="rp-tag">STAFF</span><span class="rp-game">Management</span><button class="rp-close" onclick="closeRoster('staff')">&#215;</button></div>
       <div class="rp-grid">
@@ -342,12 +496,12 @@ document.addEventListener('click', function(e) {
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#43</span><span class="rp-badge">Staff</span></div><div class="rp-name">Daris</div><div class="rp-meta"><b>Role:</b> Editor<br/><b>Region:</b> UK</div></div>
       </div>
     </div>
-
+ 
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <section class="pad" id="socials">
   <div class="wrap">
     <div class="s-head"><div><div class="s-eye">Connect</div><div class="s-title">Find Us</div></div></div>
@@ -370,23 +524,31 @@ document.addEventListener('click', function(e) {
     </div>
   </div>
 </section>
-
+ 
 <footer>
   <div class="foot-in">
     <div class="foot-logo">
       <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm"/>
       <span class="foot-brand">Bytestorm Esports</span>
     </div>
-    <span class="foot-copy">&#169; 2026 Bytestorm. All rights reserved.</span>
+    <span class="foot-copy">&#169; 2026 Bytestorm. All rights reserved. &nbsp;·&nbsp; <a href="#" onclick="openStaffLogin();return false;" style="color:#333;text-decoration:none;font-size:11px;transition:color .2s;" onmouseover="this.style.color='#777'" onmouseout="this.style.color='#333'">Staff Login</a></span>
   </div>
 </footer>
-
+ 
 <script>
+// ── Hamburger ──
 function toggleNav() {
   const nav = document.getElementById('byteNav');
   nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
 }
-
+document.addEventListener('click', function(e) {
+  const wrap = document.getElementById('hamburgerWrap');
+  if (!wrap.contains(e.target)) {
+    document.getElementById('byteNav').style.display = 'none';
+  }
+});
+ 
+// ── Game card images ──
 document.querySelectorAll('.game-card').forEach(function(c){
   var u=c.getAttribute('data-img');
   if(u&&u.trim()){
@@ -397,18 +559,181 @@ document.querySelectorAll('.game-card').forEach(function(c){
     }
   }
 });
-
+ 
+// ── Apply Modal ──
 function openModal(){document.getElementById('applyModal').classList.add('open');document.body.style.overflow='hidden'}
 function closeModal(){document.getElementById('applyModal').classList.remove('open');document.body.style.overflow=''}
 function overlayClose(e){if(e.target===document.getElementById('applyModal'))closeModal()}
-
-function sendApp(){
-  var n=document.getElementById('f-name').value.trim(),t=document.getElementById('f-tag').value.trim();
-  if(!n||!t){alert('Please fill in your name and tag.');return}
-  var body='Player Name: '+n+'\nTag: '+t+'\nGame: '+document.getElementById('f-game').value;
-  window.location.href='mailto:bytestorm.marketing.team@gmail.com?subject=Application&body='+encodeURIComponent(body);
+ 
+async function sendApp(){
+  var name=document.getElementById('f-name').value.trim();
+  var gtag=document.getElementById('f-gtag').value.trim();
+  var tag=document.getElementById('f-tag').value.trim();
+  if(!name||!tag){alert('Please fill in your name and tag.');return}
+ 
+  var appData = {
+    name: name,
+    gamerTag: gtag,
+    inGameTag: tag,
+    game: document.getElementById('f-game').value,
+    region: document.getElementById('f-region').value,
+    role: document.getElementById('f-role').value,
+    jerseyNum: document.getElementById('f-num').value || '??',
+    message: document.getElementById('f-msg').value.trim(),
+    status: 'pending',
+    submittedAt: new Date().toISOString()
+  };
+ 
+  try {
+    var fb = window._fb;
+    if (!fb) throw new Error('Firebase not ready');
+    await fb.push(fb.ref(fb.db, 'applications'), appData);
+    closeModal();
+    showToast('Application sent! We\'ll be in touch.');
+    // Clear form
+    ['f-name','f-gtag','f-tag','f-num','f-msg'].forEach(id => document.getElementById(id).value='');
+  } catch(err) {
+    console.error(err);
+    alert('Failed to send application. Please try again.');
+  }
 }
-
+ 
+// ── Staff Login Modal ──
+function openStaffLogin(){document.getElementById('staffLoginModal').classList.add('open');document.body.style.overflow='hidden'}
+function closeStaffLogin(){document.getElementById('staffLoginModal').classList.remove('open');document.body.style.overflow=''}
+function staffLoginOverlayClose(e){if(e.target===document.getElementById('staffLoginModal'))closeStaffLogin()}
+ 
+async function doStaffLogin(){
+  var email = document.getElementById('sl-email').value.trim();
+  var pass = document.getElementById('sl-pass').value;
+  var errEl = document.getElementById('sl-error');
+  errEl.style.display='none';
+  if(!email||!pass){errEl.textContent='Please fill in both fields.';errEl.style.display='block';return}
+  try {
+    var fb = window._fb;
+    await fb.signInWithEmailAndPassword(fb.auth, email, pass);
+    // onAuthStateChanged will handle the rest
+  } catch(err) {
+    errEl.textContent = 'Invalid credentials. Please try again.';
+    errEl.style.display='block';
+  }
+}
+ 
+// ── Admin Panel ──
+var _appsCache = {};
+var _activeTab = 'pending';
+ 
+function openAdminPanel(){
+  document.getElementById('adminPanel').classList.add('open');
+  document.body.style.overflow='hidden';
+  loadApplications();
+}
+ 
+function doLogout(){
+  var fb = window._fb;
+  fb.signOut(fb.auth).then(function(){
+    document.getElementById('adminPanel').classList.remove('open');
+    document.body.style.overflow='';
+    showToast('Signed out.');
+  });
+}
+ 
+function switchTab(tab){
+  _activeTab = tab;
+  document.querySelectorAll('.ap-tab').forEach(function(t,i){
+    var tabs=['pending','accepted','trial','denied','all'];
+    t.classList.toggle('active', tabs[i]===tab);
+  });
+  document.querySelectorAll('.ap-tab-content').forEach(function(c){
+    c.classList.remove('active');
+  });
+  document.getElementById('tab-'+tab).classList.add('active');
+}
+ 
+function loadApplications(){
+  var fb = window._fb;
+  fb.onValue(fb.ref(fb.db, 'applications'), function(snapshot){
+    var data = snapshot.val() || {};
+    _appsCache = data;
+    renderAllLists(data);
+  });
+}
+ 
+function renderAllLists(data){
+  var all = Object.entries(data).map(function(e){return Object.assign({_id:e[0]},e[1])});
+  all.sort(function(a,b){return new Date(b.submittedAt)-new Date(a.submittedAt)});
+ 
+  var pending = all.filter(function(a){return a.status==='pending'});
+  var accepted = all.filter(function(a){return a.status==='accepted'});
+  var trial = all.filter(function(a){return a.status==='trial'});
+  var denied = all.filter(function(a){return a.status==='denied'});
+ 
+  document.getElementById('stat-total').textContent = all.length;
+  document.getElementById('stat-pending').textContent = pending.length;
+  document.getElementById('stat-accepted').textContent = accepted.length;
+  document.getElementById('stat-denied').textContent = denied.length;
+ 
+  renderList('list-pending', pending, true);
+  renderList('list-accepted', accepted, false);
+  renderList('list-trial', trial, false);
+  renderList('list-denied', denied, false);
+  renderList('list-all', all, false);
+}
+ 
+function renderList(containerId, apps, showActions){
+  var el = document.getElementById(containerId);
+  if(!apps.length){el.innerHTML='<div class="ap-empty">No applications here.</div>';return}
+  el.innerHTML = apps.map(function(a){
+    var date = a.submittedAt ? new Date(a.submittedAt).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) : '—';
+    var statusBadge = '<span class="status-badge status-'+a.status+'">'+a.status.toUpperCase()+'</span>';
+    var actions = showActions ? `
+      <div class="app-actions">
+        <button class="btn-accept" onclick="setStatus('${a._id}','accepted')">Accept</button>
+        <button class="btn-trial" onclick="setStatus('${a._id}','trial')">Trial</button>
+        <button class="btn-deny" onclick="setStatus('${a._id}','denied')">Deny</button>
+      </div>` : `<div class="app-actions">${statusBadge}</div>`;
+    return `<div class="app-item">
+      <div class="app-info">
+        <div class="app-name">${escHtml(a.name)} <span style="font-size:13px;color:var(--m1);font-weight:500;">${escHtml(a.gamerTag||'')}</span></div>
+        <div class="app-meta">
+          <b>Tag:</b> ${escHtml(a.inGameTag||'—')} &nbsp;·&nbsp;
+          <b>Game:</b> ${escHtml(a.game||'—')} &nbsp;·&nbsp;
+          <b>Region:</b> ${escHtml(a.region||'—')} &nbsp;·&nbsp;
+          <b>Role:</b> ${escHtml(a.role||'—')} &nbsp;·&nbsp;
+          <b>Jersey:</b> #${escHtml(String(a.jerseyNum||'??'))} &nbsp;·&nbsp;
+          <b>Date:</b> ${date}
+        </div>
+        ${a.message ? '<div class="app-msg">'+escHtml(a.message)+'</div>' : ''}
+      </div>
+      ${actions}
+    </div>`;
+  }).join('');
+}
+ 
+async function setStatus(id, status){
+  try {
+    var fb = window._fb;
+    await fb.update(fb.ref(fb.db, 'applications/'+id), {status: status});
+    var label = status==='accepted'?'Accepted ✓':status==='trial'?'Set to Trial':'Denied ✗';
+    showToast(label);
+  } catch(err){
+    showToast('Error updating. Try again.');
+    console.error(err);
+  }
+}
+ 
+function escHtml(str){
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+ 
+// ── Toast ──
+function showToast(msg){
+  var t=document.getElementById('ap-toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show')},2800);
+}
+ 
+// ── Roster panels ──
 var cur=null;
 function toggleRoster(id){
   if(cur&&cur!==id)closeRoster(cur);
@@ -424,4 +749,3 @@ function closeRoster(id){
 </script>
 </body>
 </html>
-
