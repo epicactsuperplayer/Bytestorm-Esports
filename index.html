@@ -120,9 +120,15 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
 .fgr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .fg-num input{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-align:center;letter-spacing:.04em}
 .m-submit{width:100%;margin-top:6px;padding:13px;font-size:12px;letter-spacing:.12em}
+/* Success state */
+.m-success{display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px 0;text-align:center}
+.m-success svg{width:48px;height:48px;stroke:#4caf50;fill:none;stroke-width:2}
+.m-success h3{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;color:#fff}
+.m-success p{font-size:13px;color:var(--m1);line-height:1.7}
 @media(max-width:1100px){.games-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:640px){.nav-links li:not(:last-child){display:none}.games-grid{grid-template-columns:repeat(2,1fr)}.soc-grid{grid-template-columns:1fr}.foot-in{flex-direction:column;text-align:center}.s-head{flex-direction:column;align-items:flex-start}.fgr{grid-template-columns:1fr}.modal{padding:26px 18px}}
-@media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}} /* Hamburger nav */
+@media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}}
+/* Hamburger nav */
 #hamburgerWrap { position: fixed; top: 15px; left: 15px; z-index: 9999; font-family: monospace; }
 #hamburgerBtn {
   cursor: pointer; background: #0a0a0a;
@@ -171,13 +177,11 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
   </div>
 </div>
 
-
 <script>
 function toggleNav() {
   const nav = document.getElementById('byteNav');
   nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
 }
-// Close nav when clicking outside
 document.addEventListener('click', function(e) {
   const wrap = document.getElementById('hamburgerWrap');
   if (!wrap.contains(e.target)) {
@@ -185,23 +189,36 @@ document.addEventListener('click', function(e) {
   }
 });
 </script>
-   
+
+<!-- Apply Modal -->
 <div class="m-overlay" id="applyModal" onclick="overlayClose(event)">
   <div class="modal">
     <button class="m-x" onclick="closeModal()">&#215;</button>
-    <div class="m-title">Apply Now</div>
-    <p class="m-sub">Fill it in — we'll reach out if you match the standard.</p>
-    <div class="fg"><label>Player Name</label><input type="text" id="f-name" placeholder="Your name"/></div>
-    <div class="fg"><label>Gamer Tag</label><input type="text" id="f-gtag" placeholder="Your in-game username"/></div>
-    <div class="fg"><label>In-Game Tag</label><input type="text" id="f-tag" placeholder="#TAG"/></div>
-    <div class="fgr">
-      <div class="fg"><label>Game</label><select id="f-game"><option>Fortnite</option><option>Brawl Stars</option><option>Roblox</option><option>CS:GO</option><option>GTA V Online</option><option>Multiple / Other</option></select></div>
-      <div class="fg"><label>Region</label><select id="f-region"><option>EU</option><option>UK</option><option>NA</option><option>Other</option></select></div>
+
+    <!-- Form -->
+    <div id="applyForm">
+      <div class="m-title">Apply Now</div>
+      <p class="m-sub">Fill it in — we'll reach out if you match the standard.</p>
+      <div class="fg"><label>Player Name *</label><input type="text" id="f-name" placeholder="Your real name"/></div>
+      <div class="fg"><label>Gamer Tag *</label><input type="text" id="f-gtag" placeholder="Your in-game username"/></div>
+      <div class="fg"><label>In-Game Tag (e.g. #TAG) *</label><input type="text" id="f-tag" placeholder="#TAG"/></div>
+      <div class="fgr">
+        <div class="fg"><label>Game *</label><select id="f-game"><option>Fortnite</option><option>Brawl Stars</option><option>Rocket League</option><option>CS2</option><option>GTA V Online</option><option>Multiple / Other</option></select></div>
+        <div class="fg"><label>Region *</label><select id="f-region"><option>EU</option><option>UK</option><option>NA</option><option>Other</option></select></div>
+      </div>
+      <div class="fg"><label>Role *</label><select id="f-role"><option>Entry / Fragger</option><option>Flex</option><option>Support</option><option>IGL / Captain</option><option>Editor / Content</option><option>Other</option></select></div>
+      <div class="fg fg-num"><label>Jersey Number — pick your favourite #</label><input type="number" id="f-num" placeholder="63" min="1" max="999"/></div>
+      <div class="fg"><label>Discord Username</label><input type="text" id="f-discord" placeholder="yourname#0000 or yourname"/></div>
+      <div class="fg"><label>Short Message *</label><textarea id="f-msg" placeholder="Why do you want to join Bytestorm?"></textarea></div>
+      <button class="btn-w m-submit" id="submitBtn" onclick="sendApp()">Send Application</button>
     </div>
-    <div class="fg"><label>Role</label><select id="f-role"><option>Entry / Fragger</option><option>Flex</option><option>Support</option><option>IGL / Captain</option><option>Editor / Content</option><option>Other</option></select></div>
-    <div class="fg fg-num"><label>Jersey Number — pick your favourite #</label><input type="number" id="f-num" placeholder="63" min="1" max="999"/></div>
-    <div class="fg"><label>Short Message</label><textarea id="f-msg" placeholder="Why do you want to join Bytestorm?"></textarea></div>
-    <button class="btn-w m-submit" onclick="sendApp()">Send Application</button>
+
+    <!-- Success screen -->
+    <div class="m-success" id="applySuccess">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <h3>Application Sent!</h3>
+      <p>We received everything. If you match the standard, we'll reach out via Discord or email.</p>
+    </div>
   </div>
 </div>
 
@@ -239,27 +256,29 @@ document.addEventListener('click', function(e) {
           <img class="gc-img" src="" alt="Brawl Stars" style="display:none"/>
           <div class="gc-placeholder">Brawl Stars</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">6 players + 2 Trial</div></div>
+          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">6 players + 1 Trial</div></div>
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
 
-      <button class="game-card" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Roblox_%282025%29_%28App_Icon%29.svg/250px-Roblox_%282025%29_%28App_Icon%29.svg.png" onclick="toggleRoster('rb')">
+      <!-- ROCKET LEAGUE (was Roblox) -->
+      <button class="game-card" data-img="data:image/jpeg;base64,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" onclick="toggleRoster('rl')">
         <div class="gc-img-wrap">
-          <img class="gc-img" src="" alt="Roblox" style="display:none"/>
-          <div class="gc-placeholder">Roblox</div>
+          <img class="gc-img" src="" alt="Rocket League" style="display:none"/>
+          <div class="gc-placeholder">Rocket League</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Roblox</div><div class="gc-sub">2 players</div></div>
+          <div class="gc-label"><div class="gc-name">Rocket League</div><div class="gc-sub">1 player</div></div>
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
 
-      <button class="game-card" data-img="https://notebookspec.com/web/wp-content/uploads/2017/04/fb_image.png" onclick="toggleRoster('cs')">
+      <!-- CS2 (was CS:GO) -->
+      <button class="game-card" data-img="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/capsule_616x353.jpg" onclick="toggleRoster('cs2')">
         <div class="gc-img-wrap">
-          <img class="gc-img" src="" alt="CS:GO" style="display:none"/>
-          <div class="gc-placeholder">CS:GO</div>
+          <img class="gc-img" src="" alt="CS2" style="display:none"/>
+          <div class="gc-placeholder">CS2</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">CS:GO</div><div class="gc-sub">1 player</div></div>
+          <div class="gc-label"><div class="gc-name">CS2</div><div class="gc-sub">1 player</div></div>
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
@@ -288,6 +307,7 @@ document.addEventListener('click', function(e) {
 
     </div>
 
+    <!-- Fortnite Roster -->
     <div class="roster-panel" id="rp-fn">
       <div class="rp-head"><span class="rp-tag">FN</span><span class="rp-game">Fortnite</span><button class="rp-close" onclick="closeRoster('fn')">&#215;</button></div>
       <div class="rp-grid">
@@ -297,37 +317,37 @@ document.addEventListener('click', function(e) {
       </div>
     </div>
 
+    <!-- Brawl Stars Roster -->
     <div class="roster-panel" id="rp-bs">
       <div class="rp-head"><span class="rp-tag">BS</span><span class="rp-game">Brawl Stars</span><button class="rp-close" onclick="closeRoster('bs')">&#215;</button></div>
       <div class="rp-grid">
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge">Captain</span></div><div class="rp-name">Daniel123FMR</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU</div></div>
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge">Pro</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU</div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge">Trainee</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Plays:</b> BS, RBLX<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge">Trainee</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#1</span><span class="rp-badge">Flex</span></div><div class="rp-name">soullyxx</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#17</span><span class="rp-badge">Trainee</span></div><div class="rp-name">Maik</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#??</span><span class="rp-badge">Trial</span></div><div class="rp-name">TT | SRO</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#??</span><span class="rp-badge">Trial</span></div><div class="rp-name">Tomi</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
-
-
       </div>
     </div>
 
-    <div class="roster-panel" id="rp-rb">
-      <div class="rp-head"><span class="rp-tag">RBLX</span><span class="rp-game">Roblox</span><button class="rp-close" onclick="closeRoster('rb')">&#215;</button></div>
-      <div class="rp-grid">
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge">Trainee</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Plays:</b> BS, RB<br/><b>Region:</b> EU</div></div>
-      </div>
-    </div>
-
-    <div class="roster-panel" id="rp-cs">
-      <div class="rp-head"><span class="rp-tag">CS</span><span class="rp-game">CS:GO</span><button class="rp-close" onclick="closeRoster('cs')">&#215;</button></div>
+    <!-- Rocket League Roster (was Roblox) -->
+    <div class="roster-panel" id="rp-rl">
+      <div class="rp-head"><span class="rp-tag">RL</span><span class="rp-game">Rocket League</span><button class="rp-close" onclick="closeRoster('rl')">&#215;</button></div>
       <div class="rp-grid">
         <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
       </div>
     </div>
 
+    <!-- CS2 Roster (was CS:GO) -->
+    <div class="roster-panel" id="rp-cs2">
+      <div class="rp-head"><span class="rp-tag">CS2</span><span class="rp-game">CS2</span><button class="rp-close" onclick="closeRoster('cs2')">&#215;</button></div>
+      <div class="rp-grid">
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
+      </div>
+    </div>
+
+    <!-- GTA Roster -->
     <div class="roster-panel" id="rp-gta">
       <div class="rp-head"><span class="rp-tag">GTA</span><span class="rp-game">GTA V Online</span><button class="rp-close" onclick="closeRoster('gta')">&#215;</button></div>
       <div class="rp-grid">
@@ -335,6 +355,7 @@ document.addEventListener('click', function(e) {
       </div>
     </div>
 
+    <!-- Staff Roster -->
     <div class="roster-panel" id="rp-staff">
       <div class="rp-head"><span class="rp-tag">STAFF</span><span class="rp-game">Management</span><button class="rp-close" onclick="closeRoster('staff')">&#215;</button></div>
       <div class="rp-grid">
@@ -382,11 +403,7 @@ document.addEventListener('click', function(e) {
 </footer>
 
 <script>
-function toggleNav() {
-  const nav = document.getElementById('byteNav');
-  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-}
-
+// ── Image lazy-load ──
 document.querySelectorAll('.game-card').forEach(function(c){
   var u=c.getAttribute('data-img');
   if(u&&u.trim()){
@@ -398,17 +415,64 @@ document.querySelectorAll('.game-card').forEach(function(c){
   }
 });
 
-function openModal(){document.getElementById('applyModal').classList.add('open');document.body.style.overflow='hidden'}
-function closeModal(){document.getElementById('applyModal').classList.remove('open');document.body.style.overflow=''}
+// ── Modal ──
+function openModal(){
+  document.getElementById('applyModal').classList.add('open');
+  document.body.style.overflow='hidden';
+  // reset to form view each time
+  document.getElementById('applyForm').style.display='block';
+  document.getElementById('applySuccess').style.display='none';
+}
+function closeModal(){
+  document.getElementById('applyModal').classList.remove('open');
+  document.body.style.overflow='';
+}
 function overlayClose(e){if(e.target===document.getElementById('applyModal'))closeModal()}
 
+// ── Apply — sends ALL fields via mailto ──
 function sendApp(){
-  var n=document.getElementById('f-name').value.trim(),t=document.getElementById('f-tag').value.trim();
-  if(!n||!t){alert('Please fill in your name and tag.');return}
-  var body='Player Name: '+n+'\nTag: '+t+'\nGame: '+document.getElementById('f-game').value;
-  window.location.href='mailto:bytestorm.marketing.team@gmail.com?subject=Application&body='+encodeURIComponent(body);
+  var name    = document.getElementById('f-name').value.trim();
+  var gtag    = document.getElementById('f-gtag').value.trim();
+  var tag     = document.getElementById('f-tag').value.trim();
+  var game    = document.getElementById('f-game').value;
+  var region  = document.getElementById('f-region').value;
+  var role    = document.getElementById('f-role').value;
+  var num     = document.getElementById('f-num').value.trim();
+  var discord = document.getElementById('f-discord').value.trim();
+  var msg     = document.getElementById('f-msg').value.trim();
+
+  // Validate required fields
+  if(!name || !gtag || !tag || !msg){
+    alert('Please fill in all required fields (marked with *).');
+    return;
+  }
+
+  var subject = 'Bytestorm Application — ' + gtag + ' (' + game + ')';
+
+  var body =
+    '=== BYTESTORM ESPORTS APPLICATION ===\n\n' +
+    'Player Name:    ' + name    + '\n' +
+    'Gamer Tag:      ' + gtag    + '\n' +
+    'In-Game Tag:    ' + tag     + '\n' +
+    'Game:           ' + game    + '\n' +
+    'Region:         ' + region  + '\n' +
+    'Role:           ' + role    + '\n' +
+    'Jersey Number:  ' + (num || 'Not specified') + '\n' +
+    'Discord:        ' + (discord || 'Not specified') + '\n\n' +
+    '--- Message ---\n' + msg + '\n\n' +
+    '=====================================';
+
+  // Open mail client with all data
+  window.location.href = 'mailto:bytestorm.marketing.team@gmail.com'
+    + '?subject=' + encodeURIComponent(subject)
+    + '&body='    + encodeURIComponent(body);
+
+  // Show success screen
+  document.getElementById('applyForm').style.display = 'none';
+  document.getElementById('applySuccess').style.display = 'flex';
 }
 
+// ── Roster toggle ──
 var cur=null;
 function toggleRoster(id){
   if(cur&&cur!==id)closeRoster(cur);
