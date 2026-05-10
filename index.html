@@ -1,156 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png">
-    <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/509cf33812608.js" data-cmp-host="d.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SportsOrganization",
-  "name": "Bytestorm Esports",
-  "url": "https://bytestorm-esports.vercel.app/",
-  "logo": "https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png",
-  "founder": {
-    "@type": "Person",
-    "name": "Memet"
-  },
-  "description": "A leading competitive gaming organization."
-}
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-  <!-- Google Analytics-->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCZ87HM440"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-QCZ87HM440');
-    </script>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Bytestorm Esports</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#060606;--s1:#0e0e0e;--s2:#141414;--b1:#1c1c1c;--b2:#262626;--txt:#e8e8e8;--m1:#444;--m2:#777}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:#000}::-webkit-scrollbar-thumb{background:#222}
-nav{position:fixed;top:0;left:0;right:0;z-index:300;height:64px;display:flex;align-items:center;background:rgba(6,6,6,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--b1)}
-.nav-in{max-width:1400px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:32px}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-left: 50px;}
-.nav-logo img{height:34px;width:auto}
-.nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
-.nav-links{display:flex;align-items:center;gap:24px;list-style:none}
-.nav-links a{color:var(--m2);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:color .2s}
-.nav-links a:hover{color:#fff}
-.nav-cta{background:#fff;color:#000!important;padding:8px 20px;border-radius:3px;font-weight:700!important;cursor:pointer}
-.btn-w{background:#fff;color:#000;padding:12px 28px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;border:none;cursor:pointer;transition:opacity .2s;text-decoration:none;display:inline-block}
-.btn-w:hover{opacity:.82}
-.wrap{max-width:1400px;margin:0 auto;padding:0 28px}
-.s-eye{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--m1);margin-bottom:10px}
-.s-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(30px,4vw,50px);font-weight:900;text-transform:uppercase;color:#fff;line-height:1}
-.divider{height:1px;background:var(--b1);max-width:calc(1400px - 56px);margin:0 auto}
-section.pad{padding:88px 0}
-.s-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:44px;gap:16px}
-.games-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--b1);border:1px solid var(--b1);border-radius:10px;overflow:hidden}
-.game-card{background:var(--s1);cursor:pointer;position:relative;overflow:hidden;display:flex;flex-direction:column;border:none;outline:none;text-align:left;transition:background .25s;padding:0}
-.gc-img-wrap{width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;background:#0a0a0a;display:flex;align-items:center;justify-content:center}
-.gc-img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease,filter .3s ease;filter:brightness(.65) grayscale(15%)}
-.gc-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--b2);text-transform:uppercase;letter-spacing:.08em;transition:color .2s;position:absolute;inset:0}
-.gc-placeholder svg{width:26px;height:26px;stroke:var(--b2);stroke-width:1.5;fill:none;transition:stroke .2s}
-.game-card:hover .gc-img{transform:scale(1.06);filter:brightness(.5)}
-.game-card:hover .gc-placeholder{color:var(--m1)}
-.game-card:hover .gc-placeholder svg{stroke:var(--m1)}
-.gc-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(0,0,0,.88) 100%);opacity:.75;transition:opacity .3s;pointer-events:none}
-.game-card:hover .gc-overlay{opacity:1}
-.gc-label{position:absolute;bottom:0;left:0;right:0;padding:14px 16px 16px;z-index:2}
-.gc-name{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#fff;line-height:1;margin-bottom:3px}
-.gc-sub{font-size:10px;color:rgba(255,255,255,.38);font-weight:500;letter-spacing:.05em}
-.gc-hover-pill{position:absolute;top:12px;right:12px;z-index:3;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:20px;opacity:0;transition:opacity .2s;pointer-events:none}
-.game-card:hover .gc-hover-pill{opacity:1}
-.roster-panel{display:none;background:var(--s2);border:1px solid var(--b2);border-radius:0 0 10px 10px;margin-top:-1px;animation:slideDown .2s ease;overflow:hidden}
-.roster-panel.open{display:block}
-@keyframes slideDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-.rp-head{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid var(--b1)}
-.rp-tag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;background:#fff;color:#000;padding:3px 10px;border-radius:2px}
-.rp-game{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#fff}
-.rp-close{margin-left:auto;background:none;border:none;color:var(--m1);font-size:20px;cursor:pointer;padding:4px;line-height:1;transition:color .2s}
-.rp-close:hover{color:#fff}
-.rp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--b1)}
-.rp-card{background:var(--s2);padding:20px 18px;display:flex;flex-direction:column;gap:9px;transition:background .2s}
-.rp-card:hover{background:#181818}
-.rp-top{display:flex;align-items:center;justify-content:space-between}
-.rp-num{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--b2);line-height:1}
-.rp-badge{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m1);border:1px solid var(--b2);padding:2px 7px;border-radius:2px}
-.rp-name{font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:#fff;line-height:1}
-.rp-meta{font-size:11px;color:var(--m1);line-height:1.65}
-.rp-meta b{color:var(--m2);font-weight:500}
-.rp-empty{padding:36px 24px;text-align:center}
-.rp-empty p{font-size:13px;color:var(--m1);margin-bottom:18px;line-height:1.6}
-.soc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--b1);border:1px solid var(--b1);border-radius:10px;overflow:hidden}
-.soc-tile{background:var(--s1);padding:32px 28px;text-decoration:none;display:flex;flex-direction:column;gap:14px;transition:background .2s}
-.soc-tile:hover{background:var(--s2)}
-.soc-icon{width:38px;height:38px;border:1px solid var(--b2);border-radius:6px;display:flex;align-items:center;justify-content:center}
-.soc-icon svg{width:16px;height:16px;fill:var(--m2)}
-.soc-tile h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#fff}
-.soc-tile p{font-size:13px;color:var(--m1);line-height:1.7;flex:1}
-.soc-handle{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--m2)}
-.soc-handle::after{content:' →'}
-footer{border-top:1px solid var(--b1);padding:32px 28px}
-.foot-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.foot-logo{display:flex;align-items:center;gap:9px}
-.foot-logo img{height:24px}
-.foot-brand{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--m1)}
-.foot-copy{font-size:11px;color:#222}
-.m-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);z-index:999;align-items:center;justify-content:center;padding:20px}
-.m-overlay.open{display:flex}
-.modal{background:#111;border:1px solid var(--b2);border-radius:10px;width:100%;max-width:540px;padding:40px;position:relative;animation:mIn .2s ease;max-height:92vh;overflow-y:auto}
-@keyframes mIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
-.m-x{position:absolute;top:13px;right:16px;background:none;border:none;color:var(--m1);font-size:24px;cursor:pointer;line-height:1;transition:color .2s}
-.m-x:hover{color:#fff}
-.m-title{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:#fff;margin-bottom:4px}
-.m-sub{font-size:13px;color:var(--m1);margin-bottom:24px}
-.fg{margin-bottom:14px}
-.fg label{display:block;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m1);margin-bottom:6px}
-.fg input,.fg select,.fg textarea{width:100%;background:#080808;border:1px solid var(--b2);color:var(--txt);font-family:'Inter',sans-serif;font-size:14px;padding:10px 13px;border-radius:4px;outline:none;transition:border-color .2s;appearance:none}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#444}
-.fg textarea{resize:vertical;min-height:76px}
-.fgr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.fg-num input{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-align:center;letter-spacing:.04em}
-.m-submit{width:100%;margin-top:6px;padding:13px;font-size:12px;letter-spacing:.12em}
-/* Success state */
-.m-success{display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px 0;text-align:center}
-.m-success svg{width:48px;height:48px;stroke:#4caf50;fill:none;stroke-width:2}
-.m-success h3{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;color:#fff}
-.m-success p{font-size:13px;color:var(--m1);line-height:1.7}
-@media(max-width:1100px){.games-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:640px){.nav-links li:not(:last-child){display:none}.games-grid{grid-template-columns:repeat(2,1fr)}.soc-grid{grid-template-columns:1fr}.foot-in{flex-direction:column;text-align:center}.s-head{flex-direction:column;align-items:flex-start}.fgr{grid-template-columns:1fr}.modal{padding:26px 18px}}
-@media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}}
-/* Hamburger nav */
-#hamburgerWrap { position: fixed; top: 15px; left: 15px; z-index: 9999; font-family: monospace; }
-#hamburgerBtn {
-  cursor: pointer; background: #0a0a0a;
-  border: 1px solid #333; border-radius: 6px;
-  padding: 8px 12px; font-size: 18px;
-  color: white; user-select: none;
-}
-#byteNav {
-  display: none; flex-direction: column;
-  gap: 8px; margin-top: 8px;
-  background: #0a0a0a; border: 1px solid #333;
-  border-radius: 6px; padding: 10px; min-width: 180px;
-}
-#byteNav a {
-  color: #fff; text-decoration: none;
-  padding: 6px 10px; border-radius: 4px;
-  border: 1px solid #222;
-  display: flex; align-items: center; gap: 8px;
-  font-size: 13px;
-}
-#byteNav a:hover { background: #1a1a1a; }
-</style>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png">
+  <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/509cf33812608.js" data-cmp-host="d.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsOrganization",
+    "name": "Bytestorm Esports",
+    "url": "https://bytestorm-esports.vercel.app/",
+    "logo": "https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png",
+    "founder": {"@type": "Person","name": "Memet"},
+    "description": "A leading competitive gaming organization."
+  }
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCZ87HM440"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QCZ87HM440');
+  </script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Bytestorm Esports</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#060606;--s1:#0e0e0e;--s2:#141414;--b1:#1c1c1c;--b2:#262626;--txt:#e8e8e8;--m1:#444;--m2:#777}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:#000}::-webkit-scrollbar-thumb{background:#222}
+  nav{position:fixed;top:0;left:0;right:0;z-index:300;height:64px;display:flex;align-items:center;background:rgba(6,6,6,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--b1)}
+  .nav-in{max-width:1400px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:32px}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-left:50px}
+  .nav-logo img{height:34px;width:auto}
+  .nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+  .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+  .nav-links a{color:var(--m2);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{background:#fff;color:#000!important;padding:8px 20px;border-radius:3px;font-weight:700!important;cursor:pointer}
+  .btn-w{background:#fff;color:#000;padding:12px 28px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;border:none;cursor:pointer;transition:opacity .2s;text-decoration:none;display:inline-block}
+  .btn-w:hover{opacity:.82}
+  .wrap{max-width:1400px;margin:0 auto;padding:0 28px}
+  .s-eye{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--m1);margin-bottom:10px}
+  .s-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(30px,4vw,50px);font-weight:900;text-transform:uppercase;color:#fff;line-height:1}
+  .divider{height:1px;background:var(--b1);max-width:calc(1400px - 56px);margin:0 auto}
+  section.pad{padding:88px 0}
+  .s-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:44px;gap:16px}
+  /* Games grid */
+  .games-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--b1);border:1px solid var(--b1);border-radius:10px;overflow:hidden}
+  .game-card{background:var(--s1);cursor:pointer;position:relative;overflow:hidden;display:flex;flex-direction:column;border:none;outline:none;text-align:left;transition:background .25s;padding:0}
+  .gc-img-wrap{width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;background:#0a0a0a;display:flex;align-items:center;justify-content:center}
+  .gc-img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease,filter .3s ease;filter:brightness(.65) grayscale(15%)}
+  .gc-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--b2);text-transform:uppercase;letter-spacing:.08em;transition:color .2s;position:absolute;inset:0}
+  .gc-placeholder svg{width:26px;height:26px;stroke:var(--b2);stroke-width:1.5;fill:none;transition:stroke .2s}
+  .game-card:hover .gc-img{transform:scale(1.06);filter:brightness(.5)}
+  .game-card:hover .gc-placeholder{color:var(--m1)}
+  .game-card:hover .gc-placeholder svg{stroke:var(--m1)}
+  .gc-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(0,0,0,.88) 100%);opacity:.75;transition:opacity .3s;pointer-events:none}
+  .game-card:hover .gc-overlay{opacity:1}
+  .gc-label{position:absolute;bottom:0;left:0;right:0;padding:14px 16px 16px;z-index:2}
+  .gc-name{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#fff;line-height:1;margin-bottom:3px}
+  .gc-sub{font-size:10px;color:rgba(255,255,255,.38);font-weight:500;letter-spacing:.05em}
+  .gc-hover-pill{position:absolute;top:12px;right:12px;z-index:3;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:20px;opacity:0;transition:opacity .2s;pointer-events:none}
+  .game-card:hover .gc-hover-pill{opacity:1}
+  .roster-panel{display:none;background:var(--s2);border:1px solid var(--b2);border-radius:0 0 10px 10px;margin-top:-1px;animation:slideDown .2s ease;overflow:hidden}
+  .roster-panel.open{display:block}
+  @keyframes slideDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .rp-head{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid var(--b1)}
+  .rp-tag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;background:#fff;color:#000;padding:3px 10px;border-radius:2px}
+  .rp-game{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#fff}
+  .rp-close{margin-left:auto;background:none;border:none;color:var(--m1);font-size:20px;cursor:pointer;padding:4px;line-height:1;transition:color .2s}
+  .rp-close:hover{color:#fff}
+  .rp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--b1)}
+  .rp-card{background:var(--s2);padding:20px 18px;display:flex;flex-direction:column;gap:9px;transition:background .2s;position:relative;overflow:hidden;min-height:110px}
+  .rp-card:hover{background:#181818}
+  .rp-card:hover .rp-flag-big{opacity:.18}
+  .rp-top{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
+  .rp-num{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:rgba(255,255,255,.25);line-height:1}
+  .rp-badge{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m1);border:1px solid var(--b2);padding:2px 7px;border-radius:2px}
+  .rp-badge.content{color:#a78bfa;border-color:#4c1d95}
+  .rp-badge.staff-r{color:#34d399;border-color:#064e3b}
+  .rp-badge.normal{color:var(--m2);border-color:var(--b2)}
+  .rp-badge.ceo{color:#fff;border-color:#444;background:#111}
+  .rp-flag-big{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.12;transition:opacity .3s;z-index:0;pointer-events:none}
+  .rp-flags-dual{position:absolute;inset:0;display:flex;z-index:0;pointer-events:none;opacity:.13;transition:opacity .3s}
+  .rp-flags-dual img{width:50%;height:100%;object-fit:cover;object-position:center}
+  .rp-card:hover .rp-flags-dual{opacity:.2}
+  .rp-badge.esports{color:#c084fc;border-color:#6b21a8}
+  .rp-meta{font-size:11px;color:var(--m2);line-height:1.65;position:relative;z-index:2}
+  .rp-meta b{color:var(--m1);font-weight:500}
+  /* Social */
+  .soc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--b1);border:1px solid var(--b1);border-radius:10px;overflow:hidden}
+  .soc-tile{background:var(--s1);padding:32px 28px;text-decoration:none;display:flex;flex-direction:column;gap:14px;transition:background .2s}
+  .soc-tile:hover{background:var(--s2)}
+  .soc-icon{width:38px;height:38px;border:1px solid var(--b2);border-radius:6px;display:flex;align-items:center;justify-content:center}
+  .soc-icon svg{width:16px;height:16px;fill:var(--m2)}
+  .soc-tile h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#fff}
+  .soc-tile p{font-size:13px;color:var(--m1);line-height:1.7;flex:1}
+  .soc-handle{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--m2)}
+  .soc-handle::after{content:' →'}
+  /* ── Tournaments ── */
+  .th-head{text-align:center;margin-bottom:44px}
+  .th-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:900;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:8px}
+  .th-sub{font-size:13px;color:var(--m2);letter-spacing:.03em}
+  .th-foot{text-align:center;margin-top:22px;font-size:11px;color:var(--m1);letter-spacing:.06em}
+  .th-foot span{margin:0 6px;opacity:.4}
+  .tourn-list{display:flex;flex-direction:column;gap:10px}
+  .th-card{background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:20px 24px;display:flex;align-items:center;gap:20px;transition:background .2s}
+  .th-card:hover{background:var(--s2)}
+  .th-trophy{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--m1)}
+  .th-trophy svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6}
+  .th-info{flex:1;min-width:0}
+  .th-name{font-size:15px;font-weight:700;color:#fff;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .th-teams{font-size:12px;color:var(--m2)}
+  .th-teams b{color:var(--txt);font-weight:500}
+  .th-teams .vs{color:var(--m1);margin:0 4px;font-style:italic}
+  .th-result{text-align:center;min-width:120px}
+  .th-outcome{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
+  .th-outcome.loss{color:#f87171}
+  .th-outcome.win{color:#34d399}
+  .th-score{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--m2)}
+  .th-divider{width:1px;height:44px;background:var(--b2);flex-shrink:0}
+  .th-meta{min-width:130px;text-align:right;flex-shrink:0}
+  .th-date{display:flex;align-items:center;justify-content:flex-end;gap:5px;font-size:12px;color:var(--txt);margin-bottom:4px}
+  .th-date svg{width:13px;height:13px;fill:none;stroke:var(--m2);stroke-width:1.8;flex-shrink:0}
+  .th-venue{display:flex;align-items:center;justify-content:flex-end;gap:5px;font-size:12px;color:var(--m2)}
+  .th-venue svg{width:13px;height:13px;fill:none;stroke:var(--m2);stroke-width:1.8;flex-shrink:0}
+  @media(max-width:640px){.th-card{flex-wrap:wrap}.th-divider{display:none}.th-meta{text-align:left}}
+  /* Apply modal */
+  footer{border-top:1px solid var(--b1);padding:32px 28px}
+  .foot-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .foot-logo{display:flex;align-items:center;gap:9px}
+  .foot-logo img{height:24px}
+  .foot-brand{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--m1)}
+  .foot-copy{font-size:11px;color:#222}
+  .m-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);z-index:999;align-items:center;justify-content:center;padding:20px}
+  .m-overlay.open{display:flex}
+  .modal{background:#111;border:1px solid var(--b2);border-radius:10px;width:100%;max-width:540px;padding:40px;position:relative;animation:mIn .2s ease;max-height:92vh;overflow-y:auto}
+  @keyframes mIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+  .m-x{position:absolute;top:13px;right:16px;background:none;border:none;color:var(--m1);font-size:24px;cursor:pointer;line-height:1;transition:color .2s}
+  .m-x:hover{color:#fff}
+  .m-title{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:#fff;margin-bottom:4px}
+  .m-sub{font-size:13px;color:var(--m1);margin-bottom:24px}
+  .fg{margin-bottom:14px}
+  .fg label{display:block;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m1);margin-bottom:6px}
+  .fg input,.fg select,.fg textarea{width:100%;background:#080808;border:1px solid var(--b2);color:var(--txt);font-family:'Inter',sans-serif;font-size:14px;padding:10px 13px;border-radius:4px;outline:none;transition:border-color .2s;appearance:none}
+  .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#444}
+  .fg textarea{resize:vertical;min-height:76px}
+  .fgr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .fg-num input{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;text-align:center;letter-spacing:.04em}
+  .m-submit{width:100%;margin-top:6px;padding:13px;font-size:12px;letter-spacing:.12em}
+  .m-success{display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px 0;text-align:center}
+  .m-success svg{width:48px;height:48px;stroke:#4caf50;fill:none;stroke-width:2}
+  .m-success h3{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;color:#fff}
+  .m-success p{font-size:13px;color:var(--m1);line-height:1.7}
+  /* Hamburger */
+  #hamburgerWrap{position:fixed;top:15px;left:15px;z-index:9999;font-family:monospace}
+  #hamburgerBtn{cursor:pointer;background:#0a0a0a;border:1px solid #333;border-radius:6px;padding:8px 12px;font-size:18px;color:white;user-select:none}
+  #byteNav{display:none;flex-direction:column;gap:8px;margin-top:8px;background:#0a0a0a;border:1px solid #333;border-radius:6px;padding:10px;min-width:180px}
+  #byteNav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:4px;border:1px solid #222;display:flex;align-items:center;gap:8px;font-size:13px}
+  #byteNav a:hover{background:#1a1a1a}
+  /* Responsive */
+  @media(max-width:1100px){.games-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:860px){.tourn-grid{grid-template-columns:1fr}.soc-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:640px){.nav-links li:not(:last-child){display:none}.games-grid{grid-template-columns:repeat(2,1fr)}.soc-grid{grid-template-columns:1fr}.foot-in{flex-direction:column;text-align:center}.s-head{flex-direction:column;align-items:flex-start}.fgr{grid-template-columns:1fr}.modal{padding:26px 18px}}
+  @media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}}
+  </style>
 </head>
 <body>
 
@@ -176,26 +195,15 @@ footer{border-top:1px solid var(--b1);padding:32px 28px}
     </a>
   </div>
 </div>
-
 <script>
-function toggleNav() {
-  const nav = document.getElementById('byteNav');
-  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-}
-document.addEventListener('click', function(e) {
-  const wrap = document.getElementById('hamburgerWrap');
-  if (!wrap.contains(e.target)) {
-    document.getElementById('byteNav').style.display = 'none';
-  }
-});
+function toggleNav(){const n=document.getElementById('byteNav');n.style.display=n.style.display==='flex'?'none':'flex'}
+document.addEventListener('click',function(e){const w=document.getElementById('hamburgerWrap');if(!w.contains(e.target))document.getElementById('byteNav').style.display='none'});
 </script>
 
 <!-- Apply Modal -->
 <div class="m-overlay" id="applyModal" onclick="overlayClose(event)">
   <div class="modal">
     <button class="m-x" onclick="closeModal()">&#215;</button>
-
-    <!-- Form -->
     <div id="applyForm">
       <div class="m-title">Apply Now</div>
       <p class="m-sub">Fill it in — we'll reach out if you match the standard.</p>
@@ -203,17 +211,47 @@ document.addEventListener('click', function(e) {
       <div class="fg"><label>Gamer Tag *</label><input type="text" id="f-gtag" placeholder="Your in-game username"/></div>
       <div class="fg"><label>In-Game Tag (e.g. #TAG) *</label><input type="text" id="f-tag" placeholder="#TAG"/></div>
       <div class="fgr">
-        <div class="fg"><label>Game *</label><select id="f-game"><option>Fortnite</option><option>Brawl Stars</option><option>Rocket League</option><option>CS2</option><option>GTA V Online</option><option>Multiple / Other</option></select></div>
-        <div class="fg"><label>Region *</label><select id="f-region"><option>EU</option><option>UK</option><option>NA</option><option>Other</option></select></div>
+        <div class="fg"><label>Game *</label>
+          <select id="f-game">
+            <option>Fortnite</option><option>Brawl Stars</option><option>Rocket League</option><option>CS2</option><option>GTA V Online</option><option>Multiple / Other</option>
+          </select>
+        </div>
+        <div class="fg"><label>Region *</label>
+          <select id="f-region">
+            <optgroup label="Europe (EU)">
+              <option>EU – Albania</option><option>EU – Andorra</option><option>EU – Austria</option><option>EU – Belarus</option><option>EU – Belgium</option><option>EU – Bosnia</option><option>EU – Bulgaria</option><option>EU – Croatia</option><option>EU – Cyprus</option><option>EU – Czech Republic</option><option>EU – Denmark</option><option>EU – Estonia</option><option>EU – Finland</option><option>EU – France</option><option>EU – Germany</option><option>EU – Greece</option><option>EU – Hungary</option><option>EU – Iceland</option><option>EU – Ireland</option><option>EU – Italy</option><option>EU – Kosovo</option><option>EU – Latvia</option><option>EU – Liechtenstein</option><option>EU – Lithuania</option><option>EU – Luxembourg</option><option>EU – Malta</option><option>EU – Moldova</option><option>EU – Monaco</option><option>EU – Montenegro</option><option>EU – Netherlands</option><option>EU – North Macedonia</option><option>EU – Norway</option><option>EU – Poland</option><option>EU – Portugal</option><option>EU – Romania</option><option>EU – Russia</option><option>EU – San Marino</option><option>EU – Serbia</option><option>EU – Slovakia</option><option>EU – Slovenia</option><option>EU – Spain</option><option>EU – Sweden</option><option>EU – Switzerland</option><option>EU – Turkey</option><option>EU – Ukraine</option><option>EU – United Kingdom</option><option>EU – Vatican City</option>
+            </optgroup>
+            <optgroup label="Asia (ASIA)">
+              <option>ASIA – Afghanistan</option><option>ASIA – Armenia</option><option>ASIA – Azerbaijan</option><option>ASIA – Bahrain</option><option>ASIA – Bangladesh</option><option>ASIA – Bhutan</option><option>ASIA – Brunei</option><option>ASIA – Cambodia</option><option>ASIA – China</option><option>ASIA – Georgia</option><option>ASIA – India</option><option>ASIA – Indonesia</option><option>ASIA – Iran</option><option>ASIA – Iraq</option><option>ASIA – Israel</option><option>ASIA – Japan</option><option>ASIA – Jordan</option><option>ASIA – Kazakhstan</option><option>ASIA – Kuwait</option><option>ASIA – Kyrgyzstan</option><option>ASIA – Laos</option><option>ASIA – Lebanon</option><option>ASIA – Malaysia</option><option>ASIA – Maldives</option><option>ASIA – Mongolia</option><option>ASIA – Myanmar</option><option>ASIA – Nepal</option><option>ASIA – North Korea</option><option>ASIA – Oman</option><option>ASIA – Pakistan</option><option>ASIA – Palestine</option><option>ASIA – Philippines</option><option>ASIA – Qatar</option><option>ASIA – Saudi Arabia</option><option>ASIA – Singapore</option><option>ASIA – South Korea</option><option>ASIA – Sri Lanka</option><option>ASIA – Syria</option><option>ASIA – Taiwan</option><option>ASIA – Tajikistan</option><option>ASIA – Thailand</option><option>ASIA – Timor-Leste</option><option>ASIA – Turkmenistan</option><option>ASIA – UAE</option><option>ASIA – Uzbekistan</option><option>ASIA – Vietnam</option><option>ASIA – Yemen</option>
+            </optgroup>
+            <optgroup label="Africa">
+              <option>Africa – Algeria</option><option>Africa – Angola</option><option>Africa – Benin</option><option>Africa – Botswana</option><option>Africa – Burkina Faso</option><option>Africa – Burundi</option><option>Africa – Cameroon</option><option>Africa – Cape Verde</option><option>Africa – CAR</option><option>Africa – Chad</option><option>Africa – Comoros</option><option>Africa – Congo</option><option>Africa – DR Congo</option><option>Africa – Djibouti</option><option>Africa – Egypt</option><option>Africa – Equatorial Guinea</option><option>Africa – Eritrea</option><option>Africa – Eswatini</option><option>Africa – Ethiopia</option><option>Africa – Gabon</option><option>Africa – Gambia</option><option>Africa – Ghana</option><option>Africa – Guinea</option><option>Africa – Guinea-Bissau</option><option>Africa – Ivory Coast</option><option>Africa – Kenya</option><option>Africa – Lesotho</option><option>Africa – Liberia</option><option>Africa – Libya</option><option>Africa – Madagascar</option><option>Africa – Malawi</option><option>Africa – Mali</option><option>Africa – Mauritania</option><option>Africa – Mauritius</option><option>Africa – Morocco</option><option>Africa – Mozambique</option><option>Africa – Namibia</option><option>Africa – Niger</option><option>Africa – Nigeria</option><option>Africa – Rwanda</option><option>Africa – São Tomé</option><option>Africa – Senegal</option><option>Africa – Seychelles</option><option>Africa – Sierra Leone</option><option>Africa – Somalia</option><option>Africa – South Africa</option><option>Africa – South Sudan</option><option>Africa – Sudan</option><option>Africa – Tanzania</option><option>Africa – Togo</option><option>Africa – Tunisia</option><option>Africa – Uganda</option><option>Africa – Zambia</option><option>Africa – Zimbabwe</option>
+            </optgroup>
+            <optgroup label="North America (NA)">
+              <option>NA – Antigua &amp; Barbuda</option><option>NA – Bahamas</option><option>NA – Barbados</option><option>NA – Belize</option><option>NA – Canada</option><option>NA – Costa Rica</option><option>NA – Cuba</option><option>NA – Dominica</option><option>NA – Dominican Republic</option><option>NA – El Salvador</option><option>NA – Grenada</option><option>NA – Guatemala</option><option>NA – Haiti</option><option>NA – Honduras</option><option>NA – Jamaica</option><option>NA – Mexico</option><option>NA – Nicaragua</option><option>NA – Panama</option><option>NA – Saint Kitts &amp; Nevis</option><option>NA – Saint Lucia</option><option>NA – Saint Vincent</option><option>NA – Trinidad &amp; Tobago</option><option>NA – USA</option>
+            </optgroup>
+            <optgroup label="South America (SA)">
+              <option>SA – Argentina</option><option>SA – Bolivia</option><option>SA – Brazil</option><option>SA – Chile</option><option>SA – Colombia</option><option>SA – Ecuador</option><option>SA – Guyana</option><option>SA – Paraguay</option><option>SA – Peru</option><option>SA – Suriname</option><option>SA – Uruguay</option><option>SA – Venezuela</option>
+            </optgroup>
+            <optgroup label="Oceania">
+              <option>Oceania – Australia</option><option>Oceania – Fiji</option><option>Oceania – Kiribati</option><option>Oceania – Marshall Islands</option><option>Oceania – Micronesia</option><option>Oceania – Nauru</option><option>Oceania – New Zealand</option><option>Oceania – Palau</option><option>Oceania – Papua New Guinea</option><option>Oceania – Samoa</option><option>Oceania – Solomon Islands</option><option>Oceania – Tonga</option><option>Oceania – Tuvalu</option><option>Oceania – Vanuatu</option>
+            </optgroup>
+          </select>
+        </div>
       </div>
-      <div class="fg"><label>Role *</label><select id="f-role"><option>Entry / Fragger</option><option>Flex</option><option>Support</option><option>IGL / Captain</option><option>Editor / Content</option><option>Other</option></select></div>
+      <div class="fg"><label>Role *</label>
+        <select id="f-role">
+          <option>Esports Player</option>
+          <option>Content Creator</option>
+          <option>Staff</option>
+          <option>Normal Player</option>
+        </select>
+      </div>
       <div class="fg fg-num"><label>Jersey Number — pick your favourite #</label><input type="number" id="f-num" placeholder="63" min="1" max="999"/></div>
       <div class="fg"><label>Discord Username</label><input type="text" id="f-discord" placeholder="yourname#0000 or yourname"/></div>
       <div class="fg"><label>Short Message *</label><textarea id="f-msg" placeholder="Why do you want to join Bytestorm?"></textarea></div>
-      <button class="btn-w m-submit" id="submitBtn" onclick="sendApp()">Send Application</button>
+      <button class="btn-w m-submit" onclick="sendApp()">Send Application</button>
     </div>
-
-    <!-- Success screen -->
     <div class="m-success" id="applySuccess">
       <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
       <h3>Application Sent!</h3>
@@ -230,12 +268,14 @@ document.addEventListener('click', function(e) {
     </a>
     <ul class="nav-links">
       <li><a href="#games">Games</a></li>
+      <li><a href="#tournaments">Tournaments</a></li>
       <li><a href="#socials">Socials</a></li>
       <li><a href="#" onclick="openModal();return false;" class="nav-cta">Apply</a></li>
     </ul>
   </div>
 </nav>
 
+<!-- ── GAMES ── -->
 <section class="pad" id="games" style="padding-top:100px">
   <div class="wrap">
     <div class="s-head"><div><div class="s-eye">Competing in</div><div class="s-title">Our Games</div></div></div>
@@ -256,13 +296,12 @@ document.addEventListener('click', function(e) {
           <img class="gc-img" src="" alt="Brawl Stars" style="display:none"/>
           <div class="gc-placeholder">Brawl Stars</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">6 players</div></div>
+          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">7 players</div></div>
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
 
-      <!-- ROCKET LEAGUE (was Roblox) -->
-      <button class="game-card" data-img="data:image/jpeg;base64,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" onclick="toggleRoster('rl')">
+      <button class="game-card" data-img="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/252950/capsule_616x353.jpg" onclick="toggleRoster('rl')">
         <div class="gc-img-wrap">
           <img class="gc-img" src="" alt="Rocket League" style="display:none"/>
           <div class="gc-placeholder">Rocket League</div>
@@ -272,7 +311,6 @@ document.addEventListener('click', function(e) {
         </div>
       </button>
 
-      <!-- CS2 (was CS:GO) -->
       <button class="game-card" data-img="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/capsule_616x353.jpg" onclick="toggleRoster('cs2')">
         <div class="gc-img-wrap">
           <img class="gc-img" src="" alt="CS2" style="display:none"/>
@@ -295,8 +333,8 @@ document.addEventListener('click', function(e) {
 
       <button class="game-card" style="background:#1a1a1a" onclick="toggleRoster('staff')">
         <div class="gc-img-wrap">
-          <div class="gc-placeholder" style="display:flex; color:#fff; opacity:1;">
-            <svg viewBox="0 0 24 24" style="stroke:#fff; width:26px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <div class="gc-placeholder" style="display:flex;color:#fff;opacity:1;">
+            <svg viewBox="0 0 24 24" style="stroke:#fff;width:26px;fill:none;stroke-width:1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             STAFF
           </div>
           <div class="gc-overlay"></div>
@@ -305,15 +343,15 @@ document.addEventListener('click', function(e) {
         </div>
       </button>
 
-    </div>
+    </div><!-- /games-grid -->
 
     <!-- Fortnite Roster -->
     <div class="roster-panel" id="rp-fn">
       <div class="rp-head"><span class="rp-tag">FN</span><span class="rp-game">Fortnite</span><button class="rp-close" onclick="closeRoster('fn')">&#215;</button></div>
       <div class="rp-grid">
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge">Captain</span></div><div class="rp-name">Daniel123FMR</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU</div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge">Pro</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-flags-dual"><img src="https://flagcdn.com/w160/sy.png" alt="Syria"/><img src="https://flagcdn.com/w160/hu.png" alt="Hungary"/></div><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Syria &amp; Hungary</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/it.png" alt="Italy"/><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Daniel</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Italy</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Austria</div></div>
       </div>
     </div>
 
@@ -321,28 +359,29 @@ document.addEventListener('click', function(e) {
     <div class="roster-panel" id="rp-bs">
       <div class="rp-head"><span class="rp-tag">BS</span><span class="rp-game">Brawl Stars</span><button class="rp-close" onclick="closeRoster('bs')">&#215;</button></div>
       <div class="rp-grid">
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge">Captain</span></div><div class="rp-name">Daniel123FMR</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU</div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge">Pro</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU</div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge">Esports Player</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#1</span><span class="rp-badge">Flex</span></div><div class="rp-name">soullyxx</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge">Support</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-flags-dual"><img src="https://flagcdn.com/w160/sy.png" alt="Syria"/><img src="https://flagcdn.com/w160/hu.png" alt="Hungary"/></div><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Syria &amp; Hungary</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/it.png" alt="Italy"/><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Daniel</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Italy</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Austria</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
+        <div class="rp-card"><div class="rp-flags-dual"><img src="https://flagcdn.com/w160/sy.png" alt="Syria"/><img src="https://flagcdn.com/w160/hu.png" alt="Hungary"/></div><div class="rp-top"><span class="rp-num">#1</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">soullyxx</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> Syria &amp; Hungary</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gr.png" alt="Greece"/><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU – Greece</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/dk.png" alt="Denmark"/><div class="rp-top"><span class="rp-num">#17</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">Maik</div><div class="rp-meta"><b>Plays:</b> BS (Reserve)<br/><b>Region:</b> EU – Denmark</div></div>
       </div>
     </div>
 
-    <!-- Rocket League Roster (was Roblox) -->
+    <!-- Rocket League Roster -->
     <div class="roster-panel" id="rp-rl">
       <div class="rp-head"><span class="rp-tag">RL</span><span class="rp-game">Rocket League</span><button class="rp-close" onclick="closeRoster('rl')">&#215;</button></div>
       <div class="rp-grid">
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-flags-dual"><img src="https://flagcdn.com/w160/sy.png" alt="Syria"/><img src="https://flagcdn.com/w160/hu.png" alt="Hungary"/></div><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Syria &amp; Hungary</div></div>
       </div>
     </div>
 
-    <!-- CS2 Roster (was CS:GO) -->
+    <!-- CS2 Roster -->
     <div class="roster-panel" id="rp-cs2">
       <div class="rp-head"><span class="rp-tag">CS2</span><span class="rp-game">CS2</span><button class="rp-close" onclick="closeRoster('cs2')">&#215;</button></div>
       <div class="rp-grid">
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-flags-dual"><img src="https://flagcdn.com/w160/sy.png" alt="Syria"/><img src="https://flagcdn.com/w160/hu.png" alt="Hungary"/></div><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Syria &amp; Hungary</div></div>
       </div>
     </div>
 
@@ -350,7 +389,7 @@ document.addEventListener('click', function(e) {
     <div class="roster-panel" id="rp-gta">
       <div class="rp-head"><span class="rp-tag">GTA</span><span class="rp-game">GTA V Online</span><button class="rp-close" onclick="closeRoster('gta')">&#215;</button></div>
       <div class="rp-grid">
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Plays:</b> All Games<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-flags-dual"><img src="https://flagcdn.com/w160/sy.png" alt="Syria"/><img src="https://flagcdn.com/w160/hu.png" alt="Hungary"/></div><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Syria &amp; Hungary</div></div>
       </div>
     </div>
 
@@ -358,9 +397,8 @@ document.addEventListener('click', function(e) {
     <div class="roster-panel" id="rp-staff">
       <div class="rp-head"><span class="rp-tag">STAFF</span><span class="rp-game">Management</span><button class="rp-close" onclick="closeRoster('staff')">&#215;</button></div>
       <div class="rp-grid">
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge">CEO</span></div><div class="rp-name">Memet</div><div class="rp-meta"><b>Role:</b> Founder<br/><b>Region:</b> EU</div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#43</span><span class="rp-badge">Staff</span></div><div class="rp-name">Daris</div><div class="rp-meta"><b>Role:</b> Editor<br/><b>Region:</b> UK</div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">#17</span><span class="rp-badge">Reserve</span></div><div class="rp-name">Maik</div><div class="rp-meta"><b>Plays:</b> Reserve for BS<br/><b>Region:</b> EU</div></div>
+        <div class="rp-card"><div class="rp-flags-dual"><img src="https://flagcdn.com/w160/sy.png" alt="Syria"/><img src="https://flagcdn.com/w160/hu.png" alt="Hungary"/></div><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Region:</b> Syria &amp; Hungary</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gb.png" alt="UK"/><div class="rp-top"><span class="rp-num">#43</span><span class="rp-badge staff-r">Staff</span></div><div class="rp-name">Daris</div><div class="rp-meta"><b>Role:</b> Editor<br/><b>Region:</b> EU – United Kingdom</div></div>
       </div>
     </div>
 
@@ -369,6 +407,96 @@ document.addEventListener('click', function(e) {
 
 <div class="divider"></div>
 
+<!-- ── TOURNAMENTS ── -->
+<section class="pad" id="tournaments">
+  <div class="wrap">
+
+    <div class="th-head">
+      <div class="th-title">Tournament History</div>
+      <div class="th-sub">Our competitive match results</div>
+    </div>
+
+    <div class="tourn-list">
+
+      <!-- BSCS Tournament – Match 2: vs Vortex (Loss) -->
+      <div class="th-card">
+        <div class="th-trophy">
+          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+        </div>
+        <div class="th-info">
+          <div class="th-name">BSCS Tournament</div>
+          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>Vortex Unit</div>
+        </div>
+        <div class="th-result">
+          <div class="th-outcome loss">LOSS</div>
+          <div class="th-score">BYTS 0 – 2 VORTEX</div>
+        </div>
+        <div class="th-divider"></div>
+        <div class="th-meta">
+          <div class="th-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            April 26, 2026
+          </div>
+          <div class="th-venue">Brawl Stars</div>
+        </div>
+      </div>
+
+      <!-- BSCS Tournament – Match 1: vs Noone (Win) -->
+      <div class="th-card">
+        <div class="th-trophy">
+          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+        </div>
+        <div class="th-info">
+          <div class="th-name">BSCS Tournament</div>
+          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>Noone</div>
+        </div>
+        <div class="th-result">
+          <div class="th-outcome win">WIN</div>
+          <div class="th-score">BYTS 2 – 0 NOONE</div>
+        </div>
+        <div class="th-divider"></div>
+        <div class="th-meta">
+          <div class="th-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            April 26, 2026
+          </div>
+          <div class="th-venue">Brawl Stars</div>
+        </div>
+      </div>
+
+      <!-- Free Tournament – March 1 2026 -->
+      <div class="th-card">
+        <div class="th-trophy">
+          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+        </div>
+        <div class="th-info">
+          <div class="th-name">Free Tournament</div>
+          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>Soulless Team</div>
+        </div>
+        <div class="th-result">
+          <div class="th-outcome loss">LOSS</div>
+          <div class="th-score">BYTS 0 – 2 SOULLESS</div>
+        </div>
+        <div class="th-divider"></div>
+        <div class="th-meta">
+          <div class="th-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            March 1, 2026
+          </div>
+          <div class="th-venue">Brawl Stars</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="th-foot">All competitive matches <span>•</span> Updated regularly</div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SOCIALS ── -->
 <section class="pad" id="socials">
   <div class="wrap">
     <div class="s-head"><div><div class="s-eye">Connect</div><div class="s-title">Find Us</div></div></div>
@@ -382,6 +510,11 @@ document.addEventListener('click', function(e) {
         <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></div>
         <h3>Discord</h3><p>Trials, scrims, and team comms.</p>
         <span class="soc-handle">Join Server</span>
+      </a>
+      <a href="https://www.youtube.com/@Bytestorm.Corporation" target="_blank" class="soc-tile">
+        <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="var(--bg)" stroke="none"/></svg></div>
+        <h3>YouTube</h3><p>Tournament highlights, gameplay and more.</p>
+        <span class="soc-handle">@Bytestorm.Esports</span>
       </a>
       <a href="mailto:bytestorm.marketing.team@gmail.com" class="soc-tile">
         <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
@@ -419,7 +552,6 @@ document.querySelectorAll('.game-card').forEach(function(c){
 function openModal(){
   document.getElementById('applyModal').classList.add('open');
   document.body.style.overflow='hidden';
-  // reset to form view each time
   document.getElementById('applyForm').style.display='block';
   document.getElementById('applySuccess').style.display='none';
 }
@@ -429,47 +561,33 @@ function closeModal(){
 }
 function overlayClose(e){if(e.target===document.getElementById('applyModal'))closeModal()}
 
-// ── Apply — sends ALL fields via mailto ──
+// ── Apply ──
 function sendApp(){
-  var name    = document.getElementById('f-name').value.trim();
-  var gtag    = document.getElementById('f-gtag').value.trim();
-  var tag     = document.getElementById('f-tag').value.trim();
-  var game    = document.getElementById('f-game').value;
-  var region  = document.getElementById('f-region').value;
-  var role    = document.getElementById('f-role').value;
-  var num     = document.getElementById('f-num').value.trim();
-  var discord = document.getElementById('f-discord').value.trim();
-  var msg     = document.getElementById('f-msg').value.trim();
-
-  // Validate required fields
-  if(!name || !gtag || !tag || !msg){
-    alert('Please fill in all required fields (marked with *).');
-    return;
-  }
-
-  var subject = 'Bytestorm Application — ' + gtag + ' (' + game + ')';
-
-  var body =
-    '=== BYTESTORM ESPORTS APPLICATION ===\n\n' +
-    'Player Name:    ' + name    + '\n' +
-    'Gamer Tag:      ' + gtag    + '\n' +
-    'In-Game Tag:    ' + tag     + '\n' +
-    'Game:           ' + game    + '\n' +
-    'Region:         ' + region  + '\n' +
-    'Role:           ' + role    + '\n' +
-    'Jersey Number:  ' + (num || 'Not specified') + '\n' +
-    'Discord:        ' + (discord || 'Not specified') + '\n\n' +
-    '--- Message ---\n' + msg + '\n\n' +
-    '=====================================';
-
-  // Open mail client with all data
-  window.location.href = 'mailto:bytestorm.marketing.team@gmail.com'
-    + '?subject=' + encodeURIComponent(subject)
-    + '&body='    + encodeURIComponent(body);
-
-  // Show success screen
-  document.getElementById('applyForm').style.display = 'none';
-  document.getElementById('applySuccess').style.display = 'flex';
+  var name=document.getElementById('f-name').value.trim();
+  var gtag=document.getElementById('f-gtag').value.trim();
+  var tag=document.getElementById('f-tag').value.trim();
+  var game=document.getElementById('f-game').value;
+  var region=document.getElementById('f-region').value;
+  var role=document.getElementById('f-role').value;
+  var num=document.getElementById('f-num').value.trim();
+  var discord=document.getElementById('f-discord').value.trim();
+  var msg=document.getElementById('f-msg').value.trim();
+  if(!name||!gtag||!tag||!msg){alert('Please fill in all required fields (marked with *).'); return}
+  var subject='Bytestorm Application — '+gtag+' ('+game+')';
+  var body='=== BYTESTORM ESPORTS APPLICATION ===\n\n'
+    +'Player Name:    '+name+'\n'
+    +'Gamer Tag:      '+gtag+'\n'
+    +'In-Game Tag:    '+tag+'\n'
+    +'Game:           '+game+'\n'
+    +'Region:         '+region+'\n'
+    +'Role:           '+role+'\n'
+    +'Jersey Number:  '+(num||'Not specified')+'\n'
+    +'Discord:        '+(discord||'Not specified')+'\n\n'
+    +'--- Message ---\n'+msg+'\n\n'
+    +'=====================================';
+  window.location.href='mailto:bytestorm.marketing.team@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  document.getElementById('applyForm').style.display='none';
+  document.getElementById('applySuccess').style.display='flex';
 }
 
 // ── Roster toggle ──
@@ -477,7 +595,7 @@ var cur=null;
 function toggleRoster(id){
   if(cur&&cur!==id)closeRoster(cur);
   var p=document.getElementById('rp-'+id);
-  if(!p) return;
+  if(!p)return;
   if(p.classList.contains('open')){closeRoster(id);return}
   p.classList.add('open');cur=id;
   setTimeout(function(){p.scrollIntoView({behavior:'smooth',block:'nearest'})},60);
