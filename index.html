@@ -178,6 +178,27 @@
   @media(max-width:860px){.tourn-grid{grid-template-columns:1fr}.soc-grid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:640px){.nav-links li:not(:last-child){display:none}.games-grid{grid-template-columns:repeat(2,1fr)}.soc-grid{grid-template-columns:1fr}.foot-in{flex-direction:column;text-align:center}.s-head{flex-direction:column;align-items:flex-start}.fgr{grid-template-columns:1fr}.modal{padding:26px 18px}}
   @media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}}
+  /* ── News ── */
+  .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+  .news-card{background:var(--s1);border:1px solid var(--b1);border-radius:10px;overflow:hidden;cursor:pointer;transition:background .2s,border-color .2s}
+  .news-card:hover{background:var(--s2);border-color:var(--b2)}
+  .news-img-wrap{width:100%;height:180px;overflow:hidden;background:#0a0a0a}
+  .news-img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;filter:brightness(.85)}
+  .news-card:hover .news-img{transform:scale(1.04);filter:brightness(.7)}
+  .news-body{padding:18px 20px}
+  .news-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:#1a1a1a;color:var(--m1);border:1px solid var(--b2);padding:3px 9px;border-radius:20px;margin-bottom:10px}
+  .news-title-text{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#fff;line-height:1.1;margin-bottom:8px}
+  .news-sub{font-size:12px;color:var(--m2);line-height:1.65}
+  .news-date{font-size:10px;color:var(--m1);margin-top:12px;letter-spacing:.06em}
+  .news-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);z-index:999;align-items:center;justify-content:center;padding:20px}
+  .news-overlay.open{display:flex}
+  .news-modal{background:#111;border:1px solid var(--b2);border-radius:10px;width:100%;max-width:560px;overflow:hidden;position:relative;animation:mIn .2s ease;max-height:92vh;overflow-y:auto}
+  .news-close{position:absolute;top:13px;right:16px;background:none;border:none;color:var(--m1);font-size:24px;cursor:pointer;line-height:1;transition:color .2s;z-index:2}
+  .news-close:hover{color:#fff}
+  .news-modal-img{width:100%;height:220px;object-fit:cover;display:block;background:#0a0a0a}
+  .news-modal-body{padding:28px 32px 32px}
+  .news-modal-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:#fff;line-height:1.1;margin:10px 0 14px}
+  .news-modal-text{font-size:14px;color:#fff;line-height:1.8}
   </style>
 </head>
 <body>
@@ -214,18 +235,18 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
   <div class="modal">
     <button class="m-x" onclick="closeModal()">&#215;</button>
     <div id="applyForm">
-      <div class="m-title">Apply Now</div>
-      <p class="m-sub">Fill it in — we'll reach out if you match the standard.</p>
-      <div class="fg"><label>Player Name *</label><input type="text" id="f-name" placeholder="Your real name"/></div>
-      <div class="fg"><label>Gamer Tag *</label><input type="text" id="f-gtag" placeholder="Your in-game username"/></div>
-      <div class="fg"><label>In-Game Tag (e.g. #TAG) *</label><input type="text" id="f-tag" placeholder="#TAG"/></div>
+      <div class="m-title" data-i18n="applyTitle">Apply Now</div>
+      <p class="m-sub" data-i18n="applySub">Fill it in — we'll reach out if you match the standard.</p>
+      <div class="fg"><label data-i18n="fldPlayerName">Player Name *</label><input type="text" id="f-name" data-i18n-placeholder="phPlayerName" placeholder="Your real name"/></div>
+      <div class="fg"><label data-i18n="fldGamerTag">Gamer Tag *</label><input type="text" id="f-gtag" data-i18n-placeholder="phGamerTag" placeholder="Your in-game username"/></div>
+      <div class="fg"><label data-i18n="fldInGameTag">In-Game Tag (e.g. #TAG) *</label><input type="text" id="f-tag" placeholder="#TAG"/></div>
       <div class="fgr">
-        <div class="fg"><label>Game *</label>
+        <div class="fg"><label data-i18n="fldGame">Game *</label>
           <select id="f-game">
             <option>Fortnite</option><option>Brawl Stars</option><option>Rocket League</option><option>CS2</option><option>GTA V Online</option><option>Multiple / Other</option>
           </select>
         </div>
-        <div class="fg"><label>Region *</label>
+        <div class="fg"><label data-i18n="fldRegion">Region *</label>
           <select id="f-region">
             <optgroup label="Europe (EU)">
               <option>EU – Albania</option><option>EU – Andorra</option><option>EU – Austria</option><option>EU – Belarus</option><option>EU – Belgium</option><option>EU – Bosnia</option><option>EU – Bulgaria</option><option>EU – Croatia</option><option>EU – Cyprus</option><option>EU – Czech Republic</option><option>EU – Denmark</option><option>EU – Estonia</option><option>EU – Finland</option><option>EU – France</option><option>EU – Germany</option><option>EU – Greece</option><option>EU – Hungary</option><option>EU – Iceland</option><option>EU – Ireland</option><option>EU – Italy</option><option>EU – Kosovo</option><option>EU – Latvia</option><option>EU – Liechtenstein</option><option>EU – Lithuania</option><option>EU – Luxembourg</option><option>EU – Malta</option><option>EU – Moldova</option><option>EU – Monaco</option><option>EU – Montenegro</option><option>EU – Netherlands</option><option>EU – North Macedonia</option><option>EU – Norway</option><option>EU – Poland</option><option>EU – Portugal</option><option>EU – Romania</option><option>EU – Russia</option><option>EU – San Marino</option><option>EU – Serbia</option><option>EU – Slovakia</option><option>EU – Slovenia</option><option>EU – Spain</option><option>EU – Sweden</option><option>EU – Switzerland</option><option>EU – Turkey</option><option>EU – Ukraine</option><option>EU – United Kingdom</option><option>EU – Vatican City</option>
@@ -248,7 +269,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           </select>
         </div>
       </div>
-      <div class="fg"><label>Role *</label>
+      <div class="fg"><label data-i18n="fldRole">Role *</label>
         <select id="f-role">
           <option>Esports Player</option>
           <option>Content Creator</option>
@@ -256,15 +277,15 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <option>Normal Player</option>
         </select>
       </div>
-      <div class="fg fg-num"><label>Jersey Number — pick your favourite #</label><input type="number" id="f-num" placeholder="63" min="1" max="999"/></div>
-      <div class="fg"><label>Discord Username</label><input type="text" id="f-discord" placeholder="yourname#0000 or yourname"/></div>
-      <div class="fg"><label>Short Message *</label><textarea id="f-msg" placeholder="Why do you want to join Bytestorm?"></textarea></div>
-      <button class="btn-w m-submit" onclick="sendApp()">Send Application</button>
+      <div class="fg fg-num"><label data-i18n="fldJersey">Jersey Number — pick your favourite #</label><input type="number" id="f-num" placeholder="63" min="1" max="999"/></div>
+      <div class="fg"><label data-i18n="fldDiscord">Discord Username</label><input type="text" id="f-discord" placeholder="yourname#0000 or yourname"/></div>
+      <div class="fg"><label data-i18n="fldMessage">Short Message *</label><textarea id="f-msg" data-i18n-placeholder="phMessage" placeholder="Why do you want to join Bytestorm?"></textarea></div>
+      <button class="btn-w m-submit" onclick="sendApp()" data-i18n="btnSendApp">Send Application</button>
     </div>
     <div class="m-success" id="applySuccess">
       <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      <h3>Application Sent!</h3>
-      <p>We received everything. If you match the standard, we'll reach out via Discord or email.</p>
+      <h3 data-i18n="applySuccessTitle">Application Sent!</h3>
+      <p data-i18n="applySuccessMsg">We received everything. If you match the standard, we'll reach out via Discord or email.</p>
     </div>
   </div>
 </div>
@@ -276,10 +297,32 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <span class="nav-brand">Bytestorm Esports</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#games">Games</a></li>
-      <li><a href="#tournaments">Tournaments</a></li>
-      <li><a href="#socials">Socials</a></li>
-      <li><a href="#" onclick="openModal();return false;" class="nav-cta">Apply</a></li>
+      <li><a href="#games" data-i18n="navGames">Games</a></li>
+      <li><a href="#tournaments" data-i18n="navTournaments">Tournaments</a></li>
+      <li><a href="#news" data-i18n="navNews">News</a></li>
+      <li><a href="#socials" data-i18n="navSocials">Socials</a></li>
+      <li>
+        <select id="langSelect" onchange="changeLang(this.value)" style="background:#111;color:var(--m2);border:1px solid var(--b2);border-radius:3px;padding:6px 10px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;outline:none;font-family:'Inter',sans-serif">
+          <option value="en">🌐 EN</option>
+          <option value="de">🇩🇪 DE</option>
+          <option value="tr">🇹🇷 TR</option>
+          <option value="it">🇮🇹 IT</option>
+          <option value="fr">🇫🇷 FR</option>
+          <option value="es">🇪🇸 ES</option>
+          <option value="ar">🇸🇦 AR</option>
+          <option value="pt">🇧🇷 PT</option>
+          <option value="pl">🇵🇱 PL</option>
+          <option value="nl">🇳🇱 NL</option>
+          <option value="gr">🇬🇷 GR</option>
+          <option value="ru">🇷🇺 RU</option>
+          <option value="ja">🇯🇵 JA</option>
+          <option value="ko">🇰🇷 KO</option>
+          <option value="zh">🇨🇳 ZH</option>
+          <option value="sv">🇸🇪 SV</option>
+          <option value="ro">🇷🇴 RO</option>
+        </select>
+      </li>
+      <li><a href="#" onclick="openModal();return false;" class="nav-cta" data-i18n="applyBtn">Apply</a></li>
     </ul>
   </div>
 </nav>
@@ -287,7 +330,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 <!-- ── GAMES ── -->
 <section class="pad" id="games" style="padding-top:100px">
   <div class="wrap">
-    <div class="s-head"><div><div class="s-eye">Competing in</div><div class="s-title">Our Games</div></div></div>
+    <div class="s-head"><div><div class="s-eye" data-i18n="gamesEye">Competing in</div><div class="s-title" data-i18n="gamesTitle">Our Games</div></div></div>
     <div class="games-grid">
 
       <button class="game-card" data-img="https://i.ytimg.com/vi/adGdyCdvKz4/maxresdefault.jpg" onclick="toggleRoster('fn')">
@@ -295,8 +338,8 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="gc-img" src="" alt="Fortnite" style="display:none"/>
           <div class="gc-placeholder">Fortnite</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Fortnite</div><div class="gc-sub">3 players</div></div>
-          <div class="gc-hover-pill">View Team</div>
+          <div class="gc-label"><div class="gc-name">Fortnite</div><div class="gc-sub" data-i18n="gcPlayers3">3 players</div></div>
+          <div class="gc-hover-pill" data-i18n="gcViewTeam">View Team</div>
         </div>
       </button>
 
@@ -305,8 +348,8 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="gc-img" src="" alt="Brawl Stars" style="display:none"/>
           <div class="gc-placeholder">Brawl Stars</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">8 players</div></div>
-          <div class="gc-hover-pill">View Team</div>
+          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub" data-i18n="gcPlayers8">8 players</div></div>
+          <div class="gc-hover-pill" data-i18n="gcViewTeam">View Team</div>
         </div>
       </button>
 
@@ -315,8 +358,8 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="gc-img" src="" alt="Rocket League" style="display:none"/>
           <div class="gc-placeholder">Rocket League</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Rocket League</div><div class="gc-sub">1 player</div></div>
-          <div class="gc-hover-pill">View Team</div>
+          <div class="gc-label"><div class="gc-name">Rocket League</div><div class="gc-sub" data-i18n="gcPlayers1">1 player</div></div>
+          <div class="gc-hover-pill" data-i18n="gcViewTeam">View Team</div>
         </div>
       </button>
 
@@ -325,8 +368,8 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="gc-img" src="" alt="CS2" style="display:none"/>
           <div class="gc-placeholder">CS2</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">CS2</div><div class="gc-sub">1 player</div></div>
-          <div class="gc-hover-pill">View Team</div>
+          <div class="gc-label"><div class="gc-name">CS2</div><div class="gc-sub" data-i18n="gcPlayers1">1 player</div></div>
+          <div class="gc-hover-pill" data-i18n="gcViewTeam">View Team</div>
         </div>
       </button>
 
@@ -335,8 +378,8 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="gc-img" src="" alt="GTA V Online" style="display:none"/>
           <div class="gc-placeholder">GTA V</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">GTA V Online</div><div class="gc-sub">1 player</div></div>
-          <div class="gc-hover-pill">View Team</div>
+          <div class="gc-label"><div class="gc-name">GTA V Online</div><div class="gc-sub" data-i18n="gcPlayers1">1 player</div></div>
+          <div class="gc-hover-pill" data-i18n="gcViewTeam">View Team</div>
         </div>
       </button>
 
@@ -347,8 +390,8 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
             STAFF
           </div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Staff</div><div class="gc-sub">Management</div></div>
-          <div class="gc-hover-pill">View Staff</div>
+          <div class="gc-label"><div class="gc-name" data-i18n="gcStaff">Staff</div><div class="gc-sub" data-i18n="gcManagement">Management</div></div>
+          <div class="gc-hover-pill" data-i18n="gcViewStaff">View Staff</div>
         </div>
       </button>
 
@@ -374,7 +417,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
         <div class="rp-card"><div class="rp-flags-dual"><img src="https://flagcdn.com/w160/sy.png" alt="Syria"/><img src="https://flagcdn.com/w160/hu.png" alt="Hungary"/></div><div class="rp-top"><span class="rp-num">#1</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">soullyxx</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> Syria &amp; Hungary</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gr.png" alt="Greece"/><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Role:</b> Pro Support<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Greece</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#17</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">Maik</div><div class="rp-meta"><b>Role:</b> Support<br/><b>Plays:</b> BS <br/><b>Region:</b> EU – Austria</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#17</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">Maik</div><div class="rp-meta"><b>Role:</b> Support<br/><b>Plays:</b> BS (Reserve)<br/><b>Region:</b> EU – Austria</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#31</span><span class="rp-badge normal">Esports Player</span></div><div class="rp-name">爪〇〇冂し|号ん十</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
       </div>
     </div>
@@ -422,8 +465,8 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
   <div class="wrap">
 
     <div class="th-head">
-      <div class="th-title">Tournament History</div>
-      <div class="th-sub">Our competitive match results</div>
+      <div class="th-title" data-i18n="tourTitle">Tournament History</div>
+      <div class="th-sub" data-i18n="tourSub">Our competitive match results</div>
     </div>
 
     <div class="tourn-list">
@@ -433,13 +476,13 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
         </div>
         <div class="th-info">
-          <div class="th-upcoming-badge"><span class="th-upcoming-dot"></span>Upcoming</div>
+          <div class="th-upcoming-badge"><span class="th-upcoming-dot"></span><span data-i18n="tourUpcoming">Upcoming</span></div>
           <div class="th-name">BSCS Italy Tournament</div>
           <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">—</span>TBD</div>
         </div>
         <div class="th-result">
           <div class="th-upcoming-date">May 23, 2026</div>
-          <div class="th-upcoming-sub">Match not yet played</div>
+          <div class="th-upcoming-sub" data-i18n="tourNotPlayed">Match not yet played</div>
         </div>
         <div class="th-divider"></div>
         <div class="th-meta">
@@ -522,37 +565,99 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 
     </div>
 
-    <div class="th-foot">All competitive matches <span>•</span> Updated regularly</div>
+    <div class="th-foot" data-i18n="tourFoot">All competitive matches <span>•</span> Updated regularly</div>
 
   </div>
 </section>
 
 <div class="divider"></div>
 
+<!-- ── NEWS ── -->
+<section class="pad" id="news">
+  <div class="wrap">
+    <div class="s-head"><div><div class="s-eye" data-i18n="newsEye">Latest</div><div class="s-title" data-i18n="newsTitle">News</div></div></div>
+    <div class="news-grid">
+
+      <div class="news-card" onclick="openNews(0)">
+        <div class="news-img-wrap" style="position:relative">
+          <img class="news-img" src="https://static.wikia.nocookie.net/formula-apex/images/e/e6/Game_Icon-_Pre_CU11.png/revision/latest?cb=20240824021346" alt="Formular Apex"/>
+          <div style="position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;z-index:2">
+            <div style="width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;padding:3px">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Roblox_Logo_2025.png/250px-Roblox_Logo_2025.png" alt="Roblox" style="width:100%;height:100%;object-fit:contain"/>
+            </div>
+            <span style="color:rgba(255,255,255,0.3);font-size:13px;font-weight:300">×</span>
+            <div style="width:32px;height:32px;border-radius:6px;background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;padding:5px">
+              <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm" style="width:100%;height:100%;object-fit:contain"/>
+            </div>
+          </div>
+        </div>
+        <div class="news-body">
+          <span class="news-tag" data-i18n="news0Tag">Announcement</span>
+          <div class="news-title-text" data-i18n="news0Title">CEO plans to return to Roblox — Formular Apex</div>
+          <div class="news-sub" data-i18n="news0Sub">Bytestorm Esports is set to return to Formular Apex on Roblox — and we're holding a community vote on Discord and WhatsApp. Should BYTS come back? Join the conversation and vote.</div>
+          <div class="news-date" data-i18n="news0Date">May 17, 2026</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- News Modal -->
+<div class="news-overlay" id="newsModal" onclick="if(event.target===this)closeNews()">
+  <div class="news-modal" style="position:relative;overflow:hidden;background:#111">
+    <!-- Full background image -->
+    <img id="nModal-img" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;pointer-events:none"/>
+    <!-- Dark overlay so text is readable -->
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.82) 50%,rgba(0,0,0,0.96) 100%);z-index:1;pointer-events:none"></div>
+    <!-- Close button -->
+    <button class="news-close" onclick="closeNews()" style="z-index:3">&#215;</button>
+    <!-- Logos -->
+    <div style="position:relative;z-index:2;padding:24px 24px 0;display:flex;align-items:center;gap:8px">
+      <div style="width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;padding:3px">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Roblox_Logo_2025.png/250px-Roblox_Logo_2025.png" alt="Roblox" style="width:100%;height:100%;object-fit:contain"/>
+      </div>
+      <span style="color:rgba(255,255,255,0.3);font-size:13px;font-weight:300">×</span>
+      <div style="width:32px;height:32px;border-radius:6px;background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;padding:5px">
+        <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm" style="width:100%;height:100%;object-fit:contain"/>
+      </div>
+    </div>
+    <!-- Content -->
+    <div class="news-modal-body" style="position:relative;z-index:2">
+      <span class="news-tag" id="nModal-tag"></span>
+      <div class="news-modal-title" id="nModal-title"></div>
+      <div class="news-modal-text" id="nModal-text"></div>
+      <div class="news-date" style="margin-top:16px" id="nModal-date"></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
 <!-- ── SOCIALS ── -->
 <section class="pad" id="socials">
   <div class="wrap">
-    <div class="s-head"><div><div class="s-eye">Connect</div><div class="s-title">Find Us</div></div></div>
+    <div class="s-head"><div><div class="s-eye" data-i18n="socEye">Connect</div><div class="s-title" data-i18n="socTitle">Find Us</div></div></div>
     <div class="soc-grid">
       <a href="https://www.tiktok.com/@bytestorm_corporation" target="_blank" class="soc-tile">
         <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></div>
-        <h3>TikTok</h3><p>Jersey reveals, highlights, and recruitment content.</p>
+        <h3>TikTok</h3><p data-i18n="socTikTokDesc">Jersey reveals, highlights, and recruitment content.</p>
         <span class="soc-handle">@bytestorm_corporation</span>
       </a>
       <a href="https://discord.gg/xfr6WWPCW3" target="_blank" class="soc-tile">
         <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></div>
-        <h3>Discord</h3><p>Trials, scrims, and team comms.</p>
-        <span class="soc-handle">Join Server</span>
+        <h3>Discord</h3><p data-i18n="socDiscordDesc">Trials, scrims, and team comms.</p>
+        <span class="soc-handle" data-i18n="socDiscordHandle">Join Server</span>
       </a>
       <a href="https://www.youtube.com/@Bytestorm.Corporation" target="_blank" class="soc-tile">
         <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="var(--bg)" stroke="none"/></svg></div>
-        <h3>YouTube</h3><p>Tournament highlights, gameplay and more.</p>
+        <h3>YouTube</h3><p data-i18n="socYouTubeDesc">Tournament highlights, gameplay and more.</p>
         <span class="soc-handle">@Bytestorm.Esports</span>
       </a>
       <a href="mailto:bytestorm.marketing.team@gmail.com" class="soc-tile">
         <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-        <h3>Email</h3><p>Business inquiries and partnerships.</p>
-        <span class="soc-handle">Contact Us</span>
+        <h3 data-i18n="socEmailTitle">Email</h3><p data-i18n="socEmailDesc">Business inquiries and partnerships.</p>
+        <span class="soc-handle" data-i18n="socEmailHandle">Contact Us</span>
       </a>
     </div>
   </div>
@@ -564,7 +669,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm"/>
       <span class="foot-brand">Bytestorm Esports</span>
     </div>
-    <span class="foot-copy">&#169; 2026 Bytestorm. All rights reserved.</span>
+    <span class="foot-copy" data-i18n="footCopy">&#169; 2026 Bytestorm. All rights reserved.</span>
   </div>
 </footer>
 
@@ -650,6 +755,314 @@ function toggleRoster(id){
 }
 function closeRoster(id){
   var p=document.getElementById('rp-'+id);if(p)p.classList.remove('open');if(cur===id)cur=null;
+}
+
+// ── Language translations ──
+var translations = {
+  en: {
+    navGames:'Games',navTournaments:'Tournaments',navNews:'News',navSocials:'Socials',applyBtn:'Apply',
+    gamesEye:'Competing in',gamesTitle:'Our Games',
+    gcViewTeam:'View Team',gcViewStaff:'View Staff',gcPlayers1:'1 player',gcPlayers3:'3 players',gcPlayers8:'8 players',gcStaff:'Staff',gcManagement:'Management',
+    tourTitle:'Tournament History',tourSub:'Our competitive match results',tourUpcoming:'Upcoming',tourNotPlayed:'Match not yet played',tourFoot:'All competitive matches • Updated regularly',
+    newsEye:'Latest',newsTitle:'News',
+    news0Tag:'Announcement',news0Title:'CEO Plans to Return to Roblox — Formular Apex',news0Sub:"Bytestorm Esports is set to return to Formular Apex on Roblox — and we're holding a community vote on Discord and WhatsApp. Should BYTS come back? Join the conversation and vote.",news0Date:'May 17, 2026',news0ModalText:"Bytestorm Esports is considering an official return to Formular Apex, a competitive racing game on Roblox. After stepping away from Roblox in February 2026 due to security concerns, the org is now evaluating a comeback — and the decision is in YOUR hands. We are holding an official community vote on our Discord server and WhatsApp group. Should BYTS return to Formular Apex? Head to the Discord or WhatsApp group, find the vote, and make your voice heard. The result will directly shape what happens next.",
+    socEye:'Connect',socTitle:'Find Us',
+    socTikTokDesc:'Jersey reveals, highlights, and recruitment content.',socDiscordDesc:'Trials, scrims, and team comms.',socDiscordHandle:'Join Server',socYouTubeDesc:'Tournament highlights, gameplay and more.',socEmailTitle:'Email',socEmailDesc:'Business inquiries and partnerships.',socEmailHandle:'Contact Us',
+    footCopy:'© 2026 Bytestorm. All rights reserved.',
+    applyTitle:'Apply Now',applySub:"Fill it in — we'll reach out if you match the standard.",
+    fldPlayerName:'Player Name *',fldGamerTag:'Gamer Tag *',fldInGameTag:'In-Game Tag (e.g. #TAG) *',fldGame:'Game *',fldRegion:'Region *',fldRole:'Role *',fldJersey:'Jersey Number — pick your favourite #',fldDiscord:'Discord Username',fldMessage:'Short Message *',
+    phPlayerName:'Your real name',phGamerTag:'Your in-game username',phMessage:'Why do you want to join Bytestorm?',
+    btnSendApp:'Send Application',applySuccessTitle:'Application Sent!',applySuccessMsg:"We received everything. If you match the standard, we'll reach out via Discord or email."
+  },
+  de: {
+    navGames:'Spiele',navTournaments:'Turniere',navNews:'News',navSocials:'Soziales',applyBtn:'Bewerben',
+    gamesEye:'Wir spielen',gamesTitle:'Unsere Spiele',
+    gcViewTeam:'Team ansehen',gcViewStaff:'Staff ansehen',gcPlayers1:'1 Spieler',gcPlayers3:'3 Spieler',gcPlayers8:'8 Spieler',gcStaff:'Staff',gcManagement:'Management',
+    tourTitle:'Turnier-Historie',tourSub:'Unsere Wettkampfergebnisse',tourUpcoming:'Bevorstehend',tourNotPlayed:'Spiel noch nicht ausgetragen',tourFoot:'Alle Wettkämpfe • Regelmäßig aktualisiert',
+    newsEye:'Aktuell',newsTitle:'Neuigkeiten',
+    news0Tag:'Ankündigung',news0Title:'CEO plant Rückkehr zu Roblox — Formular Apex',news0Sub:'Bytestorm Esports kehrt zu Formular Apex auf Roblox zurück — und wir veranstalten eine Community-Abstimmung auf Discord und WhatsApp. Soll BYTS zurückkommen? Mach mit und stimme ab.',news0Date:'17. Mai 2026',news0ModalText:'Bytestorm Esports erwägt eine offizielle Rückkehr zu Formular Apex, einem kompetitiven Rennspiel auf Roblox. Nachdem die Organisation im Februar 2026 aus Sicherheitsgründen Roblox verlassen hat, wird nun ein Comeback evaluiert — und die Entscheidung liegt in EUREN Händen. Wir veranstalten eine offizielle Community-Abstimmung auf unserem Discord-Server und in der WhatsApp-Gruppe. Soll BYTS zu Formular Apex zurückkehren? Geh zu Discord oder WhatsApp, finde die Abstimmung und mach deine Stimme geltend. Das Ergebnis wird direkt bestimmen, was als nächstes passiert.',
+    socEye:'Verbinden',socTitle:'Finde uns',
+    socTikTokDesc:'Trikot-Enthüllungen, Highlights und Recruiting-Content.',socDiscordDesc:'Trials, Scrims und Team-Kommunikation.',socDiscordHandle:'Server beitreten',socYouTubeDesc:'Turnier-Highlights, Gameplay und mehr.',socEmailTitle:'E-Mail',socEmailDesc:'Geschäftsanfragen und Partnerschaften.',socEmailHandle:'Kontakt',
+    footCopy:'© 2026 Bytestorm. Alle Rechte vorbehalten.',
+    applyTitle:'Jetzt bewerben',applySub:'Füll es aus — wir melden uns, wenn du dem Standard entsprichst.',
+    fldPlayerName:'Spielername *',fldGamerTag:'Gamertag *',fldInGameTag:'In-Game-Tag (z.B. #TAG) *',fldGame:'Spiel *',fldRegion:'Region *',fldRole:'Rolle *',fldJersey:'Trikotnummer — wähle deine Lieblingsnummer',fldDiscord:'Discord-Nutzername',fldMessage:'Kurze Nachricht *',
+    phPlayerName:'Dein echter Name',phGamerTag:'Dein Ingame-Name',phMessage:'Warum möchtest du Bytestorm beitreten?',
+    btnSendApp:'Bewerbung senden',applySuccessTitle:'Bewerbung gesendet!',applySuccessMsg:'Wir haben alles erhalten. Wenn du dem Standard entsprichst, melden wir uns per Discord oder E-Mail.'
+  },
+  tr: {
+    navGames:'Oyunlar',navTournaments:'Turnuvalar',navNews:'Haberler',navSocials:'Sosyal',applyBtn:'Başvur',
+    gamesEye:'Rekabet ettiğimiz',gamesTitle:'Oyunlarımız',
+    gcViewTeam:'Takımı Gör',gcViewStaff:'Staffı Gör',gcPlayers1:'1 oyuncu',gcPlayers3:'3 oyuncu',gcPlayers8:'8 oyuncu',gcStaff:'Staff',gcManagement:'Yönetim',
+    tourTitle:'Turnuva Geçmişi',tourSub:'Rekabetçi maç sonuçlarımız',tourUpcoming:'Yaklaşan',tourNotPlayed:'Maç henüz oynanmadı',tourFoot:'Tüm maçlar • Düzenli güncellenir',
+    newsEye:'Son Dakika',newsTitle:'Haberler',
+    news0Tag:'Duyuru',news0Title:'CEO Roblox\'a Dönmeyi Planlıyor — Formular Apex',news0Sub:"Bytestorm Esports, Roblox'taki Formular Apex'e geri dönmek üzere — Discord ve WhatsApp'ta bir topluluk oylaması düzenliyoruz. BYTS geri dönsün mü? Katıl ve oy ver.",news0Date:'17 Mayıs 2026',news0ModalText:"Bytestorm Esports, Roblox'taki rekabetçi bir yarış oyunu olan Formular Apex'e resmi olarak dönmeyi değerlendiriyor. Güvenlik endişeleri nedeniyle Şubat 2026'da Roblox'tan ayrılan organizasyon, şimdi geri dönüşü değerlendiriyor — ve karar SİZİN elinizdedir. Discord sunucumuzda ve WhatsApp grubumuzda resmi bir topluluk oylaması düzenliyoruz. BYTS Formular Apex'e geri dönsün mü? Discord veya WhatsApp grubuna git, oylamayı bul ve sesini duyur. Sonuç, bundan sonra ne olacağını doğrudan şekillendirecek.",
+    socEye:'Bağlan',socTitle:'Bizi Bul',
+    socTikTokDesc:'Forma tanıtımları, öne çıkanlar ve oyuncu alım içerikleri.',socDiscordDesc:'Denemeler, scrimmage maçları ve takım iletişimi.',socDiscordHandle:'Sunucuya Katıl',socYouTubeDesc:'Turnuva öne çıkanları, oynanış ve daha fazlası.',socEmailTitle:'E-posta',socEmailDesc:'İş teklifleri ve ortaklıklar.',socEmailHandle:'Bize Ulaş',
+    footCopy:'© 2026 Bytestorm. Tüm hakları saklıdır.',
+    applyTitle:'Şimdi Başvur',applySub:'Doldur — standartlara uyuyorsan seninle iletişime geçeceğiz.',
+    fldPlayerName:'Oyuncu Adı *',fldGamerTag:'Oyuncu Etiketi *',fldInGameTag:'Oyun İçi Etiket (örn. #ETİKET) *',fldGame:'Oyun *',fldRegion:'Bölge *',fldRole:'Rol *',fldJersey:'Forma Numarası — favori numaranı seç',fldDiscord:'Discord Kullanıcı Adı',fldMessage:'Kısa Mesaj *',
+    phPlayerName:'Gerçek adın',phGamerTag:'Oyun içi kullanıcı adın',phMessage:'Neden Bytestorm\'a katılmak istiyorsun?',
+    btnSendApp:'Başvuruyu Gönder',applySuccessTitle:'Başvuru Gönderildi!',applySuccessMsg:"Her şeyi aldık. Standartları karşılıyorsan Discord veya e-posta ile ulaşacağız."
+  },
+  it: {
+    navGames:'Giochi',navTournaments:'Tornei',navNews:'Notizie',navSocials:'Social',applyBtn:'Candidati',
+    gamesEye:'Competiamo in',gamesTitle:'I Nostri Giochi',
+    gcViewTeam:'Vedi Team',gcViewStaff:'Vedi Staff',gcPlayers1:'1 giocatore',gcPlayers3:'3 giocatori',gcPlayers8:'8 giocatori',gcStaff:'Staff',gcManagement:'Direzione',
+    tourTitle:'Storico Tornei',tourSub:'I nostri risultati nelle competizioni',tourUpcoming:'In arrivo',tourNotPlayed:'Partita non ancora giocata',tourFoot:'Tutte le partite • Aggiornato regolarmente',
+    newsEye:'Ultime',newsTitle:'Notizie',
+    news0Tag:'Annuncio',news0Title:'Il CEO pianifica il ritorno su Roblox — Formular Apex',news0Sub:"Bytestorm Esports è pronta a tornare su Formular Apex su Roblox — e stiamo organizzando un voto della community su Discord e WhatsApp. BYTS dovrebbe tornare? Partecipa e vota.",news0Date:'17 maggio 2026',news0ModalText:"Bytestorm Esports sta valutando un ritorno ufficiale a Formular Apex, un gioco di corse competitivo su Roblox. Dopo essersi ritirata da Roblox nel febbraio 2026 per motivi di sicurezza, l'organizzazione sta ora valutando un comeback — e la decisione è nelle VOSTRE mani. Stiamo organizzando un voto ufficiale della community sul nostro server Discord e nel gruppo WhatsApp. BYTS dovrebbe tornare su Formular Apex? Vai su Discord o WhatsApp, trova il sondaggio e fai sentire la tua voce. Il risultato determinerà direttamente cosa succederà dopo.",
+    socEye:'Connetti',socTitle:'Trovaci',
+    socTikTokDesc:'Presentazioni maglie, highlights e contenuti di reclutamento.',socDiscordDesc:'Prove, scrimmage e comunicazioni di squadra.',socDiscordHandle:'Entra nel server',socYouTubeDesc:'Highlights tornei, gameplay e altro.',socEmailTitle:'Email',socEmailDesc:'Richieste commerciali e partnership.',socEmailHandle:'Contattaci',
+    footCopy:'© 2026 Bytestorm. Tutti i diritti riservati.',
+    applyTitle:'Candidati Ora',applySub:'Compilalo — ti contatteremo se soddisfi i requisiti.',
+    fldPlayerName:'Nome Giocatore *',fldGamerTag:'Gamer Tag *',fldInGameTag:'Tag In-Game (es. #TAG) *',fldGame:'Gioco *',fldRegion:'Regione *',fldRole:'Ruolo *',fldJersey:'Numero Maglia — scegli il tuo preferito',fldDiscord:'Nome Discord',fldMessage:'Messaggio breve *',
+    phPlayerName:'Il tuo vero nome',phGamerTag:'Il tuo username in gioco',phMessage:'Perché vuoi unirti a Bytestorm?',
+    btnSendApp:'Invia candidatura',applySuccessTitle:'Candidatura inviata!',applySuccessMsg:"Abbiamo ricevuto tutto. Se soddisfi i requisiti, ti contatteremo via Discord o email."
+  },
+  fr: {
+    navGames:'Jeux',navTournaments:'Tournois',navNews:'Actualités',navSocials:'Réseaux',applyBtn:'Postuler',
+    gamesEye:'Nous jouons à',gamesTitle:'Nos Jeux',
+    gcViewTeam:'Voir l\'équipe',gcViewStaff:'Voir le staff',gcPlayers1:'1 joueur',gcPlayers3:'3 joueurs',gcPlayers8:'8 joueurs',gcStaff:'Staff',gcManagement:'Direction',
+    tourTitle:'Historique des Tournois',tourSub:'Nos résultats compétitifs',tourUpcoming:'À venir',tourNotPlayed:'Match pas encore joué',tourFoot:'Tous les matchs • Mis à jour régulièrement',
+    newsEye:'Dernières',newsTitle:'Actualités',
+    news0Tag:'Annonce',news0Title:'Le CEO prévoit un retour sur Roblox — Formular Apex',news0Sub:"Bytestorm Esports s'apprête à revenir sur Formular Apex sur Roblox — et nous organisons un vote communautaire sur Discord et WhatsApp. BYTS devrait-il revenir ? Rejoins la conversation et vote.",news0Date:'17 mai 2026',news0ModalText:"Bytestorm Esports envisage un retour officiel à Formular Apex, un jeu de course compétitif sur Roblox. Après avoir quitté Roblox en février 2026 pour des raisons de sécurité, l'organisation évalue maintenant un retour — et la décision est entre VOS mains. Nous organisons un vote officiel de la communauté sur notre serveur Discord et dans le groupe WhatsApp. BYTS doit-il revenir sur Formular Apex ? Rendez-vous sur Discord ou WhatsApp, trouvez le vote et faites entendre votre voix. Le résultat déterminera directement ce qui se passera ensuite.",
+    socEye:'Rejoindre',socTitle:'Nous trouver',
+    socTikTokDesc:'Révélations de maillots, highlights et recrutement.',socDiscordDesc:'Essais, scrims et communications d\'équipe.',socDiscordHandle:'Rejoindre le serveur',socYouTubeDesc:'Highlights de tournois, gameplay et plus.',socEmailTitle:'Email',socEmailDesc:'Demandes commerciales et partenariats.',socEmailHandle:'Nous contacter',
+    footCopy:'© 2026 Bytestorm. Tous droits réservés.',
+    applyTitle:'Postuler maintenant',applySub:'Remplis le formulaire — on te contactera si tu corresponds.',
+    fldPlayerName:'Nom du joueur *',fldGamerTag:'Pseudo *',fldInGameTag:'Tag en jeu (ex. #TAG) *',fldGame:'Jeu *',fldRegion:'Région *',fldRole:'Rôle *',fldJersey:'Numéro de maillot — choisis ton préféré',fldDiscord:'Pseudo Discord',fldMessage:'Message court *',
+    phPlayerName:'Ton vrai nom',phGamerTag:'Ton pseudo en jeu',phMessage:'Pourquoi veux-tu rejoindre Bytestorm ?',
+    btnSendApp:'Envoyer la candidature',applySuccessTitle:'Candidature envoyée !',applySuccessMsg:"Nous avons tout reçu. Si tu corresponds au niveau, on te contactera via Discord ou email."
+  },
+  es: {
+    navGames:'Juegos',navTournaments:'Torneos',navNews:'Noticias',navSocials:'Redes',applyBtn:'Postularse',
+    gamesEye:'Competimos en',gamesTitle:'Nuestros Juegos',
+    gcViewTeam:'Ver Equipo',gcViewStaff:'Ver Staff',gcPlayers1:'1 jugador',gcPlayers3:'3 jugadores',gcPlayers8:'8 jugadores',gcStaff:'Staff',gcManagement:'Dirección',
+    tourTitle:'Historial de Torneos',tourSub:'Nuestros resultados competitivos',tourUpcoming:'Próximo',tourNotPlayed:'Partido aún no jugado',tourFoot:'Todos los partidos • Actualizado regularmente',
+    newsEye:'Últimas',newsTitle:'Noticias',
+    news0Tag:'Anuncio',news0Title:'El CEO planea regresar a Roblox — Formular Apex',news0Sub:"Bytestorm Esports está lista para volver a Formular Apex en Roblox — y estamos organizando un voto comunitario en Discord y WhatsApp. ¿Debería BYTS volver? Únete a la conversación y vota.",news0Date:'17 de mayo de 2026',news0ModalText:"Bytestorm Esports está considerando un regreso oficial a Formular Apex, un juego de carreras competitivo en Roblox. Tras alejarse de Roblox en febrero de 2026 por motivos de seguridad, la organización ahora evalúa un regreso — y la decisión está en TUS manos. Estamos realizando un voto oficial de la comunidad en nuestro servidor de Discord y en el grupo de WhatsApp. ¿Debería BYTS regresar a Formular Apex? Ve a Discord o al grupo de WhatsApp, encuentra la votación y haz oír tu voz. El resultado determinará directamente lo que sucederá a continuación.",
+    socEye:'Conectar',socTitle:'Encuéntranos',
+    socTikTokDesc:'Revelaciones de camisetas, highlights y contenido de reclutamiento.',socDiscordDesc:'Pruebas, scrims y comunicaciones del equipo.',socDiscordHandle:'Unirse al servidor',socYouTubeDesc:'Highlights de torneos, gameplay y más.',socEmailTitle:'Email',socEmailDesc:'Consultas comerciales y colaboraciones.',socEmailHandle:'Contáctanos',
+    footCopy:'© 2026 Bytestorm. Todos los derechos reservados.',
+    applyTitle:'Postularse ahora',applySub:'Complétalo — te contactaremos si cumples el estándar.',
+    fldPlayerName:'Nombre del jugador *',fldGamerTag:'Gamer Tag *',fldInGameTag:'Tag en juego (ej. #TAG) *',fldGame:'Juego *',fldRegion:'Región *',fldRole:'Rol *',fldJersey:'Número de camiseta — elige tu favorito',fldDiscord:'Usuario de Discord',fldMessage:'Mensaje breve *',
+    phPlayerName:'Tu nombre real',phGamerTag:'Tu nombre en el juego',phMessage:'¿Por qué quieres unirte a Bytestorm?',
+    btnSendApp:'Enviar postulación',applySuccessTitle:'¡Postulación enviada!',applySuccessMsg:"Lo recibimos todo. Si cumples el estándar, nos pondremos en contacto vía Discord o email."
+  },
+  ar: {
+    navGames:'الألعاب',navTournaments:'البطولات',navNews:'الأخبار',navSocials:'التواصل',applyBtn:'تقدّم',
+    gamesEye:'نتنافس في',gamesTitle:'ألعابنا',
+    gcViewTeam:'عرض الفريق',gcViewStaff:'عرض الطاقم',gcPlayers1:'لاعب واحد',gcPlayers3:'3 لاعبين',gcPlayers8:'8 لاعبين',gcStaff:'الطاقم',gcManagement:'الإدارة',
+    tourTitle:'تاريخ البطولات',tourSub:'نتائج مبارياتنا التنافسية',tourUpcoming:'قادم',tourNotPlayed:'المباراة لم تُلعب بعد',tourFoot:'جميع المباريات التنافسية • يُحدَّث بانتظام',
+    newsEye:'آخر الأخبار',newsTitle:'أحدث الأخبار',
+    news0Tag:'إعلان',news0Title:'الرئيس التنفيذي يخطط للعودة إلى Roblox — Formular Apex',news0Sub:'Bytestorm Esports مستعدة للعودة إلى Formular Apex على Roblox — ونجري تصويتاً مجتمعياً عبر Discord وWhatsApp. هل يجب أن يعود BYTS؟ انضم للنقاش وصوّت.',news0Date:'17 مايو 2026',news0ModalText:'تدرس Bytestorm Esports العودة الرسمية إلى Formular Apex، لعبة سباق تنافسية على Roblox. بعد الانسحاب من Roblox في فبراير 2026 بسبب مخاوف أمنية، تقيّم المنظمة الآن العودة — والقرار في أيديكم. نجري تصويتاً رسمياً للمجتمع على خادم Discord وفي مجموعة WhatsApp. هل يجب أن يعود BYTS إلى Formular Apex؟ توجّه إلى Discord أو WhatsApp، اعثر على التصويت وأسمع صوتك. ستشكّل النتيجة مباشرةً ما سيحدث بعد ذلك.',
+    socEye:'تواصل',socTitle:'ابحث عنا',
+    socTikTokDesc:'كشف الأطقم والملخصات ومحتوى التجنيد.',socDiscordDesc:'التجارب والتدريبات وتواصل الفريق.',socDiscordHandle:'انضم للسيرفر',socYouTubeDesc:'ملخصات البطولات والألعاب والمزيد.',socEmailTitle:'البريد الإلكتروني',socEmailDesc:'الاستفسارات التجارية والشراكات.',socEmailHandle:'تواصل معنا',
+    footCopy:'© 2026 Bytestorm. جميع الحقوق محفوظة.',
+    applyTitle:'تقدّم الآن',applySub:'املأ النموذج — سنتواصل معك إذا كنت مناسبًا.',
+    fldPlayerName:'اسم اللاعب *',fldGamerTag:'اسم اللعبة *',fldInGameTag:'علامة داخل اللعبة (مثل #TAG) *',fldGame:'اللعبة *',fldRegion:'المنطقة *',fldRole:'الدور *',fldJersey:'رقم القميص — اختر المفضل لديك',fldDiscord:'اسم مستخدم Discord',fldMessage:'رسالة قصيرة *',
+    phPlayerName:'اسمك الحقيقي',phGamerTag:'اسمك في اللعبة',phMessage:'لماذا تريد الانضمام إلى Bytestorm؟',
+    btnSendApp:'إرسال الطلب',applySuccessTitle:'تم إرسال الطلب!',applySuccessMsg:'تلقينا كل شيء. إذا كنت مناسبًا، سنتواصل معك عبر Discord أو البريد الإلكتروني.'
+  },
+  pt: {
+    navGames:'Jogos',navTournaments:'Torneios',navNews:'Notícias',navSocials:'Redes',applyBtn:'Candidatar',
+    gamesEye:'Competimos em',gamesTitle:'Nossos Jogos',
+    gcViewTeam:'Ver Time',gcViewStaff:'Ver Staff',gcPlayers1:'1 jogador',gcPlayers3:'3 jogadores',gcPlayers8:'8 jogadores',gcStaff:'Staff',gcManagement:'Gestão',
+    tourTitle:'Histórico de Torneios',tourSub:'Nossos resultados competitivos',tourUpcoming:'Em breve',tourNotPlayed:'Partida ainda não jogada',tourFoot:'Todas as partidas • Atualizado regularmente',
+    newsEye:'Últimas',newsTitle:'Notícias',
+    news0Tag:'Anúncio',news0Title:'CEO planeja retornar ao Roblox — Formular Apex',news0Sub:"A Bytestorm Esports está prestes a retornar ao Formular Apex no Roblox — e estamos realizando uma votação comunitária no Discord e WhatsApp. O BYTS deve voltar? Participe e vote.",news0Date:'17 de maio de 2026',news0ModalText:"A Bytestorm Esports está considerando um retorno oficial ao Formular Apex, um jogo de corrida competitivo no Roblox. Após se afastar do Roblox em fevereiro de 2026 por questões de segurança, a organização está agora avaliando um retorno — e a decisão está em SUAS mãos. Estamos realizando uma votação oficial da comunidade em nosso servidor do Discord e no grupo do WhatsApp. O BYTS deve retornar ao Formular Apex? Acesse o Discord ou o grupo do WhatsApp, encontre a votação e faça sua voz ser ouvida. O resultado moldará diretamente o que acontecerá a seguir.",
+    socEye:'Conectar',socTitle:'Nos encontre',
+    socTikTokDesc:'Revelações de camisas, highlights e conteúdo de recrutamento.',socDiscordDesc:'Testes, treinos e comunicação do time.',socDiscordHandle:'Entrar no servidor',socYouTubeDesc:'Highlights de torneios, gameplay e mais.',socEmailTitle:'Email',socEmailDesc:'Consultas comerciais e parcerias.',socEmailHandle:'Contate-nos',
+    footCopy:'© 2026 Bytestorm. Todos os direitos reservados.',
+    applyTitle:'Candidatar-se agora',applySub:'Preencha — entraremos em contato se você atender ao padrão.',
+    fldPlayerName:'Nome do Jogador *',fldGamerTag:'Gamer Tag *',fldInGameTag:'Tag no Jogo (ex. #TAG) *',fldGame:'Jogo *',fldRegion:'Região *',fldRole:'Função *',fldJersey:'Número da camisa — escolha o seu favorito',fldDiscord:'Nome de usuário do Discord',fldMessage:'Mensagem curta *',
+    phPlayerName:'Seu nome real',phGamerTag:'Seu nome no jogo',phMessage:'Por que quer entrar na Bytestorm?',
+    btnSendApp:'Enviar candidatura',applySuccessTitle:'Candidatura enviada!',applySuccessMsg:"Recebemos tudo. Se você atender ao padrão, entraremos em contato via Discord ou email."
+  },
+  pl: {
+    navGames:'Gry',navTournaments:'Turnieje',navNews:'Aktualności',navSocials:'Socjal',applyBtn:'Aplikuj',
+    gamesEye:'Rywalizujemy w',gamesTitle:'Nasze Gry',
+    gcViewTeam:'Zobacz Drużynę',gcViewStaff:'Zobacz Staff',gcPlayers1:'1 gracz',gcPlayers3:'3 graczy',gcPlayers8:'8 graczy',gcStaff:'Staff',gcManagement:'Zarządzanie',
+    tourTitle:'Historia Turniejów',tourSub:'Nasze wyniki w rozgrywkach',tourUpcoming:'Nadchodzący',tourNotPlayed:'Mecz jeszcze nie rozegrany',tourFoot:'Wszystkie mecze • Regularnie aktualizowane',
+    newsEye:'Najnowsze',newsTitle:'Aktualności',
+    news0Tag:'Ogłoszenie',news0Title:'CEO planuje powrót do Roblox — Formular Apex',news0Sub:'Bytestorm Esports zamierza wrócić do Formular Apex na Roblox — i przeprowadzamy głosowanie społeczności na Discord i WhatsApp. Czy BYTS powinno wrócić? Dołącz do dyskusji i zagłosuj.',news0Date:'17 maja 2026',news0ModalText:'Bytestorm Esports rozważa oficjalny powrót do Formular Apex, konkurencyjnej gry wyścigowej na Roblox. Po opuszczeniu Roblox w lutym 2026 z powodu obaw bezpieczeństwa, organizacja ocenia teraz powrót — a decyzja jest w WASZYCH rękach. Przeprowadzamy oficjalne głosowanie społeczności na naszym serwerze Discord i w grupie WhatsApp. Czy BYTS powinno wrócić do Formular Apex? Wejdź na Discord lub do grupy WhatsApp, znajdź głosowanie i daj się słyszeć. Wynik bezpośrednio ukształtuje to, co będzie dalej.',
+    socEye:'Połącz się',socTitle:'Znajdź nas',
+    socTikTokDesc:'Prezentacje koszulek, skróty i content rekrutacyjny.',socDiscordDesc:'Próby, treningi i komunikacja drużyny.',socDiscordHandle:'Dołącz do serwera',socYouTubeDesc:'Skróty turniejów, rozgrywka i więcej.',socEmailTitle:'Email',socEmailDesc:'Zapytania biznesowe i partnerstwa.',socEmailHandle:'Skontaktuj się',
+    footCopy:'© 2026 Bytestorm. Wszelkie prawa zastrzeżone.',
+    applyTitle:'Aplikuj teraz',applySub:'Wypełnij — odezwiemy się, jeśli spełniasz wymagania.',
+    fldPlayerName:'Nazwa gracza *',fldGamerTag:'Gamer Tag *',fldInGameTag:'Tag w grze (np. #TAG) *',fldGame:'Gra *',fldRegion:'Region *',fldRole:'Rola *',fldJersey:'Numer koszulki — wybierz swój ulubiony',fldDiscord:'Nazwa użytkownika Discord',fldMessage:'Krótka wiadomość *',
+    phPlayerName:'Twoje prawdziwe imię',phGamerTag:'Twój nick w grze',phMessage:'Dlaczego chcesz dołączyć do Bytestorm?',
+    btnSendApp:'Wyślij aplikację',applySuccessTitle:'Aplikacja wysłana!',applySuccessMsg:'Otrzymaliśmy wszystko. Jeśli spełniasz wymagania, odezwiemy się przez Discord lub email.'
+  },
+  nl: {
+    navGames:'Spellen',navTournaments:'Toernooien',navNews:'Nieuws',navSocials:'Sociaal',applyBtn:'Aanmelden',
+    gamesEye:'We spelen',gamesTitle:'Onze Spellen',
+    gcViewTeam:'Bekijk Team',gcViewStaff:'Bekijk Staff',gcPlayers1:'1 speler',gcPlayers3:'3 spelers',gcPlayers8:'8 spelers',gcStaff:'Staff',gcManagement:'Beheer',
+    tourTitle:'Toernooi Geschiedenis',tourSub:'Onze competitieve resultaten',tourUpcoming:'Aankomend',tourNotPlayed:'Wedstrijd nog niet gespeeld',tourFoot:'Alle wedstrijden • Regelmatig bijgewerkt',
+    newsEye:'Laatste',newsTitle:'Nieuws',
+    news0Tag:'Aankondiging',news0Title:'CEO plant terugkeer naar Roblox — Formular Apex',news0Sub:"Bytestorm Esports keert terug naar Formular Apex op Roblox — en we houden een community-stemming op Discord en WhatsApp. Moet BYTS terugkomen? Doe mee en stem.",news0Date:'17 mei 2026',news0ModalText:"Bytestorm Esports overweegt een officiële terugkeer naar Formular Apex, een competitief racespel op Roblox. Na het verlaten van Roblox in februari 2026 vanwege beveiligingsproblemen, evalueert de organisatie nu een comeback — en de beslissing ligt in JOUW handen. We houden een officiële community-stemming op onze Discord-server en WhatsApp-groep. Moet BYTS terugkeren naar Formular Apex? Ga naar Discord of de WhatsApp-groep, zoek de stemming en laat je stem horen. Het resultaat zal direct bepalen wat er daarna gebeurt.",
+    socEye:'Verbinden',socTitle:'Vind ons',
+    socTikTokDesc:'Trui-onthullingen, highlights en wervingscontent.',socDiscordDesc:'Proeven, scrims en teamcommunicatie.',socDiscordHandle:'Server joinen',socYouTubeDesc:'Toernooi-highlights, gameplay en meer.',socEmailTitle:'Email',socEmailDesc:'Zakelijke vragen en partnerschappen.',socEmailHandle:'Neem contact op',
+    footCopy:'© 2026 Bytestorm. Alle rechten voorbehouden.',
+    applyTitle:'Nu aanmelden',applySub:'Vul het in — we nemen contact op als je aan de standaard voldoet.',
+    fldPlayerName:'Spelernaam *',fldGamerTag:'Gamer Tag *',fldInGameTag:'In-Game Tag (bijv. #TAG) *',fldGame:'Spel *',fldRegion:'Regio *',fldRole:'Rol *',fldJersey:'Truitnummer — kies je favoriet',fldDiscord:'Discord gebruikersnaam',fldMessage:'Kort bericht *',
+    phPlayerName:'Je echte naam',phGamerTag:'Je in-game gebruikersnaam',phMessage:'Waarom wil je bij Bytestorm aansluiten?',
+    btnSendApp:'Aanmelding verzenden',applySuccessTitle:'Aanmelding verzonden!',applySuccessMsg:'We hebben alles ontvangen. Als je aan de standaard voldoet, nemen we contact op via Discord of email.'
+  },
+  gr: {
+    navGames:'Παιχνίδια',navTournaments:'Τουρνουά',navNews:'Νέα',navSocials:'Κοινωνικά',applyBtn:'Αίτηση',
+    gamesEye:'Ανταγωνιζόμαστε σε',gamesTitle:'Τα Παιχνίδια μας',
+    gcViewTeam:'Δείτε την Ομάδα',gcViewStaff:'Δείτε το Staff',gcPlayers1:'1 παίκτης',gcPlayers3:'3 παίκτες',gcPlayers8:'8 παίκτες',gcStaff:'Staff',gcManagement:'Διοίκηση',
+    tourTitle:'Ιστορικό Τουρνουά',tourSub:'Τα ανταγωνιστικά μας αποτελέσματα',tourUpcoming:'Επερχόμενο',tourNotPlayed:'Ο αγώνας δεν έχει παιχτεί ακόμα',tourFoot:'Όλοι οι αγώνες • Τακτική ενημέρωση',
+    newsEye:'Τελευταία',newsTitle:'Νέα',
+    news0Tag:'Ανακοίνωση',news0Title:'Ο CEO σχεδιάζει επιστροφή στο Roblox — Formular Apex',news0Sub:'Η Bytestorm Esports ετοιμάζεται να επιστρέψει στο Formular Apex στο Roblox — και διεξάγουμε ψηφοφορία κοινότητας στο Discord και WhatsApp. Πρέπει να επιστρέψει το BYTS; Γίνε μέρος της συζήτησης και ψήφισε.',news0Date:'17 Μαΐου 2026',news0ModalText:'Η Bytestorm Esports εξετάζει μια επίσημη επιστροφή στο Formular Apex, ένα ανταγωνιστικό παιχνίδι αγώνων στο Roblox. Αφού αποχώρησε από το Roblox τον Φεβρουάριο του 2026 λόγω ανησυχιών ασφαλείας, η οργάνωση αξιολογεί τώρα ένα comeback — και η απόφαση είναι στα ΔΙΚΑ ΣΑΣ χέρια. Διεξάγουμε επίσημη ψηφοφορία της κοινότητας στον διακομιστή Discord και στην ομάδα WhatsApp. Πρέπει το BYTS να επιστρέψει στο Formular Apex; Μεταβείτε στο Discord ή στην ομάδα WhatsApp, βρείτε την ψηφοφορία και κάντε τη φωνή σας να ακουστεί. Το αποτέλεσμα θα διαμορφώσει άμεσα αυτό που θα ακολουθήσει.',
+    socEye:'Σύνδεση',socTitle:'Βρείτε μας',
+    socTikTokDesc:'Αποκαλύψεις φανελών, highlights και περιεχόμενο στρατολόγησης.',socDiscordDesc:'Δοκιμαστικά, scrims και επικοινωνία ομάδας.',socDiscordHandle:'Εγγραφή στο Server',socYouTubeDesc:'Highlights τουρνουά, gameplay και άλλα.',socEmailTitle:'Email',socEmailDesc:'Επαγγελματικές ερωτήσεις και συνεργασίες.',socEmailHandle:'Επικοινωνήστε',
+    footCopy:'© 2026 Bytestorm. Με επιφύλαξη παντός δικαιώματος.',
+    applyTitle:'Κάντε αίτηση τώρα',applySub:'Συμπληρώστε το — θα επικοινωνήσουμε αν ανταποκρίνεστε.',
+    fldPlayerName:'Όνομα Παίκτη *',fldGamerTag:'Gamer Tag *',fldInGameTag:'In-Game Tag (π.χ. #TAG) *',fldGame:'Παιχνίδι *',fldRegion:'Περιοχή *',fldRole:'Ρόλος *',fldJersey:'Αριθμός Φανέλας — επιλέξτε τον αγαπημένο σας',fldDiscord:'Όνομα χρήστη Discord',fldMessage:'Σύντομο Μήνυμα *',
+    phPlayerName:'Το πραγματικό σου όνομα',phGamerTag:'Το username σου στο παιχνίδι',phMessage:'Γιατί θέλεις να ενταχθείς στη Bytestorm;',
+    btnSendApp:'Αποστολή αίτησης',applySuccessTitle:'Η αίτηση εστάλη!',applySuccessMsg:'Λάβαμε τα πάντα. Αν ανταποκρίνεστε στο επίπεδο, θα επικοινωνήσουμε μέσω Discord ή email.'
+  },
+  ru: {
+    navGames:'Игры',navTournaments:'Турниры',navNews:'Новости',navSocials:'Соцсети',applyBtn:'Подать заявку',
+    gamesEye:'Мы соревнуемся в',gamesTitle:'Наши Игры',
+    gcViewTeam:'Смотреть состав',gcViewStaff:'Смотреть персонал',gcPlayers1:'1 игрок',gcPlayers3:'3 игрока',gcPlayers8:'8 игроков',gcStaff:'Персонал',gcManagement:'Руководство',
+    tourTitle:'История турниров',tourSub:'Наши результаты в соревнованиях',tourUpcoming:'Предстоящий',tourNotPlayed:'Матч ещё не сыгран',tourFoot:'Все матчи • Регулярно обновляется',
+    newsEye:'Последнее',newsTitle:'Новости',
+    news0Tag:'Объявление',news0Title:'CEO планирует вернуться в Roblox — Formular Apex',news0Sub:'Bytestorm Esports готовится вернуться в Formular Apex на Roblox — и мы проводим голосование сообщества в Discord и WhatsApp. Должен ли BYTS вернуться? Присоединяйся и голосуй.',news0Date:'17 мая 2026',news0ModalText:'Bytestorm Esports рассматривает официальное возвращение в Formular Apex — соревновательную гоночную игру на Roblox. После ухода с Roblox в феврале 2026 года из-за проблем с безопасностью, организация теперь оценивает камбэк — и решение в ВАШИХ руках. Мы проводим официальное голосование сообщества на нашем сервере Discord и в группе WhatsApp. Должен ли BYTS вернуться в Formular Apex? Перейдите в Discord или группу WhatsApp, найдите голосование и выскажитесь. Результат напрямую определит, что будет дальше.',
+    socEye:'Связаться',socTitle:'Найти нас',
+    socTikTokDesc:'Показ формы, хайлайты и рекрутинговый контент.',socDiscordDesc:'Трайауты, скримы и командное общение.',socDiscordHandle:'Вступить на сервер',socYouTubeDesc:'Турнирные хайлайты, геймплей и многое другое.',socEmailTitle:'Эл. почта',socEmailDesc:'Деловые запросы и партнёрство.',socEmailHandle:'Связаться',
+    footCopy:'© 2026 Bytestorm. Все права защищены.',
+    applyTitle:'Подать заявку',applySub:'Заполни — свяжемся, если ты соответствуешь стандарту.',
+    fldPlayerName:'Имя игрока *',fldGamerTag:'Игровой тег *',fldInGameTag:'Тег в игре (напр. #ТЕГ) *',fldGame:'Игра *',fldRegion:'Регион *',fldRole:'Роль *',fldJersey:'Номер футболки — выбери любимый',fldDiscord:'Имя пользователя Discord',fldMessage:'Короткое сообщение *',
+    phPlayerName:'Твоё настоящее имя',phGamerTag:'Твой игровой ник',phMessage:'Почему хочешь вступить в Bytestorm?',
+    btnSendApp:'Отправить заявку',applySuccessTitle:'Заявка отправлена!',applySuccessMsg:'Мы всё получили. Если ты соответствуешь стандарту, свяжемся через Discord или email.'
+  },
+  ja: {
+    navGames:'ゲーム',navTournaments:'大会',navNews:'ニュース',navSocials:'SNS',applyBtn:'応募する',
+    gamesEye:'参戦中',gamesTitle:'ゲーム一覧',
+    gcViewTeam:'チームを見る',gcViewStaff:'スタッフを見る',gcPlayers1:'1名',gcPlayers3:'3名',gcPlayers8:'8名',gcStaff:'スタッフ',gcManagement:'マネジメント',
+    tourTitle:'大会履歴',tourSub:'競技結果一覧',tourUpcoming:'予定',tourNotPlayed:'未試合',tourFoot:'全試合 • 定期更新',
+    newsEye:'最新',newsTitle:'ニュース',
+    news0Tag:'お知らせ',news0Title:'CEOがRoblox復帰を計画 — Formular Apex',news0Sub:'Bytestorm EsportsがRobloxのFormular Apexへの復帰を検討中。DiscordとWhatsAppでコミュニティ投票を実施しています。BYTSは戻るべき？参加して投票してください。',news0Date:'2026年5月17日',news0ModalText:'Bytestorm EsportsはRobloxの競技レースゲーム「Formular Apex」への公式復帰を検討しています。セキュリティ上の懸念から2026年2月にRobloxから離れた後、組織は復帰を評価しており、決定は皆さんの手に委ねられています。Discordサーバーと WhatsAppグループで公式コミュニティ投票を実施しています。BYTSはFormular Apexに戻るべきか？DiscordまたはWhatsAppグループに参加し、投票を見つけて声を上げてください。結果が今後の展開を直接決定します。',
+    socEye:'つながる',socTitle:'見つけよう',
+    socTikTokDesc:'ユニフォーム公開、ハイライト、採用コンテンツ。',socDiscordDesc:'トライアウト、スクリム、チームコミュニケーション。',socDiscordHandle:'サーバーに参加',socYouTubeDesc:'大会ハイライト、ゲームプレイなど。',socEmailTitle:'メール',socEmailDesc:'ビジネスのお問い合わせとパートナーシップ。',socEmailHandle:'お問い合わせ',
+    footCopy:'© 2026 Bytestorm. 無断複製禁止。',
+    applyTitle:'今すぐ応募',applySub:'記入してください — 基準に合えばご連絡します。',
+    fldPlayerName:'プレイヤー名 *',fldGamerTag:'ゲーマータグ *',fldInGameTag:'ゲーム内タグ（例：#TAG）*',fldGame:'ゲーム *',fldRegion:'地域 *',fldRole:'役割 *',fldJersey:'背番号 — お気に入りの番号を選択',fldDiscord:'Discordユーザー名',fldMessage:'メッセージ *',
+    phPlayerName:'本名',phGamerTag:'ゲーム内ユーザー名',phMessage:'Bytestormに参加したい理由は？',
+    btnSendApp:'応募を送信',applySuccessTitle:'応募を受け付けました！',applySuccessMsg:'すべて受け取りました。基準に合えば、Discordまたはメールでご連絡します。'
+  },
+  ko: {
+    navGames:'게임',navTournaments:'대회',navNews:'뉴스',navSocials:'SNS',applyBtn:'지원하기',
+    gamesEye:'참가 중인',gamesTitle:'게임 목록',
+    gcViewTeam:'팀 보기',gcViewStaff:'스태프 보기',gcPlayers1:'1명',gcPlayers3:'3명',gcPlayers8:'8명',gcStaff:'스태프',gcManagement:'관리',
+    tourTitle:'대회 기록',tourSub:'경쟁 경기 결과',tourUpcoming:'예정',tourNotPlayed:'경기 미진행',tourFoot:'모든 경기 • 정기 업데이트',
+    newsEye:'최신',newsTitle:'뉴스',
+    news0Tag:'공지',news0Title:'CEO, Roblox 복귀 계획 — Formular Apex',news0Sub:'Bytestorm Esports가 Roblox의 Formular Apex 복귀를 준비 중입니다. Discord와 WhatsApp에서 커뮤니티 투표를 진행 중입니다. BYTS가 돌아와야 할까요? 참여하고 투표하세요.',news0Date:'2026년 5월 17일',news0ModalText:'Bytestorm Esports는 Roblox의 경쟁 레이싱 게임 Formular Apex로의 공식 복귀를 검토 중입니다. 보안 문제로 2026년 2월 Roblox를 떠난 후, 조직은 이제 복귀를 평가하고 있으며 결정은 여러분의 손에 달려 있습니다. Discord 서버와 WhatsApp 그룹에서 공식 커뮤니티 투표를 진행합니다. BYTS가 Formular Apex로 돌아와야 할까요? Discord 또는 WhatsApp 그룹에서 투표를 찾아 의견을 표현해 주세요. 결과가 앞으로의 방향을 직접 결정합니다.',
+    socEye:'연결',socTitle:'찾아오기',
+    socTikTokDesc:'유니폼 공개, 하이라이트, 채용 콘텐츠.',socDiscordDesc:'트라이아웃, 스크림, 팀 소통.',socDiscordHandle:'서버 참가',socYouTubeDesc:'대회 하이라이트, 게임플레이 등.',socEmailTitle:'이메일',socEmailDesc:'비즈니스 문의 및 파트너십.',socEmailHandle:'문의하기',
+    footCopy:'© 2026 Bytestorm. 모든 권리 보유.',
+    applyTitle:'지금 지원하기',applySub:'작성해주세요 — 기준에 맞으면 연락드립니다.',
+    fldPlayerName:'플레이어 이름 *',fldGamerTag:'게이머 태그 *',fldInGameTag:'인게임 태그 (예: #TAG) *',fldGame:'게임 *',fldRegion:'지역 *',fldRole:'역할 *',fldJersey:'등번호 — 좋아하는 번호 선택',fldDiscord:'Discord 사용자명',fldMessage:'짧은 메시지 *',
+    phPlayerName:'실제 이름',phGamerTag:'인게임 닉네임',phMessage:'Bytestorm에 합류하고 싶은 이유는?',
+    btnSendApp:'지원서 보내기',applySuccessTitle:'지원 완료!',applySuccessMsg:'모두 받았습니다. 기준에 맞으면 Discord 또는 이메일로 연락드립니다.'
+  },
+  zh: {
+    navGames:'游戏',navTournaments:'赛事',navNews:'新闻',navSocials:'社交',applyBtn:'申请',
+    gamesEye:'参赛项目',gamesTitle:'我们的游戏',
+    gcViewTeam:'查看队伍',gcViewStaff:'查看员工',gcPlayers1:'1名选手',gcPlayers3:'3名选手',gcPlayers8:'8名选手',gcStaff:'工作人员',gcManagement:'管理层',
+    tourTitle:'赛事记录',tourSub:'我们的竞技比赛结果',tourUpcoming:'即将举行',tourNotPlayed:'比赛尚未进行',tourFoot:'所有比赛 • 定期更新',
+    newsEye:'最新',newsTitle:'新闻',
+    news0Tag:'公告',news0Title:'CEO计划重返Roblox — Formular Apex',news0Sub:'Bytestorm Esports即将回归Roblox的Formular Apex，我们正在Discord和WhatsApp上进行社区投票。BYTS应该回来吗？参与讨论并投票。',news0Date:'2026年5月17日',news0ModalText:'Bytestorm Esports正在考虑正式回归Formular Apex，这是Roblox上的一款竞技赛车游戏。由于安全顾虑于2026年2月离开Roblox后，该组织现在正在评估回归计划——决定权在您手中。我们正在Discord服务器和WhatsApp群组中进行官方社区投票。BYTS应该回归Formular Apex吗？前往Discord或WhatsApp群组，找到投票，让您的声音被听到。结果将直接决定接下来发生什么。',
+    socEye:'联系',socTitle:'找到我们',
+    socTikTokDesc:'球衣发布、精彩集锦和招募内容。',socDiscordDesc:'试训、对练和团队交流。',socDiscordHandle:'加入服务器',socYouTubeDesc:'赛事集锦、游戏玩法及更多。',socEmailTitle:'电子邮件',socEmailDesc:'商务咨询与合作。',socEmailHandle:'联系我们',
+    footCopy:'© 2026 Bytestorm. 保留所有权利。',
+    applyTitle:'立即申请',applySub:'填写表格——如果符合标准，我们会与您联系。',
+    fldPlayerName:'选手姓名 *',fldGamerTag:'游戏标签 *',fldInGameTag:'游戏内标签（如 #TAG）*',fldGame:'游戏 *',fldRegion:'地区 *',fldRole:'角色 *',fldJersey:'球衣号码 — 选择您的最爱',fldDiscord:'Discord用户名',fldMessage:'简短留言 *',
+    phPlayerName:'您的真实姓名',phGamerTag:'您的游戏内用户名',phMessage:'您为什么想加入Bytestorm？',
+    btnSendApp:'提交申请',applySuccessTitle:'申请已发送！',applySuccessMsg:'我们已收到所有信息。如果您符合标准，我们将通过Discord或电子邮件联系您。'
+  },
+  sv: {
+    navGames:'Spel',navTournaments:'Turneringar',navNews:'Nyheter',navSocials:'Socialt',applyBtn:'Ansök',
+    gamesEye:'Vi tävlar i',gamesTitle:'Våra Spel',
+    gcViewTeam:'Visa Lag',gcViewStaff:'Visa Personal',gcPlayers1:'1 spelare',gcPlayers3:'3 spelare',gcPlayers8:'8 spelare',gcStaff:'Personal',gcManagement:'Ledning',
+    tourTitle:'Turneringshistorik',tourSub:'Våra tävlingsresultat',tourUpcoming:'Kommande',tourNotPlayed:'Match ännu ej spelad',tourFoot:'Alla matcher • Uppdateras regelbundet',
+    newsEye:'Senaste',newsTitle:'Nyheter',
+    news0Tag:'Tillkännagivande',news0Title:'VD planerar återkomst till Roblox — Formular Apex',news0Sub:'Bytestorm Esports förbereder återkomst till Formular Apex på Roblox — och vi håller en community-omröstning på Discord och WhatsApp. Borde BYTS komma tillbaka? Delta och rösta.',news0Date:'17 maj 2026',news0ModalText:'Bytestorm Esports överväger en officiell återkomst till Formular Apex, ett konkurrenskraftigt racingspel på Roblox. Efter att ha lämnat Roblox i februari 2026 på grund av säkerhetsproblem, utvärderar organisationen nu en comeback — och beslutet är i ERA händer. Vi håller en officiell community-omröstning på vår Discord-server och WhatsApp-grupp. Borde BYTS återvända till Formular Apex? Gå till Discord eller WhatsApp-gruppen, hitta omröstningen och gör din röst hörd. Resultatet kommer direkt forma vad som händer härnäst.',
+    socEye:'Anslut',socTitle:'Hitta oss',
+    socTikTokDesc:'Tröjavslöjanden, höjdpunkter och rekryteringsinnehåll.',socDiscordDesc:'Uttestningar, scrims och teamkommunikation.',socDiscordHandle:'Gå med i servern',socYouTubeDesc:'Turneringshöjdpunkter, gameplay och mer.',socEmailTitle:'E-post',socEmailDesc:'Affärsförfrågningar och partnerskap.',socEmailHandle:'Kontakta oss',
+    footCopy:'© 2026 Bytestorm. Alla rättigheter förbehållna.',
+    applyTitle:'Ansök nu',applySub:'Fyll i det — vi hör av oss om du möter standarden.',
+    fldPlayerName:'Spelarnamn *',fldGamerTag:'Gamer Tag *',fldInGameTag:'In-Game Tag (t.ex. #TAG) *',fldGame:'Spel *',fldRegion:'Region *',fldRole:'Roll *',fldJersey:'Tröjanummer — välj din favorit',fldDiscord:'Discord användarnamn',fldMessage:'Kort meddelande *',
+    phPlayerName:'Ditt riktiga namn',phGamerTag:'Ditt in-game användarnamn',phMessage:'Varför vill du gå med i Bytestorm?',
+    btnSendApp:'Skicka ansökan',applySuccessTitle:'Ansökan skickad!',applySuccessMsg:'Vi fick allt. Om du möter standarden hör vi av oss via Discord eller e-post.'
+  },
+  ro: {
+    navGames:'Jocuri',navTournaments:'Turnee',navNews:'Știri',navSocials:'Social',applyBtn:'Aplică',
+    gamesEye:'Concurăm în',gamesTitle:'Jocurile Noastre',
+    gcViewTeam:'Vezi Echipa',gcViewStaff:'Vezi Staff',gcPlayers1:'1 jucător',gcPlayers3:'3 jucători',gcPlayers8:'8 jucători',gcStaff:'Staff',gcManagement:'Management',
+    tourTitle:'Istoric Turnee',tourSub:'Rezultatele noastre competitive',tourUpcoming:'Următor',tourNotPlayed:'Meci nejucat încă',tourFoot:'Toate meciurile • Actualizat regulat',
+    newsEye:'Ultimele',newsTitle:'Știri',
+    news0Tag:'Anunț',news0Title:'CEO plănuiește revenirea la Roblox — Formular Apex',news0Sub:'Bytestorm Esports se pregătește să revină la Formular Apex pe Roblox — și organizăm un vot comunitar pe Discord și WhatsApp. BYTS ar trebui să revină? Alătură-te și votează.',news0Date:'17 mai 2026',news0ModalText:'Bytestorm Esports are în vedere o revenire oficială la Formular Apex, un joc de curse competitiv pe Roblox. După ce a părăsit Roblox în februarie 2026 din motive de securitate, organizația evaluează acum o revenire — iar decizia este în mâinile VOASTRE. Organizăm un vot oficial al comunității pe serverul nostru Discord și în grupul WhatsApp. BYTS ar trebui să revină la Formular Apex? Intră pe Discord sau în grupul WhatsApp, găsește votul și fă-ți vocea auzită. Rezultatul va modela direct ce se va întâmpla în continuare.',
+    socEye:'Conectează-te',socTitle:'Găsește-ne',
+    socTikTokDesc:'Dezvăluiri de tricouri, momente și conținut de recrutare.',socDiscordDesc:'Probe, scrimmage-uri și comunicații de echipă.',socDiscordHandle:'Alătură-te serverului',socYouTubeDesc:'Momente din turnee, gameplay și altele.',socEmailTitle:'Email',socEmailDesc:'Întrebări de afaceri și parteneriate.',socEmailHandle:'Contactați-ne',
+    footCopy:'© 2026 Bytestorm. Toate drepturile rezervate.',
+    applyTitle:'Aplică acum',applySub:'Completează — te contactăm dacă îndeplinești standardul.',
+    fldPlayerName:'Numele jucătorului *',fldGamerTag:'Gamer Tag *',fldInGameTag:'Tag în joc (ex. #TAG) *',fldGame:'Joc *',fldRegion:'Regiune *',fldRole:'Rol *',fldJersey:'Număr tricou — alege favoritul tău',fldDiscord:'Nume utilizator Discord',fldMessage:'Mesaj scurt *',
+    phPlayerName:'Numele tău real',phGamerTag:'Username-ul tău din joc',phMessage:'De ce vrei să te alături Bytestorm?',
+    btnSendApp:'Trimite aplicația',applySuccessTitle:'Aplicație trimisă!',applySuccessMsg:'Am primit totul. Dacă îndeplinești standardul, te contactăm prin Discord sau email.'
+  }
+};
+
+// ── News data with translations ──
+var newsData = [
+  {
+    tag: 'news0Tag',
+    title: 'news0Title',
+    img: 'https://static.wikia.nocookie.net/formula-apex/images/e/e6/Game_Icon-_Pre_CU11.png/revision/latest?cb=20240824021346',
+    text: 'news0ModalText',
+    date: 'news0Date'
+  }
+];
+
+function openNews(i){
+  var a=newsData[i];if(!a)return;
+  var t=translations[currentLang]||translations['en'];
+  document.getElementById('nModal-img').src=a.img;
+  document.getElementById('nModal-tag').textContent=t[a.tag]||t['news0Tag'];
+  document.getElementById('nModal-title').textContent=t[a.title]||t['news0Title'];
+  document.getElementById('nModal-text').textContent=t[a.text]||t['news0ModalText'];
+  document.getElementById('nModal-date').textContent=t[a.date]||t['news0Date'];
+  document.getElementById('newsModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+var currentLang='en';
+
+function closeNews(){
+  document.getElementById('newsModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function changeLang(lang){
+  currentLang=lang;
+  var t=translations[lang]||translations['en'];
+  // Apply RTL for Arabic
+  document.documentElement.dir=(lang==='ar')?'rtl':'ltr';
+  // Apply all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key=el.getAttribute('data-i18n');
+    if(t[key]!==undefined) el.textContent=t[key];
+  });
+  // Apply placeholder translations
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+    var key=el.getAttribute('data-i18n-placeholder');
+    if(t[key]!==undefined) el.placeholder=t[key];
+  });
+  // Persist for modal use
+  localStorage.setItem('byts-lang',lang);
 }
 </script>
 </body>
