@@ -85,7 +85,7 @@
   .rp-badge.content{color:#a78bfa;border-color:#4c1d95}
   .rp-badge.staff-r{color:#34d399;border-color:#064e3b}
   .rp-badge.normal{color:var(--m2);border-color:var(--b2)}
-  .rp-badge.ceo{color:#fff;border-color:#444;background:#111}
+  .rp-badge.ceo{color:#f9a8c9;border-color:#c96a8a;background:#1a0a0f}
   .rp-flag-big{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.12;transition:opacity .3s;z-index:0;pointer-events:none}
   .rp-flags-dual{position:absolute;inset:0;display:flex;z-index:0;pointer-events:none;opacity:.13;transition:opacity .3s}
   .rp-flags-dual img{width:50%;height:100%;object-fit:cover;object-position:center}
@@ -305,7 +305,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="gc-img" src="" alt="Brawl Stars" style="display:none"/>
           <div class="gc-placeholder">Brawl Stars</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">7 players + 1 trial</div></div>
+          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">8 players</div></div>
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
@@ -359,8 +359,8 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <div class="rp-head"><span class="rp-tag">FN</span><span class="rp-game">Fortnite</span><button class="rp-close" onclick="closeRoster('fn')">&#215;</button></div>
       <div class="rp-grid">
         <div class="rp-card"><div class="rp-flags-dual"><img src="https://flagcdn.com/w160/sy.png" alt="Syria"/><img src="https://flagcdn.com/w160/hu.png" alt="Hungary"/></div><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Syria &amp; Hungary</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/it.png" alt="Italy"/><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Daniel</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Italy</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Austria</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/it.png" alt="Italy"/><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Daniel</div><div class="rp-meta"><b>Role:</b> Team Captain<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Italy</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Austria</div></div>
       </div>
     </div>
 
@@ -369,13 +369,13 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <div class="rp-head"><span class="rp-tag">BS</span><span class="rp-game">Brawl Stars</span><button class="rp-close" onclick="closeRoster('bs')">&#215;</button></div>
       <div class="rp-grid">
         <div class="rp-card"><div class="rp-flags-dual"><img src="https://flagcdn.com/w160/sy.png" alt="Syria"/><img src="https://flagcdn.com/w160/hu.png" alt="Hungary"/></div><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Syria &amp; Hungary</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/it.png" alt="Italy"/><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Daniel</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Italy</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Austria</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
-        <div class="rp-card"><div class="rp-flags-dual"><img src="https://flagcdn.com/w160/sy.png" alt="Syria"/><img src="https://flagcdn.com/w160/hu.png" alt="Hungary"/></div><div class="rp-top"><span class="rp-num">#1</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">soullyxx</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> Syria &amp; Hungary</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gr.png" alt="Greece"/><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Plays:</b> BS<br/><b>Region:</b> EU – Greece</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#17</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">Maik</div><div class="rp-meta"><b>Plays:</b> BS (Reserve)<br/><b>Region:</b> EU – Austria</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#31</span><span class="rp-badge normal">Esports Player</span></div><div class="rp-name">爪〇〇冂し|号ん十</div><div class="rp-meta"><b>Plays:</b> BS <br/><b>Region:</b> EU – Turkey</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/it.png" alt="Italy"/><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Daniel</div><div class="rp-meta"><b>Role:</b> Team Captain<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Italy</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Austria</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
+        <div class="rp-card"><div class="rp-flags-dual"><img src="https://flagcdn.com/w160/sy.png" alt="Syria"/><img src="https://flagcdn.com/w160/hu.png" alt="Hungary"/></div><div class="rp-top"><span class="rp-num">#1</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">soullyxx</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> Syria &amp; Hungary</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gr.png" alt="Greece"/><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Role:</b> Pro Support<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Greece</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#17</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">Maik</div><div class="rp-meta"><b>Role:</b> Support<br/><b>Plays:</b> BS (Reserve)<br/><b>Region:</b> EU – Austria</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#31</span><span class="rp-badge normal">Esports Player</span></div><div class="rp-name">爪〇〇冂し|号ん十</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
       </div>
     </div>
 
@@ -622,6 +622,21 @@ function sendApp(){
   document.getElementById('applyForm').style.display='none';
   document.getElementById('applySuccess').style.display='flex';
 }
+
+// ── Step 1: Auto-fix badge classes based on text content ──
+// This MUST run before the counter so classes are correct when counted
+document.querySelectorAll('.rp-badge').forEach(function(badge) {
+  var text = badge.textContent.trim().toLowerCase();
+  badge.classList.remove('esports','normal','content','staff-r','ceo');
+  if (text === 'esports player') badge.classList.add('esports');
+  else if (text === 'normal player') badge.classList.add('normal');
+  else if (text === 'content creator') badge.classList.add('content');
+  else if (text === 'staff') badge.classList.add('staff-r');
+  else if (text === 'ceo') badge.classList.add('ceo');
+  else badge.classList.add('normal');
+});
+
+
 
 // ── Roster toggle ──
 var cur=null;
