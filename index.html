@@ -28,7 +28,54 @@
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCZ87HM440"></script>
-  <script>
+  
+<!-- ── LEGAL NOTICE MODAL ── -->
+<div class="m-overlay" id="impressumModal" onclick="overlayImpClose(event)">
+  <div class="modal" style="max-height:85vh;overflow-y:auto;">
+    <button class="m-x" onclick="closeImpressum()">&#215;</button>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:4px;">Legal Notice</div>
+    <p style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--m2);margin-bottom:28px;">Impressum gemäß § 5 ECG &amp; § 25 MedienG</p>
+
+    <div style="margin-bottom:22px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:6px;">Operator &amp; Media Owner</p>
+      <p style="font-size:14px;color:#ccc;line-height:1.7;">Bytestorm Corporation<br/>Bytestorm Esports Division<br/>Austria</p>
+    </div>
+
+    <div style="margin-bottom:22px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:6px;">Contact</p>
+      <a href="mailto:bytestorm.marketing.team@gmail.com" style="font-size:14px;color:#aaa;text-decoration:underline;">bytestorm.marketing.team@gmail.com</a>
+    </div>
+
+    <div style="margin-bottom:22px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:6px;">Purpose of this Website</p>
+      <p style="font-size:14px;color:#ccc;line-height:1.7;">This website is operated by Bytestorm Esports for informational and promotional purposes related to its esports activities, team recruitment, and tournament participation. No commercial goods or services are sold on this website.</p>
+    </div>
+
+    <div style="margin-bottom:22px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:6px;">Content Responsibility</p>
+      <p style="font-size:14px;color:#ccc;line-height:1.7;">Responsible for content pursuant to § 18 ECG: Bytestorm Corporation, Austria.</p>
+    </div>
+
+    <div style="margin-bottom:22px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:6px;">Liability Disclaimer</p>
+      <p style="font-size:14px;color:#ccc;line-height:1.7;">Despite careful content control, we assume no liability for the content of external links. The operators of linked pages are solely responsible for their content. All content on this website is provided for informational purposes only.</p>
+    </div>
+
+    <div style="margin-bottom:22px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:6px;">Copyright</p>
+      <p style="font-size:14px;color:#ccc;line-height:1.7;">All content, graphics, logos, and media on this website are the property of Bytestorm Corporation unless otherwise stated. Reproduction or distribution without prior written consent is prohibited.</p>
+    </div>
+
+    <div style="margin-bottom:22px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:6px;">Online Dispute Resolution</p>
+      <p style="font-size:14px;color:#ccc;line-height:1.7;">The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener" style="color:#aaa;text-decoration:underline;">https://ec.europa.eu/consumers/odr</a>. We are not obligated nor willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+    </div>
+
+    <p style="font-size:12px;color:var(--m2);line-height:1.6;border-top:1px solid #1e1e1e;padding-top:20px;margin-top:8px;">Last updated: May 2026. Bytestorm Corporation is a private, non-commercial esports organization based in Austria. This site does not process payments or sell products directly.</p>
+  </div>
+</div>
+
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -231,7 +278,8 @@
   .news-modal-body{padding:28px 32px 32px}
   .news-modal-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:#fff;line-height:1.1;margin:10px 0 14px}
   .news-modal-text{font-size:14px;color:#fff;line-height:1.8}
-  </style>
+  
+</style>
 </head>
 <body>
 
@@ -515,29 +563,6 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 
     <div class="tourn-list">
 
-      <div class="th-card upcoming">
-        <div class="th-trophy" style="color:#fff">
-          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-        </div>
-        <div class="th-info">
-          <div class="th-upcoming-badge"><span class="th-upcoming-dot"></span>Upcoming</div>
-          <div class="th-name">BSCS Italy Tournament</div>
-          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">—</span>TBD</div>
-        </div>
-        <div class="th-result">
-          <div class="th-upcoming-date">May 23, 2026</div>
-          <div class="th-upcoming-sub">Match not yet played</div>
-        </div>
-        <div class="th-divider"></div>
-        <div class="th-meta">
-          <div class="th-date">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            May 23, 2026
-          </div>
-          <div class="th-venue">Brawl Stars</div>
-        </div>
-      </div>
-
       <!-- Dach BSCS Tournament – Match 2: vs Vortex (Loss) -->
       <div class="th-card">
         <div class="th-trophy">
@@ -728,6 +753,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
   </div>
 </section>
 
+
 <footer>
   <div class="foot-in">
     <div class="foot-logo">
@@ -735,10 +761,23 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <span class="foot-brand">Bytestorm Esports</span>
     </div>
     <span class="foot-copy">&#169; 2026 Bytestorm. All rights reserved.</span>
+    <a href="#" onclick="openImpressum();return false;" style="font-size:12px;color:var(--m2);text-decoration:underline;margin-top:6px;">Legal Notice (Impressum)</a>
   </div>
 </footer>
 
 <script>
+
+// ── Legal Notice Modal ──
+function openImpressum(){
+  document.getElementById('impressumModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeImpressum(){
+  document.getElementById('impressumModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function overlayImpClose(e){if(e.target===document.getElementById('impressumModal'))closeImpressum()}
+
 // ── Image lazy-load ──
 document.querySelectorAll('.game-card').forEach(function(c){
   var u=c.getAttribute('data-img');
