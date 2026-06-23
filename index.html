@@ -165,6 +165,7 @@
   .rp-badge.staff-r{color:#34d399;border-color:#064e3b}
   .rp-badge.normal{color:var(--m2);border-color:var(--b2)}
   .rp-badge.ceo{color:#f9a8c9;border-color:#c96a8a;background:#1a0a0f}
+  .rp-badge.captain{color:#fde68a;border-color:#d97706;background:#1c1000;box-shadow:0 0 6px #92400e88;text-shadow:0 0 8px #fbbf2499}
   .rp-flag-big{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.12;transition:opacity .3s;z-index:0;pointer-events:none}
   .rp-flags-dual{position:absolute;inset:0;display:flex;z-index:0;pointer-events:none;opacity:.13;transition:opacity .3s}
   .rp-flags-dual img{width:50%;height:100%;object-fit:cover;object-position:center}
@@ -486,7 +487,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <div class="rp-head"><span class="rp-tag">FN</span><span class="rp-game">Fortnite</span><button class="rp-close" onclick="closeRoster('fn')">&#215;</button></div>
       <div class="rp-grid">
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Japan</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/it.png" alt="Italy"/><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Daniel</div><div class="rp-meta"><b>Role:</b> Team Captain<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Italy</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/it.png" alt="Italy"/><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">Daniel</div><div class="rp-meta"><b>Role:</b> Normal Player<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Italy</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Austria</div></div>
       </div>
     </div>
@@ -496,9 +497,9 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <div class="rp-head"><span class="rp-tag">BS</span><span class="rp-game">Brawl Stars</span><button class="rp-close" onclick="closeRoster('bs')">&#215;</button></div>
       <div class="rp-grid">
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Japan</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/it.png" alt="Italy"/><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Daniel</div><div class="rp-meta"><b>Role:</b> Team Captain<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Italy</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/it.png" alt="Italy"/><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">Daniel</div><div class="rp-meta"><b>Role:</b> Normal Player<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Italy</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Austria</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge captain">Team Captain</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Role:</b> Team Captain<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
         <div class="rp-card"><div class="rp-flags-dual"><img src="https://flagcdn.com/w160/sy.png" alt="Syria"/><img src="https://flagcdn.com/w160/hu.png" alt="Hungary"/></div><div class="rp-top"><span class="rp-num">#1</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">soullyxx</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> Syria &amp; Hungary</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gr.png" alt="Greece"/><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Role:</b> Pro Support<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Greece</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#17</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">Maik</div><div class="rp-meta"><b>Role:</b> Support<br/><b>Plays:</b> BS (Reserve)<br/><b>Region:</b> EU – Austria</div></div>
@@ -543,6 +544,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <div class="rp-head"><span class="rp-tag">STAFF</span><span class="rp-game">Management</span><button class="rp-close" onclick="closeRoster('staff')">&#215;</button></div>
       <div class="rp-grid">
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Region:</b> Japan</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge captain">Team Captain</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Role:</b> Team Captain<br/><b>Region:</b> EU – Turkey</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/al.png" alt="AL"/><div class="rp-top"><span class="rp-num">#43</span><span class="rp-badge staff-r">Staff</span></div><div class="rp-name">Daris</div><div class="rp-meta"><b>Role:</b> Editor<br/><b>Region:</b> EU – Albania</div></div>
       </div>
     </div>
@@ -648,6 +650,19 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
     <div class="news-grid">
 
       <div class="news-card" onclick="openNews(0)">
+        <div class="news-img-wrap" style="position:relative;display:flex">
+          <img class="news-img" src="https://flagcdn.com/w320/tr.png" alt="Turkey" style="object-fit:cover;object-position:center;width:50%;height:100%"/>
+          <img class="news-img" src="https://flagcdn.com/w320/it.png" alt="Italy" style="object-fit:cover;object-position:center;width:50%;height:100%"/>
+        </div>
+        <div class="news-body">
+          <span class="news-tag">Roster Update</span>
+          <div class="news-title-text">Batur Named New Team Captain — Daniel Steps Down from Role</div>
+          <div class="news-sub">Daniel is demoted from Team Captain early due to bad behaviour and inactivity. Batur steps up as new Team Captain, contracted until 2028.</div>
+          <div class="news-date">June 23, 2026</div>
+        </div>
+      </div>
+
+      <div class="news-card" onclick="openNews(1)">
         <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://tr.rbxcdn.com/180DAY-6f05ab8fd4559a8de6b55412cdccd328/768/432/Image/Webp/noFilter" alt="Formula Apex"/>
           <div style="position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;z-index:2">
@@ -668,7 +683,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(1)">
+      <div class="news-card" onclick="openNews(2)">
         <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://static.wikia.nocookie.net/formula-apex/images/e/e6/Game_Icon-_Pre_CU11.png/revision/latest?cb=20240824021346" alt="Formular Apex"/>
           <div style="position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;z-index:2">
@@ -698,16 +713,13 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
   <div class="news-modal" style="position:relative;overflow:hidden;background:#111">
     <!-- Full background image -->
     <img id="nModal-img" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;pointer-events:none"/>
+    <img id="nModal-img2" src="" alt="" style="position:absolute;top:0;right:0;width:50%;height:100%;object-fit:cover;object-position:center;z-index:0;pointer-events:none;display:none"/>
     <!-- Dark overlay so text is readable -->
     <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.82) 50%,rgba(0,0,0,0.96) 100%);z-index:1;pointer-events:none"></div>
     <!-- Close button -->
     <button class="news-close" onclick="closeNews()" style="z-index:3">&#215;</button>
     <!-- Logos -->
     <div style="position:relative;z-index:2;padding:24px 24px 0;display:flex;align-items:center;gap:8px">
-      <div style="width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;padding:3px">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Roblox_Logo_2025.png/250px-Roblox_Logo_2025.png" alt="Roblox" style="width:100%;height:100%;object-fit:contain"/>
-      </div>
-      <span style="color:rgba(255,255,255,0.3);font-size:13px;font-weight:300">×</span>
       <div style="width:32px;height:32px;border-radius:6px;background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;padding:5px">
         <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm" style="width:100%;height:100%;object-fit:contain"/>
       </div>
@@ -840,6 +852,7 @@ document.querySelectorAll('.rp-badge').forEach(function(badge) {
   if (text === 'esports player') badge.classList.add('esports');
   else if (text === 'normal player') badge.classList.add('normal');
   else if (text === 'content creator') badge.classList.add('content');
+  else if (text === 'team captain') badge.classList.add('captain');
   else if (text === 'staff') badge.classList.add('staff-r');
   else if (text === 'ceo') badge.classList.add('ceo');
   else badge.classList.add('normal');
@@ -849,6 +862,14 @@ document.querySelectorAll('.rp-badge').forEach(function(badge) {
 
 // ── News ──
 var newsData = [
+  {
+    tag: 'Roster Update',
+    title: 'Batur Named New Team Captain — Daniel Steps Down from Role',
+    img: 'https://flagcdn.com/w320/tr.png',
+    img2: 'https://flagcdn.com/w320/it.png',
+    text: 'Effective June 20, 2026, Bytestorm Esports has made an official roster and leadership change. Daniel (#187) has been demoted from two roles due to repeated inactivity and misconduct as Team Captain. He was originally contracted as Team Captain until 2027, but failed to meet the responsibilities the role demands — resulting in an early demotion to Normal Player. Batur (#52) from Turkey has been appointed as the new Team Captain and will serve in this role until 2028 under an official contract. We are confident Batur will bring the leadership and commitment this organization expects.',
+    date: 'June 23, 2026'
+  },
   {
     tag: 'Announcement',
     title: 'BYTS Returns to Roblox — Formula Apex, Starting Today',
@@ -866,7 +887,15 @@ var newsData = [
 ];
 function openNews(i){
   var a=newsData[i];if(!a)return;
-  document.getElementById('nModal-img').src=a.img;
+  var img1=document.getElementById('nModal-img');
+  var img2=document.getElementById('nModal-img2');
+  if(a.img2){
+    img1.src=a.img;img1.style.width='50%';
+    img2.src=a.img2;img2.style.display='block';
+  } else {
+    img1.src=a.img;img1.style.width='100%';
+    img2.src='';img2.style.display='none';
+  }
   document.getElementById('nModal-tag').textContent=a.tag;
   document.getElementById('nModal-title').textContent=a.title;
   document.getElementById('nModal-text').textContent=a.text;
