@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bytestorm-esports.vercel.app/sitemap.xml
