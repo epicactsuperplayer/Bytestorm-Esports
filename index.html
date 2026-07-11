@@ -13,7 +13,7 @@
     "logo": "https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png",
     "founder": {"@type": "Person","name": "Memet"},
     "foundingDate": "2026",
-    "description": "Bytestorm Esports (BYTS) is an international competitive gaming organization founded in 2026 in St. Johann, Austria by CEO Superplayer (#63). Competing in Brawl Stars, Fortnite, Rocket League, CS2, GTA, and Formula Apex (Roblox). Team Captain: Batur (#52, Turkey). Part of Bytestorm Corporation.",
+    "description": "Bytestorm Esports (BYTS) is an international competitive gaming organization founded in 2026 in St. Johann, Austria by CEO Superplayer (#63). Competing in Brawl Stars, Fortnite, Rocket League, CS2, GTA, Formula Apex (Roblox), and eFootball. Team Captain: Batur (#52, Turkey). Part of Bytestorm Corporation.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "St. Johann",
@@ -46,6 +46,7 @@
       <li>CS2 (Counter-Strike 2)</li>
       <li>GTA (Grand Theft Auto)</li>
       <li>Formula Apex (Roblox)</li>
+      <li>eFootball</li>
     </ul>
   </section>
   <section id="ai-roster">
@@ -57,6 +58,14 @@
   </section>
   <section id="ai-news">
     <h2>Recent News &amp; Events</h2>
+    <article>
+      <h3>Bytestorm Esports Expands Into eFootball — July 11, 2026</h3>
+      <p>Bytestorm Esports officially expanded its competitive lineup to seven titles with the addition of eFootball, joining Brawl Stars, Fortnite, Rocket League, CS2, GTA, and Formula Apex. Recruitment for the eFootball roster is ongoing.</p>
+    </article>
+    <article>
+      <h3>Bytestorm Esports Academy Launched — July 11, 2026</h3>
+      <p>Bytestorm Esports launched an Academy program for players who are not yet at a competitive level but want to learn. Academy members are taught by Trainers and through the official Bytestorm Esports social media pages, with strong performers able to progress toward the main roster.</p>
+    </article>
     <article>
       <h3>RedZac Sponsorship Rejected — June 2026</h3>
       <p>CEO Superplayer (#63) and Team Captain Batur (#52) reached out to RedZac with an official sponsorship request on behalf of Bytestorm Esports. RedZac rejected the request, explaining that their sponsorship program does not include esports organizations. RedZac stated they exclusively sponsor Special Events and traditional Sport Teams, not esports teams. Bytestorm Esports continues to look for sponsorship opportunities.</p>
@@ -127,6 +136,47 @@
   </div>
 </div>
 
+<!-- ── ABOUT US MODAL ── -->
+<div class="m-overlay" id="aboutModal" onclick="overlayAboutClose(event)">
+  <div class="modal" style="max-height:85vh;overflow-y:auto;">
+    <button class="m-x" onclick="closeAbout()">&#215;</button>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:4px;">About Us</div>
+    <p style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--m2);margin-bottom:28px;">Who We Are</p>
+
+    <div style="margin-bottom:22px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:6px;">Overview</p>
+      <p style="font-size:14px;color:#ccc;line-height:1.7;">Bytestorm Esports (BYTS) is an independent esports club based in Austria, built by players for players and competing across multiple major titles under one roster.</p>
+    </div>
+
+    <div style="margin-bottom:22px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:6px;">Founding</p>
+      <p style="font-size:14px;color:#ccc;line-height:1.7;">The club was founded on January 18, 2026, in St. Johann im Pongau, Salzburg, Austria.</p>
+    </div>
+
+    <div style="margin-bottom:22px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:6px;">Founder</p>
+      <p style="font-size:14px;color:#ccc;line-height:1.7;">Bytestorm Esports was created by Superplayer, who continues to lead the organization today as CEO and Founder.</p>
+    </div>
+
+    <div style="margin-bottom:22px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:6px;">Competitive Lineup</p>
+      <p style="font-size:14px;color:#ccc;line-height:1.7;">The team originally competed across six titles and has since grown to seven with the addition of eFootball: Brawl Stars, Fortnite, Rocket League, CS2, GTA, Formula Apex (Roblox), and eFootball.</p>
+    </div>
+
+    <div style="margin-bottom:22px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:6px;">Sponsorship</p>
+      <p style="font-size:14px;color:#ccc;line-height:1.7;">Bytestorm Esports currently has no sponsors. The organization is fully self-funded and continues to look for partnerships that fit its long-term goals.</p>
+    </div>
+
+    <div style="margin-bottom:22px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:6px;">Organization</p>
+      <p style="font-size:14px;color:#ccc;line-height:1.7;">Despite operating without sponsorship, Bytestorm Esports remains part of the wider Bytestorm family, sitting alongside sister divisions under the Bytestorm Corporation umbrella.</p>
+    </div>
+
+    <p style="font-size:12px;color:var(--m2);line-height:1.6;border-top:1px solid #1e1e1e;padding-top:20px;margin-top:8px;">Bytestorm Esports — an Austrian competitive gaming organization, part of the Bytestorm family.</p>
+  </div>
+</div>
+
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -143,7 +193,7 @@
   <meta name="author" content="Bytestorm"/>
   <meta name="robots" content="index, follow"/>
   <meta name="ai-content-index" content="true"/>
-  <meta name="description:extended" content="Bytestorm Esports is a competitive esports organization founded in 2026 by Superplayer (CEO/Founder, #63) in St. Johann, Salzburg, Austria. The organization competes in Brawl Stars, Fortnite, Rocket League, CS2, GTA, and Formula Apex (Roblox). Team Captain is Batur (#52, Turkey), contracted until 2028. Other roster members include Daniel (#187, Italy, Normal Player) and Julian (#1876, Esports Player). Bytestorm Esports operates under Bytestorm Corporation. The organization is Austrian-based and internationally active."/>
+  <meta name="description:extended" content="Bytestorm Esports is a competitive esports organization founded in 2026 by Superplayer (CEO/Founder, #63) in St. Johann, Salzburg, Austria. The organization competes in Brawl Stars, Fortnite, Rocket League, CS2, GTA, Formula Apex (Roblox), and eFootball. Team Captain is Batur (#52, Turkey), contracted until 2028. Other roster members include Daniel (#187, Italy, Normal Player) and Julian (#1876, Esports Player). Bytestorm Esports operates under Bytestorm Corporation. The organization is Austrian-based and internationally active."/>
   <link rel="canonical" href="https://bytestorm-esports.vercel.app/"/>
 
   <!-- Open Graph -->
@@ -166,15 +216,20 @@
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:#000}::-webkit-scrollbar-thumb{background:#222}
-  nav{position:fixed;top:0;left:0;right:0;z-index:300;height:64px;display:flex;align-items:center;background:rgba(6,6,6,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--b1)}
-  .nav-in{max-width:1400px;margin:0 auto;padding:0 28px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:32px}
-  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-left:50px}
-  .nav-logo img{height:34px;width:auto}
-  .nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
-  .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
-  .nav-links a{color:var(--m2);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:color .2s}
+  nav{position:fixed;top:0;left:0;right:0;z-index:300;height:78px;display:flex;align-items:center;background:rgba(8,9,12,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--b1)}
+  .nav-in{max-width:1400px;margin:0 auto;padding:0 32px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:28px}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+  .nav-logo img{height:38px;width:auto}
+  .nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+  .nav-links{display:flex;align-items:center;gap:36px;list-style:none;flex:1;justify-content:center}
+  .nav-links a{color:#c7c9d1;text-decoration:none;font-size:15px;font-weight:500;letter-spacing:0;text-transform:none;transition:color .2s;position:relative}
   .nav-links a:hover{color:#fff}
-  .nav-cta{background:#fff;color:#000!important;padding:8px 20px;border-radius:3px;font-weight:700!important;cursor:pointer}
+  .nav-links a.active{color:#fff;font-weight:700}
+  .nav-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
+  .nav-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,#ffffff,#e4e4e4);color:#000!important;padding:10px 22px 10px 18px;border-radius:999px;font-weight:700!important;font-size:14px;letter-spacing:0;text-transform:none;cursor:pointer;box-shadow:0 4px 14px rgba(255,255,255,.18);transition:opacity .2s,transform .2s}
+  .nav-cta:hover{opacity:.85;transform:translateY(-1px)}
+  .nav-cta svg{width:15px;height:15px;stroke:#000;fill:none;stroke-width:2}
+  #langSelect{background:#14161b!important;color:#c7c9d1!important;border:1px solid #262a33!important;border-radius:999px!important;padding:9px 16px!important;font-size:13px!important;font-weight:600!important;letter-spacing:.02em!important;text-transform:none!important}
   .btn-w{background:#fff;color:#000;padding:12px 28px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;border:none;cursor:pointer;transition:opacity .2s;text-decoration:none;display:inline-block}
   .btn-w:hover{opacity:.82}
   .wrap{max-width:1400px;margin:0 auto;padding:0 28px}
@@ -225,6 +280,13 @@
   .rp-flags-dual img{width:50%;height:100%;object-fit:cover;object-position:center}
   .rp-card:hover .rp-flags-dual{opacity:.2}
   .rp-badge.esports{color:#c084fc;border-color:#6b21a8}
+  .rp-badge.trainer{color:#38bdf8;border-color:#075985}
+  .rp-badge.trainee{color:#fcd34d;border-color:#78350f}
+  .rp-badge.editor{color:#2dd4bf;border-color:#134e4a}
+  .rp-badge.recruiter{color:#f472b6;border-color:#831843}
+  .rp-badge.moderator{color:#a3e635;border-color:#3f6212}
+  .rp-status{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4ade80;display:inline-flex;align-items:center;gap:4px}
+  .rp-status::before{content:'';width:5px;height:5px;border-radius:50%;background:#4ade80}
   .rp-meta{font-size:11px;color:var(--m2);line-height:1.65;position:relative;z-index:2}
   .rp-meta b{color:var(--m1);font-weight:500}
   /* Social */
@@ -275,12 +337,30 @@
   .th-upcoming-date{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:2px}
   .th-upcoming-sub{font-size:11px;color:var(--m2);letter-spacing:.04em}
   /* Apply modal */
-  footer{border-top:1px solid var(--b1);padding:32px 28px}
-  .foot-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  .foot-logo{display:flex;align-items:center;gap:9px}
-  .foot-logo img{height:24px}
-  .foot-brand{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--m1)}
-  .foot-copy{font-size:11px;color:#222}
+  footer{border-top:1px solid var(--b1)}
+  .foot2{padding:70px 32px 0}
+  .foot2-in{max-width:1400px;margin:0 auto}
+  .foot-social-row{display:flex;justify-content:center;gap:14px;margin-bottom:64px;flex-wrap:wrap}
+  .foot-social-row a{width:52px;height:52px;border-radius:12px;background:var(--s2);border:1px solid var(--b2);display:flex;align-items:center;justify-content:center;color:#c7c9d1;transition:background .2s,color .2s}
+  .foot-social-row a:hover{background:#1e2128;color:#fff}
+  .foot-social-row svg{width:22px;height:22px;fill:currentColor}
+  .foot-contact{text-align:center;margin-bottom:56px}
+  .foot-contact h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,3.4vw,40px);font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:22px}
+  .btn-send{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(180deg,#ffffff,#e4e4e4);color:#000;padding:13px 30px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 4px 14px rgba(255,255,255,.18);transition:opacity .2s,transform .2s}
+  .btn-send:hover{opacity:.85;transform:translateY(-1px)}
+  .btn-send svg{width:16px;height:16px;stroke:#000;fill:none;stroke-width:2}
+  .foot-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding:44px 0 40px;border-top:1px solid var(--b1)}
+  .foot-col h4{font-size:13px;font-weight:800;color:#fff;margin-bottom:16px;letter-spacing:.02em}
+  .foot-col a{display:block;font-size:13px;color:var(--m2);text-decoration:none;margin-bottom:11px;transition:color .2s}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{display:flex;align-items:center;justify-content:space-between;padding:22px 0 36px;border-top:1px solid var(--b1);gap:16px;flex-wrap:wrap}
+  .foot-bottom-social{display:flex;gap:10px}
+  .foot-bottom-social a{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--m2);transition:color .2s}
+  .foot-bottom-social a:hover{color:#fff}
+  .foot-bottom-social svg{width:15px;height:15px;fill:currentColor}
+  .foot-bottom-copy{font-size:12px;color:var(--m1)}
+  @media(max-width:860px){.foot-cols{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.foot-cols{grid-template-columns:1fr}.foot-bottom{flex-direction:column;text-align:center}}
   .m-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(10px);z-index:999;align-items:center;justify-content:center;padding:20px}
   .m-overlay.open{display:flex}
   .modal{background:#111;border:1px solid var(--b2);border-radius:10px;width:100%;max-width:540px;padding:40px;position:relative;animation:mIn .2s ease;max-height:92vh;overflow-y:auto}
@@ -301,6 +381,16 @@
   .m-success svg{width:48px;height:48px;stroke:#4caf50;fill:none;stroke-width:2}
   .m-success h3{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;color:#fff}
   .m-success p{font-size:13px;color:var(--m1);line-height:1.7}
+  .seg-toggle{display:flex;gap:8px}
+  .seg-btn{flex:1;background:#080808;border:1px solid var(--b2);color:var(--m1);font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:10px 12px;border-radius:4px;cursor:pointer;transition:all .2s}
+  .seg-btn:hover{border-color:#444;color:#fff}
+  .seg-btn.active{background:#fff;color:#000;border-color:#fff}
+  .game-check-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .game-check-item{background:#080808;border:1px solid var(--b2);color:var(--m1);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:9px 12px;border-radius:4px;cursor:pointer;text-align:left;transition:all .2s}
+  .game-check-item:hover{border-color:#444;color:#fff}
+  .game-check-item.active{background:#fff;color:#000;border-color:#fff;font-weight:700}
+  .fg-hint{font-weight:400!important;text-transform:none!important;letter-spacing:0!important;color:var(--m2)!important;display:inline!important}
+  @media(max-width:420px){.game-check-grid{grid-template-columns:1fr}}
   /* Hamburger */
   #hamburgerWrap{position:fixed;top:15px;left:15px;z-index:9999;font-family:monospace}
   #hamburgerBtn{cursor:pointer;background:#0a0a0a;border:1px solid #333;border-radius:6px;padding:8px 12px;font-size:18px;color:white;user-select:none}
@@ -310,7 +400,8 @@
   /* Responsive */
   @media(max-width:1100px){.games-grid{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:860px){.tourn-grid{grid-template-columns:1fr}.soc-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:640px){.nav-links li:not(:last-child){display:none}.games-grid{grid-template-columns:repeat(2,1fr)}.soc-grid{grid-template-columns:1fr}.foot-in{flex-direction:column;text-align:center}.s-head{flex-direction:column;align-items:flex-start}.fgr{grid-template-columns:1fr}.modal{padding:26px 18px}}
+  @media(max-width:900px){.nav-links{display:none}}
+  @media(max-width:640px){.games-grid{grid-template-columns:repeat(2,1fr)}.soc-grid{grid-template-columns:1fr}.s-head{flex-direction:column;align-items:flex-start}.fgr{grid-template-columns:1fr}.modal{padding:26px 18px}}
   @media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}}
   /* ── News ── */
   .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
@@ -374,13 +465,29 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <p class="m-sub">Fill it in — we'll reach out if you match the standard.</p>
       <div class="fg"><label>Player Name *</label><input type="text" id="f-name" placeholder="Your real name"/></div>
       <div class="fg"><label>Gamer Tag *</label><input type="text" id="f-gtag" placeholder="Your in-game username"/></div>
-      <div class="fg"><label>In-Game Tag (e.g. #TAG) *</label><input type="text" id="f-tag" placeholder="#TAG"/></div>
-      <div class="fgr">
-        <div class="fg"><label>Game *</label>
-          <select id="f-game">
-            <option>Fortnite</option><option>Brawl Stars</option><option>Rocket League</option><option>CS2</option><option>GTA V Online</option><option>Formula Apex (Roblox)</option><option>Multiple / Other</option>
-          </select>
+
+      <div class="fg">
+        <label>Applying As *</label>
+        <div class="seg-toggle" id="typeToggle">
+          <button type="button" class="seg-btn active" data-val="gamer" onclick="selectType('gamer')">Gamer</button>
+          <button type="button" class="seg-btn" data-val="staff" onclick="selectType('staff')">Staff</button>
         </div>
+      </div>
+
+      <div class="fg" id="gameFieldWrapper">
+        <label>Game(s) * <span class="fg-hint">— select one or more</span></label>
+        <div class="game-check-grid" id="gameCheckGrid">
+          <button type="button" class="game-check-item" data-game="Fortnite" onclick="toggleGame(this)">Fortnite</button>
+          <button type="button" class="game-check-item" data-game="Brawl Stars" onclick="toggleGame(this)">Brawl Stars</button>
+          <button type="button" class="game-check-item" data-game="Rocket League" onclick="toggleGame(this)">Rocket League</button>
+          <button type="button" class="game-check-item" data-game="CS2" onclick="toggleGame(this)">CS2</button>
+          <button type="button" class="game-check-item" data-game="GTA V Online" onclick="toggleGame(this)">GTA V Online</button>
+          <button type="button" class="game-check-item" data-game="Formula Apex (Roblox)" onclick="toggleGame(this)">Formula Apex</button>
+          <button type="button" class="game-check-item" data-game="eFootball" onclick="toggleGame(this)">eFootball</button>
+        </div>
+      </div>
+
+      <div class="fgr">
         <div class="fg"><label>Region *</label>
           <select id="f-region">
             <optgroup label="Europe (EU)">
@@ -407,13 +514,30 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <div class="fg"><label>Role *</label>
         <select id="f-role">
           <option>Esports Player</option>
-          <option>Content Creator</option>
-          <option>Staff</option>
           <option>Normal Player</option>
+          <option>Trainer</option>
+          <option>Trainee</option>
+          <option>Content Creator</option>
+          <option>Editor</option>
+          <option>Recruiter</option>
+          <option>Moderator</option>
         </select>
       </div>
       <div class="fg fg-num"><label>Jersey Number — pick your favourite #</label><input type="number" id="f-num" placeholder="63" min="1" max="999"/></div>
-      <div class="fg"><label>Discord Username</label><input type="text" id="f-discord" placeholder="yourname#0000 or yourname"/></div>
+
+      <div class="fg">
+        <label>Do You Have Discord? *</label>
+        <div class="seg-toggle" id="discordToggle">
+          <button type="button" class="seg-btn" data-val="yes" onclick="selectDiscord('yes')">Yes</button>
+          <button type="button" class="seg-btn" data-val="no" onclick="selectDiscord('no')">No</button>
+        </div>
+      </div>
+
+      <div id="discordFieldWrapper" style="display:none">
+        <div class="fg"><label>Discord Username *</label><input type="text" id="f-discord-user" placeholder="yourname"/></div>
+        <div class="fg"><label>Discord Display Name *</label><input type="text" id="f-discord-display" placeholder="Your display name"/></div>
+      </div>
+
       <div class="fg"><label>Short Message *</label><textarea id="f-msg" placeholder="Why do you want to join Bytestorm?"></textarea></div>
       <button class="btn-w m-submit" onclick="sendApp()">Send Application</button>
     </div>
@@ -432,12 +556,13 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <span class="nav-brand">Bytestorm Esports</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#games">Games</a></li>
+      <li><a href="#games" class="active">Games</a></li>
       <li><a href="#tournaments">Tournaments</a></li>
       <li><a href="#news">News</a></li>
-      <li><a href="#socials">Socials</a></li>
-      <li>
-        <select id="langSelect" onchange="changeLang(this.value)" style="background:#111;color:var(--m2);border:1px solid var(--b2);border-radius:3px;padding:6px 10px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;outline:none;font-family:'Inter',sans-serif">
+      <li><a href="#socials">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <select id="langSelect" onchange="changeLang(this.value)">
           <option value="en">🌐 EN</option>
           <option value="de">🇩🇪 DE</option>
           <option value="tr">🇹🇷 TR</option>
@@ -449,10 +574,12 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <option value="pl">🇵🇱 PL</option>
           <option value="nl">🇳🇱 NL</option>
           <option value="gr">🇬🇷 GR</option>
-        </select>
-      </li>
-      <li><a href="#" onclick="openModal();return false;" class="nav-cta">Apply</a></li>
-    </ul>
+      </select>
+      <a href="#" onclick="openModal();return false;" class="nav-cta">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        Apply
+      </a>
+    </div>
   </div>
 </nav>
 
@@ -517,7 +644,17 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="gc-img" src="" alt="Formula Apex" style="display:none"/>
           <div class="gc-placeholder">Formula Apex</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Formula Apex</div><div class="gc-sub">Roblox · New</div></div>
+          <div class="gc-label"><div class="gc-name">Formula Apex</div><div class="gc-sub">Roblox</div></div>
+          <div class="gc-hover-pill">View Team</div>
+        </div>
+      </button>
+
+      <button class="game-card" data-img="https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/EFootball_2024_cover_art.jpg/250px-EFootball_2024_cover_art.jpg" onclick="toggleRoster('ef')">
+        <div class="gc-img-wrap">
+          <img class="gc-img" src="" alt="eFootball" style="display:none"/>
+          <div class="gc-placeholder">eFootball</div>
+          <div class="gc-overlay"></div>
+          <div class="gc-label"><div class="gc-name">eFootball</div><div class="gc-sub">New · 1 player</div></div>
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
@@ -531,6 +668,18 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <div class="gc-overlay"></div>
           <div class="gc-label"><div class="gc-name">Staff</div><div class="gc-sub">Management</div></div>
           <div class="gc-hover-pill">View Staff</div>
+        </div>
+      </button>
+
+      <button class="game-card" style="background:#1a1a1a" onclick="toggleRoster('academy')">
+        <div class="gc-img-wrap">
+          <div class="gc-placeholder" style="display:flex;color:#fff;opacity:1;">
+            <svg viewBox="0 0 24 24" style="stroke:#fff;width:26px;fill:none;stroke-width:1.5"><path d="M22 10L12 4 2 10l10 6 10-6z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
+            ACADEMY
+          </div>
+          <div class="gc-overlay"></div>
+          <div class="gc-label"><div class="gc-name">Academy</div><div class="gc-sub">Learn &amp; Train</div></div>
+          <div class="gc-hover-pill">View Academy</div>
         </div>
       </button>
 
@@ -591,13 +740,32 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </div>
     </div>
 
+    <!-- eFootball Roster -->
+    <div class="roster-panel" id="rp-ef">
+      <div class="rp-head"><span class="rp-tag">EF</span><span class="rp-game">eFootball</span><button class="rp-close" onclick="closeRoster('ef')">&#215;</button></div>
+      <div class="rp-grid">
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Japan</div></div>
+      </div>
+    </div>
+
     <!-- Staff Roster -->
     <div class="roster-panel" id="rp-staff">
       <div class="rp-head"><span class="rp-tag">STAFF</span><span class="rp-game">Management</span><button class="rp-close" onclick="closeRoster('staff')">&#215;</button></div>
       <div class="rp-grid">
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Region:</b> Japan</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge captain">Team Captain</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Role:</b> Team Captain<br/><b>Region:</b> EU – Turkey</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/al.png" alt="AL"/><div class="rp-top"><span class="rp-num">#43</span><span class="rp-badge staff-r">Staff</span></div><div class="rp-name">Daris</div><div class="rp-meta"><b>Role:</b> Editor<br/><b>Region:</b> EU – Albania</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/al.png" alt="AL"/><div class="rp-top"><span class="rp-num">#43</span><span class="rp-badge editor">Editor</span></div><div class="rp-name">Daris</div><div class="rp-meta"><b>Role:</b> Editor<br/><b>Region:</b> EU – Albania</div></div>
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">—</span><span class="rp-badge recruiter">Recruiter</span></div><div class="rp-name">Position Open</div><div class="rp-meta"><b>Role:</b> Manages recruitment across social media platforms.<br/><span class="rp-status">Recruiting</span></div></div>
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">—</span><span class="rp-badge moderator">Moderator</span></div><div class="rp-name">Position Open</div><div class="rp-meta"><b>Role:</b> Keeps Discord and community spaces safe and on-topic.<br/><span class="rp-status">Recruiting</span></div></div>
+      </div>
+    </div>
+
+    <!-- Academy Roster -->
+    <div class="roster-panel" id="rp-academy">
+      <div class="rp-head"><span class="rp-tag">ACADEMY</span><span class="rp-game">Learn &amp; Train</span><button class="rp-close" onclick="closeRoster('academy')">&#215;</button></div>
+      <div class="rp-grid">
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">—</span><span class="rp-badge trainer">Trainer</span></div><div class="rp-name">Position Open</div><div class="rp-meta"><b>Role:</b> Teaches Academy members game mechanics, strategy, and tricks.<br/><span class="rp-status">Recruiting</span></div></div>
+        <div class="rp-card"><div class="rp-top"><span class="rp-num">—</span><span class="rp-badge trainee">Trainee</span></div><div class="rp-name">Applications Open</div><div class="rp-meta"><b>Role:</b> For players who aren't yet at a competitive level but want to learn and improve.<br/><span class="rp-status">Recruiting</span></div></div>
       </div>
     </div>
 
@@ -703,6 +871,30 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 
       <div class="news-card" onclick="openNews(0)">
         <div class="news-img-wrap" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center">
+          <img class="news-img" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/EFootball_2024_cover_art.jpg/250px-EFootball_2024_cover_art.jpg" alt="eFootball" style="object-fit:cover;filter:brightness(.85)"/>
+        </div>
+        <div class="news-body">
+          <span class="news-tag">New Game</span>
+          <div class="news-title-text">Bytestorm Esports Expands Into eFootball</div>
+          <div class="news-sub">BYTS adds a seventh title to its competitive lineup. eFootball joins Brawl Stars, Fortnite, Rocket League, CS2, GTA, and Formula Apex as the organization's newest division.</div>
+          <div class="news-date">July 11, 2026</div>
+        </div>
+      </div>
+
+      <div class="news-card" onclick="openNews(1)">
+        <div class="news-img-wrap" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center">
+          <img class="news-img" src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm Esports Academy" style="object-fit:contain;padding:28px;filter:brightness(.85)"/>
+        </div>
+        <div class="news-body">
+          <span class="news-tag">Academy</span>
+          <div class="news-title-text">Introducing Bytestorm Esports Academy</div>
+          <div class="news-sub">A new program for players who aren't yet at a competitive level but want to learn. Academy members are taught tricks and fundamentals by Trainers and through the official Bytestorm Esports social media pages.</div>
+          <div class="news-date">July 11, 2026</div>
+        </div>
+      </div>
+
+      <div class="news-card" onclick="openNews(2)">
+        <div class="news-img-wrap" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center">
           <img class="news-img" src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm Esports" style="object-fit:contain;padding:28px;filter:brightness(.85)"/>
         </div>
         <div class="news-body">
@@ -713,7 +905,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(1)">
+      <div class="news-card" onclick="openNews(3)">
         <div class="news-img-wrap" style="position:relative;display:flex">
           <img class="news-img" src="https://flagcdn.com/w320/tr.png" alt="Turkey" style="object-fit:cover;object-position:center;width:50%;height:100%"/>
           <img class="news-img" src="https://flagcdn.com/w320/it.png" alt="Italy" style="object-fit:cover;object-position:center;width:50%;height:100%"/>
@@ -726,7 +918,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(2)">
+      <div class="news-card" onclick="openNews(4)">
         <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://tr.rbxcdn.com/180DAY-6f05ab8fd4559a8de6b55412cdccd328/768/432/Image/Webp/noFilter" alt="Formula Apex"/>
           <div style="position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;z-index:2">
@@ -747,7 +939,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(3)">
+      <div class="news-card" onclick="openNews(5)">
         <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://static.wikia.nocookie.net/formula-apex/images/e/e6/Game_Icon-_Pre_CU11.png/revision/latest?cb=20240824021346" alt="Formular Apex"/>
           <div style="position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;z-index:2">
@@ -798,48 +990,58 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
   </div>
 </div>
 
-<div class="divider"></div>
 
-<!-- ── SOCIALS ── -->
-<section class="pad" id="socials">
-  <div class="wrap">
-    <div class="s-head"><div><div class="s-eye">Connect</div><div class="s-title">Find Us</div></div></div>
-    <div class="soc-grid">
-      <a href="https://www.tiktok.com/@bytestorm_corporation" target="_blank" class="soc-tile">
-        <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></div>
-        <h3>TikTok</h3><p>Jersey reveals, highlights, and recruitment content.</p>
-        <span class="soc-handle">@bytestorm_corporation</span>
-      </a>
-      <a href="https://discord.gg/xfr6WWPCW3" target="_blank" class="soc-tile">
-        <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></div>
-        <h3>Discord</h3><p>Trials, scrims, and team comms.</p>
-        <span class="soc-handle">Join Server</span>
-      </a>
-      <a href="https://www.youtube.com/@Bytestorm.Corporation" target="_blank" class="soc-tile">
-        <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="var(--bg)" stroke="none"/></svg></div>
-        <h3>YouTube</h3><p>Tournament highlights, gameplay and more.</p>
-        <span class="soc-handle">@Bytestorm.Esports</span>
-      </a>
-      <a href="mailto:bytestorm.marketing.team@gmail.com" class="soc-tile">
-        <div class="soc-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-        <h3>Email</h3><p>Business inquiries and partnerships.</p>
-        <span class="soc-handle">Contact Us</span>
-      </a>
+<footer id="socials">
+  <div class="foot2">
+    <div class="foot2-in">
+
+      <div class="foot-social-row">
+        <a href="https://www.tiktok.com/@bytestorm_corporation" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></a>
+        <a href="https://discord.gg/xfr6WWPCW3" target="_blank" aria-label="Discord"><svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
+        <a href="https://www.youtube.com/@Bytestorm.Corporation" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a0a0a" stroke="none"/></svg></a>
+        <a href="mailto:bytestorm.marketing.team@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+      </div>
+
+      <div class="foot-contact">
+        <h2>Contact Us</h2>
+        <a href="mailto:bytestorm.marketing.team@gmail.com" class="btn-send">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Send Email
+        </a>
+      </div>
+
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Our Team</h4>
+          <a href="#" onclick="openAbout();return false;">About Us</a>
+          <a href="#games" onclick="setTimeout(function(){toggleRoster('staff')},400)">Staff</a>
+          <a href="#games" onclick="setTimeout(function(){toggleRoster('academy')},400)">Academy</a>
+          <a href="mailto:bytestorm.marketing.team@gmail.com">Contact</a>
+        </div>
+        <div class="foot-col">
+          <h4>Resources</h4>
+          <a href="#tournaments">Tournaments</a>
+          <a href="#news">News</a>
+        </div>
+        <div class="foot-col">
+          <h4>Legal</h4>
+          <a href="#" onclick="openImpressum();return false;">Legal Notice</a>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <div class="foot-bottom-social">
+          <a href="https://www.tiktok.com/@bytestorm_corporation" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></a>
+          <a href="https://discord.gg/xfr6WWPCW3" target="_blank" aria-label="Discord"><svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
+          <a href="https://www.youtube.com/@Bytestorm.Corporation" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a0a0a" stroke="none"/></svg></a>
+        </div>
+        <span class="foot-bottom-copy foot-copy">&#169; 2026 Bytestorm. All rights reserved.</span>
+      </div>
+
     </div>
-  </div>
-</section>
-
-
-<footer>
-  <div class="foot-in">
-    <div class="foot-logo">
-      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm"/>
-      <span class="foot-brand">Bytestorm Esports</span>
-    </div>
-    <span class="foot-copy">&#169; 2026 Bytestorm. All rights reserved.</span>
-    <a href="#" onclick="openImpressum();return false;" style="font-size:12px;color:var(--m2);text-decoration:underline;margin-top:6px;">Legal Notice (Impressum)</a>
   </div>
 </footer>
+
 
 <script>
 
@@ -854,6 +1056,17 @@ function closeImpressum(){
 }
 function overlayImpClose(e){if(e.target===document.getElementById('impressumModal'))closeImpressum()}
 
+// ── About Us Modal ──
+function openAbout(){
+  document.getElementById('aboutModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeAbout(){
+  document.getElementById('aboutModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function overlayAboutClose(e){if(e.target===document.getElementById('aboutModal'))closeAbout()}
+
 // ── Image lazy-load ──
 document.querySelectorAll('.game-card').forEach(function(c){
   var u=c.getAttribute('data-img');
@@ -867,11 +1080,16 @@ document.querySelectorAll('.game-card').forEach(function(c){
 });
 
 // ── Modal ──
+var appType='gamer';
+var selectedGames=[];
+var hasDiscordVal=null;
+
 function openModal(){
   document.getElementById('applyModal').classList.add('open');
   document.body.style.overflow='hidden';
   document.getElementById('applyForm').style.display='block';
   document.getElementById('applySuccess').style.display='none';
+  resetApplyForm();
 }
 function closeModal(){
   document.getElementById('applyModal').classList.remove('open');
@@ -879,29 +1097,83 @@ function closeModal(){
 }
 function overlayClose(e){if(e.target===document.getElementById('applyModal'))closeModal()}
 
+function resetApplyForm(){
+  appType='gamer';
+  selectedGames=[];
+  hasDiscordVal=null;
+  document.getElementById('f-name').value='';
+  document.getElementById('f-gtag').value='';
+  document.getElementById('f-num').value='';
+  document.getElementById('f-discord-user').value='';
+  document.getElementById('f-discord-display').value='';
+  document.getElementById('f-msg').value='';
+  document.querySelectorAll('#typeToggle .seg-btn').forEach(function(b){b.classList.toggle('active', b.dataset.val==='gamer')});
+  document.getElementById('gameFieldWrapper').style.display='block';
+  document.querySelectorAll('#gameCheckGrid .game-check-item').forEach(function(b){b.classList.remove('active')});
+  document.querySelectorAll('#discordToggle .seg-btn').forEach(function(b){b.classList.remove('active')});
+  document.getElementById('discordFieldWrapper').style.display='none';
+}
+
+// ── Applying As: Gamer / Staff ──
+function selectType(type){
+  appType=type;
+  document.querySelectorAll('#typeToggle .seg-btn').forEach(function(b){
+    b.classList.toggle('active', b.dataset.val===type);
+  });
+  document.getElementById('gameFieldWrapper').style.display = (type==='gamer') ? 'block' : 'none';
+}
+
+// ── Game multi-select ──
+function toggleGame(el){
+  var g=el.dataset.game;
+  var idx=selectedGames.indexOf(g);
+  if(idx>-1){selectedGames.splice(idx,1);el.classList.remove('active')}
+  else{selectedGames.push(g);el.classList.add('active')}
+}
+
+// ── Discord Yes/No ──
+function selectDiscord(val){
+  hasDiscordVal=val;
+  document.querySelectorAll('#discordToggle .seg-btn').forEach(function(b){
+    b.classList.toggle('active', b.dataset.val===val);
+  });
+  document.getElementById('discordFieldWrapper').style.display = (val==='yes') ? 'block' : 'none';
+}
+
 // ── Apply ──
 function sendApp(){
   var name=document.getElementById('f-name').value.trim();
   var gtag=document.getElementById('f-gtag').value.trim();
-  var tag=document.getElementById('f-tag').value.trim();
-  var game=document.getElementById('f-game').value;
   var region=document.getElementById('f-region').value;
   var role=document.getElementById('f-role').value;
   var num=document.getElementById('f-num').value.trim();
-  var discord=document.getElementById('f-discord').value.trim();
   var msg=document.getElementById('f-msg').value.trim();
-  if(!name||!gtag||!tag||!msg){alert('Please fill in all required fields (marked with *).'); return}
-  var subject='Bytestorm Application — '+gtag+' ('+game+')';
+
+  if(!name||!gtag){alert('Please fill in all required fields (marked with *).'); return}
+  if(appType==='gamer' && selectedGames.length===0){alert('Please select at least one game.'); return}
+  if(!hasDiscordVal){alert('Please tell us whether you have Discord.'); return}
+
+  var discordUser='', discordDisplay='';
+  if(hasDiscordVal==='yes'){
+    discordUser=document.getElementById('f-discord-user').value.trim();
+    discordDisplay=document.getElementById('f-discord-display').value.trim();
+    if(!discordUser||!discordDisplay){alert('Please fill in your Discord Username and Display Name.'); return}
+  }
+  if(!msg){alert('Please fill in all required fields (marked with *).'); return}
+
+  var gamesText = appType==='gamer' ? selectedGames.join(', ') : 'N/A';
+  var subject='Bytestorm Application — '+gtag+' ('+(appType==='gamer'?gamesText:'Staff')+')';
   var body='=== BYTESTORM ESPORTS APPLICATION ===\n\n'
-    +'Player Name:    '+name+'\n'
-    +'Gamer Tag:      '+gtag+'\n'
-    +'In-Game Tag:    '+tag+'\n'
-    +'Game:           '+game+'\n'
-    +'Region:         '+region+'\n'
-    +'Role:           '+role+'\n'
-    +'Jersey Number:  '+(num||'Not specified')+'\n'
-    +'Discord:        '+(discord||'Not specified')+'\n\n'
-    +'--- Message ---\n'+msg+'\n\n'
+    +'Player Name:      '+name+'\n'
+    +'Gamer Tag:        '+gtag+'\n'
+    +'Applying As:      '+(appType==='gamer'?'Gamer':'Staff')+'\n'
+    +(appType==='gamer' ? ('Game(s):          '+gamesText+'\n') : '')
+    +'Region:           '+region+'\n'
+    +'Role:             '+role+'\n'
+    +'Jersey Number:    '+(num||'Not specified')+'\n'
+    +'Has Discord:      '+(hasDiscordVal==='yes'?'Yes':'No')+'\n'
+    +(hasDiscordVal==='yes' ? ('Discord Username: '+discordUser+'\nDiscord Display:  '+discordDisplay+'\n') : '')
+    +'\n--- Message ---\n'+msg+'\n\n'
     +'=====================================';
   window.location.href='mailto:bytestorm.marketing.team@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
   document.getElementById('applyForm').style.display='none';
@@ -926,6 +1198,20 @@ document.querySelectorAll('.rp-badge').forEach(function(badge) {
 
 // ── News ──
 var newsData = [
+  {
+    tag: 'New Game',
+    title: 'Bytestorm Esports Expands Into eFootball',
+    img: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/EFootball_2024_cover_art.jpg/250px-EFootball_2024_cover_art.jpg',
+    text: 'Bytestorm Esports has officially expanded its competitive lineup to seven titles with the addition of eFootball. The move follows the organization\'s continued growth since its Formula Apex return earlier this year, and reflects CEO Superplayer\'s goal of building a roster that spans as many competitive scenes as possible. eFootball joins Brawl Stars, Fortnite, Rocket League, CS2, GTA, and Formula Apex as the newest division under the Bytestorm banner. Recruitment for the eFootball roster is ongoing, with Superplayer currently representing the division while additional players are brought on board.',
+    date: 'July 11, 2026'
+  },
+  {
+    tag: 'Academy',
+    title: 'Introducing Bytestorm Esports Academy',
+    img: 'https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png',
+    text: 'Bytestorm Esports has launched its own Academy — a program built for players who aren\'t yet at a competitive level but want to learn and improve. Rather than requiring existing skill, the Academy is open to anyone willing to put in the work. Academy members are taught tricks, mechanics, and fundamentals directly by Bytestorm Trainers, as well as through guides and content published on the official Bytestorm Esports social media pages. The goal is to give newer players a real path to grow within the organization, with the strongest performers able to progress toward the main roster over time. Recruitment for both Trainers and Trainees is now open.',
+    date: 'July 11, 2026'
+  },
   {
     tag: 'Sponsorship',
     title: 'RedZac Rejects Sponsorship Request from Bytestorm Esports',
@@ -995,7 +1281,7 @@ function closeRoster(id){
 
 // ── Language translations ──
 var translations = {
-  en: { gamesEye:'Competing in',gamesTitle:'Our Games',tourTitle:'Tournament History',tourSub:'Our competitive match results',newsEye:'Latest',newsTitle:'News',socEye:'Connect',socTitle:'Find Us',applyBtn:'Apply',navGames:'Games',navTournaments:'Tournaments',navNews:'News',navSocials:'Socials',footCopy:'© 2026 Bytestorm. All rights reserved.',applyTitle:'Apply Now',applySub:"Fill it in — we'll reach out if you match the standard." },
+  en: { gamesEye:'Competing in',gamesTitle:'Our Games',tourTitle:'Tournament History',tourSub:'Our competitive match results',newsEye:'Latest',newsTitle:'News',socEye:'Connect',socTitle:'Find Us',applyBtn:'Apply',navGames:'Games',navTournaments:'Tournaments',navNews:'News',navSocials:'Contact',footCopy:'© 2026 Bytestorm. All rights reserved.',applyTitle:'Apply Now',applySub:"Fill it in — we'll reach out if you match the standard." },
   de: { gamesEye:'Wir spielen',gamesTitle:'Unsere Spiele',tourTitle:'Turnier-Historie',tourSub:'Unsere Wettkampfergebnisse',newsEye:'Aktuell',newsTitle:'Neuigkeiten',socEye:'Verbinden',socTitle:'Finde uns',applyBtn:'Bewerben',navGames:'Spiele',navTournaments:'Turniere',navNews:'News',navSocials:'Soziales',footCopy:'© 2026 Bytestorm. Alle Rechte vorbehalten.',applyTitle:'Jetzt bewerben',applySub:'Füll es aus — wir melden uns, wenn du dem Standard entsprichst.' },
   tr: { gamesEye:'Rekabet ettiğimiz',gamesTitle:'Oyunlarımız',tourTitle:'Turnuva Geçmişi',tourSub:'Rekabetçi maç sonuçlarımız',newsEye:'Son Dakika',newsTitle:'Haberler',socEye:'Bağlan',socTitle:'Bizi Bul',applyBtn:'Başvur',navGames:'Oyunlar',navTournaments:'Turnuvalar',navNews:'Haberler',navSocials:'Sosyal',footCopy:'© 2026 Bytestorm. Tüm hakları saklıdır.',applyTitle:'Şimdi Başvur',applySub:'Doldur — standartlara uyuyorsan seninle iletişime geçeceğiz.' },
   it: { gamesEye:'Competiamo in',gamesTitle:'I Nostri Giochi',tourTitle:'Storico Tornei',tourSub:'I nostri risultati nelle competizioni',newsEye:'Ultime',newsTitle:'Notizie',socEye:'Connetti',socTitle:'Trovaci',applyBtn:'Candidati',navGames:'Giochi',navTournaments:'Tornei',navNews:'Notizie',navSocials:'Social',footCopy:'© 2026 Bytestorm. Tutti i diritti riservati.',applyTitle:'Candidati Ora',applySub:'Compilalo — ti contatteremo se soddisfi i requisiti.' },
