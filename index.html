@@ -275,6 +275,8 @@
   .rp-badge.normal{color:var(--m2);border-color:var(--b2)}
   .rp-badge.ceo{color:#f9a8c9;border-color:#c96a8a;background:#1a0a0f}
   .rp-badge.captain{color:#fde68a;border-color:#d97706;background:#1c1000;box-shadow:0 0 6px #92400e88;text-shadow:0 0 8px #fbbf2499}
+  .rp-banner{width:100%;height:170px;overflow:hidden;background:#0a0a0a}
+  .rp-banner img{width:100%;height:100%;object-fit:cover;filter:brightness(.7)}
   .rp-flag-big{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.12;transition:opacity .3s;z-index:0;pointer-events:none}
   .rp-flags-dual{position:absolute;inset:0;display:flex;z-index:0;pointer-events:none;opacity:.13;transition:opacity .3s}
   .rp-flags-dual img{width:50%;height:100%;object-fit:cover;object-position:center}
@@ -649,7 +651,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </button>
 
-      <button class="game-card" data-img="https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/EFootball_2024_cover_art.jpg/250px-EFootball_2024_cover_art.jpg" onclick="toggleRoster('ef')">
+      <button class="game-card" data-img="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/capsule_616x353.jpg" onclick="toggleRoster('ef')">
         <div class="gc-img-wrap">
           <img class="gc-img" src="" alt="eFootball" style="display:none"/>
           <div class="gc-placeholder">eFootball</div>
@@ -743,6 +745,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
     <!-- eFootball Roster -->
     <div class="roster-panel" id="rp-ef">
       <div class="rp-head"><span class="rp-tag">EF</span><span class="rp-game">eFootball</span><button class="rp-close" onclick="closeRoster('ef')">&#215;</button></div>
+      <div class="rp-banner"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/header.jpg" alt="eFootball Gameplay"/></div>
       <div class="rp-grid">
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Japan</div></div>
       </div>
@@ -871,7 +874,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 
       <div class="news-card" onclick="openNews(0)">
         <div class="news-img-wrap" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center">
-          <img class="news-img" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/EFootball_2024_cover_art.jpg/250px-EFootball_2024_cover_art.jpg" alt="eFootball" style="object-fit:cover;filter:brightness(.85)"/>
+          <img class="news-img" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/header.jpg" alt="eFootball" style="object-fit:cover;filter:brightness(.85)"/>
         </div>
         <div class="news-body">
           <span class="news-tag">New Game</span>
@@ -1201,7 +1204,7 @@ var newsData = [
   {
     tag: 'New Game',
     title: 'Bytestorm Esports Expands Into eFootball',
-    img: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/EFootball_2024_cover_art.jpg/250px-EFootball_2024_cover_art.jpg',
+    img: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/header.jpg',
     text: 'Bytestorm Esports has officially expanded its competitive lineup to seven titles with the addition of eFootball. The move follows the organization\'s continued growth since its Formula Apex return earlier this year, and reflects CEO Superplayer\'s goal of building a roster that spans as many competitive scenes as possible. eFootball joins Brawl Stars, Fortnite, Rocket League, CS2, GTA, and Formula Apex as the newest division under the Bytestorm banner. Recruitment for the eFootball roster is ongoing, with Superplayer currently representing the division while additional players are brought on board.',
     date: 'July 11, 2026'
   },
