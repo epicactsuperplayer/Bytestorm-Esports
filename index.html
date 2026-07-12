@@ -463,21 +463,22 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
   <div class="modal">
     <button class="m-x" onclick="closeModal()">&#215;</button>
     <div id="applyForm">
-      <div class="m-title">Apply Now</div>
-      <p class="m-sub">Fill it in — we'll reach out if you match the standard.</p>
-      <div class="fg"><label>Player Name *</label><input type="text" id="f-name" placeholder="Your real name"/></div>
-      <div class="fg"><label>Gamer Tag *</label><input type="text" id="f-gtag" placeholder="Your in-game username"/></div>
+      <div class="m-title" data-i18n="applyTitle">Apply Now</div>
+      <p class="m-sub" data-i18n="applySub">Fill it in — we'll reach out if you match the standard.</p>
+      <div class="fg"><label data-i18n="lblName">Player Name *</label><input type="text" id="f-name" data-i18n-ph="phName" placeholder="Your real name"/></div>
 
       <div class="fg">
-        <label>Applying As *</label>
+        <label data-i18n="lblApplyingAs">Applying As *</label>
         <div class="seg-toggle" id="typeToggle">
-          <button type="button" class="seg-btn active" data-val="gamer" onclick="selectType('gamer')">Gamer</button>
-          <button type="button" class="seg-btn" data-val="staff" onclick="selectType('staff')">Staff</button>
+          <button type="button" class="seg-btn active" data-val="gamer" data-i18n="valGamer" onclick="selectType('gamer')">Gamer</button>
+          <button type="button" class="seg-btn" data-val="staff" data-i18n="valStaff" onclick="selectType('staff')">Staff</button>
         </div>
       </div>
 
+      <div class="fg" id="gtagFieldWrapper"><label data-i18n="lblGtag">Gamer Tag *</label><input type="text" id="f-gtag" data-i18n-ph="phGtag" placeholder="Your in-game username"/></div>
+
       <div class="fg" id="gameFieldWrapper">
-        <label>Game(s) * <span class="fg-hint">— select one or more</span></label>
+        <label data-i18n="lblGames">Game(s) *</label> <span class="fg-hint" data-i18n="lblGamesHint">— select one or more</span>
         <div class="game-check-grid" id="gameCheckGrid">
           <button type="button" class="game-check-item" data-game="Fortnite" onclick="toggleGame(this)">Fortnite</button>
           <button type="button" class="game-check-item" data-game="Brawl Stars" onclick="toggleGame(this)">Brawl Stars</button>
@@ -490,7 +491,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </div>
 
       <div class="fgr">
-        <div class="fg"><label>Region *</label>
+        <div class="fg"><label data-i18n="lblRegion">Region *</label>
           <select id="f-region">
             <optgroup label="Europe (EU)">
               <option>EU – Albania</option><option>EU – Andorra</option><option>EU – Austria</option><option>EU – Belarus</option><option>EU – Belgium</option><option>EU – Bosnia</option><option>EU – Bulgaria</option><option>EU – Croatia</option><option>EU – Cyprus</option><option>EU – Czech Republic</option><option>EU – Denmark</option><option>EU – Estonia</option><option>EU – Finland</option><option>EU – France</option><option>EU – Germany</option><option>EU – Greece</option><option>EU – Hungary</option><option>EU – Iceland</option><option>EU – Ireland</option><option>EU – Italy</option><option>EU – Kosovo</option><option>EU – Latvia</option><option>EU – Liechtenstein</option><option>EU – Lithuania</option><option>EU – Luxembourg</option><option>EU – Malta</option><option>EU – Moldova</option><option>EU – Monaco</option><option>EU – Montenegro</option><option>EU – Netherlands</option><option>EU – North Macedonia</option><option>EU – Norway</option><option>EU – Poland</option><option>EU – Portugal</option><option>EU – Romania</option><option>EU – Russia</option><option>EU – San Marino</option><option>EU – Serbia</option><option>EU – Slovakia</option><option>EU – Slovenia</option><option>EU – Spain</option><option>EU – Sweden</option><option>EU – Switzerland</option><option>EU – Turkey</option><option>EU – Ukraine</option><option>EU – United Kingdom</option><option>EU – Vatican City</option>
@@ -513,7 +514,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           </select>
         </div>
       </div>
-      <div class="fg"><label>Role *</label>
+      <div class="fg"><label data-i18n="lblRole">Role *</label>
         <select id="f-role">
           <option>Esports Player</option>
           <option>Normal Player</option>
@@ -525,28 +526,28 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <option>Moderator</option>
         </select>
       </div>
-      <div class="fg fg-num"><label>Jersey Number — pick your favourite #</label><input type="number" id="f-num" placeholder="63" min="1" max="999"/></div>
+      <div class="fg fg-num"><label data-i18n="lblJersey">Jersey Number — pick your favourite #</label><input type="number" id="f-num" placeholder="63" min="1" max="999"/></div>
 
       <div class="fg">
-        <label>Do You Have Discord? *</label>
+        <label data-i18n="lblDiscord">Do You Have Discord? *</label>
         <div class="seg-toggle" id="discordToggle">
-          <button type="button" class="seg-btn" data-val="yes" onclick="selectDiscord('yes')">Yes</button>
-          <button type="button" class="seg-btn" data-val="no" onclick="selectDiscord('no')">No</button>
+          <button type="button" class="seg-btn" data-val="yes" data-i18n="valYes" onclick="selectDiscord('yes')">Yes</button>
+          <button type="button" class="seg-btn" data-val="no" data-i18n="valNo" onclick="selectDiscord('no')">No</button>
         </div>
       </div>
 
       <div id="discordFieldWrapper" style="display:none">
-        <div class="fg"><label>Discord Username *</label><input type="text" id="f-discord-user" placeholder="yourname"/></div>
-        <div class="fg"><label>Discord Display Name *</label><input type="text" id="f-discord-display" placeholder="Your display name"/></div>
+        <div class="fg"><label data-i18n="lblDiscordUser">Discord Username *</label><input type="text" id="f-discord-user" placeholder="yourname"/></div>
+        <div class="fg"><label data-i18n="lblDiscordDisplay">Discord Display Name *</label><input type="text" id="f-discord-display" data-i18n-ph="phDiscordDisplay" placeholder="Your display name"/></div>
       </div>
 
-      <div class="fg"><label>Short Message *</label><textarea id="f-msg" placeholder="Why do you want to join Bytestorm?"></textarea></div>
-      <button class="btn-w m-submit" onclick="sendApp()">Send Application</button>
+      <div class="fg"><label data-i18n="lblMsg">Short Message *</label><textarea id="f-msg" data-i18n-ph="phMsg" placeholder="Why do you want to join Bytestorm?"></textarea></div>
+      <button class="btn-w m-submit" data-i18n="btnSend" onclick="sendApp()">Send Application</button>
     </div>
     <div class="m-success" id="applySuccess">
       <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      <h3>Application Sent!</h3>
-      <p>We received everything. If you match the standard, we'll reach out via Discord or email.</p>
+      <h3 data-i18n="successTitle">Application Sent!</h3>
+      <p data-i18n="successText">We received everything. If you match the standard, we'll reach out via Discord or email.</p>
     </div>
   </div>
 </div>
@@ -786,6 +787,36 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <div class="th-sub">Our competitive match results</div>
     </div>
 
+    <div class="th-section-label">Upcoming</div>
+    <div class="tourn-list" style="margin-bottom:26px">
+
+      <!-- NO TIME TO EXPLAIN AS™#45 -->
+      <div class="th-card upcoming">
+        <div class="th-trophy">
+          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+        </div>
+        <div class="th-info">
+          <span class="th-upcoming-badge"><span class="th-upcoming-dot"></span>Upcoming</span>
+          <div class="th-name">NO TIME TO EXPLAIN AS™#45</div>
+          <div class="th-teams">Non-Official BYTS Players except CEO</div>
+        </div>
+        <div class="th-result">
+          <div class="th-upcoming-date">3:00 PM</div>
+          <div class="th-upcoming-sub">CEST</div>
+        </div>
+        <div class="th-divider"></div>
+        <div class="th-meta">
+          <div class="th-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            July 12, 2026
+          </div>
+          <div class="th-venue">Austria (Europe/Vienna)</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="th-section-label">Results</div>
     <div class="tourn-list">
 
       <!-- Dach BSCS Tournament – Match 2: vs Vortex (Loss) -->
@@ -877,7 +908,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="news-img" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/header.jpg" alt="eFootball" style="object-fit:cover;filter:brightness(.85)"/>
         </div>
         <div class="news-body">
-          <span class="news-tag">New Game</span>
+          <span class="news-tag" data-tagkey="tagNewGame">New Game</span>
           <div class="news-title-text">Bytestorm Esports Expands Into eFootball</div>
           <div class="news-sub">BYTS adds a seventh title to its competitive lineup. eFootball joins Brawl Stars, Fortnite, Rocket League, CS2, GTA, and Formula Apex as the organization's newest division.</div>
           <div class="news-date">July 11, 2026</div>
@@ -889,7 +920,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="news-img" src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm Esports Academy" style="object-fit:contain;padding:28px;filter:brightness(.85)"/>
         </div>
         <div class="news-body">
-          <span class="news-tag">Academy</span>
+          <span class="news-tag" data-tagkey="tagAcademy">Academy</span>
           <div class="news-title-text">Introducing Bytestorm Esports Academy</div>
           <div class="news-sub">A new program for players who aren't yet at a competitive level but want to learn. Academy members are taught tricks and fundamentals by Trainers and through the official Bytestorm Esports social media pages.</div>
           <div class="news-date">July 11, 2026</div>
@@ -901,7 +932,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="news-img" src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm Esports" style="object-fit:contain;padding:28px;filter:brightness(.85)"/>
         </div>
         <div class="news-body">
-          <span class="news-tag" style="background:rgba(239,68,68,.15);color:#f87171;border:1px solid #7f1d1d">Sponsorship</span>
+          <span class="news-tag" data-tagkey="tagSponsorship" style="background:rgba(239,68,68,.15);color:#f87171;border:1px solid #7f1d1d">Sponsorship</span>
           <div class="news-title-text">RedZac Rejects Sponsorship Request from Bytestorm Esports</div>
           <div class="news-sub">CEO Superplayer and Team Captain Batur approached RedZac for a sponsorship deal — but were turned down. RedZac only sponsors Special Events and Sport Teams, not Esports.</div>
           <div class="news-date">June 2026</div>
@@ -914,7 +945,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="news-img" src="https://flagcdn.com/w320/it.png" alt="Italy" style="object-fit:cover;object-position:center;width:50%;height:100%"/>
         </div>
         <div class="news-body">
-          <span class="news-tag">Roster Update</span>
+          <span class="news-tag" data-tagkey="tagRoster">Roster Update</span>
           <div class="news-title-text">Batur Named New Team Captain — Daniel Steps Down from Role</div>
           <div class="news-sub">Daniel is demoted from Team Captain early due to bad behaviour and inactivity. Batur steps up as new Team Captain, contracted until 2028.</div>
           <div class="news-date">June 23, 2026</div>
@@ -935,7 +966,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           </div>
         </div>
         <div class="news-body">
-          <span class="news-tag">Announcement</span>
+          <span class="news-tag" data-tagkey="tagAnnouncement">Announcement</span>
           <div class="news-title-text">BYTS Returns to Roblox — Formula Apex, Starting Today</div>
           <div class="news-sub">The vote is settled. 6 voted yes, 2 were neutral. Bytestorm Esports officially returns to Roblox today — exclusively through Formula Apex.</div>
           <div class="news-date">May 19, 2026</div>
@@ -956,7 +987,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           </div>
         </div>
         <div class="news-body">
-          <span class="news-tag">Announcement</span>
+          <span class="news-tag" data-tagkey="tagAnnouncement">Announcement</span>
           <div class="news-title-text">CEO plans to return to Roblox — Formular Apex</div>
           <div class="news-sub">Bytestorm Esports is set to return to Formular Apex on Roblox — and we're holding a community vote on Discord and WhatsApp. Should BYTS come back? Join the conversation and vote.</div>
           <div class="news-date">May 17, 2026</div>
@@ -1006,10 +1037,10 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </div>
 
       <div class="foot-contact">
-        <h2>Contact Us</h2>
+        <h2 data-i18n="contactUs">Contact Us</h2>
         <a href="mailto:bytestorm.marketing.team@gmail.com" class="btn-send">
           <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          Send Email
+          <span data-i18n="sendEmail">Send Email</span>
         </a>
       </div>
 
@@ -1124,6 +1155,7 @@ function selectType(type){
     b.classList.toggle('active', b.dataset.val===type);
   });
   document.getElementById('gameFieldWrapper').style.display = (type==='gamer') ? 'block' : 'none';
+  document.getElementById('gtagFieldWrapper').style.display = (type==='gamer') ? 'block' : 'none';
 }
 
 // ── Game multi-select ──
@@ -1152,7 +1184,8 @@ function sendApp(){
   var num=document.getElementById('f-num').value.trim();
   var msg=document.getElementById('f-msg').value.trim();
 
-  if(!name||!gtag){alert('Please fill in all required fields (marked with *).'); return}
+  if(!name){alert('Please fill in all required fields (marked with *).'); return}
+  if(appType==='gamer' && !gtag){alert('Please fill in all required fields (marked with *).'); return}
   if(appType==='gamer' && selectedGames.length===0){alert('Please select at least one game.'); return}
   if(!hasDiscordVal){alert('Please tell us whether you have Discord.'); return}
 
@@ -1165,10 +1198,10 @@ function sendApp(){
   if(!msg){alert('Please fill in all required fields (marked with *).'); return}
 
   var gamesText = appType==='gamer' ? selectedGames.join(', ') : 'N/A';
-  var subject='Bytestorm Application — '+gtag+' ('+(appType==='gamer'?gamesText:'Staff')+')';
+  var subject='Bytestorm Application — '+(appType==='gamer'?gtag:name)+' ('+(appType==='gamer'?gamesText:'Staff')+')';
   var body='=== BYTESTORM ESPORTS APPLICATION ===\n\n'
     +'Player Name:      '+name+'\n'
-    +'Gamer Tag:        '+gtag+'\n'
+    +(appType==='gamer' ? ('Gamer Tag:        '+gtag+'\n') : '')
     +'Applying As:      '+(appType==='gamer'?'Gamer':'Staff')+'\n'
     +(appType==='gamer' ? ('Game(s):          '+gamesText+'\n') : '')
     +'Region:           '+region+'\n'
@@ -1284,17 +1317,17 @@ function closeRoster(id){
 
 // ── Language translations ──
 var translations = {
-  en: { gamesEye:'Competing in',gamesTitle:'Our Games',tourTitle:'Tournament History',tourSub:'Our competitive match results',newsEye:'Latest',newsTitle:'News',socEye:'Connect',socTitle:'Find Us',applyBtn:'Apply',navGames:'Games',navTournaments:'Tournaments',navNews:'News',navSocials:'Contact',footCopy:'© 2026 Bytestorm. All rights reserved.',applyTitle:'Apply Now',applySub:"Fill it in — we'll reach out if you match the standard." },
-  de: { gamesEye:'Wir spielen',gamesTitle:'Unsere Spiele',tourTitle:'Turnier-Historie',tourSub:'Unsere Wettkampfergebnisse',newsEye:'Aktuell',newsTitle:'Neuigkeiten',socEye:'Verbinden',socTitle:'Finde uns',applyBtn:'Bewerben',navGames:'Spiele',navTournaments:'Turniere',navNews:'News',navSocials:'Soziales',footCopy:'© 2026 Bytestorm. Alle Rechte vorbehalten.',applyTitle:'Jetzt bewerben',applySub:'Füll es aus — wir melden uns, wenn du dem Standard entsprichst.' },
-  tr: { gamesEye:'Rekabet ettiğimiz',gamesTitle:'Oyunlarımız',tourTitle:'Turnuva Geçmişi',tourSub:'Rekabetçi maç sonuçlarımız',newsEye:'Son Dakika',newsTitle:'Haberler',socEye:'Bağlan',socTitle:'Bizi Bul',applyBtn:'Başvur',navGames:'Oyunlar',navTournaments:'Turnuvalar',navNews:'Haberler',navSocials:'Sosyal',footCopy:'© 2026 Bytestorm. Tüm hakları saklıdır.',applyTitle:'Şimdi Başvur',applySub:'Doldur — standartlara uyuyorsan seninle iletişime geçeceğiz.' },
-  it: { gamesEye:'Competiamo in',gamesTitle:'I Nostri Giochi',tourTitle:'Storico Tornei',tourSub:'I nostri risultati nelle competizioni',newsEye:'Ultime',newsTitle:'Notizie',socEye:'Connetti',socTitle:'Trovaci',applyBtn:'Candidati',navGames:'Giochi',navTournaments:'Tornei',navNews:'Notizie',navSocials:'Social',footCopy:'© 2026 Bytestorm. Tutti i diritti riservati.',applyTitle:'Candidati Ora',applySub:'Compilalo — ti contatteremo se soddisfi i requisiti.' },
-  fr: { gamesEye:'Nous jouons à',gamesTitle:'Nos Jeux',tourTitle:'Historique des Tournois',tourSub:'Nos résultats compétitifs',newsEye:'Dernières',newsTitle:'Actualités',socEye:'Rejoindre',socTitle:'Nous trouver',applyBtn:'Postuler',navGames:'Jeux',navTournaments:'Tournois',navNews:'Actualités',navSocials:'Réseaux',footCopy:'© 2026 Bytestorm. Tous droits réservés.',applyTitle:'Postuler maintenant',applySub:'Remplis le formulaire — on te contactera si tu corresponds.' },
-  es: { gamesEye:'Competimos en',gamesTitle:'Nuestros Juegos',tourTitle:'Historial de Torneos',tourSub:'Nuestros resultados competitivos',newsEye:'Últimas',newsTitle:'Noticias',socEye:'Conectar',socTitle:'Encuéntranos',applyBtn:'Postularse',navGames:'Juegos',navTournaments:'Torneos',navNews:'Noticias',navSocials:'Redes',footCopy:'© 2026 Bytestorm. Todos los derechos reservados.',applyTitle:'Postularse ahora',applySub:'Complétalo — te contactaremos si cumples el estándar.' },
-  ar: { gamesEye:'نتنافس في',gamesTitle:'ألعابنا',tourTitle:'تاريخ البطولات',tourSub:'نتائج مبارياتنا التنافسية',newsEye:'الأخبار',newsTitle:'أحدث الأخبار',socEye:'تواصل',socTitle:'ابحث عنا',applyBtn:'تقدّم',navGames:'الألعاب',navTournaments:'البطولات',navNews:'الأخبار',navSocials:'التواصل',footCopy:'© 2026 Bytestorm. جميع الحقوق محفوظة.',applyTitle:'تقدّم الآن',applySub:'املأ النموذج — سنتواصل معك إذا كنت مناسبًا.' },
-  pt: { gamesEye:'Competimos em',gamesTitle:'Nossos Jogos',tourTitle:'Histórico de Torneios',tourSub:'Nossos resultados competitivos',newsEye:'Últimas',newsTitle:'Notícias',socEye:'Conectar',socTitle:'Nos encontre',applyBtn:'Candidatar',navGames:'Jogos',navTournaments:'Torneios',navNews:'Notícias',navSocials:'Redes',footCopy:'© 2026 Bytestorm. Todos os direitos reservados.',applyTitle:'Candidatar-se agora',applySub:'Preencha — entraremos em contato se você atender ao padrão.' },
-  pl: { gamesEye:'Rywalizujemy w',gamesTitle:'Nasze Gry',tourTitle:'Historia Turniejów',tourSub:'Nasze wyniki w rozgrywkach',newsEye:'Najnowsze',newsTitle:'Aktualności',socEye:'Połącz się',socTitle:'Znajdź nas',applyBtn:'Aplikuj',navGames:'Gry',navTournaments:'Turnieje',navNews:'Aktualności',navSocials:'Socjal',footCopy:'© 2026 Bytestorm. Wszelkie prawa zastrzeżone.',applyTitle:'Aplikuj teraz',applySub:'Wypełnij — odezwiemy się, jeśli spełniasz wymagania.' },
-  nl: { gamesEye:'We spelen',gamesTitle:'Onze Spellen',tourTitle:'Toernooi Geschiedenis',tourSub:'Onze competitieve resultaten',newsEye:'Laatste',newsTitle:'Nieuws',socEye:'Verbinden',socTitle:'Vind ons',applyBtn:'Aanmelden',navGames:'Spellen',navTournaments:'Toernooien',navNews:'Nieuws',navSocials:'Sociaal',footCopy:'© 2026 Bytestorm. Alle rechten voorbehouden.',applyTitle:'Nu aanmelden',applySub:'Vul het in — we nemen contact op als je aan de standaard voldoet.' },
-  gr: { gamesEye:'Ανταγωνιζόμαστε σε',gamesTitle:'Τα Παιχνίδια μας',tourTitle:'Ιστορικό Τουρνουά',tourSub:'Τα ανταγωνιστικά μας αποτελέσματα',newsEye:'Τελευταία',newsTitle:'Νέα',socEye:'Σύνδεση',socTitle:'Βρείτε μας',applyBtn:'Αίτηση',navGames:'Παιχνίδια',navTournaments:'Τουρνουά',navNews:'Νέα',navSocials:'Κοινωνικά',footCopy:'© 2026 Bytestorm. Με επιφύλαξη παντός δικαιώματος.',applyTitle:'Κάντε αίτηση τώρα',applySub:'Συμπληρώστε το — θα επικοινωνήσουμε αν ανταποκρίνεστε.' }
+  en: { gamesEye:'Competing in',gamesTitle:'Our Games',tourTitle:'Tournament History',tourSub:'Our competitive match results',newsEye:'Latest',newsTitle:'News',socEye:'Connect',socTitle:'Find Us',applyBtn:'Apply',navGames:'Games',navTournaments:'Tournaments',navNews:'News',navSocials:'Contact',footCopy:'© 2026 Bytestorm. All rights reserved.',applyTitle:'Apply Now',applySub:"Fill it in — we'll reach out if you match the standard.",lblName:'Player Name *',phName:'Your real name',lblApplyingAs:'Applying As *',valGamer:'Gamer',valStaff:'Staff',lblGtag:'Gamer Tag *',phGtag:'Your in-game username',lblGames:'Game(s) *',lblGamesHint:'— select one or more',lblRegion:'Region *',lblRole:'Role *',lblJersey:'Jersey Number — pick your favourite #',lblDiscord:'Do You Have Discord? *',valYes:'Yes',valNo:'No',lblDiscordUser:'Discord Username *',lblDiscordDisplay:'Discord Display Name *',phDiscordDisplay:'Your display name',lblMsg:'Short Message *',phMsg:'Why do you want to join Bytestorm?',btnSend:'Send Application',successTitle:'Application Sent!',successText:"We received everything. If you match the standard, we'll reach out via Discord or email.",contactUs:'Contact Us',sendEmail:'Send Email',tagNewGame:'New Game',tagAcademy:'Academy',tagSponsorship:'Sponsorship',tagRoster:'Roster Update',tagAnnouncement:'Announcement' },
+  de: { gamesEye:'Wir spielen',gamesTitle:'Unsere Spiele',tourTitle:'Turnier-Historie',tourSub:'Unsere Wettkampfergebnisse',newsEye:'Aktuell',newsTitle:'Neuigkeiten',socEye:'Verbinden',socTitle:'Finde uns',applyBtn:'Bewerben',navGames:'Spiele',navTournaments:'Turniere',navNews:'News',navSocials:'Soziales',footCopy:'© 2026 Bytestorm. Alle Rechte vorbehalten.',applyTitle:'Jetzt bewerben',applySub:'Füll es aus — wir melden uns, wenn du dem Standard entsprichst.',lblName:'Spielername *',phName:'Dein echter Name',lblApplyingAs:'Bewerbung als *',valGamer:'Spieler',valStaff:'Team',lblGtag:'Gamer-Tag *',phGtag:'Dein Ingame-Name',lblGames:'Spiel(e) *',lblGamesHint:'— eins oder mehrere wählen',lblRegion:'Region *',lblRole:'Rolle *',lblJersey:'Trikotnummer — deine Lieblingszahl',lblDiscord:'Hast du Discord? *',valYes:'Ja',valNo:'Nein',lblDiscordUser:'Discord-Benutzername *',lblDiscordDisplay:'Discord-Anzeigename *',phDiscordDisplay:'Dein Anzeigename',lblMsg:'Kurze Nachricht *',phMsg:'Warum möchtest du Bytestorm beitreten?',btnSend:'Bewerbung senden',successTitle:'Bewerbung gesendet!',successText:'Wir haben alles erhalten. Wenn du dem Standard entsprichst, melden wir uns über Discord oder E-Mail.',contactUs:'Kontakt',sendEmail:'E-Mail senden',tagNewGame:'Neues Spiel',tagAcademy:'Akademie',tagSponsorship:'Sponsoring',tagRoster:'Kader-Update',tagAnnouncement:'Ankündigung' },
+  tr: { gamesEye:'Rekabet ettiğimiz',gamesTitle:'Oyunlarımız',tourTitle:'Turnuva Geçmişi',tourSub:'Rekabetçi maç sonuçlarımız',newsEye:'Son Dakika',newsTitle:'Haberler',socEye:'Bağlan',socTitle:'Bizi Bul',applyBtn:'Başvur',navGames:'Oyunlar',navTournaments:'Turnuvalar',navNews:'Haberler',navSocials:'Sosyal',footCopy:'© 2026 Bytestorm. Tüm hakları saklıdır.',applyTitle:'Şimdi Başvur',applySub:'Doldur — standartlara uyuyorsan seninle iletişime geçeceğiz.',lblName:'Oyuncu Adı *',phName:'Gerçek adın',lblApplyingAs:'Başvuru Türü *',valGamer:'Oyuncu',valStaff:'Ekip',lblGtag:'Oyun İçi Ad *',phGtag:'Oyun içi kullanıcı adın',lblGames:'Oyun(lar) *',lblGamesHint:'— bir veya daha fazla seç',lblRegion:'Bölge *',lblRole:'Rol *',lblJersey:'Forma Numarası — favori numaranı seç',lblDiscord:'Discord\'un var mı? *',valYes:'Evet',valNo:'Hayır',lblDiscordUser:'Discord Kullanıcı Adı *',lblDiscordDisplay:'Discord Görünen Adı *',phDiscordDisplay:'Görünen adın',lblMsg:'Kısa Mesaj *',phMsg:'Neden Bytestorm\'a katılmak istiyorsun?',btnSend:'Başvuruyu Gönder',successTitle:'Başvuru Gönderildi!',successText:'Her şeyi aldık. Standartlara uyuyorsan Discord veya e-posta üzerinden ulaşacağız.',contactUs:'İletişim',sendEmail:'E-posta Gönder',tagNewGame:'Yeni Oyun',tagAcademy:'Akademi',tagSponsorship:'Sponsorluk',tagRoster:'Kadro Güncellemesi',tagAnnouncement:'Duyuru' },
+  it: { gamesEye:'Competiamo in',gamesTitle:'I Nostri Giochi',tourTitle:'Storico Tornei',tourSub:'I nostri risultati nelle competizioni',newsEye:'Ultime',newsTitle:'Notizie',socEye:'Connetti',socTitle:'Trovaci',applyBtn:'Candidati',navGames:'Giochi',navTournaments:'Tornei',navNews:'Notizie',navSocials:'Social',footCopy:'© 2026 Bytestorm. Tutti i diritti riservati.',applyTitle:'Candidati Ora',applySub:'Compilalo — ti contatteremo se soddisfi i requisiti.',lblName:'Nome Giocatore *',phName:'Il tuo vero nome',lblApplyingAs:'Ti candidi come *',valGamer:'Giocatore',valStaff:'Staff',lblGtag:'Gamer Tag *',phGtag:'Il tuo nome utente in-game',lblGames:'Gioco/i *',lblGamesHint:'— seleziona uno o più',lblRegion:'Regione *',lblRole:'Ruolo *',lblJersey:'Numero Maglia — scegli il tuo preferito',lblDiscord:'Hai Discord? *',valYes:'Sì',valNo:'No',lblDiscordUser:'Nome Utente Discord *',lblDiscordDisplay:'Nome Visualizzato Discord *',phDiscordDisplay:'Il tuo nome visualizzato',lblMsg:'Messaggio Breve *',phMsg:'Perché vuoi unirti a Bytestorm?',btnSend:'Invia Candidatura',successTitle:'Candidatura Inviata!',successText:'Abbiamo ricevuto tutto. Se soddisfi i requisiti, ti contatteremo via Discord o email.',contactUs:'Contattaci',sendEmail:'Invia Email',tagNewGame:'Nuovo Gioco',tagAcademy:'Accademia',tagSponsorship:'Sponsorizzazione',tagRoster:'Aggiornamento Roster',tagAnnouncement:'Annuncio' },
+  fr: { gamesEye:'Nous jouons à',gamesTitle:'Nos Jeux',tourTitle:'Historique des Tournois',tourSub:'Nos résultats compétitifs',newsEye:'Dernières',newsTitle:'Actualités',socEye:'Rejoindre',socTitle:'Nous trouver',applyBtn:'Postuler',navGames:'Jeux',navTournaments:'Tournois',navNews:'Actualités',navSocials:'Réseaux',footCopy:'© 2026 Bytestorm. Tous droits réservés.',applyTitle:'Postuler maintenant',applySub:'Remplis le formulaire — on te contactera si tu corresponds.',lblName:'Nom du Joueur *',phName:'Ton vrai nom',lblApplyingAs:'Tu postules comme *',valGamer:'Joueur',valStaff:'Staff',lblGtag:'Pseudo *',phGtag:"Ton nom d'utilisateur en jeu",lblGames:'Jeu(x) *',lblGamesHint:'— sélectionne un ou plusieurs',lblRegion:'Région *',lblRole:'Rôle *',lblJersey:'Numéro de Maillot — choisis ton préféré',lblDiscord:'As-tu Discord ? *',valYes:'Oui',valNo:'Non',lblDiscordUser:"Nom d'utilisateur Discord *",lblDiscordDisplay:"Nom d'affichage Discord *",phDiscordDisplay:"Ton nom d'affichage",lblMsg:'Message Court *',phMsg:'Pourquoi veux-tu rejoindre Bytestorm ?',btnSend:'Envoyer la Candidature',successTitle:'Candidature Envoyée !',successText:'Nous avons tout reçu. Si tu corresponds au standard, on te contactera via Discord ou email.',contactUs:'Contactez-nous',sendEmail:"Envoyer un Email",tagNewGame:'Nouveau Jeu',tagAcademy:'Académie',tagSponsorship:'Sponsoring',tagRoster:"Mise à jour d'effectif",tagAnnouncement:'Annonce' },
+  es: { gamesEye:'Competimos en',gamesTitle:'Nuestros Juegos',tourTitle:'Historial de Torneos',tourSub:'Nuestros resultados competitivos',newsEye:'Últimas',newsTitle:'Noticias',socEye:'Conectar',socTitle:'Encuéntranos',applyBtn:'Postularse',navGames:'Juegos',navTournaments:'Torneos',navNews:'Noticias',navSocials:'Redes',footCopy:'© 2026 Bytestorm. Todos los derechos reservados.',applyTitle:'Postularse ahora',applySub:'Complétalo — te contactaremos si cumples el estándar.',lblName:'Nombre del Jugador *',phName:'Tu nombre real',lblApplyingAs:'Te postulas como *',valGamer:'Jugador',valStaff:'Staff',lblGtag:'Gamer Tag *',phGtag:'Tu nombre de usuario en el juego',lblGames:'Juego(s) *',lblGamesHint:'— selecciona uno o más',lblRegion:'Región *',lblRole:'Rol *',lblJersey:'Número de Camiseta — elige tu favorito',lblDiscord:'¿Tienes Discord? *',valYes:'Sí',valNo:'No',lblDiscordUser:'Nombre de Usuario de Discord *',lblDiscordDisplay:'Nombre para Mostrar en Discord *',phDiscordDisplay:'Tu nombre para mostrar',lblMsg:'Mensaje Corto *',phMsg:'¿Por qué quieres unirte a Bytestorm?',btnSend:'Enviar Solicitud',successTitle:'¡Solicitud Enviada!',successText:'Recibimos todo. Si cumples el estándar, te contactaremos por Discord o email.',contactUs:'Contáctanos',sendEmail:'Enviar Email',tagNewGame:'Nuevo Juego',tagAcademy:'Academia',tagSponsorship:'Patrocinio',tagRoster:'Actualización de Plantilla',tagAnnouncement:'Anuncio' },
+  ar: { gamesEye:'نتنافس في',gamesTitle:'ألعابنا',tourTitle:'تاريخ البطولات',tourSub:'نتائج مبارياتنا التنافسية',newsEye:'الأخبار',newsTitle:'أحدث الأخبار',socEye:'تواصل',socTitle:'ابحث عنا',applyBtn:'تقدّم',navGames:'الألعاب',navTournaments:'البطولات',navNews:'الأخبار',navSocials:'التواصل',footCopy:'© 2026 Bytestorm. جميع الحقوق محفوظة.',applyTitle:'تقدّم الآن',applySub:'املأ النموذج — سنتواصل معك إذا كنت مناسبًا.',lblName:'اسم اللاعب *',phName:'اسمك الحقيقي',lblApplyingAs:'التقديم كـ *',valGamer:'لاعب',valStaff:'طاقم',lblGtag:'اسم اللاعب داخل اللعبة *',phGtag:'اسم المستخدم داخل اللعبة',lblGames:'اللعبة/الألعاب *',lblGamesHint:'— اختر واحدة أو أكثر',lblRegion:'المنطقة *',lblRole:'الدور *',lblJersey:'رقم القميص — اختر رقمك المفضل',lblDiscord:'هل لديك Discord؟ *',valYes:'نعم',valNo:'لا',lblDiscordUser:'اسم مستخدم Discord *',lblDiscordDisplay:'اسم العرض في Discord *',phDiscordDisplay:'اسم العرض الخاص بك',lblMsg:'رسالة قصيرة *',phMsg:'لماذا تريد الانضمام إلى Bytestorm؟',btnSend:'إرسال الطلب',successTitle:'تم إرسال الطلب!',successText:'استلمنا كل شيء. إذا كنت مناسبًا سنتواصل معك عبر Discord أو البريد الإلكتروني.',contactUs:'تواصل معنا',sendEmail:'إرسال بريد إلكتروني',tagNewGame:'لعبة جديدة',tagAcademy:'الأكاديمية',tagSponsorship:'رعاية',tagRoster:'تحديث التشكيلة',tagAnnouncement:'إعلان' },
+  pt: { gamesEye:'Competimos em',gamesTitle:'Nossos Jogos',tourTitle:'Histórico de Torneios',tourSub:'Nossos resultados competitivos',newsEye:'Últimas',newsTitle:'Notícias',socEye:'Conectar',socTitle:'Nos encontre',applyBtn:'Candidatar',navGames:'Jogos',navTournaments:'Torneios',navNews:'Notícias',navSocials:'Redes',footCopy:'© 2026 Bytestorm. Todos os direitos reservados.',applyTitle:'Candidatar-se agora',applySub:'Preencha — entraremos em contato se você atender ao padrão.',lblName:'Nome do Jogador *',phName:'Seu nome real',lblApplyingAs:'Candidatando-se como *',valGamer:'Jogador',valStaff:'Equipe',lblGtag:'Gamer Tag *',phGtag:'Seu nome de usuário no jogo',lblGames:'Jogo(s) *',lblGamesHint:'— selecione um ou mais',lblRegion:'Região *',lblRole:'Função *',lblJersey:'Número da Camisa — escolha seu favorito',lblDiscord:'Você tem Discord? *',valYes:'Sim',valNo:'Não',lblDiscordUser:'Nome de Usuário do Discord *',lblDiscordDisplay:'Nome de Exibição do Discord *',phDiscordDisplay:'Seu nome de exibição',lblMsg:'Mensagem Curta *',phMsg:'Por que você quer entrar na Bytestorm?',btnSend:'Enviar Candidatura',successTitle:'Candidatura Enviada!',successText:'Recebemos tudo. Se você atender ao padrão, entraremos em contato via Discord ou email.',contactUs:'Fale Conosco',sendEmail:'Enviar Email',tagNewGame:'Novo Jogo',tagAcademy:'Academia',tagSponsorship:'Patrocínio',tagRoster:'Atualização de Elenco',tagAnnouncement:'Anúncio' },
+  pl: { gamesEye:'Rywalizujemy w',gamesTitle:'Nasze Gry',tourTitle:'Historia Turniejów',tourSub:'Nasze wyniki w rozgrywkach',newsEye:'Najnowsze',newsTitle:'Aktualności',socEye:'Połącz się',socTitle:'Znajdź nas',applyBtn:'Aplikuj',navGames:'Gry',navTournaments:'Turnieje',navNews:'Aktualności',navSocials:'Socjal',footCopy:'© 2026 Bytestorm. Wszelkie prawa zastrzeżone.',applyTitle:'Aplikuj teraz',applySub:'Wypełnij — odezwiemy się, jeśli spełniasz wymagania.',lblName:'Imię Gracza *',phName:'Twoje prawdziwe imię',lblApplyingAs:'Aplikujesz jako *',valGamer:'Gracz',valStaff:'Ekipa',lblGtag:'Gamer Tag *',phGtag:'Twoja nazwa w grze',lblGames:'Gra/Gry *',lblGamesHint:'— wybierz jedną lub więcej',lblRegion:'Region *',lblRole:'Rola *',lblJersey:'Numer Koszulki — wybierz swój ulubiony',lblDiscord:'Masz Discorda? *',valYes:'Tak',valNo:'Nie',lblDiscordUser:'Nazwa Użytkownika Discord *',lblDiscordDisplay:'Wyświetlana Nazwa Discord *',phDiscordDisplay:'Twoja wyświetlana nazwa',lblMsg:'Krótka Wiadomość *',phMsg:'Dlaczego chcesz dołączyć do Bytestorm?',btnSend:'Wyślij Zgłoszenie',successTitle:'Zgłoszenie Wysłane!',successText:'Otrzymaliśmy wszystko. Jeśli spełniasz wymagania, skontaktujemy się przez Discord lub e-mail.',contactUs:'Skontaktuj się',sendEmail:'Wyślij Email',tagNewGame:'Nowa Gra',tagAcademy:'Akademia',tagSponsorship:'Sponsoring',tagRoster:'Aktualizacja Składu',tagAnnouncement:'Ogłoszenie' },
+  nl: { gamesEye:'We spelen',gamesTitle:'Onze Spellen',tourTitle:'Toernooi Geschiedenis',tourSub:'Onze competitieve resultaten',newsEye:'Laatste',newsTitle:'Nieuws',socEye:'Verbinden',socTitle:'Vind ons',applyBtn:'Aanmelden',navGames:'Spellen',navTournaments:'Toernooien',navNews:'Nieuws',navSocials:'Sociaal',footCopy:'© 2026 Bytestorm. Alle rechten voorbehouden.',applyTitle:'Nu aanmelden',applySub:'Vul het in — we nemen contact op als je aan de standaard voldoet.',lblName:'Spelernaam *',phName:'Je echte naam',lblApplyingAs:'Je meldt je aan als *',valGamer:'Speler',valStaff:'Staf',lblGtag:'Gamer Tag *',phGtag:'Je in-game gebruikersnaam',lblGames:'Spel(len) *',lblGamesHint:'— selecteer één of meer',lblRegion:'Regio *',lblRole:'Rol *',lblJersey:'Shirtnummer — kies je favoriet',lblDiscord:'Heb je Discord? *',valYes:'Ja',valNo:'Nee',lblDiscordUser:'Discord Gebruikersnaam *',lblDiscordDisplay:'Discord Weergavenaam *',phDiscordDisplay:'Je weergavenaam',lblMsg:'Kort Bericht *',phMsg:'Waarom wil je bij Bytestorm komen?',btnSend:'Aanmelding Versturen',successTitle:'Aanmelding Verzonden!',successText:'We hebben alles ontvangen. Als je aan de standaard voldoet, nemen we contact op via Discord of e-mail.',contactUs:'Neem Contact Op',sendEmail:'E-mail Versturen',tagNewGame:'Nieuw Spel',tagAcademy:'Academie',tagSponsorship:'Sponsoring',tagRoster:'Selectie-update',tagAnnouncement:'Aankondiging' },
+  gr: { gamesEye:'Ανταγωνιζόμαστε σε',gamesTitle:'Τα Παιχνίδια μας',tourTitle:'Ιστορικό Τουρνουά',tourSub:'Τα ανταγωνιστικά μας αποτελέσματα',newsEye:'Τελευταία',newsTitle:'Νέα',socEye:'Σύνδεση',socTitle:'Βρείτε μας',applyBtn:'Αίτηση',navGames:'Παιχνίδια',navTournaments:'Τουρνουά',navNews:'Νέα',navSocials:'Κοινωνικά',footCopy:'© 2026 Bytestorm. Με επιφύλαξη παντός δικαιώματος.',applyTitle:'Κάντε αίτηση τώρα',applySub:'Συμπληρώστε το — θα επικοινωνήσουμε αν ανταποκρίνεστε.',lblName:'Όνομα Παίκτη *',phName:'Το πραγματικό σου όνομα',lblApplyingAs:'Υποβολή αίτησης ως *',valGamer:'Παίκτης',valStaff:'Προσωπικό',lblGtag:'Gamer Tag *',phGtag:'Το όνομα χρήστη σου στο παιχνίδι',lblGames:'Παιχνίδι(α) *',lblGamesHint:'— επιλέξτε ένα ή περισσότερα',lblRegion:'Περιοχή *',lblRole:'Ρόλος *',lblJersey:'Αριθμός Φανέλας — επίλεξε τον αγαπημένο σου',lblDiscord:'Έχεις Discord; *',valYes:'Ναι',valNo:'Όχι',lblDiscordUser:'Όνομα Χρήστη Discord *',lblDiscordDisplay:'Εμφανιζόμενο Όνομα Discord *',phDiscordDisplay:'Το εμφανιζόμενο όνομά σου',lblMsg:'Σύντομο Μήνυμα *',phMsg:'Γιατί θέλεις να γίνεις μέλος της Bytestorm;',btnSend:'Αποστολή Αίτησης',successTitle:'Η Αίτηση Στάλθηκε!',successText:'Λάβαμε τα πάντα. Αν ανταποκρίνεστε, θα επικοινωνήσουμε μέσω Discord ή email.',contactUs:'Επικοινωνήστε',sendEmail:'Αποστολή Email',tagNewGame:'Νέο Παιχνίδι',tagAcademy:'Ακαδημία',tagSponsorship:'Χορηγία',tagRoster:'Ενημέρωση Ρόστερ',tagAnnouncement:'Ανακοίνωση' }
 };
 function changeLang(lang){
   var t=translations[lang]||translations['en'];
@@ -1317,9 +1350,9 @@ function changeLang(lang){
   if(thSub)thSub.textContent=t.tourSub;
   var footCopy=document.querySelector('.foot-copy');
   if(footCopy)footCopy.textContent=t.footCopy;
-  var mTitle=document.querySelector('.m-title'),mSub=document.querySelector('.m-sub');
-  if(mTitle)mTitle.textContent=t.applyTitle;
-  if(mSub)mSub.textContent=t.applySub;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(t[k])el.textContent=t[k];});
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el){var k=el.getAttribute('data-i18n-ph');if(t[k])el.setAttribute('placeholder',t[k]);});
+  document.querySelectorAll('[data-tagkey]').forEach(function(el){var k=el.getAttribute('data-tagkey');if(t[k])el.textContent=t[k];});
   // Save preference
   try { localStorage.setItem('byts-lang', lang); } catch(e){}
 }
