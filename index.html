@@ -219,7 +219,8 @@
   nav{position:fixed;top:0;left:0;right:0;z-index:300;height:78px;display:flex;align-items:center;background:rgba(8,9,12,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--b1)}
   .nav-in{max-width:1400px;margin:0 auto;padding:0 32px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:28px}
   .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-  .nav-logo img{height:38px;width:auto;min-width:38px;display:block}
+  .nav-logo-box{width:38px;height:38px;flex-shrink:0;display:block}
+  .nav-logo-box img{height:38px;width:auto;display:block}
   .nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff}
   .nav-links{display:flex;align-items:center;gap:36px;list-style:none;flex:1;justify-content:center}
   .nav-links a{color:#c7c9d1;text-decoration:none;font-size:15px;font-weight:500;letter-spacing:0;text-transform:none;transition:color .2s;position:relative}
@@ -428,6 +429,8 @@
     #langSelect{padding:8px 10px!important;font-size:12px!important}
     .nav-cta{padding:9px 14px 9px 12px;font-size:13px}
     .nav-actions{gap:8px}
+    .nav-logo-box{overflow:hidden;position:relative}
+    .nav-logo-box img{position:absolute;top:50%;left:50%;height:auto;width:160%;transform:translate(-50%,-50%)}
   }
   @media(max-width:640px){.games-grid{grid-template-columns:repeat(2,1fr)}.soc-grid{grid-template-columns:1fr}.s-head{flex-direction:column;align-items:flex-start}.fgr{grid-template-columns:1fr}.modal{padding:26px 18px}}
   @media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}}
@@ -581,7 +584,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 <nav>
   <div class="nav-in">
     <a href="#" class="nav-logo">
-      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm" loading="eager" decoding="sync" onerror="this.onerror=null;this.src='https://raw.githack.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png';"/>
+      <span class="nav-logo-box"><img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm" loading="eager" decoding="sync" onerror="this.onerror=null;this.src='https://raw.githack.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png';"/></span>
       <span class="nav-brand">Bytestorm Esports</span>
     </a>
     <ul class="nav-links">
