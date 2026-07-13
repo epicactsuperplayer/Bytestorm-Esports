@@ -348,6 +348,7 @@
   /* Countdown */
   .th-countdown{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:2px;font-variant-numeric:tabular-nums}
   .th-countdown-label{font-size:10px;color:var(--m2);letter-spacing:.06em;text-transform:uppercase}
+  .th-target-time{font-size:10px;color:var(--m2);letter-spacing:.04em;margin-top:2px}
   /* Delayed */
   .th-card.delayed{border-color:#3a2a10;background:#120e06}
   .th-card.delayed::before{content:'';position:absolute;inset:0;border-radius:10px;border:1px solid rgba(251,191,36,.1);pointer-events:none}
@@ -834,6 +835,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
+
     </div>
 
     <div class="th-section-label">Results</div>
@@ -1152,9 +1154,12 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
     if(days > 0) countdownText = `${days}d ${pad(hours)}h ${pad(mins)}m`;
     else countdownText = `${pad(hours)}:${pad(mins)}:${pad(secs)}`;
 
+    const timeLabel = start.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+
     resultEl.innerHTML =
       `<div class="th-countdown">${countdownText}</div>` +
-      `<div class="th-countdown-label">Starts in</div>`;
+      `<div class="th-countdown-label">Starts in</div>` +
+      `<div class="th-target-time">at ${timeLabel}</div>`;
   }
 
   function tick(){ cards.forEach(render); }
