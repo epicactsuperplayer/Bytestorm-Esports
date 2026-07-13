@@ -338,6 +338,23 @@
   @keyframes upcomingPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
   .th-upcoming-date{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:2px}
   .th-upcoming-sub{font-size:11px;color:var(--m2);letter-spacing:.04em}
+  /* Live Tournament */
+  .th-card.live{border-color:#4a1414;background:#140909;position:relative;overflow:hidden}
+  .th-card.live::before{content:'';position:absolute;inset:0;border-radius:10px;border:1px solid rgba(248,113,113,.15);pointer-events:none}
+  .th-live-badge{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#3a0d0d;border:1px solid #f87171;padding:3px 9px;border-radius:20px;margin-bottom:6px}
+  .th-live-dot{width:6px;height:6px;border-radius:50%;background:#f87171;animation:livePulse 1.1s ease-in-out infinite}
+  @keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+  .th-live-label{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#f87171;margin-bottom:2px}
+  /* Countdown */
+  .th-countdown{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:2px;font-variant-numeric:tabular-nums}
+  .th-countdown-label{font-size:10px;color:var(--m2);letter-spacing:.06em;text-transform:uppercase}
+  /* Delayed */
+  .th-card.delayed{border-color:#3a2a10;background:#120e06}
+  .th-card.delayed::before{content:'';position:absolute;inset:0;border-radius:10px;border:1px solid rgba(251,191,36,.1);pointer-events:none}
+  .th-delayed-badge{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fbbf24;background:#241a05;border:1px solid #7a5b12;padding:3px 9px;border-radius:20px;margin-bottom:6px}
+  .th-delayed-dot{width:6px;height:6px;border-radius:50%;background:#fbbf24}
+  .th-delayed-label{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:#fbbf24;margin-bottom:2px}
+  .th-delayed-note{font-size:10.5px;color:var(--m2);letter-spacing:.02em;max-width:150px;line-height:1.4}
   /* Apply modal */
   footer{border-top:1px solid var(--b1)}
   .foot2{padding:70px 32px 0}
@@ -793,17 +810,19 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
     <div class="tourn-list" style="margin-bottom:26px">
 
       <!-- BATTLE OF DRAFTS APAC#12 -->
-      <div class="th-card upcoming">
+      <!-- data-status="delayed": start time unknown due to a Matcherino bug. Once a new start time is confirmed,
+           switch data-status to "scheduled" and set data-start to an ISO datetime (e.g. 2026-07-14T16:00:00+02:00).
+           The auto-updater will then show a live countdown and flip the card to LIVE automatically at that time. -->
+      <div class="th-card upcoming delayed tourn-auto" data-status="delayed" data-start="" data-game="Brawl Stars" data-date-label="July 13, 2026">
         <div class="th-trophy">
           <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
         </div>
         <div class="th-info">
-          <span class="th-upcoming-badge"><span class="th-upcoming-dot"></span>Upcoming</span>
+          <span class="th-status-badge"></span>
           <div class="th-name">BATTLE OF DRAFTS APAC#12</div>
         </div>
-        <div class="th-result">
-          <div class="th-upcoming-date">4:00 PM</div>
-          <div class="th-upcoming-sub">BYTS</div>
+        <div class="th-result th-status-result">
+          <!-- filled dynamically by JS based on data-status -->
         </div>
         <div class="th-divider"></div>
         <div class="th-meta">
@@ -1079,6 +1098,69 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 
 
 <script>
+
+// ── Tournament Auto-Updater ──
+// Reads each .tourn-auto card's data-status/data-start and renders the right badge,
+// live countdown, or LIVE state. Runs on load and every second.
+(function(){
+  const cards = document.querySelectorAll('.tourn-auto');
+  if(!cards.length) return;
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function render(card){
+    const status = card.getAttribute('data-status'); // 'delayed' | 'scheduled' | 'live'
+    const startRaw = card.getAttribute('data-start');
+    const badgeEl = card.querySelector('.th-status-badge');
+    const resultEl = card.querySelector('.th-status-result');
+
+    // DELAYED: no confirmed start time yet
+    if(status === 'delayed' || !startRaw){
+      card.classList.remove('upcoming','live');
+      card.classList.add('delayed');
+      badgeEl.innerHTML = '<span class="th-delayed-badge"><span class="th-delayed-dot"></span>Delayed</span>';
+      resultEl.innerHTML =
+        '<div class="th-delayed-label">TBA</div>' +
+        '<div class="th-delayed-note">Delayed due to a Matcherino bug — new start time TBA</div>';
+      return;
+    }
+
+    const start = new Date(startRaw);
+    const now = new Date();
+    const diff = start - now;
+
+    // LIVE: start time has passed
+    if(diff <= 0){
+      card.classList.remove('upcoming','delayed');
+      card.classList.add('live');
+      badgeEl.innerHTML = '<span class="th-live-badge"><span class="th-live-dot"></span>Live</span>';
+      resultEl.innerHTML = '<div class="th-live-label">In Progress</div><div class="th-upcoming-sub">BYTS</div>';
+      return;
+    }
+
+    // SCHEDULED: counting down to start
+    card.classList.remove('live','delayed');
+    card.classList.add('upcoming');
+    badgeEl.innerHTML = '<span class="th-upcoming-badge"><span class="th-upcoming-dot"></span>Upcoming</span>';
+
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+
+    let countdownText;
+    if(days > 0) countdownText = `${days}d ${pad(hours)}h ${pad(mins)}m`;
+    else countdownText = `${pad(hours)}:${pad(mins)}:${pad(secs)}`;
+
+    resultEl.innerHTML =
+      `<div class="th-countdown">${countdownText}</div>` +
+      `<div class="th-countdown-label">Starts in</div>`;
+  }
+
+  function tick(){ cards.forEach(render); }
+  tick();
+  setInterval(tick, 1000);
+})();
 
 // ── Legal Notice Modal ──
 function openImpressum(){
