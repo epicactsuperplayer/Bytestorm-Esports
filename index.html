@@ -219,7 +219,7 @@
   nav{position:fixed;top:0;left:0;right:0;z-index:300;height:78px;display:flex;align-items:center;background:rgba(8,9,12,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--b1)}
   .nav-in{max-width:1400px;margin:0 auto;padding:0 32px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:28px}
   .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-  .nav-logo img{height:38px;width:auto}
+  .nav-logo img{height:38px;width:auto;min-width:38px;display:block}
   .nav-brand{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff}
   .nav-links{display:flex;align-items:center;gap:36px;list-style:none;flex:1;justify-content:center}
   .nav-links a{color:#c7c9d1;text-decoration:none;font-size:15px;font-weight:500;letter-spacing:0;text-transform:none;transition:color .2s;position:relative}
@@ -581,7 +581,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 <nav>
   <div class="nav-in">
     <a href="#" class="nav-logo">
-      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm"/>
+      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm" loading="eager" decoding="sync" onerror="this.onerror=null;this.src='https://raw.githack.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png';"/>
       <span class="nav-brand">Bytestorm Esports</span>
     </a>
     <ul class="nav-links">
@@ -633,7 +633,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="gc-img" src="" alt="Brawl Stars" style="display:none"/>
           <div class="gc-placeholder">Brawl Stars</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">6 players</div></div>
+          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">7 players</div></div>
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
@@ -734,6 +734,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge captain">Team Captain</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Role:</b> Team Captain<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gr.png" alt="Greece"/><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Role:</b> Pro Support<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Greece</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#31</span><span class="rp-badge normal">Esports Player</span></div><div class="rp-name">爪〇〇冂し|号ん十</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/uz.png" alt="Uzbekistan"/><div class="rp-top"><span class="rp-num">#18</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Felix</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> ASIA – Uzbekistan</div></div>
       </div>
     </div>
 
