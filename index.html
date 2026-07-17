@@ -333,7 +333,14 @@
   .th-sub{font-size:13px;color:var(--m2);letter-spacing:.03em}
   .th-foot{text-align:center;margin-top:22px;font-size:11px;color:var(--m1);letter-spacing:.06em}
   .th-foot span{margin:0 6px;opacity:.4}
-  .tourn-list{display:flex;flex-direction:column;gap:10px}
+  .tourn-list{display:flex;flex-direction:column;gap:10px;max-height:640px;overflow-y:auto;padding-right:8px;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--b1) var(--s1)}
+  .tourn-list::-webkit-scrollbar{width:8px}
+  .tourn-list::-webkit-scrollbar-track{background:var(--s1);border-radius:8px}
+  .tourn-list::-webkit-scrollbar-thumb{background:var(--b1);border-radius:8px}
+  .tourn-list::-webkit-scrollbar-thumb:hover{background:#8a1c1c}
+  .tourn-list{cursor:grab}
+  .tourn-list.dragging{cursor:grabbing;user-select:none}
+  .tourn-list.dragging .th-card{pointer-events:none}
   .th-card{background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:20px 24px;display:flex;align-items:center;gap:20px;transition:background .2s}
   .th-card:hover{background:var(--s2)}
   .th-trophy{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--m1)}
@@ -856,20 +863,22 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <div class="th-sub">Our competitive match results</div>
     </div>
 
-    <div class="th-section-label">Upcoming</div>
+    <div class="th-section-label">Results</div>
     <div class="tourn-list">
 
-      <!-- Wildcard Weekend #18 – Brawl Stars, July 17 2026 5:00 PM -->
-      <div class="th-card tourn-auto" data-status="scheduled" data-start="2026-07-17T17:00:00+02:00">
+      <!-- Wildcard Weekend #18 – Round 2: vs DC: Raiobs (Loss) -->
+      <div class="th-card">
         <div class="th-trophy">
           <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
         </div>
         <div class="th-info">
-          <div class="th-status-badge"></div>
           <div class="th-name">Wildcard Weekend #18</div>
-          <div class="th-teams"><b>Bytestorm Esports</b></div>
+          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>DC: Raiobs</div>
         </div>
-        <div class="th-result th-status-result"></div>
+        <div class="th-result">
+          <div class="th-outcome loss">LOSS</div>
+          <div class="th-score">BYTS 0 – 2 RAIOBS</div>
+        </div>
         <div class="th-divider"></div>
         <div class="th-meta">
           <div class="th-date">
@@ -880,10 +889,28 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-    </div>
-
-    <div class="th-section-label">Results</div>
-    <div class="tourn-list">
+      <!-- Wildcard Weekend #18 – Round 1: vs Aura (Win) -->
+      <div class="th-card">
+        <div class="th-trophy">
+          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+        </div>
+        <div class="th-info">
+          <div class="th-name">Wildcard Weekend #18</div>
+          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>Aura</div>
+        </div>
+        <div class="th-result">
+          <div class="th-outcome win">WIN</div>
+          <div class="th-score">BYTS 2 – 0 AURA</div>
+        </div>
+        <div class="th-divider"></div>
+        <div class="th-meta">
+          <div class="th-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            July 17, 2026
+          </div>
+          <div class="th-venue">Brawl Stars</div>
+        </div>
+      </div>
 
       <!-- BATTLE OF DRAFTS APAC#12 – DSQ (no-show, July 14 2026) -->
       <div class="th-card">
@@ -1579,6 +1606,34 @@ function changeLang(lang){
       changeLang(saved);
     }
   } catch(e){}
+})();
+
+// Drag-to-slide scrolling for tournament results list
+(function(){
+  var el = document.querySelector('.tourn-list');
+  if(!el) return;
+  var isDown = false, startY, scrollTop;
+  el.addEventListener('mousedown', function(e){
+    isDown = true;
+    el.classList.add('dragging');
+    startY = e.pageY - el.offsetTop;
+    scrollTop = el.scrollTop;
+  });
+  window.addEventListener('mouseup', function(){
+    isDown = false;
+    el.classList.remove('dragging');
+  });
+  el.addEventListener('mouseleave', function(){
+    isDown = false;
+    el.classList.remove('dragging');
+  });
+  el.addEventListener('mousemove', function(e){
+    if(!isDown) return;
+    e.preventDefault();
+    var y = e.pageY - el.offsetTop;
+    var walk = (y - startY) * 1.2;
+    el.scrollTop = scrollTop - walk;
+  });
 })();
 </script>
 </body>
