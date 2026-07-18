@@ -313,6 +313,7 @@
   .rp-badge.editor{color:#2dd4bf;border-color:#134e4a}
   .rp-badge.recruiter{color:#f472b6;border-color:#831843}
   .rp-badge.moderator{color:#a3e635;border-color:#3f6212}
+  .rp-badge.trial{color:#fb923c;border-color:#7c2d12}
   .rp-status{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4ade80;display:inline-flex;align-items:center;gap:4px}
   .rp-status::before{content:'';width:5px;height:5px;border-radius:50%;background:#4ade80}
   .rp-meta{font-size:11px;color:var(--m2);line-height:1.65;position:relative;z-index:2}
@@ -680,7 +681,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="gc-img" src="" alt="Brawl Stars" style="display:none"/>
           <div class="gc-placeholder">Brawl Stars</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">7 players</div></div>
+          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">8 players</div></div>
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
@@ -782,6 +783,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gr.png" alt="Greece"/><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Role:</b> Pro Support<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Greece</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#31</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">爪〇〇冂し|号ん十</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/uz.png" alt="Uzbekistan"/><div class="rp-top"><span class="rp-num">#18</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Felix</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> ASIA – Uzbekistan</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/no.png" alt="Norway"/><div class="rp-top"><span class="rp-num">#67</span><span class="rp-badge trial">Trial</span></div><div class="rp-name">Dark</div><div class="rp-meta"><b>Role:</b> Trial Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Norway</div></div>
       </div>
     </div>
 
@@ -1021,6 +1023,18 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 
       <div class="news-card" onclick="openNews(0)">
         <div class="news-img-wrap" style="position:relative">
+          <img class="news-img" src="https://flagcdn.com/w320/no.png" alt="Norway" style="object-fit:cover;filter:brightness(.85)"/>
+        </div>
+        <div class="news-body">
+          <span class="news-tag" data-tagkey="tagRoster">Roster Update</span>
+          <div class="news-title-text">Dark Joins on Trial — Wears #67, Once Worn by Banned Player Amir</div>
+          <div class="news-sub">Bytestorm Esports welcomes Dark (Norway) to the Brawl Stars roster on a trial basis. He takes jersey #67, a number previously worn by Amir (Azerbaijan) before his ban in the org's early days.</div>
+          <div class="news-date">July 18, 2026</div>
+        </div>
+      </div>
+
+      <div class="news-card" onclick="openNews(1)">
+        <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://flagcdn.com/w320/tr.png" alt="Turkey" style="object-fit:cover;filter:brightness(.85)"/>
         </div>
         <div class="news-body">
@@ -1031,7 +1045,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(1)">
+      <div class="news-card" onclick="openNews(2)">
         <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://flagcdn.com/w320/tr.png" alt="Turkey" style="object-fit:cover;filter:brightness(.85)"/>
         </div>
@@ -1043,7 +1057,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(2)">
+      <div class="news-card" onclick="openNews(3)">
         <div class="news-img-wrap" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center">
           <img class="news-img" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/header.jpg" alt="eFootball" style="object-fit:cover;filter:brightness(.85)"/>
         </div>
@@ -1055,7 +1069,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(3)">
+      <div class="news-card" onclick="openNews(4)">
         <div class="news-img-wrap" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center">
           <img class="news-img" src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm Esports Academy" style="object-fit:contain;padding:28px;filter:brightness(.85)"/>
         </div>
@@ -1067,7 +1081,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(4)">
+      <div class="news-card" onclick="openNews(5)">
         <div class="news-img-wrap" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center">
           <img class="news-img" src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm Esports" style="object-fit:contain;padding:28px;filter:brightness(.85)"/>
         </div>
@@ -1079,7 +1093,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(5)">
+      <div class="news-card" onclick="openNews(6)">
         <div class="news-img-wrap" style="position:relative;display:flex">
           <img class="news-img" src="https://flagcdn.com/w320/tr.png" alt="Turkey" style="object-fit:cover;object-position:center;width:50%;height:100%"/>
           <img class="news-img" src="https://flagcdn.com/w320/it.png" alt="Italy" style="object-fit:cover;object-position:center;width:50%;height:100%"/>
@@ -1092,7 +1106,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(6)">
+      <div class="news-card" onclick="openNews(7)">
         <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://tr.rbxcdn.com/180DAY-6f05ab8fd4559a8de6b55412cdccd328/768/432/Image/Webp/noFilter" alt="Formula Apex"/>
           <div style="position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;z-index:2">
@@ -1113,7 +1127,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(7)">
+      <div class="news-card" onclick="openNews(8)">
         <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://static.wikia.nocookie.net/formula-apex/images/e/e6/Game_Icon-_Pre_CU11.png/revision/latest?cb=20240824021346" alt="Formular Apex"/>
           <div style="position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;z-index:2">
@@ -1433,6 +1447,7 @@ document.querySelectorAll('.rp-badge').forEach(function(badge) {
   else if (text === 'team captain') badge.classList.add('captain');
   else if (text === 'staff') badge.classList.add('staff-r');
   else if (text === 'ceo') badge.classList.add('ceo');
+  else if (text === 'trial') badge.classList.add('trial');
   else badge.classList.add('normal');
 });
 
@@ -1440,6 +1455,13 @@ document.querySelectorAll('.rp-badge').forEach(function(badge) {
 
 // ── News ──
 var newsData = [
+  {
+    tag: 'Roster Update',
+    title: 'Dark Joins on Trial — Wears #67, Once Worn by Banned Player Amir',
+    img: 'https://flagcdn.com/w320/no.png',
+    text: 'Bytestorm Esports has brought in Dark (Norway) to the Brawl Stars roster on a trial basis, effective July 18, 2026. Dark takes jersey #67 — a number with history in the organization. It was first worn by Amir, an Azerbaijani player who was banned during the early days of Bytestorm Esports. This marks the second time #67 has been assigned since the org\'s founding. Dark\'s trial period will determine whether he earns a permanent spot on the roster.',
+    date: 'July 18, 2026'
+  },
   {
     tag: 'Roster Update',
     title: '爪〇〇冂し|号ん十\'s Suspension Lifted',
