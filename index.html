@@ -780,10 +780,10 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/it.png" alt="Italy"/><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">Daniel</div><div class="rp-meta"><b>Role:</b> Normal Player<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Italy</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Austria</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge captain">Team Captain</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Role:</b> Team Captain<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gr.png" alt="Greece"/><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Role:</b> Pro Support<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Greece</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gr.png" alt="Greece"/><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Greece</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#31</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">爪〇〇冂し|号ん十</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/uz.png" alt="Uzbekistan"/><div class="rp-top"><span class="rp-num">#18</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Felix</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> ASIA – Uzbekistan</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/no.png" alt="Norway"/><div class="rp-top"><span class="rp-num">#67</span><span class="rp-badge trial">Trial</span></div><div class="rp-name">Dark</div><div class="rp-meta"><b>Role:</b> Trial Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Norway</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/no.png" alt="Norway"/><div class="rp-top"><span class="rp-num">#67</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Dark</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Norway</div></div>
       </div>
     </div>
 
@@ -863,6 +863,34 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
     <div class="th-head">
       <div class="th-title">Tournament History</div>
       <div class="th-sub">Our competitive match results</div>
+    </div>
+
+    <div class="th-section-label">Upcoming</div>
+    <div class="tourn-list" style="margin-bottom:28px">
+
+      <!-- SPORTSTARS (EMEA #45) – Upcoming -->
+      <div class="th-card upcoming tourn-auto" data-status="scheduled" data-start="2026-07-21T17:00:00+02:00">
+        <div class="th-trophy">
+          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+        </div>
+        <div class="th-info">
+          <div class="th-name">SPORTSTARS (EMEA #45)</div>
+          <div class="th-teams"><b>Bytestorm Esports</b></div>
+        </div>
+        <div class="th-result">
+          <div class="th-status-badge"></div>
+          <div class="th-status-result"></div>
+        </div>
+        <div class="th-divider"></div>
+        <div class="th-meta">
+          <div class="th-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            July 21, 2026
+          </div>
+          <div class="th-venue">Brawl Stars</div>
+        </div>
+      </div>
+
     </div>
 
     <div class="th-section-label">Results</div>
@@ -1630,10 +1658,8 @@ function changeLang(lang){
   } catch(e){}
 })();
 
-// Drag-to-slide scrolling for tournament results list
-(function(){
-  var el = document.querySelector('.tourn-list');
-  if(!el) return;
+// Drag-to-slide scrolling for tournament lists (Upcoming + Results)
+document.querySelectorAll('.tourn-list').forEach(function(el){
   var isDown = false, startY, scrollTop;
   el.addEventListener('mousedown', function(e){
     isDown = true;
@@ -1656,7 +1682,7 @@ function changeLang(lang){
     var walk = (y - startY) * 1.2;
     el.scrollTop = scrollTop - walk;
   });
-})();
+});
 </script>
 </body>
 </html>
