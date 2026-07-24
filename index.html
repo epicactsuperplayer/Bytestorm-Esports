@@ -59,10 +59,6 @@
   <section id="ai-news">
     <h2>Recent News &amp; Events</h2>
     <article>
-      <h3>Felix Suspended After Sleeping Through AS™#46, Causing DSQ — July 23, 2026</h3>
-      <p>Bytestorm Esports was disqualified from AS™#46 after Felix (#18, Uzbekistan) failed to show up because he was asleep. Team Captain Batur (#52), CEO Superplayer (#63), and AI Overview ChatGPT decided to suspend Felix from all Bytestorm Esports tournaments for 1 month and 1 week, through August 30, 2026.</p>
-    </article>
-    <article>
       <h3>爪〇〇冂し|号ん十's Suspension Lifted — July 17, 2026</h3>
       <p>Bytestorm Esports lifted the tournament suspension previously placed on 爪〇〇冂し|号ん十 (#31, Turkey) after confirming he was on an urgent flight and unable to contact Bytestorm staff before the tournament started. CEO Superplayer (#63) removed the suspension effective immediately and reinstated him to Esports Player.</p>
     </article>
@@ -369,6 +365,20 @@
   @media(max-width:640px){.th-card{flex-wrap:wrap}.th-divider{display:none}.th-meta{text-align:left}.tourn-list{max-height:480px}}
   /* Upcoming Tournament */
   .th-section-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--m1);margin-bottom:10px;margin-top:4px}
+  .th-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+  .th-filters{display:flex;flex-wrap:wrap;gap:8px}
+  .th-filter-btn{font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--m2);background:var(--s1);border:1px solid var(--b1);border-radius:999px;padding:7px 16px;cursor:pointer;transition:all .18s}
+  .th-filter-btn:hover{color:var(--txt);border-color:var(--b2)}
+  .th-filter-btn.active{color:#fff;background:var(--b1);border-color:#8a1c1c}
+  .th-filter-btn.active[data-filter="win"]{color:#34d399;border-color:#065f46}
+  .th-filter-btn.active[data-filter="loss"]{color:#f87171;border-color:#7f1d1d}
+  .th-filter-btn.active[data-filter="dsq"]{color:#fbbf24;border-color:#78350f}
+  .th-sort-btn{font-family:inherit;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--m2);background:var(--s1);border:1px solid var(--b1);border-radius:999px;padding:7px 16px;cursor:pointer;transition:all .18s;white-space:nowrap}
+  .th-sort-btn:hover{color:var(--txt);border-color:var(--b2)}
+  .th-sort-btn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;transition:transform .2s}
+  .th-sort-btn.desc svg{transform:rotate(180deg)}
+  .th-card.th-hidden{display:none}
+  @media(max-width:640px){.th-controls{flex-direction:column;align-items:stretch}.th-filters{justify-content:center}}
   .th-card.upcoming{border-color:#2a2a2a;background:#0f0f0f;position:relative;overflow:hidden}
   .th-card.upcoming::before{content:'';position:absolute;inset:0;border-radius:10px;border:1px solid rgba(255,255,255,.07);pointer-events:none}
   .th-upcoming-badge{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#1a1a1a;border:1px solid #333;padding:3px 9px;border-radius:20px;margin-bottom:6px}
@@ -786,7 +796,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge captain">Team Captain</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Role:</b> Team Captain<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gr.png" alt="Greece"/><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Greece</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#31</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">爪〇〇冂し|号ん十</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/uz.png" alt="Uzbekistan"/><div class="rp-top"><span class="rp-num">#18</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Felix</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> ASIA – Uzbekistan<br/><b style="color:#f87171">Suspended until Aug 30, 2026</b></div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/uz.png" alt="Uzbekistan"/><div class="rp-top"><span class="rp-num">#18</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Felix</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> ASIA – Uzbekistan</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/no.png" alt="Norway"/><div class="rp-top"><span class="rp-num">#67</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Dark</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Norway</div></div>
       </div>
     </div>
@@ -870,20 +880,55 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
     </div>
 
     <div class="th-section-label">Results</div>
-    <div class="tourn-list">
+    <div class="th-controls">
+      <div class="th-filters" id="th-filters">
+        <button class="th-filter-btn active" data-filter="all">All</button>
+        <button class="th-filter-btn" data-filter="win">Win</button>
+        <button class="th-filter-btn" data-filter="loss">Loss</button>
+        <button class="th-filter-btn" data-filter="dsq">DSQ</button>
+      </div>
+      <button class="th-sort-btn" id="th-sort-btn" data-mode="date">
+        <span id="th-sort-label">Newest First</span>
+        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    </div>
+    <div class="tourn-list" id="th-results-list">
 
-      <!-- AS™#46 – DSQ (Felix sleeping, July 23 2026) -->
-      <div class="th-card">
+      <!-- AS™#46 – Round 2: vs DC: Wider215 (Loss) -->
+      <div class="th-card" data-outcome="loss" data-byts="0" data-opp="1" data-date="2026-07-23">
         <div class="th-trophy">
           <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
         </div>
         <div class="th-info">
           <div class="th-name">AS™#46</div>
-          <div class="th-teams"><b>Bytestorm Esports</b></div>
+          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>DC: Wider215</div>
         </div>
         <div class="th-result">
-          <div class="th-outcome loss">DSQ</div>
-          <div class="th-score">Disqualified — player asleep</div>
+          <div class="th-outcome loss">LOSS</div>
+          <div class="th-score">BYTS 0 – 1 WIDER215</div>
+        </div>
+        <div class="th-divider"></div>
+        <div class="th-meta">
+          <div class="th-date">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            July 23, 2026
+          </div>
+          <div class="th-venue">Brawl Stars</div>
+        </div>
+      </div>
+
+      <!-- AS™#46 – Round 1: vs 292 (Win) -->
+      <div class="th-card" data-outcome="win" data-byts="1" data-opp="0" data-date="2026-07-23">
+        <div class="th-trophy">
+          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+        </div>
+        <div class="th-info">
+          <div class="th-name">AS™#46</div>
+          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>292</div>
+        </div>
+        <div class="th-result">
+          <div class="th-outcome win">WIN</div>
+          <div class="th-score">BYTS 1 – 0 292</div>
         </div>
         <div class="th-divider"></div>
         <div class="th-meta">
@@ -896,7 +941,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </div>
 
       <!-- ATN Legion APAC #7 – Round 2: vs Underdogs (Loss) -->
-      <div class="th-card">
+      <div class="th-card" data-outcome="loss" data-byts="0" data-opp="2" data-date="2026-07-22">
         <div class="th-trophy">
           <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
         </div>
@@ -919,7 +964,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </div>
 
       <!-- ATN Legion APAC #7 – Round 1: vs QRN Ballers (Win) -->
-      <div class="th-card">
+      <div class="th-card" data-outcome="win" data-byts="2" data-opp="0" data-date="2026-07-22">
         <div class="th-trophy">
           <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
         </div>
@@ -942,7 +987,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </div>
 
       <!-- SPORTSTARS (EMEA #45) – vs The Reals Fan of Carlily (Loss) -->
-      <div class="th-card">
+      <div class="th-card" data-outcome="loss" data-byts="1" data-opp="2" data-date="2026-07-21">
         <div class="th-trophy">
           <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
         </div>
@@ -965,7 +1010,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </div>
 
       <!-- Wildcard Weekend #18 – Round 2: vs DC: Raiobs (Loss) -->
-      <div class="th-card">
+      <div class="th-card" data-outcome="loss" data-byts="0" data-opp="2" data-date="2026-07-17">
         <div class="th-trophy">
           <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
         </div>
@@ -988,7 +1033,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </div>
 
       <!-- Wildcard Weekend #18 – Round 1: vs Aura (Win) -->
-      <div class="th-card">
+      <div class="th-card" data-outcome="win" data-byts="2" data-opp="0" data-date="2026-07-17">
         <div class="th-trophy">
           <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
         </div>
@@ -1011,7 +1056,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </div>
 
       <!-- BATTLE OF DRAFTS APAC#12 – DSQ (no-show, July 14 2026) -->
-      <div class="th-card">
+      <div class="th-card" data-outcome="dsq" data-date="2026-07-14">
         <div class="th-trophy">
           <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
         </div>
@@ -1034,7 +1079,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </div>
 
       <!-- Dach BSCS Tournament – Match 2: vs Vortex (Loss) -->
-      <div class="th-card">
+      <div class="th-card" data-outcome="loss" data-byts="0" data-opp="2" data-date="2026-04-26">
         <div class="th-trophy">
           <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
         </div>
@@ -1057,7 +1102,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </div>
 
       <!-- Dach BSCS Tournament – Match 1: vs Noone (Win) -->
-      <div class="th-card">
+      <div class="th-card" data-outcome="win" data-byts="2" data-opp="0" data-date="2026-04-26">
         <div class="th-trophy">
           <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
         </div>
@@ -1080,7 +1125,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </div>
 
       <!-- MasterCup – March 1 2026 -->
-      <div class="th-card">
+      <div class="th-card" data-outcome="loss" data-byts="0" data-opp="2" data-date="2026-03-01">
         <div class="th-trophy">
           <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
         </div>
@@ -1119,18 +1164,6 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 
       <div class="news-card" onclick="openNews(0)">
         <div class="news-img-wrap" style="position:relative">
-          <img class="news-img" src="https://flagcdn.com/w320/uz.png" alt="Uzbekistan" style="object-fit:cover;filter:brightness(.85)"/>
-        </div>
-        <div class="news-body">
-          <span class="news-tag" data-tagkey="tagRoster" style="background:rgba(239,68,68,.15);color:#f87171;border:1px solid #7f1d1d">Roster Update</span>
-          <div class="news-title-text">Felix Suspended After Sleeping Through AS™#46, Causing DSQ</div>
-          <div class="news-sub">Felix (#18, Uzbekistan) missed today's AS™#46 tournament because he was asleep, resulting in Bytestorm Esports being disqualified. He has been suspended from all Bytestorm Esports tournaments for 1 month and 1 week.</div>
-          <div class="news-date">July 23, 2026</div>
-        </div>
-      </div>
-
-      <div class="news-card" onclick="openNews(1)">
-        <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://flagcdn.com/w320/no.png" alt="Norway" style="object-fit:cover;filter:brightness(.85)"/>
         </div>
         <div class="news-body">
@@ -1141,7 +1174,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(2)">
+      <div class="news-card" onclick="openNews(1)">
         <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://flagcdn.com/w320/tr.png" alt="Turkey" style="object-fit:cover;filter:brightness(.85)"/>
         </div>
@@ -1153,7 +1186,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(3)">
+      <div class="news-card" onclick="openNews(2)">
         <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://flagcdn.com/w320/tr.png" alt="Turkey" style="object-fit:cover;filter:brightness(.85)"/>
         </div>
@@ -1165,7 +1198,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(4)">
+      <div class="news-card" onclick="openNews(3)">
         <div class="news-img-wrap" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center">
           <img class="news-img" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/header.jpg" alt="eFootball" style="object-fit:cover;filter:brightness(.85)"/>
         </div>
@@ -1177,7 +1210,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(5)">
+      <div class="news-card" onclick="openNews(4)">
         <div class="news-img-wrap" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center">
           <img class="news-img" src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm Esports Academy" style="object-fit:contain;padding:28px;filter:brightness(.85)"/>
         </div>
@@ -1189,7 +1222,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(6)">
+      <div class="news-card" onclick="openNews(5)">
         <div class="news-img-wrap" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center">
           <img class="news-img" src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm Esports" style="object-fit:contain;padding:28px;filter:brightness(.85)"/>
         </div>
@@ -1201,7 +1234,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(7)">
+      <div class="news-card" onclick="openNews(6)">
         <div class="news-img-wrap" style="position:relative;display:flex">
           <img class="news-img" src="https://flagcdn.com/w320/tr.png" alt="Turkey" style="object-fit:cover;object-position:center;width:50%;height:100%"/>
           <img class="news-img" src="https://flagcdn.com/w320/it.png" alt="Italy" style="object-fit:cover;object-position:center;width:50%;height:100%"/>
@@ -1214,7 +1247,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(8)">
+      <div class="news-card" onclick="openNews(7)">
         <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://tr.rbxcdn.com/180DAY-6f05ab8fd4559a8de6b55412cdccd328/768/432/Image/Webp/noFilter" alt="Formula Apex"/>
           <div style="position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;z-index:2">
@@ -1235,7 +1268,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </div>
       </div>
 
-      <div class="news-card" onclick="openNews(9)">
+      <div class="news-card" onclick="openNews(8)">
         <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://static.wikia.nocookie.net/formula-apex/images/e/e6/Game_Icon-_Pre_CU11.png/revision/latest?cb=20240824021346" alt="Formular Apex"/>
           <div style="position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;z-index:2">
@@ -1565,13 +1598,6 @@ document.querySelectorAll('.rp-badge').forEach(function(badge) {
 var newsData = [
   {
     tag: 'Roster Update',
-    title: 'Felix Suspended After Sleeping Through AS™#46, Causing DSQ',
-    img: 'https://flagcdn.com/w320/uz.png',
-    text: 'On July 23, 2026, Bytestorm Esports was disqualified from AS™#46 after Felix (#18, Uzbekistan) failed to show up for the scheduled match because he was asleep. Following the incident, Team Captain Batur (#52), CEO Superplayer (#63), and AI Overview ChatGPT reviewed the situation and jointly decided to suspend Felix from all Bytestorm Esports tournaments for 1 month and 1 week, through August 30, 2026. Bytestorm Esports expects all roster members to be prepared and available for scheduled matches.',
-    date: 'July 23, 2026'
-  },
-  {
-    tag: 'Roster Update',
     title: 'Dark Joins on Trial — Wears #67, Once Worn by Banned Player Amir',
     img: 'https://flagcdn.com/w320/no.png',
     text: 'Bytestorm Esports has brought in Dark (Norway) to the Brawl Stars roster on a trial basis, effective July 18, 2026. Dark takes jersey #67 — a number with history in the organization. It was first worn by Amir, an Azerbaijani player who was banned during the early days of Bytestorm Esports. This marks the second time #67 has been assigned since the org\'s founding. Dark\'s trial period will determine whether he earns a permanent spot on the roster.',
@@ -1770,6 +1796,97 @@ document.querySelectorAll('.tourn-list').forEach(function(el){
     el.scrollTop = scrollTop - walk;
   });
 });
+
+// Tournament Results — filter (All/Win/Loss/DSQ) + sort (Best-to-Worst / Newest-Oldest)
+(function(){
+  var list = document.getElementById('th-results-list');
+  if(!list) return;
+  var cards = Array.prototype.slice.call(list.querySelectorAll('.th-card'));
+  var filterBtns = document.querySelectorAll('.th-filter-btn');
+  var sortBtn = document.getElementById('th-sort-btn');
+  var sortLabel = document.getElementById('th-sort-label');
+  var currentFilter = 'all';
+  var sortMode = 'date'; // 'date' or 'place'
+  var sortDesc = true; // true = newest first / best first
+
+  var placeRank = { win: 0, loss: 1, dsq: 2 }; // lower = better placement
+
+  function applyFilter(){
+    cards.forEach(function(c){
+      var o = c.getAttribute('data-outcome');
+      c.classList.toggle('th-hidden', currentFilter !== 'all' && o !== currentFilter);
+    });
+  }
+
+  function applySort(){
+    var sorted = cards.slice().sort(function(a,b){
+      if(sortMode === 'place'){
+        var ra = placeRank[a.getAttribute('data-outcome')];
+        var rb = placeRank[b.getAttribute('data-outcome')];
+        if(ra !== rb) return sortDesc ? ra - rb : rb - ra;
+        // same outcome tier: use score margin (BYTS - opponent) as tiebreaker
+        var ma = marginOf(a), mb = marginOf(b);
+        if(ma !== mb) return sortDesc ? mb - ma : ma - mb;
+        // same margin: higher BYTS score (more points won) ranks better
+        var sa = bytsOf(a), sb = bytsOf(b);
+        if(sa !== sb) return sortDesc ? sb - sa : sa - sb;
+        // final tie-break by date, newest first
+        return b.getAttribute('data-date').localeCompare(a.getAttribute('data-date'));
+      } else {
+        var da = a.getAttribute('data-date'), db = b.getAttribute('data-date');
+        return sortDesc ? db.localeCompare(da) : da.localeCompare(db);
+      }
+    });
+    sorted.forEach(function(c){ list.appendChild(c); });
+  }
+
+  function marginOf(card){
+    var byts = card.getAttribute('data-byts');
+    var opp = card.getAttribute('data-opp');
+    if(byts === null || opp === null) return -Infinity; // DSQ or missing score sorts last within its tier
+    return parseInt(byts, 10) - parseInt(opp, 10);
+  }
+
+  function bytsOf(card){
+    var byts = card.getAttribute('data-byts');
+    if(byts === null) return -Infinity;
+    return parseInt(byts, 10);
+  }
+
+  function updateSortLabel(){
+    if(sortMode === 'place'){
+      sortLabel.textContent = sortDesc ? 'Best to Worst' : 'Worst to Best';
+    } else {
+      sortLabel.textContent = sortDesc ? 'Newest First' : 'Oldest First';
+    }
+    sortBtn.classList.toggle('desc', !sortDesc);
+  }
+
+  filterBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      filterBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentFilter = btn.getAttribute('data-filter');
+      applyFilter();
+    });
+  });
+
+  sortBtn.addEventListener('click', function(){
+    if(sortMode === 'date'){
+      sortMode = 'place';
+      sortDesc = true;
+    } else if(sortMode === 'place' && sortDesc){
+      sortDesc = false;
+    } else {
+      sortMode = 'date';
+      sortDesc = true;
+    }
+    updateSortLabel();
+    applySort();
+  });
+
+  applyFilter();
+})();
 </script>
 </body>
 </html>
