@@ -382,6 +382,21 @@
   .th-card.upcoming{border-color:#2a2a2a;background:#0f0f0f;position:relative;overflow:hidden}
   .th-card.upcoming::before{content:'';position:absolute;inset:0;border-radius:10px;border:1px solid rgba(255,255,255,.07);pointer-events:none}
   .th-upcoming-badge{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#1a1a1a;border:1px solid #333;padding:3px 9px;border-radius:20px;margin-bottom:6px}
+
+  /* Live Match Tracker */
+  #liveMatchWrap{display:none;margin-bottom:28px}
+  .lm-card{position:relative;border:1px solid #3a1414;background:linear-gradient(180deg,#150808,#0c0505);border-radius:12px;padding:18px 20px;overflow:hidden}
+  .lm-card::before{content:'';position:absolute;inset:0;border-radius:12px;border:1px solid rgba(255,59,59,.15);pointer-events:none}
+  .lm-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .lm-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#ff5b5b}
+  .lm-dot{width:7px;height:7px;border-radius:50%;background:#ff3b3b;animation:upcomingPulse 1.2s ease-in-out infinite}
+  .lm-round{font-size:10px;color:var(--m2);letter-spacing:.08em;text-transform:uppercase}
+  .lm-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--m1);margin-bottom:10px}
+  .lm-score-row{display:flex;align-items:center;justify-content:center;gap:22px}
+  .lm-team{flex:1;text-align:center}
+  .lm-team-name{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#fff;margin-bottom:6px}
+  .lm-team-score{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;color:#fff;line-height:1}
+  .lm-vs{font-size:11px;color:var(--m2);font-weight:700;letter-spacing:.1em}
   .th-upcoming-dot{width:6px;height:6px;border-radius:50%;background:#fff;animation:upcomingPulse 1.6s ease-in-out infinite}
   @keyframes upcomingPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
   .th-upcoming-date{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:2px}
@@ -879,6 +894,27 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <div class="th-sub">Our competitive match results</div>
     </div>
 
+    <div id="liveMatchWrap">
+      <div class="lm-card">
+        <div class="lm-top">
+          <span class="lm-badge"><span class="lm-dot"></span>Live Now</span>
+          <span class="lm-round" id="lmRound">—</span>
+        </div>
+        <div class="lm-name" id="lmTournament">—</div>
+        <div class="lm-score-row">
+          <div class="lm-team">
+            <div class="lm-team-name">Bytestorm</div>
+            <div class="lm-team-score" id="lmByts">0</div>
+          </div>
+          <div class="lm-vs">VS</div>
+          <div class="lm-team">
+            <div class="lm-team-name" id="lmOpponent">TBA</div>
+            <div class="lm-team-score" id="lmOpp">0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="th-section-label">Upcoming</div>
     <div class="tourn-list" id="th-upcoming-list">
 
@@ -1373,7 +1409,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <a href="#games" onclick="setTimeout(function(){toggleRoster('academy')},400)">Academy</a>
           <a href="mailto:bytestorm.marketing.team@gmail.com">Contact</a>
         </div>
-        <div class="foot-col">
+        <div class="foot-col" id="resourcesCol">
           <h4>Resources</h4>
           <a href="#tournaments">Tournaments</a>
           <a href="#news">News</a>
@@ -1465,7 +1501,71 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
   tick();
   setInterval(tick, 1000);
 })();
+</script>
 
+<script type="module">
+// ── Live Match Tracker (Firestore, read-only) ──
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAY49sWaN-DSKV10uyBB3CeOiABLCtFrSI",
+  authDomain: "bytestorm-friebase-server.firebaseapp.com",
+  databaseURL: "https://bytestorm-friebase-server-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "bytestorm-friebase-server",
+  storageBucket: "bytestorm-friebase-server.firebasestorage.app",
+  messagingSenderId: "400056781433",
+  appId: "1:400056781433:web:9803b0711d85de437f62a8",
+  measurementId: "G-TKJ9JKK7ZF"
+};
+
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const liveDocRef = doc(db, "liveMatch", "current");
+
+const liveWrap = document.getElementById('liveMatchWrap');
+const lmRound = document.getElementById('lmRound');
+const lmTournament = document.getElementById('lmTournament');
+const lmOpponent = document.getElementById('lmOpponent');
+const lmByts = document.getElementById('lmByts');
+const lmOpp = document.getElementById('lmOpp');
+
+onSnapshot(liveDocRef, (snap) => {
+  if(!snap.exists()){ liveWrap.style.display = 'none'; return; }
+  const d = snap.data();
+  if(d.status !== 'live'){ liveWrap.style.display = 'none'; return; }
+
+  lmRound.textContent = d.round || '';
+  lmTournament.textContent = d.tournament || '';
+  lmOpponent.textContent = (d.opponent || 'TBA').toUpperCase();
+  lmByts.textContent = d.byts ?? 0;
+  lmOpp.textContent = d.opp ?? 0;
+  liveWrap.style.display = 'block';
+}, (err) => {
+  console.error('Live match listener error:', err);
+  liveWrap.style.display = 'none';
+});
+
+// ── Admin link auto-detect: only show if admin.html is actually deployed ──
+(function(){
+  fetch('/admin.html', { method: 'HEAD' })
+    .then((res) => {
+      if(res.ok){
+        const col = document.getElementById('resourcesCol');
+        if(col && !document.getElementById('adminFootLink')){
+          const a = document.createElement('a');
+          a.href = '/admin.html';
+          a.id = 'adminFootLink';
+          a.textContent = 'Admin';
+          col.appendChild(a);
+        }
+      }
+    })
+    .catch(() => {});
+})();
+</script>
+
+<script>
 // ── Legal Notice Modal ──
 function openImpressum(){
   document.getElementById('impressumModal').classList.add('open');
