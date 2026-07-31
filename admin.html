@@ -53,7 +53,8 @@
 
 <div class="card gate" id="gateCard">
   <h1>Match Admin</h1>
-  <p class="sub">Enter password to continue</p>
+  <p class="sub">Sign in to continue</p>
+  <input type="text" id="emailInput" placeholder="Admin email" autocomplete="off">
   <input type="password" id="pwInput" placeholder="Password" autocomplete="off">
   <button id="pwBtn">Unlock</button>
   <div class="status-msg" id="gateMsg"></div>
@@ -101,8 +102,11 @@
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import {
-  getFirestore, doc, setDoc, getDoc, onSnapshot, serverTimestamp
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+  getDatabase, ref, set, get, onValue, serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+import {
+  getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAY49sWaN-DSKV10uyBB3CeOiABLCtFrSI",
@@ -116,47 +120,64 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const liveDocRef = doc(db, "liveMatch", "current");
+const db = getDatabase(app);
+const auth = getAuth(app);
+const liveRef = ref(db, "liveMatch/current");
 
-// ── Simple password gate ──
-// NOTE: this is a basic deterrent, not real security — Firestore rules should
-// still restrict writes to this doc (see setup notes). Change this password.
-const ADMIN_PASSWORD = "BYTS-Live-2026!";
-const SESSION_KEY = "byts_admin_unlocked";
-
+// ── Real Firebase Auth gate ──
+// Access is enforced server-side by the Realtime Database rules
+// (liveMatch write requires auth !== null, ideally scoped to the admin email).
 const gateCard = document.getElementById('gateCard');
 const formCard = document.getElementById('formCard');
+const emailInput = document.getElementById('emailInput');
 const pwInput = document.getElementById('pwInput');
 const pwBtn = document.getElementById('pwBtn');
 const gateMsg = document.getElementById('gateMsg');
 const logoutBtn = document.getElementById('logoutBtn');
 
-function unlock(){
+function showForm(){
   gateCard.style.display = 'none';
   formCard.style.display = 'block';
-  sessionStorage.setItem(SESSION_KEY, '1');
   loadCurrent();
 }
 
-pwBtn.addEventListener('click', () => {
-  if(pwInput.value === ADMIN_PASSWORD){
-    unlock();
-  } else {
-    gateMsg.textContent = 'Incorrect password';
+function showGate(msg){
+  formCard.style.display = 'none';
+  gateCard.style.display = 'block';
+  if(msg){
+    gateMsg.textContent = msg;
     gateMsg.className = 'status-msg err';
+  }
+}
+
+pwBtn.addEventListener('click', async () => {
+  pwBtn.disabled = true;
+  gateMsg.textContent = 'Signing in...';
+  gateMsg.className = 'status-msg';
+  try{
+    await signInWithEmailAndPassword(auth, emailInput.value.trim(), pwInput.value);
+    // onAuthStateChanged will handle showing the form
+  } catch(e){
+    gateMsg.textContent = 'Sign-in failed: ' + e.message;
+    gateMsg.className = 'status-msg err';
+  } finally {
+    pwBtn.disabled = false;
   }
 });
 pwInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') pwBtn.click(); });
+emailInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') pwBtn.click(); });
 
-logoutBtn.addEventListener('click', () => {
-  sessionStorage.removeItem(SESSION_KEY);
-  location.reload();
+logoutBtn.addEventListener('click', async () => {
+  await signOut(auth);
 });
 
-if(sessionStorage.getItem(SESSION_KEY) === '1'){
-  unlock();
-}
+onAuthStateChanged(auth, (user) => {
+  if(user){
+    showForm();
+  } else {
+    showGate();
+  }
+});
 
 // ── Form logic ──
 const fStatus = document.getElementById('fStatus');
@@ -171,9 +192,9 @@ const currentBadge = document.getElementById('currentBadge');
 
 async function loadCurrent(){
   try{
-    const snap = await getDoc(liveDocRef);
+    const snap = await get(liveRef);
     if(snap.exists()){
-      const d = snap.data();
+      const d = snap.val();
       fStatus.value = d.status || 'hidden';
       fTournament.value = d.tournament || '';
       fRound.value = d.round || '';
@@ -188,9 +209,9 @@ async function loadCurrent(){
 }
 
 // live badge showing current published state while editing
-onSnapshot(liveDocRef, (snap) => {
+onValue(liveRef, (snap) => {
   if(!snap.exists()) { currentBadge.innerHTML = ''; return; }
-  const d = snap.data();
+  const d = snap.val();
   if(d.status === 'live'){
     currentBadge.innerHTML = `<span class="live-dot"></span>Currently LIVE — BYTS ${d.byts ?? 0} – ${d.opp ?? 0} ${(d.opponent||'').toUpperCase()}`;
   } else {
@@ -203,7 +224,7 @@ saveBtn.addEventListener('click', async () => {
   saveMsg.textContent = 'Saving...';
   saveMsg.className = 'status-msg';
   try{
-    await setDoc(liveDocRef, {
+    await set(liveRef, {
       status: fStatus.value,
       tournament: fTournament.value.trim(),
       round: fRound.value.trim(),
@@ -211,7 +232,7 @@ saveBtn.addEventListener('click', async () => {
       byts: Number(fByts.value) || 0,
       opp: Number(fOpp.value) || 0,
       updatedAt: serverTimestamp()
-    }, { merge: true });
+    });
     saveMsg.textContent = 'Published — live on site now.';
     saveMsg.className = 'status-msg ok';
   } catch(e){
