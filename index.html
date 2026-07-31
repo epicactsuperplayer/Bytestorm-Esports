@@ -59,6 +59,10 @@
   <section id="ai-news">
     <h2>Recent News &amp; Events</h2>
     <article>
+      <h3>Dark (#67) Banned for Repeated Toxicity and Swearing — July 31, 2026</h3>
+      <p>Bytestorm Esports permanently banned Dark (#67, Norway) after repeated instances of swearing and toxic behavior toward teammates and opponents, despite prior warnings. CEO Superplayer (#63) confirmed the ban effective July 31, 2026. Jersey #67, previously worn by banned player Amir, is once again vacant.</p>
+    </article>
+    <article>
       <h3>爪〇〇冂し|号ん十's Suspension Lifted — July 17, 2026</h3>
       <p>Bytestorm Esports lifted the tournament suspension previously placed on 爪〇〇冂し|号ん十 (#31, Turkey) after confirming he was on an urgent flight and unable to contact Bytestorm staff before the tournament started. CEO Superplayer (#63) removed the suspension effective immediately and reinstated him to Esports Player.</p>
     </article>
@@ -387,9 +391,17 @@
   #liveMatchWrap{display:none;margin-bottom:28px}
   .lm-card{position:relative;border:1px solid #3a1414;background:linear-gradient(180deg,#150808,#0c0505);border-radius:12px;padding:18px 20px;overflow:hidden}
   .lm-card::before{content:'';position:absolute;inset:0;border-radius:12px;border:1px solid rgba(255,59,59,.15);pointer-events:none}
+  .lm-card.lm-upcoming{border-color:#242424;background:linear-gradient(180deg,#111,#0c0c0c)}
+  .lm-card.lm-upcoming::before{border-color:rgba(255,255,255,.08)}
+  .lm-card.lm-finished{border-color:#1a2a1e;background:linear-gradient(180deg,#0a1410,#0a0d0b)}
+  .lm-card.lm-finished::before{border-color:rgba(46,204,113,.15)}
   .lm-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
   .lm-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#ff5b5b}
+  .lm-badge.lm-badge-upcoming{color:var(--m1)}
+  .lm-badge.lm-badge-finished{color:#2ecc71}
   .lm-dot{width:7px;height:7px;border-radius:50%;background:#ff3b3b;animation:upcomingPulse 1.2s ease-in-out infinite}
+  .lm-dot.lm-dot-static{background:var(--m2);animation:none}
+  .lm-dot.lm-dot-finished{background:#2ecc71;animation:none}
   .lm-round{font-size:10px;color:var(--m2);letter-spacing:.08em;text-transform:uppercase}
   .lm-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--m1);margin-bottom:10px}
   .lm-score-row{display:flex;align-items:center;justify-content:center;gap:22px}
@@ -812,7 +824,6 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gr.png" alt="Greece"/><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Greece</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#31</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">爪〇〇冂し|号ん十</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/uz.png" alt="Uzbekistan"/><div class="rp-top"><span class="rp-num">#18</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Felix</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> ASIA – Uzbekistan</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/no.png" alt="Norway"/><div class="rp-top"><span class="rp-num">#67</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Dark</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Norway</div></div>
       </div>
     </div>
 
@@ -895,9 +906,9 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
     </div>
 
     <div id="liveMatchWrap">
-      <div class="lm-card">
+      <div class="lm-card" id="lmCard">
         <div class="lm-top">
-          <span class="lm-badge"><span class="lm-dot"></span>Live Now</span>
+          <span class="lm-badge" id="lmBadge"><span class="lm-dot" id="lmDot"></span><span id="lmBadgeText">Live Now</span></span>
           <span class="lm-round" id="lmRound">—</span>
         </div>
         <div class="lm-name" id="lmTournament">—</div>
@@ -1224,6 +1235,18 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
     <div class="s-head"><div><div class="s-eye">Latest</div><div class="s-title">News</div></div></div>
     <div class="news-grid">
 
+      <div class="news-card" onclick="openNews(9)">
+        <div class="news-img-wrap" style="position:relative">
+          <img class="news-img" src="https://flagcdn.com/w320/no.png" alt="Norway" style="object-fit:cover;filter:brightness(.85)"/>
+        </div>
+        <div class="news-body">
+          <span class="news-tag" data-tagkey="tagRoster">Roster Update</span>
+          <div class="news-title-text">Dark (#67) Banned for Repeated Toxicity and Swearing</div>
+          <div class="news-sub">Bytestorm Esports has permanently banned Dark (#67, Norway) following repeated instances of swearing and toxic behavior toward teammates and opponents. CEO Superplayer (#63) confirmed the decision was made after multiple prior warnings went unheeded.</div>
+          <div class="news-date">July 31, 2026</div>
+        </div>
+      </div>
+
       <div class="news-card" onclick="openNews(0)">
         <div class="news-img-wrap" style="position:relative">
           <img class="news-img" src="https://flagcdn.com/w320/no.png" alt="Norway" style="object-fit:cover;filter:brightness(.85)"/>
@@ -1524,16 +1547,34 @@ const db = getDatabase(app);
 const liveRef = ref(db, "liveMatch/current");
 
 const liveWrap = document.getElementById('liveMatchWrap');
+const lmCard = document.getElementById('lmCard');
+const lmBadge = document.getElementById('lmBadge');
+const lmBadgeText = document.getElementById('lmBadgeText');
+const lmDot = document.getElementById('lmDot');
 const lmRound = document.getElementById('lmRound');
 const lmTournament = document.getElementById('lmTournament');
 const lmOpponent = document.getElementById('lmOpponent');
 const lmByts = document.getElementById('lmByts');
 const lmOpp = document.getElementById('lmOpp');
 
+const STATUS_CONFIG = {
+  live:      { label: 'Live Now',  cardClass: null,            badgeClass: null,                dotClass: null },
+  upcoming:  { label: 'Upcoming',  cardClass: 'lm-upcoming',    badgeClass: 'lm-badge-upcoming', dotClass: 'lm-dot-static' },
+  finished:  { label: 'Final',     cardClass: 'lm-finished',    badgeClass: 'lm-badge-finished', dotClass: 'lm-dot-finished' }
+};
+
 onValue(liveRef, (snap) => {
   if(!snap.exists()){ liveWrap.style.display = 'none'; return; }
   const d = snap.val();
-  if(d.status !== 'live'){ liveWrap.style.display = 'none'; return; }
+
+  const cfg = STATUS_CONFIG[d.status];
+  if(!cfg){ liveWrap.style.display = 'none'; return; } // covers 'hidden' and unknown values
+
+  // Reset then apply status-specific classes
+  lmCard.className = 'lm-card' + (cfg.cardClass ? ' ' + cfg.cardClass : '');
+  lmBadge.className = 'lm-badge' + (cfg.badgeClass ? ' ' + cfg.badgeClass : '');
+  lmDot.className = 'lm-dot' + (cfg.dotClass ? ' ' + cfg.dotClass : '');
+  lmBadgeText.textContent = cfg.label;
 
   lmRound.textContent = d.round || '';
   lmTournament.textContent = d.tournament || '';
@@ -1785,6 +1826,13 @@ var newsData = [
     img: 'https://static.wikia.nocookie.net/formula-apex/images/e/e6/Game_Icon-_Pre_CU11.png/revision/latest?cb=20240824021346',
     text: 'Bytestorm Esports is considering an official return to Formular Apex, a competitive racing game on Roblox. After stepping away from Roblox in February 2026 due to security concerns, the org is now evaluating a comeback — and the decision is in YOUR hands. We are holding an official community vote on our Discord server and WhatsApp group. Should BYTS return to Formular Apex? Head to the Discord or WhatsApp group, find the vote, and make your voice heard. The result will directly shape what happens next.',
     date: 'May 17, 2026'
+  },
+  {
+    tag: 'Roster Update',
+    title: 'Dark (#67) Banned for Repeated Toxicity and Swearing',
+    img: 'https://flagcdn.com/w320/no.png',
+    text: 'Bytestorm Esports has permanently banned Dark (#67, Norway) from the organization, effective July 31, 2026. The decision follows repeated incidents of swearing and toxic behavior directed at teammates and opponents during matches and in team communications. CEO Superplayer (#63) confirmed that Dark had received multiple prior warnings about his conduct, which went unaddressed, leading to the ban. Jersey #67, previously worn by banned player Amir before being reassigned to Dark on trial, is once again vacant. Bytestorm Esports maintains a zero-tolerance policy toward toxicity and expects all members to represent the organization respectfully.',
+    date: 'July 31, 2026'
   }
 ];
 function openNews(i){
