@@ -316,6 +316,11 @@
   .rp-badge.trial{color:#fb923c;border-color:#7c2d12}
   .rp-status{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4ade80;display:inline-flex;align-items:center;gap:4px}
   .rp-status::before{content:'';width:5px;height:5px;border-radius:50%;background:#4ade80}
+  .rp-badge.open{color:var(--m2);border-color:var(--b2)}
+  .rp-badge.suspended{color:#fbbf24;border-color:#78350f;background:#1c1000}
+  .rp-status.suspended{color:#fbbf24}
+  .rp-status.suspended::before{background:#fbbf24}
+  .rp-loading{grid-column:1/-1;padding:24px;text-align:center;font-size:12px;color:var(--m2)}
   .rp-meta{font-size:11px;color:var(--m2);line-height:1.65;position:relative;z-index:2}
   .rp-meta b{color:var(--m1);font-weight:500}
   /* Social */
@@ -803,89 +808,56 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
     <!-- Fortnite Roster -->
     <div class="roster-panel" id="rp-fn">
       <div class="rp-head"><span class="rp-tag">FN</span><span class="rp-game">Fortnite</span><button class="rp-close" onclick="closeRoster('fn')">&#215;</button></div>
-      <div class="rp-grid">
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Japan</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/it.png" alt="Italy"/><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">Daniel</div><div class="rp-meta"><b>Role:</b> Normal Player<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Italy</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Austria</div></div>
-      </div>
+      <div class="rp-grid" id="rp-grid-fn"><div class="rp-loading">Loading roster…</div></div>
     </div>
 
     <!-- Brawl Stars Roster -->
     <div class="roster-panel" id="rp-bs">
       <div class="rp-head"><span class="rp-tag">BS</span><span class="rp-game">Brawl Stars</span><button class="rp-close" onclick="closeRoster('bs')">&#215;</button></div>
-      <div class="rp-grid">
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Japan</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/it.png" alt="Italy"/><div class="rp-top"><span class="rp-num">#187</span><span class="rp-badge normal">Normal Player</span></div><div class="rp-name">Daniel</div><div class="rp-meta"><b>Role:</b> Normal Player<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Italy</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#1876</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Julian</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> FN, BS<br/><b>Region:</b> EU – Austria</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge captain">Team Captain</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Role:</b> Team Captain<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gr.png" alt="Greece"/><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Greece</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#31</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">爪〇〇冂し|号ん十</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/uz.png" alt="Uzbekistan"/><div class="rp-top"><span class="rp-num">#18</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Felix</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> ASIA – Uzbekistan</div></div>
-      </div>
+      <div class="rp-grid" id="rp-grid-bs"><div class="rp-loading">Loading roster…</div></div>
     </div>
 
     <!-- Rocket League Roster -->
     <div class="roster-panel" id="rp-rl">
       <div class="rp-head"><span class="rp-tag">RL</span><span class="rp-game">Rocket League</span><button class="rp-close" onclick="closeRoster('rl')">&#215;</button></div>
-      <div class="rp-grid">
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Japan</div></div>
-      </div>
+      <div class="rp-grid" id="rp-grid-rl"><div class="rp-loading">Loading roster…</div></div>
     </div>
 
     <!-- CS2 Roster -->
     <div class="roster-panel" id="rp-cs2">
       <div class="rp-head"><span class="rp-tag">CS2</span><span class="rp-game">CS2</span><button class="rp-close" onclick="closeRoster('cs2')">&#215;</button></div>
-      <div class="rp-grid">
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Japan</div></div>
-      </div>
+      <div class="rp-grid" id="rp-grid-cs2"><div class="rp-loading">Loading roster…</div></div>
     </div>
 
     <!-- GTA Roster -->
     <div class="roster-panel" id="rp-gta">
       <div class="rp-head"><span class="rp-tag">GTA</span><span class="rp-game">GTA V Online</span><button class="rp-close" onclick="closeRoster('gta')">&#215;</button></div>
-      <div class="rp-grid">
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Japan</div></div>
-      </div>
+      <div class="rp-grid" id="rp-grid-gta"><div class="rp-loading">Loading roster…</div></div>
     </div>
 
     <!-- Formula Apex Roster -->
     <div class="roster-panel" id="rp-fa">
       <div class="rp-head"><span class="rp-tag">FA</span><span class="rp-game">Formula Apex <span style="font-size:12px;color:#a78bfa;font-family:'Inter',sans-serif;font-weight:500;letter-spacing:.04em;text-transform:none;">Roblox</span></span><button class="rp-close" onclick="closeRoster('fa')">&#215;</button></div>
-      <div class="rp-grid">
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Japan</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#44</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Kaya</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> Formula Apex, eFootball<br/><b>Region:</b> EU – Austria</div></div>
-      </div>
+      <div class="rp-grid" id="rp-grid-fa"><div class="rp-loading">Loading roster…</div></div>
     </div>
 
     <!-- eFootball Roster -->
     <div class="roster-panel" id="rp-ef">
       <div class="rp-head"><span class="rp-tag">EF</span><span class="rp-game">eFootball</span><button class="rp-close" onclick="closeRoster('ef')">&#215;</button></div>
       <div class="rp-banner"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/header.jpg" alt="eFootball Gameplay"/></div>
-      <div class="rp-grid">
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Plays:</b> All Games<br/><b>Region:</b> Japan</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/at.png" alt="Austria"/><div class="rp-top"><span class="rp-num">#44</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Kaya</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> Formula Apex, eFootball<br/><b>Region:</b> EU – Austria</div></div>
-      </div>
+      <div class="rp-grid" id="rp-grid-ef"><div class="rp-loading">Loading roster…</div></div>
     </div>
 
     <!-- Staff Roster -->
     <div class="roster-panel" id="rp-staff">
       <div class="rp-head"><span class="rp-tag">STAFF</span><span class="rp-game">Management</span><button class="rp-close" onclick="closeRoster('staff')">&#215;</button></div>
-      <div class="rp-grid">
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/jp.png" alt="Japan"/><div class="rp-top"><span class="rp-num">#63</span><span class="rp-badge ceo">CEO</span></div><div class="rp-name">Superplayer</div><div class="rp-meta"><b>Role:</b> CEO / Founder<br/><b>Region:</b> Japan</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#52</span><span class="rp-badge captain">Team Captain</span></div><div class="rp-name">Batur</div><div class="rp-meta"><b>Role:</b> Team Captain<br/><b>Region:</b> EU – Turkey</div></div>
-        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/al.png" alt="AL"/><div class="rp-top"><span class="rp-num">#43</span><span class="rp-badge editor">Editor</span></div><div class="rp-name">Daris</div><div class="rp-meta"><b>Role:</b> Editor<br/><b>Region:</b> EU – Albania</div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">—</span><span class="rp-badge recruiter">Recruiter</span></div><div class="rp-name">Position Open</div><div class="rp-meta"><b>Role:</b> Manages recruitment across social media platforms.<br/><span class="rp-status">Recruiting</span></div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">—</span><span class="rp-badge moderator">Moderator</span></div><div class="rp-name">Position Open</div><div class="rp-meta"><b>Role:</b> Keeps Discord and community spaces safe and on-topic.<br/><span class="rp-status">Recruiting</span></div></div>
-      </div>
+      <div class="rp-grid" id="rp-grid-staff"><div class="rp-loading">Loading roster…</div></div>
     </div>
 
     <!-- Academy Roster -->
     <div class="roster-panel" id="rp-academy">
       <div class="rp-head"><span class="rp-tag">ACADEMY</span><span class="rp-game">Learn &amp; Train</span><button class="rp-close" onclick="closeRoster('academy')">&#215;</button></div>
-      <div class="rp-grid">
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">—</span><span class="rp-badge trainer">Trainer</span></div><div class="rp-name">Position Open</div><div class="rp-meta"><b>Role:</b> Teaches Academy members game mechanics, strategy, and tricks.<br/><span class="rp-status">Recruiting</span></div></div>
-        <div class="rp-card"><div class="rp-top"><span class="rp-num">—</span><span class="rp-badge trainee">Trainee</span></div><div class="rp-name">Applications Open</div><div class="rp-meta"><b>Role:</b> For players who aren't yet at a competitive level but want to learn and improve.<br/><span class="rp-status">Recruiting</span></div></div>
-      </div>
+      <div class="rp-grid" id="rp-grid-academy"><div class="rp-loading">Loading roster…</div></div>
     </div>
 
   </div>
@@ -956,135 +928,8 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 <section class="pad" id="news">
   <div class="wrap">
     <div class="s-head"><div><div class="s-eye">Latest</div><div class="s-title">News</div></div></div>
-    <div class="news-grid">
-
-      <div class="news-card" onclick="openNews(0)">
-        <div class="news-img-wrap" style="position:relative">
-          <img class="news-img" src="https://flagcdn.com/w320/no.png" alt="Norway" style="object-fit:cover;filter:brightness(.85)"/>
-        </div>
-        <div class="news-body">
-          <span class="news-tag" data-tagkey="tagRoster">Roster Update</span>
-          <div class="news-title-text">Dark Joins on Trial — Wears #67, Once Worn by Banned Player Amir</div>
-          <div class="news-sub">Bytestorm Esports welcomes Dark (Norway) to the Brawl Stars roster on a trial basis. He takes jersey #67, a number previously worn by Amir (Azerbaijan) before his ban in the org's early days.</div>
-          <div class="news-date">July 18, 2026</div>
-        </div>
-      </div>
-
-      <div class="news-card" onclick="openNews(1)">
-        <div class="news-img-wrap" style="position:relative">
-          <img class="news-img" src="https://flagcdn.com/w320/tr.png" alt="Turkey" style="object-fit:cover;filter:brightness(.85)"/>
-        </div>
-        <div class="news-body">
-          <span class="news-tag" data-tagkey="tagRoster">Roster Update</span>
-          <div class="news-title-text">爪〇〇冂し|号ん十's Suspension Lifted</div>
-          <div class="news-sub">Bytestorm Esports has removed the tournament suspension placed on #31 and reinstated him to Esports Player after new information showed he was on an urgent flight and unable to contact staff before the tournament started.</div>
-          <div class="news-date">July 17, 2026</div>
-        </div>
-      </div>
-
-      <div class="news-card" onclick="openNews(2)">
-        <div class="news-img-wrap" style="position:relative">
-          <img class="news-img" src="https://flagcdn.com/w320/tr.png" alt="Turkey" style="object-fit:cover;filter:brightness(.85)"/>
-        </div>
-        <div class="news-body">
-          <span class="news-tag" data-tagkey="tagRoster" style="background:rgba(239,68,68,.15);color:#f87171;border:1px solid #7f1d1d">Roster Update</span>
-          <div class="news-title-text">爪〇〇冂し|号ん十 Demoted After Tournament No-Show</div>
-          <div class="news-sub">Bytestorm Esports demoted #31 from Esports Player to Normal Player following a no-show that caused the team's disqualification.</div>
-          <div class="news-date">July 14, 2026</div>
-        </div>
-      </div>
-
-      <div class="news-card" onclick="openNews(3)">
-        <div class="news-img-wrap" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center">
-          <img class="news-img" src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/header.jpg" alt="eFootball" style="object-fit:cover;filter:brightness(.85)"/>
-        </div>
-        <div class="news-body">
-          <span class="news-tag" data-tagkey="tagNewGame">New Game</span>
-          <div class="news-title-text">Bytestorm Esports Expands Into eFootball</div>
-          <div class="news-sub">BYTS adds a seventh title to its competitive lineup. eFootball joins Brawl Stars, Fortnite, Rocket League, CS2, GTA, and Formula Apex as the organization's newest division.</div>
-          <div class="news-date">July 11, 2026</div>
-        </div>
-      </div>
-
-      <div class="news-card" onclick="openNews(4)">
-        <div class="news-img-wrap" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center">
-          <img class="news-img" src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm Esports Academy" style="object-fit:contain;padding:28px;filter:brightness(.85)"/>
-        </div>
-        <div class="news-body">
-          <span class="news-tag" data-tagkey="tagAcademy">Academy</span>
-          <div class="news-title-text">Introducing Bytestorm Esports Academy</div>
-          <div class="news-sub">A new program for players who aren't yet at a competitive level but want to learn. Academy members are taught tricks and fundamentals by Trainers and through the official Bytestorm Esports social media pages.</div>
-          <div class="news-date">July 11, 2026</div>
-        </div>
-      </div>
-
-      <div class="news-card" onclick="openNews(5)">
-        <div class="news-img-wrap" style="background:#0a0a0a;display:flex;align-items:center;justify-content:center">
-          <img class="news-img" src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm Esports" style="object-fit:contain;padding:28px;filter:brightness(.85)"/>
-        </div>
-        <div class="news-body">
-          <span class="news-tag" data-tagkey="tagSponsorship" style="background:rgba(239,68,68,.15);color:#f87171;border:1px solid #7f1d1d">Sponsorship</span>
-          <div class="news-title-text">RedZac Rejects Sponsorship Request from Bytestorm Esports</div>
-          <div class="news-sub">CEO Superplayer and Team Captain Batur approached RedZac for a sponsorship deal — but were turned down. RedZac only sponsors Special Events and Sport Teams, not Esports.</div>
-          <div class="news-date">June 2026</div>
-        </div>
-      </div>
-
-      <div class="news-card" onclick="openNews(6)">
-        <div class="news-img-wrap" style="position:relative;display:flex">
-          <img class="news-img" src="https://flagcdn.com/w320/tr.png" alt="Turkey" style="object-fit:cover;object-position:center;width:50%;height:100%"/>
-          <img class="news-img" src="https://flagcdn.com/w320/it.png" alt="Italy" style="object-fit:cover;object-position:center;width:50%;height:100%"/>
-        </div>
-        <div class="news-body">
-          <span class="news-tag" data-tagkey="tagRoster">Roster Update</span>
-          <div class="news-title-text">Batur Named New Team Captain — Daniel Steps Down from Role</div>
-          <div class="news-sub">Daniel is demoted from Team Captain early due to bad behaviour and inactivity. Batur steps up as new Team Captain, contracted until 2028.</div>
-          <div class="news-date">June 23, 2026</div>
-        </div>
-      </div>
-
-      <div class="news-card" onclick="openNews(7)">
-        <div class="news-img-wrap" style="position:relative">
-          <img class="news-img" src="https://tr.rbxcdn.com/180DAY-6f05ab8fd4559a8de6b55412cdccd328/768/432/Image/Webp/noFilter" alt="Formula Apex"/>
-          <div style="position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;z-index:2">
-            <div style="width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;padding:3px">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Roblox_Logo_2025.png/250px-Roblox_Logo_2025.png" alt="Roblox" style="width:100%;height:100%;object-fit:contain"/>
-            </div>
-            <span style="color:rgba(255,255,255,0.3);font-size:13px;font-weight:300">×</span>
-            <div style="width:32px;height:32px;border-radius:6px;background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;padding:5px">
-              <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm" style="width:100%;height:100%;object-fit:contain"/>
-            </div>
-          </div>
-        </div>
-        <div class="news-body">
-          <span class="news-tag" data-tagkey="tagAnnouncement">Announcement</span>
-          <div class="news-title-text">BYTS Returns to Roblox — Formula Apex, Starting Today</div>
-          <div class="news-sub">The vote is settled. 6 voted yes, 2 were neutral. Bytestorm Esports officially returns to Roblox today — exclusively through Formula Apex.</div>
-          <div class="news-date">May 19, 2026</div>
-        </div>
-      </div>
-
-      <div class="news-card" onclick="openNews(8)">
-        <div class="news-img-wrap" style="position:relative">
-          <img class="news-img" src="https://static.wikia.nocookie.net/formula-apex/images/e/e6/Game_Icon-_Pre_CU11.png/revision/latest?cb=20240824021346" alt="Formular Apex"/>
-          <div style="position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;z-index:2">
-            <div style="width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;padding:3px">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Roblox_Logo_2025.png/250px-Roblox_Logo_2025.png" alt="Roblox" style="width:100%;height:100%;object-fit:contain"/>
-            </div>
-            <span style="color:rgba(255,255,255,0.3);font-size:13px;font-weight:300">×</span>
-            <div style="width:32px;height:32px;border-radius:6px;background:rgba(0,0,0,0.55);border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;padding:5px">
-              <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png" alt="Bytestorm" style="width:100%;height:100%;object-fit:contain"/>
-            </div>
-          </div>
-        </div>
-        <div class="news-body">
-          <span class="news-tag" data-tagkey="tagAnnouncement">Announcement</span>
-          <div class="news-title-text">CEO plans to return to Roblox — Formular Apex</div>
-          <div class="news-sub">Bytestorm Esports is set to return to Formular Apex on Roblox — and we're holding a community vote on Discord and WhatsApp. Should BYTS come back? Join the conversation and vote.</div>
-          <div class="news-date">May 17, 2026</div>
-        </div>
-      </div>
-
+    <div class="news-grid" id="newsGrid">
+      <div class="rp-loading">Loading news…</div>
     </div>
   </div>
 </section>
@@ -1481,72 +1326,10 @@ document.querySelectorAll('.rp-badge').forEach(function(badge) {
 
 
 // ── News ──
-var newsData = [
-  {
-    tag: 'Roster Update',
-    title: 'Dark Joins on Trial — Wears #67, Once Worn by Banned Player Amir',
-    img: 'https://flagcdn.com/w320/no.png',
-    text: 'Bytestorm Esports has brought in Dark (Norway) to the Brawl Stars roster on a trial basis, effective July 18, 2026. Dark takes jersey #67 — a number with history in the organization. It was first worn by Amir, an Azerbaijani player who was banned during the early days of Bytestorm Esports. This marks the second time #67 has been assigned since the org\'s founding. Dark\'s trial period will determine whether he earns a permanent spot on the roster.',
-    date: 'July 18, 2026'
-  },
-  {
-    tag: 'Roster Update',
-    title: '爪〇〇冂し|号ん十\'s Suspension Lifted',
-    img: 'https://flagcdn.com/w320/tr.png',
-    text: 'Bytestorm Esports has reviewed and lifted the tournament suspension previously placed on 爪〇〇冂し|号ん十 (#31, Turkey). New information confirmed that he was on an urgent flight at the time of the tournament and was unable to contact Bytestorm staff before the match started. Given the circumstances, CEO Superplayer (#63) has removed the suspension effective immediately and reinstated him to Esports Player. 爪〇〇冂し|号ん十 is once again eligible to participate in Bytestorm Esports tournaments.',
-    date: 'July 17, 2026'
-  },
-  {
-    tag: 'Roster Update',
-    title: '爪〇〇冂し|号ん十 Demoted After Tournament No-Show',
-    img: 'https://flagcdn.com/w320/tr.png',
-    text: 'On July 14, 2026, Bytestorm Esports announced a disciplinary roster change. 爪〇〇冂し|号ん十 (#31, Turkey) failed to show up for an official tournament, causing the team to be disqualified. As a result, CEO Superplayer (#63) has demoted him from Esports Player to Normal Player, effective immediately. Bytestorm Esports expects all roster members to honor their commitments to scheduled matches.',
-    date: 'July 14, 2026'
-  },
-  {
-    tag: 'New Game',
-    title: 'Bytestorm Esports Expands Into eFootball',
-    img: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/header.jpg',
-    text: 'Bytestorm Esports has officially expanded its competitive lineup to seven titles with the addition of eFootball. The move follows the organization\'s continued growth since its Formula Apex return earlier this year, and reflects CEO Superplayer\'s goal of building a roster that spans as many competitive scenes as possible. eFootball joins Brawl Stars, Fortnite, Rocket League, CS2, GTA, and Formula Apex as the newest division under the Bytestorm banner. Recruitment for the eFootball roster is ongoing, with Superplayer currently representing the division while additional players are brought on board.',
-    date: 'July 11, 2026'
-  },
-  {
-    tag: 'Academy',
-    title: 'Introducing Bytestorm Esports Academy',
-    img: 'https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png',
-    text: 'Bytestorm Esports has launched its own Academy — a program built for players who aren\'t yet at a competitive level but want to learn and improve. Rather than requiring existing skill, the Academy is open to anyone willing to put in the work. Academy members are taught tricks, mechanics, and fundamentals directly by Bytestorm Trainers, as well as through guides and content published on the official Bytestorm Esports social media pages. The goal is to give newer players a real path to grow within the organization, with the strongest performers able to progress toward the main roster over time. Recruitment for both Trainers and Trainees is now open.',
-    date: 'July 11, 2026'
-  },
-  {
-    tag: 'Sponsorship',
-    title: 'RedZac Rejects Sponsorship Request from Bytestorm Esports',
-    img: 'https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png',
-    text: 'In June 2026, CEO Superplayer (#63) and Team Captain Batur (#52) reached out to RedZac with a formal sponsorship request on behalf of Bytestorm Esports. RedZac declined the proposal, explaining that their sponsorship program does not cover esports organizations. According to RedZac, their policy is to exclusively sponsor Special Events and traditional Sport Teams. Bytestorm Esports continues to seek sponsorship partnerships and remains open to future opportunities.',
-    date: 'June 2026'
-  },
-  {
-    tag: 'Roster Update',
-    title: 'Batur Named New Team Captain — Daniel Steps Down from Role',
-    img: 'https://flagcdn.com/w320/tr.png',
-    img2: 'https://flagcdn.com/w320/it.png',
-    text: 'Effective June 20, 2026, Bytestorm Esports has made an official roster and leadership change. Daniel (#187) has been demoted from two roles due to repeated inactivity and misconduct as Team Captain. He was originally contracted as Team Captain until 2027, but failed to meet the responsibilities the role demands — resulting in an early demotion to Normal Player. Batur (#52) from Turkey has been appointed as the new Team Captain and will serve in this role until 2028 under an official contract. We are confident Batur will bring the leadership and commitment this organization expects.',
-    date: 'June 23, 2026'
-  },
-  {
-    tag: 'Announcement',
-    title: 'BYTS Returns to Roblox — Formula Apex, Starting Today',
-    img: 'https://tr.rbxcdn.com/180DAY-6f05ab8fd4559a8de6b55412cdccd328/768/432/Image/Webp/noFilter',
-    text: 'The votes are in — and the community has spoken. Out of 8 players who participated in our official vote, 6 voted YES for a Bytestorm return to Roblox, and 2 were neutral. Not a single vote against. Based on this result, Bytestorm Esports will officially return to Roblox today — but exclusively through Formula Apex. After stepping away from Roblox in February 2026 due to security concerns, we are making a focused comeback with Formula Apex as our only Roblox title. No other Roblox games are in scope at this time. Welcome back to the grid.',
-    date: 'May 19, 2026'
-  },
-  {
-    tag: 'Announcement',
-    title: 'CEO Plans to Return to Roblox — Formular Apex',
-    img: 'https://static.wikia.nocookie.net/formula-apex/images/e/e6/Game_Icon-_Pre_CU11.png/revision/latest?cb=20240824021346',
-    text: 'Bytestorm Esports is considering an official return to Formular Apex, a competitive racing game on Roblox. After stepping away from Roblox in February 2026 due to security concerns, the org is now evaluating a comeback — and the decision is in YOUR hands. We are holding an official community vote on our Discord server and WhatsApp group. Should BYTS return to Formular Apex? Head to the Discord or WhatsApp group, find the vote, and make your voice heard. The result will directly shape what happens next.',
-    date: 'May 17, 2026'
-  }
-];
+// newsData is populated live from Firebase (see the News Manager module near
+// the end of the page) so the Admin panel's News Manager can add/edit/reorder/
+// remove posts and have this grid + modal update instantly.
+var newsData = [];
 function openNews(i){
   var a=newsData[i];if(!a)return;
   var img1=document.getElementById('nModal-img');
@@ -1558,7 +1341,9 @@ function openNews(i){
     img1.src=a.img;img1.style.width='100%';
     img2.src='';img2.style.display='none';
   }
-  document.getElementById('nModal-tag').textContent=a.tag;
+  var activeLang = document.documentElement.getAttribute('lang') || 'en';
+  var t = translations[activeLang] || translations.en;
+  document.getElementById('nModal-tag').textContent = (a.tagKey && t[a.tagKey]) ? t[a.tagKey] : (a.tag || '');
   document.getElementById('nModal-title').textContent=a.title;
   document.getElementById('nModal-text').textContent=a.text;
   document.getElementById('nModal-date').textContent=a.date;
@@ -1922,6 +1707,186 @@ onValue(tournRef, function(snap){
   render(data);
 }, function(err){
   console.error('Tournament listener error:', err);
+});
+</script>
+
+<script type="module">
+// ── Roster Manager (Realtime Database, read-only on the public site) ──
+// Renders each game's roster grid from Firebase "roster/{game}/{id}" records
+// so the Admin panel can add / edit / suspend / remove players and have the
+// site's roster panels update instantly.
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAY49sWaN-DSKV10uyBB3CeOiABLCtFrSI",
+  authDomain: "bytestorm-friebase-server.firebaseapp.com",
+  databaseURL: "https://bytestorm-friebase-server-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "bytestorm-friebase-server",
+  storageBucket: "bytestorm-friebase-server.firebasestorage.app",
+  messagingSenderId: "400056781433",
+  appId: "1:400056781433:web:9803b0711d85de437f62a8",
+  measurementId: "G-TKJ9JKK7ZF"
+};
+
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const ROLE_LABELS = {
+  ceo:'CEO', captain:'Team Captain', esports:'Esports Player', normal:'Normal Player',
+  editor:'Editor', recruiter:'Recruiter', moderator:'Moderator',
+  trainer:'Trainer', trainee:'Trainee', open:'Position Open'
+};
+const OPEN_ROLE_TEXT = {
+  recruiter:'Manages recruitment across social media platforms.',
+  moderator:'Keeps Discord and community spaces safe and on-topic.',
+  trainer:'Teaches Academy members game mechanics, strategy, and tricks.',
+  trainee:"For players who aren't yet at a competitive level but want to learn and improve."
+};
+
+function esc(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+    return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+  });
+}
+
+function buildPlayerCard(p){
+  const roleKey = p.roleKey || 'esports';
+  const roleLabel = ROLE_LABELS[roleKey] || roleKey;
+  const isOpenSlot = !p.num || p.num === '—';
+  const flagImg = p.flag ? `<img class="rp-flag-big" src="https://flagcdn.com/w160/${esc(p.flag)}.png" alt="${esc(p.region||'')}"/>` : '';
+
+  let statusHtml = '';
+  if(p.status === 'suspended'){
+    const untilText = p.suspendedUntil ? ` until ${esc(p.suspendedUntil)}` : '';
+    statusHtml = `<br/><span class="rp-status suspended">Suspended${untilText}</span>`;
+  } else if(p.status === 'trial'){
+    statusHtml = `<br/><span class="rp-status">Trial</span>`;
+  } else if(isOpenSlot){
+    statusHtml = `<br/><span class="rp-status">Recruiting</span>`;
+  }
+
+  let metaHtml;
+  if(isOpenSlot && OPEN_ROLE_TEXT[roleKey]){
+    metaHtml = `<b>Role:</b> ${esc(OPEN_ROLE_TEXT[roleKey])}${statusHtml}`;
+  } else {
+    const playsLine = p.plays ? `<b>Plays:</b> ${esc(p.plays)}<br/>` : '';
+    const regionLine = p.region ? `<b>Region:</b> ${esc(p.region)}` : '';
+    metaHtml = `<b>Role:</b> ${esc(roleLabel)}<br/>${playsLine}${regionLine}${statusHtml}`;
+  }
+
+  const badgeClass = p.status === 'suspended' ? 'suspended' : (isOpenSlot ? 'open' : roleKey);
+  const badgeLabel = p.status === 'suspended' ? 'Suspended' : (isOpenSlot ? roleLabel : roleLabel);
+
+  return `<div class="rp-card">${flagImg}<div class="rp-top"><span class="rp-num">${esc(p.num || '—')}</span><span class="rp-badge ${esc(badgeClass)}">${esc(badgeLabel)}</span></div><div class="rp-name">${esc(p.name || 'Unnamed')}</div><div class="rp-meta">${metaHtml}</div></div>`;
+}
+
+const GAME_KEYS = ['fn','bs','rl','cs2','gta','fa','ef','staff','academy'];
+
+GAME_KEYS.forEach(function(gameKey){
+  const grid = document.getElementById('rp-grid-' + gameKey);
+  if(!grid) return;
+  const gRef = ref(db, 'roster/' + gameKey);
+  onValue(gRef, function(snap){
+    if(!snap.exists()){
+      grid.innerHTML = '<div class="rp-loading">Roster coming soon.</div>';
+      return;
+    }
+    const players = snap.val();
+    const entries = Object.values(players);
+    grid.innerHTML = entries.map(buildPlayerCard).join('');
+  }, function(err){
+    console.error('Roster listener error (' + gameKey + '):', err);
+    grid.innerHTML = '<div class="rp-loading">Could not load roster.</div>';
+  });
+});
+</script>
+
+<script type="module">
+// ── News Manager (Realtime Database, read-only on the public site) ──
+// Renders the News grid from Firebase "news/{id}" records so the Admin panel
+// can add / edit / reorder / remove posts and have the site update instantly.
+// Populates window.newsData / global newsData so the existing openNews(i)
+// modal keeps working unchanged, and sets data-tagkey so the 11-language
+// i18n sweep (changeLang) keeps translating the tag pills correctly.
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAY49sWaN-DSKV10uyBB3CeOiABLCtFrSI",
+  authDomain: "bytestorm-friebase-server.firebaseapp.com",
+  databaseURL: "https://bytestorm-friebase-server-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "bytestorm-friebase-server",
+  storageBucket: "bytestorm-friebase-server.firebasestorage.app",
+  messagingSenderId: "400056781433",
+  appId: "1:400056781433:web:9803b0711d85de437f62a8",
+  measurementId: "G-TKJ9JKK7ZF"
+};
+
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const newsRef = ref(db, 'news');
+const newsGrid = document.getElementById('newsGrid');
+
+const TAG_FALLBACK = {
+  tagRoster:'Roster Update', tagAcademy:'Academy', tagSponsorship:'Sponsorship',
+  tagNewGame:'New Game', tagAnnouncement:'Announcement'
+};
+
+function esc(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+    return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+  });
+}
+
+function buildNewsCard(index, a){
+  const tagKey = a.tagKey || 'tagAnnouncement';
+  const tagLabel = TAG_FALLBACK[tagKey] || 'Announcement';
+  const imgHtml = a.img2
+    ? `<img class="news-img" src="${esc(a.img||'')}" alt="" style="object-fit:cover;object-position:center;width:50%;height:100%"/><img class="news-img" src="${esc(a.img2)}" alt="" style="object-fit:cover;object-position:center;width:50%;height:100%"/>`
+    : `<img class="news-img" src="${esc(a.img||'')}" alt="" style="object-fit:cover;filter:brightness(.85)"/>`;
+  return `<div class="news-card" onclick="openNews(${index})">
+    <div class="news-img-wrap" style="position:relative;${a.img2?'display:flex':''}">
+      ${imgHtml}
+    </div>
+    <div class="news-body">
+      <span class="news-tag" data-tagkey="${esc(tagKey)}">${esc(tagLabel)}</span>
+      <div class="news-title-text">${esc(a.title || '')}</div>
+      <div class="news-sub">${esc(a.sub || '')}</div>
+      <div class="news-date">${esc(a.date || '')}</div>
+    </div>
+  </div>`;
+}
+
+onValue(newsRef, function(snap){
+  if(!snap.exists()){
+    newsGrid.innerHTML = '<div class="rp-loading">No news yet.</div>';
+    window.newsData = [];
+    return;
+  }
+  const raw = snap.val();
+  const entries = Object.values(raw).sort(function(a,b){ return (a.order ?? 0) - (b.order ?? 0); });
+
+  // Keep the modal's newsData array (declared earlier on the page) in sync —
+  // index here matches each card's onclick="openNews(i)" argument.
+  window.newsData = entries.map(function(a){
+    return { tag: TAG_FALLBACK[a.tagKey] || 'Announcement', tagKey: a.tagKey, title: a.title, img: a.img, img2: a.img2, text: a.text, date: a.date };
+  });
+
+  newsGrid.innerHTML = entries.map(function(a, i){ return buildNewsCard(i, a); }).join('');
+
+  // Re-translate the freshly rendered tag pills to match the active language.
+  const activeLang = document.documentElement.getAttribute('lang') || 'en';
+  const t = (window.translations && window.translations[activeLang]) || null;
+  if(t){
+    newsGrid.querySelectorAll('[data-tagkey]').forEach(function(el){
+      const k = el.getAttribute('data-tagkey');
+      if(t[k]) el.textContent = t[k];
+    });
+  }
+}, function(err){
+  console.error('News listener error:', err);
+  newsGrid.innerHTML = '<div class="rp-loading">Could not load news.</div>';
 });
 </script>
 </body>
