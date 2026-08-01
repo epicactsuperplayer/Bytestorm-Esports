@@ -12,6 +12,7 @@
     --accent:#ffffff; --win:#2ecc71; --loss:#e74c3c; --live:#ff3b3b;
   }
   *{box-sizing:border-box}
+  input[type=date]{color-scheme:dark}
   body{
     margin:0; min-height:100vh; background:var(--bg); color:var(--txt);
     font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
@@ -24,7 +25,7 @@
   h1{font-size:18px; font-weight:800; letter-spacing:.02em; margin:0 0 4px}
   .sub{font-size:12px; color:var(--m1); margin:0 0 24px}
   label{display:block; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--m1); margin:16px 0 6px}
-  input[type=text], input[type=number], input[type=password], select{
+  input[type=text], input[type=number], input[type=password], input[type=date], select{
     width:100%; background:#0d0d0d; border:1px solid var(--b2); color:var(--txt);
     border-radius:8px; padding:11px 12px; font-size:14px; font-family:inherit;
   }
@@ -68,7 +69,6 @@
   .preview-score b{font-size:22px;color:var(--txt);display:block}
 
   /* ── Tournament Manager ── */
-  #tmCard{max-width:640px}
   #tmAddToggle{margin-top:0}
   .tm-form{margin-top:18px;padding-top:4px;border-top:1px solid var(--b1)}
   .tm-form button{margin-top:16px}
@@ -112,6 +112,139 @@
     border:1px solid #4a1f1f; border-radius:7px; padding:9px; font-size:11.5px; font-weight:700;
   }
   .tm-remove:hover{background:#210b0b}
+
+  /* ── Roster Manager ── */
+  .rm-select{margin-bottom:16px}
+  .rm-item{border:1px solid var(--b2);border-radius:10px;padding:14px 16px;background:#0d0d0d;margin-bottom:12px}
+  .rm-item input[type=text], .rm-item input[type=number], .rm-item select{
+    width:100%; background:#0a0a0a; border:1px solid var(--b2); color:var(--txt);
+    border-radius:7px; padding:8px 9px; font-size:12.5px; font-family:inherit;
+  }
+  .rm-row{display:flex;gap:8px;margin-top:8px}
+  .rm-row > *{flex:1}
+  .rm-item-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+  .rm-badge-preview{font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:20px;border:1px solid var(--b2);color:var(--m1)}
+  .rm-mini{
+    flex:1; width:auto; margin-top:0; background:#181818; color:var(--txt);
+    border:1px solid var(--b2); border-radius:7px; padding:8px 6px;
+    font-size:11.5px; font-weight:700; letter-spacing:.02em; cursor:pointer;
+  }
+  .rm-mini:hover{border-color:#666}
+  .rm-remove{
+    width:100%; margin-top:8px; background:transparent; color:var(--loss);
+    border:1px solid #4a1f1f; border-radius:7px; padding:8px; font-size:11px; font-weight:700; cursor:pointer;
+  }
+  .rm-remove:hover{background:#210b0b}
+  .rm-add{
+    width:100%; margin-top:0; background:#181818; color:var(--txt);
+    border:1px solid var(--b2); border-radius:8px; padding:11px; font-size:13px; font-weight:800; cursor:pointer;
+  }
+  .rm-add:hover{border-color:#666}
+  .rm-empty{font-size:13px;color:var(--m2);text-align:center;padding:20px 0}
+  .rm-status-row{display:flex;gap:8px;margin-top:8px}
+  .rm-status-row .rm-mini.active{background:var(--accent);color:#0a0a0a;border-color:var(--accent)}
+  .rm-suspend-until{margin-top:8px;display:none}
+  .rm-suspend-until.show{display:block}
+
+  /* ── News Manager ── */
+  .nm-item{border:1px solid var(--b2);border-radius:10px;padding:14px 16px;background:#0d0d0d;margin-bottom:12px}
+  .nm-item input[type=text], .nm-item select, .nm-item textarea{
+    width:100%; background:#0a0a0a; border:1px solid var(--b2); color:var(--txt);
+    border-radius:7px; padding:8px 9px; font-size:12.5px; font-family:inherit;
+  }
+  .nm-item textarea{resize:vertical;min-height:70px;line-height:1.5}
+  .nm-item-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+  .nm-title-preview{font-size:13px;font-weight:800;color:var(--txt)}
+  .nm-row{display:flex;gap:8px;margin-top:8px}
+  .nm-row > *{flex:1}
+  .nm-mini{
+    flex:1; width:auto; margin-top:8px; background:#181818; color:var(--txt);
+    border:1px solid var(--b2); border-radius:7px; padding:8px 6px;
+    font-size:11.5px; font-weight:700; letter-spacing:.02em; cursor:pointer;
+  }
+  .nm-mini:hover{border-color:#666}
+  .nm-remove{
+    width:100%; margin-top:8px; background:transparent; color:var(--loss);
+    border:1px solid #4a1f1f; border-radius:7px; padding:8px; font-size:11px; font-weight:700; cursor:pointer;
+  }
+  .nm-remove:hover{background:#210b0b}
+  .nm-add{
+    width:100%; background:#181818; color:var(--txt);
+    border:1px solid var(--b2); border-radius:8px; padding:11px; font-size:13px; font-weight:800; cursor:pointer;
+  }
+  .nm-add:hover{border-color:#666}
+  .nm-empty{font-size:13px;color:var(--m2);text-align:center;padding:20px 0}
+  .nm-label{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--m1); margin:10px 0 5px; display:block}
+
+  /* ── Blades-style Carousel ── */
+  .blades-wrap{
+    width:100%; max-width:1100px; position:relative;
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    padding:10px 0 0;
+  }
+  .blades-arrow{
+    flex-shrink:0; width:46px; height:46px; border-radius:50%;
+    background:#111; border:1px solid var(--b2); color:var(--m1);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    font-size:20px; transition:border-color .15s, color .15s, background .15s;
+    user-select:none;
+  }
+  .blades-arrow:hover{border-color:#666;color:var(--txt);background:#181818}
+  .blades-arrow:active{transform:scale(.94)}
+  .blades-arrow svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+  .blades-stage{
+    position:relative; flex:1; min-width:0;
+    height:640px;
+    display:flex; align-items:center; justify-content:center;
+    perspective:1400px;
+  }
+  .blade{
+    position:absolute; top:50%; left:50%;
+    width:100%; max-width:480px;
+    transform-origin:center center;
+    transition:transform .45s cubic-bezier(.22,.9,.3,1), opacity .45s cubic-bezier(.22,.9,.3,1), filter .45s ease;
+    pointer-events:none;
+  }
+  .blade.active{
+    transform:translate(-50%,-50%) translateZ(0) scale(1);
+    opacity:1; z-index:5; filter:none;
+    pointer-events:auto;
+  }
+  .blade.prev1{
+    transform:translate(-132%,-50%) translateZ(-160px) rotateY(28deg) scale(.78);
+    opacity:.5; z-index:4; filter:blur(1px) brightness(.55);
+  }
+  .blade.next1{
+    transform:translate(32%,-50%) translateZ(-160px) rotateY(-28deg) scale(.78);
+    opacity:.5; z-index:4; filter:blur(1px) brightness(.55);
+  }
+  .blade.prev2{
+    transform:translate(-165%,-50%) translateZ(-320px) rotateY(32deg) scale(.6);
+    opacity:.22; z-index:3; filter:blur(2px) brightness(.4);
+  }
+  .blade.next2{
+    transform:translate(65%,-50%) translateZ(-320px) rotateY(-32deg) scale(.6);
+    opacity:.22; z-index:3; filter:blur(2px) brightness(.4);
+  }
+  .blade.farhidden{
+    transform:translate(-50%,-50%) translateZ(-500px) scale(.4);
+    opacity:0; z-index:1; pointer-events:none;
+  }
+  .blade .card{width:100%; max-width:none; max-height:600px; overflow-y:auto}
+  .blades-dots{display:flex; gap:8px; justify-content:center; margin-top:18px}
+  .blades-dot{width:7px;height:7px;border-radius:50%;background:var(--b2);cursor:pointer;transition:background .2s,transform .2s}
+  .blades-dot.active{background:var(--accent);transform:scale(1.3)}
+  .blades-label{
+    text-align:center; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--m2); margin-top:2px;
+  }
+  @media (max-width:900px){
+    .blades-stage{height:auto; perspective:none}
+    .blade{position:relative; display:none; max-width:100%}
+    .blade.active{display:block; position:relative; transform:none; opacity:1; filter:none}
+    .blades-arrow{width:40px;height:40px}
+  }
 </style>
 </head>
 <body>
@@ -125,7 +258,15 @@
   <div class="status-msg" id="gateMsg"></div>
 </div>
 
-<div class="card" id="formCard" style="display:none;max-width:480px">
+<div class="blades-wrap" id="bladesWrap" style="display:none">
+  <div class="blades-arrow" id="bladeLeft" aria-label="Previous tool">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </div>
+
+  <div class="blades-stage" id="bladesStage">
+
+    <div class="blade" data-blade="0">
+      <div class="card" id="formCard" style="max-width:none">
   <h1>Live Match Tracker</h1>
   <p class="sub">Updates go live on the site instantly.</p>
   <div class="current-badge" id="currentBadge"></div>
@@ -182,9 +323,11 @@
   </div>
 
   <button class="logout" id="logoutBtn">Lock</button>
-</div>
+      </div>
+    </div>
 
-<div class="card" id="tmCard" style="display:none">
+    <div class="blade" data-blade="1">
+      <div class="card" id="tmCard" style="max-width:none">
   <h1>Tournament Manager</h1>
   <p class="sub">Add, delay, finish (win/loss/DSQ), or remove tournaments — the site's Upcoming &amp; Results lists update instantly.</p>
 
@@ -218,7 +361,65 @@
 
   <button type="button" class="logout" id="tmSeedBtn" style="margin-top:14px">Seed Historical Results</button>
   <div class="status-msg" id="tmSeedMsg"></div>
+      </div>
+    </div>
+
+    <div class="blade" data-blade="2">
+      <div class="card" id="rmCard" style="max-width:none">
+        <h1>Roster Manager</h1>
+        <p class="sub">Add, edit, or remove players per game — the site's roster panels update instantly.</p>
+
+        <label class="nm-label">Game / Group</label>
+        <select id="rmGameSelect" class="rm-select">
+          <option value="fn">Fortnite</option>
+          <option value="bs">Brawl Stars</option>
+          <option value="rl">Rocket League</option>
+          <option value="cs2">CS2</option>
+          <option value="gta">GTA V Online</option>
+          <option value="fa">Formula Apex</option>
+          <option value="ef">eFootball</option>
+          <option value="staff">Staff</option>
+          <option value="academy">Academy</option>
+        </select>
+
+        <div class="rm-list" id="rmList">
+          <div class="rm-empty">Loading roster…</div>
+        </div>
+
+        <button type="button" class="rm-add" id="rmAddBtn">+ Add Player</button>
+        <div class="status-msg" id="rmMsg"></div>
+
+        <button type="button" class="logout" id="rmSeedBtn" style="margin-top:14px">Seed Current Roster</button>
+        <div class="status-msg" id="rmSeedMsg"></div>
+      </div>
+    </div>
+
+    <div class="blade" data-blade="3">
+      <div class="card" id="newsCard" style="max-width:none">
+        <h1>News Manager</h1>
+        <p class="sub">Add, edit, reorder, or remove news posts — the site's News section updates instantly.</p>
+
+        <div class="nm-list" id="nmList">
+          <div class="nm-empty">Loading news…</div>
+        </div>
+
+        <button type="button" class="nm-add" id="nmAddBtn">+ Add News Post</button>
+        <div class="status-msg" id="nmMsg"></div>
+
+        <button type="button" class="logout" id="nmSeedBtn" style="margin-top:14px">Seed Current News</button>
+        <div class="status-msg" id="nmSeedMsg"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="blades-arrow" id="bladeRight" aria-label="Next tool">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </div>
 </div>
+
+<div class="blades-dots" id="bladesDots" style="display:none"></div>
+<div class="blades-label" id="bladesLabel" style="display:none"></div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
@@ -249,8 +450,9 @@ const liveRef = ref(db, "liveMatch/current");
 // Access is enforced server-side by the Realtime Database rules
 // (liveMatch write requires auth !== null, ideally scoped to the admin email).
 const gateCard = document.getElementById('gateCard');
-const formCard = document.getElementById('formCard');
-const tmCard = document.getElementById('tmCard');
+const bladesWrap = document.getElementById('bladesWrap');
+const bladesDots = document.getElementById('bladesDots');
+const bladesLabel = document.getElementById('bladesLabel');
 const emailInput = document.getElementById('emailInput');
 const pwInput = document.getElementById('pwInput');
 const pwBtn = document.getElementById('pwBtn');
@@ -259,14 +461,17 @@ const logoutBtn = document.getElementById('logoutBtn');
 
 function showForm(){
   gateCard.style.display = 'none';
-  formCard.style.display = 'block';
-  tmCard.style.display = 'block';
+  bladesWrap.style.display = 'flex';
+  bladesDots.style.display = 'flex';
+  bladesLabel.style.display = 'block';
   loadCurrent();
+  initBlades();
 }
 
 function showGate(msg){
-  formCard.style.display = 'none';
-  tmCard.style.display = 'none';
+  bladesWrap.style.display = 'none';
+  bladesDots.style.display = 'none';
+  bladesLabel.style.display = 'none';
   gateCard.style.display = 'block';
   if(msg){
     gateMsg.textContent = msg;
@@ -302,6 +507,66 @@ onAuthStateChanged(auth, (user) => {
     showGate();
   }
 });
+
+// ── Blades Carousel (Xbox 360 Dashboard style) ──
+const BLADE_NAMES = ['Live Match Tracker', 'Tournament Manager', 'Roster Manager', 'News Manager'];
+const blades = Array.from(document.querySelectorAll('.blade'));
+const bladeLeft = document.getElementById('bladeLeft');
+const bladeRight = document.getElementById('bladeRight');
+let bladeIndex = 0;
+let bladesInited = false;
+
+function renderBlades(){
+  const n = blades.length;
+  blades.forEach((b, i) => {
+    let offset = i - bladeIndex;
+    if(offset > n / 2) offset -= n;
+    if(offset < -n / 2) offset += n;
+    b.classList.remove('active', 'prev1', 'prev2', 'next1', 'next2', 'farhidden');
+    if(offset === 0) b.classList.add('active');
+    else if(offset === -1) b.classList.add('prev1');
+    else if(offset === 1) b.classList.add('next1');
+    else if(offset === -2) b.classList.add('prev2');
+    else if(offset === 2) b.classList.add('next2');
+    else b.classList.add('farhidden');
+  });
+  bladesDots.querySelectorAll('.blades-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === bladeIndex);
+  });
+  bladesLabel.textContent = BLADE_NAMES[bladeIndex] || '';
+}
+
+function goToBlade(i){
+  const n = blades.length;
+  bladeIndex = ((i % n) + n) % n;
+  renderBlades();
+}
+
+function initBlades(){
+  if(bladesInited) return;
+  bladesInited = true;
+  bladesDots.innerHTML = BLADE_NAMES.map((_, i) => `<div class="blades-dot" data-i="${i}"></div>`).join('');
+  bladesDots.querySelectorAll('.blades-dot').forEach(dot => {
+    dot.addEventListener('click', () => goToBlade(Number(dot.dataset.i)));
+  });
+  bladeLeft.addEventListener('click', () => goToBlade(bladeIndex - 1));
+  bladeRight.addEventListener('click', () => goToBlade(bladeIndex + 1));
+  blades.forEach((b, i) => {
+    b.addEventListener('click', (e) => {
+      if(!b.classList.contains('active') && !e.target.closest('button, input, select, textarea')){
+        goToBlade(i);
+      }
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if(bladesWrap.style.display === 'none') return;
+    const tag = (e.target.tagName || '').toLowerCase();
+    if(tag === 'input' || tag === 'select' || tag === 'textarea') return;
+    if(e.key === 'ArrowLeft') goToBlade(bladeIndex - 1);
+    if(e.key === 'ArrowRight') goToBlade(bladeIndex + 1);
+  });
+  renderBlades();
+}
 
 // ── Form logic ──
 const fStatus = document.getElementById('fStatus');
@@ -661,6 +926,409 @@ tmSeedBtn.addEventListener('click', async () => {
     tmSeedMsg.className = 'status-msg err';
   } finally {
     tmSeedBtn.disabled = false;
+  }
+});
+
+// ── Roster Manager ──
+// Writes to roster/{game}/{id}. index.html reads this node to render the
+// roster panels for each game group (see the Roster Manager module there).
+const GAMES = {
+  fn:'Fortnite', bs:'Brawl Stars', rl:'Rocket League', cs2:'CS2',
+  gta:'GTA V Online', fa:'Formula Apex', ef:'eFootball',
+  staff:'Staff', academy:'Academy'
+};
+const ROLE_BADGES = {
+  ceo:'CEO', captain:'Team Captain', esports:'Esports Player', normal:'Normal Player',
+  editor:'Editor', recruiter:'Recruiter', moderator:'Moderator',
+  trainer:'Trainer', trainee:'Trainee', open:'Position Open'
+};
+const rmGameSelect = document.getElementById('rmGameSelect');
+const rmList = document.getElementById('rmList');
+const rmAddBtn = document.getElementById('rmAddBtn');
+const rmMsg = document.getElementById('rmMsg');
+let rosterCache = {};
+let currentGame = 'fn';
+
+function rmRowHtml(gameKey, id, p){
+  const status = p.status || 'active';
+  const roleOpts = Object.entries(ROLE_BADGES).map(([k,label]) =>
+    `<option value="${k}" ${p.roleKey===k?'selected':''}>${label}</option>`).join('');
+  return `<div class="rm-item" data-id="${id}">
+    <div class="rm-item-top">
+      <span class="rm-badge-preview">${escHtml(ROLE_BADGES[p.roleKey] || p.roleKey || 'Player')}</span>
+      <span class="rm-badge-preview" style="color:${status==='suspended'?'#fbbf24':status==='active'?'#2ecc71':'var(--m1)'}">${escHtml(status)}</span>
+    </div>
+    <div class="rm-row">
+      <input type="text" class="rm-name" placeholder="Player name" value="${escHtml(p.name || '')}">
+      <input type="text" class="rm-num" placeholder="#63" value="${escHtml(p.num || '')}" style="max-width:90px">
+    </div>
+    <div class="rm-row">
+      <select class="rm-role">${roleOpts}</select>
+      <input type="text" class="rm-plays" placeholder="Plays (e.g. FN, BS)" value="${escHtml(p.plays || '')}">
+    </div>
+    <div class="rm-row">
+      <input type="text" class="rm-region" placeholder="Region (e.g. EU – Austria)" value="${escHtml(p.region || '')}">
+      <input type="text" class="rm-flag" placeholder="Flag code (e.g. at)" value="${escHtml(p.flag || '')}" style="max-width:120px">
+    </div>
+    <div class="rm-status-row">
+      <button type="button" class="rm-mini ${status==='active'?'active':''}" data-action="setstatus" data-status="active" data-id="${id}">Active</button>
+      <button type="button" class="rm-mini ${status==='suspended'?'active':''}" data-action="setstatus" data-status="suspended" data-id="${id}">Suspended</button>
+      <button type="button" class="rm-mini ${status==='trial'?'active':''}" data-action="setstatus" data-status="trial" data-id="${id}">Trial</button>
+    </div>
+    <div class="rm-suspend-until ${status==='suspended'?'show':''}">
+      <label class="nm-label" style="margin-top:8px">Suspended Until</label>
+      <input type="date" class="rm-suspend-date" value="${escHtml(p.suspendedUntil || '')}">
+    </div>
+    <div class="rm-row" style="margin-top:10px">
+      <button type="button" class="rm-mini" data-action="save" data-id="${id}">Save Player</button>
+    </div>
+    <button type="button" class="rm-remove" data-action="remove" data-id="${id}">Remove Player</button>
+  </div>`;
+}
+
+function renderRM(){
+  const entries = Object.entries(rosterCache[currentGame] || {});
+  if(!entries.length){
+    rmList.innerHTML = '<div class="rm-empty">No players yet for ' + escHtml(GAMES[currentGame]) + '. Add one below.</div>';
+    return;
+  }
+  rmList.innerHTML = entries.map(([id, p]) => rmRowHtml(currentGame, id, p)).join('');
+}
+
+function watchRoster(gameKey){
+  const gRef = ref(db, 'roster/' + gameKey);
+  onValue(gRef, (snap) => {
+    rosterCache[gameKey] = snap.exists() ? snap.val() : {};
+    if(currentGame === gameKey) renderRM();
+  }, (err) => {
+    if(currentGame === gameKey){
+      rmList.innerHTML = '<div class="rm-empty">Could not load roster: ' + escHtml(err.message) + '</div>';
+    }
+  });
+}
+Object.keys(GAMES).forEach(watchRoster);
+
+rmGameSelect.addEventListener('change', () => {
+  currentGame = rmGameSelect.value;
+  renderRM();
+});
+
+rmAddBtn.addEventListener('click', async () => {
+  const gRef = ref(db, 'roster/' + currentGame);
+  try{
+    await push(gRef, { name: 'New Player', num: '', roleKey: 'esports', plays: '', region: '', flag: '', status: 'active' });
+  } catch(e){
+    rmMsg.textContent = 'Error: ' + e.message;
+    rmMsg.className = 'status-msg err';
+  }
+});
+
+rmList.addEventListener('click', async (e) => {
+  const btn = e.target.closest('button[data-action]');
+  if(!btn) return;
+  const id = btn.dataset.id;
+  const action = btn.dataset.action;
+  const item = btn.closest('.rm-item');
+  const rowRef = ref(db, 'roster/' + currentGame + '/' + id);
+
+  try{
+    if(action === 'save'){
+      await update(rowRef, {
+        name: item.querySelector('.rm-name').value.trim(),
+        num: item.querySelector('.rm-num').value.trim(),
+        roleKey: item.querySelector('.rm-role').value,
+        plays: item.querySelector('.rm-plays').value.trim(),
+        region: item.querySelector('.rm-region').value.trim(),
+        flag: item.querySelector('.rm-flag').value.trim().toLowerCase()
+      });
+      rmMsg.textContent = 'Saved.';
+      rmMsg.className = 'status-msg ok';
+    } else if(action === 'setstatus'){
+      const status = btn.dataset.status;
+      const patch = { status };
+      if(status !== 'suspended') patch.suspendedUntil = null;
+      await update(rowRef, patch);
+    } else if(action === 'remove'){
+      if(!confirm('Remove this player permanently?')) return;
+      await remove(rowRef);
+    }
+  } catch(err){
+    alert('Error: ' + err.message);
+  }
+});
+
+rmList.addEventListener('change', async (e) => {
+  if(e.target.classList.contains('rm-suspend-date')){
+    const item = e.target.closest('.rm-item');
+    const id = item.dataset.id;
+    await update(ref(db, 'roster/' + currentGame + '/' + id), { suspendedUntil: e.target.value });
+  }
+});
+
+// ── Roster: Seed Current Roster ──
+const rmSeedBtn = document.getElementById('rmSeedBtn');
+const rmSeedMsg = document.getElementById('rmSeedMsg');
+
+const ROSTER_SEED = {
+  fn: [
+    { name:'Superplayer', num:'#63', roleKey:'ceo', plays:'All Games', region:'Japan', flag:'jp', status:'active' },
+    { name:'Daniel', num:'#187', roleKey:'normal', plays:'FN, BS', region:'EU – Italy', flag:'it', status:'active' },
+    { name:'Julian', num:'#1876', roleKey:'esports', plays:'FN, BS', region:'EU – Austria', flag:'at', status:'active' }
+  ],
+  bs: [
+    { name:'Superplayer', num:'#63', roleKey:'ceo', plays:'All Games', region:'Japan', flag:'jp', status:'active' },
+    { name:'Daniel', num:'#187', roleKey:'normal', plays:'FN, BS', region:'EU – Italy', flag:'it', status:'active' },
+    { name:'Julian', num:'#1876', roleKey:'esports', plays:'FN, BS', region:'EU – Austria', flag:'at', status:'active' },
+    { name:'Batur', num:'#52', roleKey:'captain', plays:'BS', region:'EU – Turkey', flag:'tr', status:'active' },
+    { name:'RIOY/LNM', num:'#7', roleKey:'esports', plays:'BS', region:'EU – Greece', flag:'gr', status:'active' },
+    { name:'爪〇〇冂し|号ん十', num:'#31', roleKey:'esports', plays:'BS', region:'EU – Turkey', flag:'tr', status:'active' },
+    { name:'Felix', num:'#18', roleKey:'esports', plays:'BS', region:'ASIA – Uzbekistan', flag:'uz', status:'active' }
+  ],
+  rl: [
+    { name:'Superplayer', num:'#63', roleKey:'ceo', plays:'All Games', region:'Japan', flag:'jp', status:'active' }
+  ],
+  cs2: [
+    { name:'Superplayer', num:'#63', roleKey:'ceo', plays:'All Games', region:'Japan', flag:'jp', status:'active' }
+  ],
+  gta: [
+    { name:'Superplayer', num:'#63', roleKey:'ceo', plays:'All Games', region:'Japan', flag:'jp', status:'active' }
+  ],
+  fa: [
+    { name:'Superplayer', num:'#63', roleKey:'ceo', plays:'All Games', region:'Japan', flag:'jp', status:'active' },
+    { name:'Kaya', num:'#44', roleKey:'esports', plays:'Formula Apex, eFootball', region:'EU – Austria', flag:'at', status:'active' }
+  ],
+  ef: [
+    { name:'Superplayer', num:'#63', roleKey:'ceo', plays:'All Games', region:'Japan', flag:'jp', status:'active' },
+    { name:'Kaya', num:'#44', roleKey:'esports', plays:'Formula Apex, eFootball', region:'EU – Austria', flag:'at', status:'active' }
+  ],
+  staff: [
+    { name:'Superplayer', num:'#63', roleKey:'ceo', plays:'', region:'Japan', flag:'jp', status:'active' },
+    { name:'Batur', num:'#52', roleKey:'captain', plays:'', region:'EU – Turkey', flag:'tr', status:'active' },
+    { name:'Daris', num:'#43', roleKey:'editor', plays:'', region:'EU – Albania', flag:'al', status:'active' },
+    { name:'Position Open', num:'—', roleKey:'recruiter', plays:'', region:'', flag:'', status:'active' },
+    { name:'Position Open', num:'—', roleKey:'moderator', plays:'', region:'', flag:'', status:'active' }
+  ],
+  academy: [
+    { name:'Position Open', num:'—', roleKey:'trainer', plays:'', region:'', flag:'', status:'active' },
+    { name:'Applications Open', num:'—', roleKey:'trainee', plays:'', region:'', flag:'', status:'active' }
+  ]
+};
+
+rmSeedBtn.addEventListener('click', async () => {
+  rmSeedBtn.disabled = true;
+  rmSeedMsg.textContent = 'Seeding...';
+  rmSeedMsg.className = 'status-msg';
+  try{
+    let written = 0;
+    for(const [gameKey, players] of Object.entries(ROSTER_SEED)){
+      const existingIds = new Set(Object.keys(rosterCache[gameKey] || {}));
+      for(let i = 0; i < players.length; i++){
+        const key = 'seed_' + i;
+        if(existingIds.has(key)) continue;
+        await set(ref(db, 'roster/' + gameKey + '/' + key), players[i]);
+        written++;
+      }
+    }
+    rmSeedMsg.textContent = written > 0
+      ? `Seeded ${written} player entr${written === 1 ? 'y' : 'ies'}.`
+      : 'Roster already present — nothing to add.';
+    rmSeedMsg.className = 'status-msg ok';
+  } catch(e){
+    rmSeedMsg.textContent = 'Error: ' + e.message;
+    rmSeedMsg.className = 'status-msg err';
+  } finally {
+    rmSeedBtn.disabled = false;
+  }
+});
+
+// ── News Manager ──
+// Writes to news/{id} with an "order" field for display order.
+// index.html reads this node to render the News grid (see the News Manager
+// module there). tagKey drives the translated tag label (tagRoster, tagAcademy,
+// tagSponsorship, tagNewGame, tagAnnouncement) so the 11-language i18n keeps working.
+const TAG_KEYS = {
+  tagRoster:'Roster Update', tagAcademy:'Academy', tagSponsorship:'Sponsorship',
+  tagNewGame:'New Game', tagAnnouncement:'Announcement'
+};
+const nmList = document.getElementById('nmList');
+const nmAddBtn = document.getElementById('nmAddBtn');
+const nmMsg = document.getElementById('nmMsg');
+const newsRef = ref(db, 'news');
+let newsCache = {};
+
+function nmRowHtml(id, a){
+  const tagOpts = Object.entries(TAG_KEYS).map(([k,label]) =>
+    `<option value="${k}" ${a.tagKey===k?'selected':''}>${label}</option>`).join('');
+  return `<div class="nm-item" data-id="${id}">
+    <div class="nm-item-top">
+      <span class="nm-title-preview">${escHtml(a.title || 'Untitled post')}</span>
+      <span style="font-size:11px;color:var(--m2)">${escHtml(a.date || '')}</span>
+    </div>
+    <label class="nm-label">Title</label>
+    <input type="text" class="nm-title" placeholder="Headline" value="${escHtml(a.title || '')}">
+    <div class="nm-row">
+      <div style="flex:1">
+        <label class="nm-label">Tag</label>
+        <select class="nm-tag">${tagOpts}</select>
+      </div>
+      <div style="flex:1">
+        <label class="nm-label">Date</label>
+        <input type="text" class="nm-date" placeholder="July 18, 2026" value="${escHtml(a.date || '')}">
+      </div>
+    </div>
+    <label class="nm-label">Image URL</label>
+    <input type="text" class="nm-img" placeholder="https://..." value="${escHtml(a.img || '')}">
+    <label class="nm-label">Second Image URL (optional — splits the card image in two, e.g. two flags)</label>
+    <input type="text" class="nm-img2" placeholder="https://... (leave blank for a single image)" value="${escHtml(a.img2 || '')}">
+    <label class="nm-label">Short Summary (shown on card)</label>
+    <textarea class="nm-sub" placeholder="One or two sentence summary">${escHtml(a.sub || '')}</textarea>
+    <label class="nm-label">Full Text (shown when opened)</label>
+    <textarea class="nm-text" placeholder="Full article text" style="min-height:110px">${escHtml(a.text || '')}</textarea>
+    <div class="nm-row">
+      <button type="button" class="nm-mini" data-action="moveup" data-id="${id}">↑ Move Up</button>
+      <button type="button" class="nm-mini" data-action="movedown" data-id="${id}">↓ Move Down</button>
+    </div>
+    <button type="button" class="nm-mini" style="width:100%" data-action="save" data-id="${id}">Save Post</button>
+    <button type="button" class="nm-remove" data-action="remove" data-id="${id}">Remove Post</button>
+  </div>`;
+}
+
+function renderNM(){
+  const entries = Object.entries(newsCache);
+  if(!entries.length){
+    nmList.innerHTML = '<div class="nm-empty">No news posts yet. Add one below.</div>';
+    return;
+  }
+  entries.sort((a, b) => (a[1].order ?? 0) - (b[1].order ?? 0));
+  nmList.innerHTML = entries.map(([id, a]) => nmRowHtml(id, a)).join('');
+}
+
+onValue(newsRef, (snap) => {
+  newsCache = snap.exists() ? snap.val() : {};
+  renderNM();
+}, (err) => {
+  nmList.innerHTML = '<div class="nm-empty">Could not load news: ' + escHtml(err.message) + '</div>';
+});
+
+nmAddBtn.addEventListener('click', async () => {
+  try{
+    const maxOrder = Object.values(newsCache).reduce((m, a) => Math.max(m, a.order ?? 0), -1);
+    await push(newsRef, {
+      title: 'New Post', tagKey: 'tagAnnouncement', date: todayStr(),
+      img: '', sub: '', text: '', order: maxOrder + 1
+    });
+  } catch(e){
+    nmMsg.textContent = 'Error: ' + e.message;
+    nmMsg.className = 'status-msg err';
+  }
+});
+
+nmList.addEventListener('click', async (e) => {
+  const btn = e.target.closest('button[data-action]');
+  if(!btn) return;
+  const id = btn.dataset.id;
+  const action = btn.dataset.action;
+  const item = btn.closest('.nm-item');
+  const rowRef = ref(db, 'news/' + id);
+
+  try{
+    if(action === 'save'){
+      await update(rowRef, {
+        title: item.querySelector('.nm-title').value.trim(),
+        tagKey: item.querySelector('.nm-tag').value,
+        date: item.querySelector('.nm-date').value.trim(),
+        img: item.querySelector('.nm-img').value.trim(),
+        img2: item.querySelector('.nm-img2').value.trim() || null,
+        sub: item.querySelector('.nm-sub').value.trim(),
+        text: item.querySelector('.nm-text').value.trim()
+      });
+      nmMsg.textContent = 'Saved.';
+      nmMsg.className = 'status-msg ok';
+    } else if(action === 'remove'){
+      if(!confirm('Remove this news post permanently?')) return;
+      await remove(rowRef);
+    } else if(action === 'moveup' || action === 'movedown'){
+      const entries = Object.entries(newsCache).sort((a, b) => (a[1].order ?? 0) - (b[1].order ?? 0));
+      const idx = entries.findIndex(([eid]) => eid === id);
+      const swapIdx = action === 'moveup' ? idx - 1 : idx + 1;
+      if(swapIdx < 0 || swapIdx >= entries.length) return;
+      const [idA, aData] = entries[idx];
+      const [idB, bData] = entries[swapIdx];
+      const orderA = aData.order ?? idx;
+      const orderB = bData.order ?? swapIdx;
+      await update(ref(db, 'news/' + idA), { order: orderB });
+      await update(ref(db, 'news/' + idB), { order: orderA });
+    }
+  } catch(err){
+    alert('Error: ' + err.message);
+  }
+});
+
+// ── News: Seed Current News ──
+const nmSeedBtn = document.getElementById('nmSeedBtn');
+const nmSeedMsg = document.getElementById('nmSeedMsg');
+
+const NEWS_SEED = [
+  { title:'Dark Joins on Trial — Wears #67, Once Worn by Banned Player Amir', tagKey:'tagRoster',
+    img:'https://flagcdn.com/w320/no.png', date:'July 18, 2026',
+    sub:'Bytestorm Esports welcomes Dark (Norway) to the Brawl Stars roster on a trial basis. He takes jersey #67, a number previously worn by Amir (Azerbaijan) before his ban in the org\'s early days.',
+    text:'Bytestorm Esports has brought in Dark (Norway) to the Brawl Stars roster on a trial basis, effective July 18, 2026. Dark takes jersey #67 — a number with history in the organization. It was first worn by Amir, an Azerbaijani player who was banned during the early days of Bytestorm Esports. This marks the second time #67 has been assigned since the org\'s founding. Dark\'s trial period will determine whether he earns a permanent spot on the roster.' },
+  { title:'爪〇〇冂し|号ん十\'s Suspension Lifted', tagKey:'tagRoster',
+    img:'https://flagcdn.com/w320/tr.png', date:'July 17, 2026',
+    sub:'Bytestorm Esports has removed the tournament suspension placed on #31 and reinstated him to Esports Player after new information showed he was on an urgent flight and unable to contact staff before the tournament started.',
+    text:'Bytestorm Esports has reviewed and lifted the tournament suspension previously placed on 爪〇〇冂し|号ん十 (#31, Turkey). New information confirmed that he was on an urgent flight at the time of the tournament and was unable to contact Bytestorm staff before the match started. Given the circumstances, CEO Superplayer (#63) has removed the suspension effective immediately and reinstated him to Esports Player. 爪〇〇冂し|号ん十 is once again eligible to participate in Bytestorm Esports tournaments.' },
+  { title:'爪〇〇冂し|号ん十 Demoted After Tournament No-Show', tagKey:'tagRoster',
+    img:'https://flagcdn.com/w320/tr.png', date:'July 14, 2026',
+    sub:'Bytestorm Esports demoted #31 from Esports Player to Normal Player following a no-show that caused the team\'s disqualification.',
+    text:'On July 14, 2026, Bytestorm Esports announced a disciplinary roster change. 爪〇〇冂し|号ん十 (#31, Turkey) failed to show up for an official tournament, causing the team to be disqualified. As a result, CEO Superplayer (#63) has demoted him from Esports Player to Normal Player, effective immediately. Bytestorm Esports expects all roster members to honor their commitments to scheduled matches.' },
+  { title:'Bytestorm Esports Expands Into eFootball', tagKey:'tagNewGame',
+    img:'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/header.jpg', date:'July 11, 2026',
+    sub:'BYTS adds a seventh title to its competitive lineup. eFootball joins Brawl Stars, Fortnite, Rocket League, CS2, GTA, and Formula Apex as the organization\'s newest division.',
+    text:'Bytestorm Esports officially expanded its competitive lineup to seven titles with the addition of eFootball, joining Brawl Stars, Fortnite, Rocket League, CS2, GTA, and Formula Apex. Recruitment for the eFootball roster is ongoing.' },
+  { title:'Introducing Bytestorm Esports Academy', tagKey:'tagAcademy',
+    img:'https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png', date:'July 11, 2026',
+    sub:'A new program for players who aren\'t yet at a competitive level but want to learn. Academy members are taught tricks and fundamentals by Trainers and through the official Bytestorm Esports social media pages.',
+    text:'Bytestorm Esports launched an Academy program for players who are not yet at a competitive level but want to learn. Academy members are taught by Trainers and through the official Bytestorm Esports social media pages, with strong performers able to progress toward the main roster.' },
+  { title:'RedZac Rejects Sponsorship Request from Bytestorm Esports', tagKey:'tagSponsorship',
+    img:'https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png', date:'June 2026',
+    sub:'CEO Superplayer and Team Captain Batur approached RedZac for a sponsorship deal — but were turned down. RedZac only sponsors Special Events and Sport Teams, not Esports.',
+    text:'CEO Superplayer (#63) and Team Captain Batur (#52) reached out to RedZac with an official sponsorship request on behalf of Bytestorm Esports. RedZac rejected the request, explaining that their sponsorship program does not include esports organizations. RedZac stated they exclusively sponsor Special Events and traditional Sport Teams, not esports teams. Bytestorm Esports continues to look for sponsorship opportunities.' },
+  { title:'Batur Named New Team Captain — Daniel Steps Down from Role', tagKey:'tagRoster',
+    img:'https://flagcdn.com/w320/tr.png', img2:'https://flagcdn.com/w320/it.png', date:'June 23, 2026',
+    sub:'Batur (#52, Turkey) takes over as Team Captain. Daniel (#187, Italy) steps down and returns to Normal Player.',
+    text:'Effective June 20, 2026, Bytestorm Esports has made an official roster and leadership change. Daniel (#187) has been demoted from two roles due to repeated inactivity and misconduct as Team Captain. He was originally contracted as Team Captain until 2027, but failed to meet the responsibilities the role demands — resulting in an early demotion to Normal Player. Batur (#52) from Turkey has been appointed as the new Team Captain and will serve in this role until 2028 under an official contract. We are confident Batur will bring the leadership and commitment this organization expects.' },
+  { title:'BYTS Returns to Roblox — Formula Apex, Starting Today', tagKey:'tagAnnouncement',
+    img:'https://tr.rbxcdn.com/180DAY-6f05ab8fd4559a8de6b55412cdccd328/768/432/Image/Webp/noFilter', date:'May 19, 2026',
+    sub:'After an official community vote, Bytestorm Esports officially returned to Roblox — exclusively through Formula Apex.',
+    text:'The votes are in — and the community has spoken. Out of 8 players who participated in our official vote, 6 voted YES for a Bytestorm return to Roblox, and 2 were neutral. Not a single vote against. Based on this result, Bytestorm Esports will officially return to Roblox today — but exclusively through Formula Apex. After stepping away from Roblox in February 2026 due to security concerns, we are making a focused comeback with Formula Apex as our only Roblox title. No other Roblox games are in scope at this time. Welcome back to the grid.' },
+  { title:'CEO Plans to Return to Roblox — Formular Apex', tagKey:'tagAnnouncement',
+    img:'https://static.wikia.nocookie.net/formula-apex/images/e/e6/Game_Icon-_Pre_CU11.png/revision/latest?cb=20240824021346', date:'May 17, 2026',
+    sub:'Bytestorm Esports is set to return to Formular Apex on Roblox — and we\'re holding a community vote on Discord and WhatsApp. Should BYTS come back? Join the conversation and vote.',
+    text:'Bytestorm Esports is considering an official return to Formular Apex, a competitive racing game on Roblox. After stepping away from Roblox in February 2026 due to security concerns, the org is now evaluating a comeback — and the decision is in YOUR hands. We are holding an official community vote on our Discord server and WhatsApp group. Should BYTS return to Formular Apex? Head to the Discord or WhatsApp group, find the vote, and make your voice heard. The result will directly shape what happens next.' }
+];
+
+nmSeedBtn.addEventListener('click', async () => {
+  nmSeedBtn.disabled = true;
+  nmSeedMsg.textContent = 'Seeding...';
+  nmSeedMsg.className = 'status-msg';
+  try{
+    const existingIds = new Set(Object.keys(newsCache));
+    let written = 0;
+    for(let i = 0; i < NEWS_SEED.length; i++){
+      const key = 'seed_' + i;
+      if(existingIds.has(key)) continue;
+      await set(ref(db, 'news/' + key), { ...NEWS_SEED[i], order: i });
+      written++;
+    }
+    nmSeedMsg.textContent = written > 0
+      ? `Seeded ${written} news post${written === 1 ? '' : 's'}.`
+      : 'News already present — nothing to add.';
+    nmSeedMsg.className = 'status-msg ok';
+  } catch(e){
+    nmSeedMsg.textContent = 'Error: ' + e.message;
+    nmSeedMsg.className = 'status-msg err';
+  } finally {
+    nmSeedBtn.disabled = false;
   }
 });
 </script>
