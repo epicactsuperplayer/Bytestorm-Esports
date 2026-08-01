@@ -15,7 +15,7 @@
   body{
     margin:0; min-height:100vh; background:var(--bg); color:var(--txt);
     font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-    display:flex; align-items:center; justify-content:center; padding:20px;
+    display:flex; flex-direction:column; align-items:center; padding:32px 20px; gap:20px;
   }
   .card{
     width:100%; max-width:440px; background:var(--panel);
@@ -47,6 +47,65 @@
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
   .current-badge{display:flex;align-items:center;font-size:11px;color:var(--m1);letter-spacing:.04em;text-transform:uppercase;margin-top:6px}
   .logout{margin-top:10px;background:transparent;border:1px solid var(--b2);color:var(--m1);font-weight:600}
+  .quick-row{display:flex;gap:8px;margin-top:8px}
+  .quick-btn{
+    flex:1; width:auto; margin-top:0; background:#181818; color:var(--m1);
+    border:1px solid var(--b2); border-radius:7px; padding:8px 6px;
+    font-size:11px; font-weight:700; letter-spacing:.02em; cursor:pointer;
+  }
+  .quick-btn:hover{border-color:#666;color:var(--txt)}
+  .quick-btn.active{background:var(--accent);color:#0a0a0a;border-color:var(--accent)}
+  .preview-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--m1);margin:20px 0 8px}
+  .preview-card{border:1px solid var(--b2);border-radius:10px;padding:14px 16px;background:#0d0d0d}
+  .preview-top{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+  .preview-status{font-weight:800}
+  .preview-status.live{color:var(--live)}
+  .preview-status.upcoming{color:var(--m1)}
+  .preview-status.finished{color:var(--win)}
+  .preview-status.hidden{color:var(--m2)}
+  .preview-name{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:10px}
+  .preview-score{display:flex;align-items:center;justify-content:center;gap:16px;font-size:12px;color:var(--m1)}
+  .preview-score b{font-size:22px;color:var(--txt);display:block}
+
+  /* ── Tournament Manager ── */
+  #tmCard{max-width:640px}
+  #tmAddToggle{margin-top:0}
+  .tm-form{margin-top:18px;padding-top:4px;border-top:1px solid var(--b1)}
+  .tm-form button{margin-top:16px}
+  .tm-list{margin-top:20px;display:flex;flex-direction:column;gap:12px;max-height:560px;overflow-y:auto;padding-right:4px}
+  .tm-empty{font-size:13px;color:var(--m2);text-align:center;padding:20px 0}
+  .tm-item{border:1px solid var(--b2);border-radius:10px;padding:14px 16px;background:#0d0d0d}
+  .tm-item-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+  .tm-item-name{font-size:14px;font-weight:800}
+  .tm-item-sub{font-size:11.5px;color:var(--m1);margin-top:2px}
+  .tm-badge{flex-shrink:0;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:20px;border:1px solid var(--b2);color:var(--m1)}
+  .tm-badge-up{color:#cfcfcf;border-color:#3a3a3a}
+  .tm-badge-delay{color:#fbbf24;border-color:#7a5b12;background:#241a05}
+  .tm-badge-live{color:#f87171;border-color:#f87171;background:#3a0d0d}
+  .tm-badge-win{color:var(--win);border-color:#1f6b3d;background:#0d1f14}
+  .tm-badge-loss{color:var(--loss);border-color:#7a1f1f;background:#210b0b}
+  .tm-badge-dsq{color:#fbbf24;border-color:#7a5b12;background:#241a05}
+  .tm-row{display:flex;gap:8px;margin-top:10px}
+  .tm-row input[type=datetime-local], .tm-row input[type=number]{
+    flex:1; background:#0a0a0a; border:1px solid var(--b2); color:var(--txt);
+    border-radius:7px; padding:8px 9px; font-size:12.5px; font-family:inherit;
+  }
+  .tm-mini{
+    flex:1; width:auto; margin-top:0; background:#181818; color:var(--txt);
+    border:1px solid var(--b2); border-radius:7px; padding:8px 6px;
+    font-size:11.5px; font-weight:700; letter-spacing:.02em; cursor:pointer;
+  }
+  .tm-mini:hover{border-color:#666}
+  .tm-mini.tm-win:hover{border-color:var(--win);color:var(--win)}
+  .tm-mini.tm-loss:hover{border-color:var(--loss);color:var(--loss)}
+  .tm-mini.tm-dsq:hover{border-color:#fbbf24;color:#fbbf24}
+  .tm-result-line{margin-top:10px;font-size:13px;color:var(--m1)}
+  .tm-date-sm{color:var(--m2);margin-left:6px}
+  .tm-remove{
+    width:100%; margin-top:12px; background:transparent; color:var(--loss);
+    border:1px solid #4a1f1f; border-radius:7px; padding:9px; font-size:11.5px; font-weight:700;
+  }
+  .tm-remove:hover{background:#210b0b}
 </style>
 </head>
 <body>
@@ -72,6 +131,12 @@
     <option value="live">Live</option>
     <option value="finished">Finished</option>
   </select>
+  <div class="quick-row">
+    <button type="button" class="quick-btn" data-status="upcoming">Upcoming</button>
+    <button type="button" class="quick-btn" data-status="live">Go Live</button>
+    <button type="button" class="quick-btn" data-status="finished">Finish</button>
+    <button type="button" class="quick-btn" data-status="hidden">Hide</button>
+  </div>
 
   <label>Tournament Name</label>
   <input type="text" id="fTournament" placeholder="AS™#47">
@@ -96,13 +161,60 @@
   <button id="saveBtn">Save &amp; Publish</button>
   <div class="status-msg" id="saveMsg"></div>
 
+  <div class="preview-label">Site Preview</div>
+  <div class="preview-card">
+    <div class="preview-top">
+      <span class="preview-status" id="pStatus">Hidden</span>
+      <span id="pRound">—</span>
+    </div>
+    <div class="preview-name" id="pName">—</div>
+    <div class="preview-score">
+      <div>Bytestorm<b id="pByts">0</b></div>
+      <div>vs</div>
+      <div><span id="pOpponent">TBA</span><b id="pOpp">0</b></div>
+    </div>
+  </div>
+
   <button class="logout" id="logoutBtn">Lock</button>
+</div>
+
+<div class="card" id="tmCard" style="display:none">
+  <h1>Tournament Manager</h1>
+  <p class="sub">Add, delay, finish (win/loss/DSQ), or remove tournaments — the site's Upcoming &amp; Results lists update instantly.</p>
+
+  <button type="button" id="tmAddToggle">+ Add Tournament</button>
+
+  <div class="tm-form" id="tmForm" style="display:none">
+    <label>Tournament Name</label>
+    <input type="text" id="tName" placeholder="AS™#48">
+
+    <div class="row">
+      <div>
+        <label>Game</label>
+        <input type="text" id="tGame" placeholder="Brawl Stars">
+      </div>
+      <div>
+        <label>Opponent</label>
+        <input type="text" id="tOpponent" placeholder="TBA">
+      </div>
+    </div>
+
+    <label>Start Time (leave blank to add as Delayed)</label>
+    <input type="datetime-local" id="tStart">
+
+    <button type="button" id="tmCreateBtn">Create Tournament</button>
+    <div class="status-msg" id="tmFormMsg"></div>
+  </div>
+
+  <div class="tm-list" id="tmList">
+    <div class="tm-empty">Loading tournaments…</div>
+  </div>
 </div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import {
-  getDatabase, ref, set, get, onValue, serverTimestamp
+  getDatabase, ref, set, get, onValue, serverTimestamp, push, update, remove
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 import {
   getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged
@@ -129,6 +241,7 @@ const liveRef = ref(db, "liveMatch/current");
 // (liveMatch write requires auth !== null, ideally scoped to the admin email).
 const gateCard = document.getElementById('gateCard');
 const formCard = document.getElementById('formCard');
+const tmCard = document.getElementById('tmCard');
 const emailInput = document.getElementById('emailInput');
 const pwInput = document.getElementById('pwInput');
 const pwBtn = document.getElementById('pwBtn');
@@ -138,11 +251,13 @@ const logoutBtn = document.getElementById('logoutBtn');
 function showForm(){
   gateCard.style.display = 'none';
   formCard.style.display = 'block';
+  tmCard.style.display = 'block';
   loadCurrent();
 }
 
 function showGate(msg){
   formCard.style.display = 'none';
+  tmCard.style.display = 'none';
   gateCard.style.display = 'block';
   if(msg){
     gateMsg.textContent = msg;
@@ -189,6 +304,48 @@ const fOpp = document.getElementById('fOpp');
 const saveBtn = document.getElementById('saveBtn');
 const saveMsg = document.getElementById('saveMsg');
 const currentBadge = document.getElementById('currentBadge');
+const quickBtns = document.querySelectorAll('.quick-btn');
+
+// Preview elements
+const pStatus = document.getElementById('pStatus');
+const pRound = document.getElementById('pRound');
+const pName = document.getElementById('pName');
+const pByts = document.getElementById('pByts');
+const pOpponent = document.getElementById('pOpponent');
+const pOpp = document.getElementById('pOpp');
+
+const STATUS_LABELS = { hidden: 'Hidden', upcoming: 'Upcoming', live: 'Live Now', finished: 'Final' };
+
+function updatePreview(){
+  const status = fStatus.value;
+  pStatus.textContent = STATUS_LABELS[status] || status;
+  pStatus.className = 'preview-status ' + status;
+  pRound.textContent = fRound.value.trim() || '—';
+  pName.textContent = fTournament.value.trim() || '—';
+  pByts.textContent = Number(fByts.value) || 0;
+  pOpponent.textContent = (fOpponent.value.trim() || 'TBA').toUpperCase();
+  pOpp.textContent = Number(fOpp.value) || 0;
+  updateQuickBtnHighlight();
+}
+
+function updateQuickBtnHighlight(){
+  quickBtns.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.status === fStatus.value);
+  });
+}
+
+// Quick status buttons just set the dropdown + preview; user still clicks Save & Publish
+quickBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    fStatus.value = btn.dataset.status;
+    updatePreview();
+  });
+});
+
+[fStatus, fTournament, fRound, fOpponent, fByts, fOpp].forEach(el => {
+  el.addEventListener('input', updatePreview);
+  el.addEventListener('change', updatePreview);
+});
 
 async function loadCurrent(){
   try{
@@ -202,6 +359,7 @@ async function loadCurrent(){
       fByts.value = d.byts ?? 0;
       fOpp.value = d.opp ?? 0;
     }
+    updatePreview();
   } catch(e){
     saveMsg.textContent = 'Could not load current data: ' + e.message;
     saveMsg.className = 'status-msg err';
@@ -240,6 +398,188 @@ saveBtn.addEventListener('click', async () => {
     saveMsg.className = 'status-msg err';
   } finally {
     saveBtn.disabled = false;
+  }
+});
+
+// ── Tournament Manager ──
+// Writes to tournaments/{id}. index.html reads this node to render the
+// Upcoming and Results lists on the site (see the Tournament Manager module there).
+const tournRef = ref(db, 'tournaments');
+const tmList = document.getElementById('tmList');
+const tmAddToggle = document.getElementById('tmAddToggle');
+const tmForm = document.getElementById('tmForm');
+const tmCreateBtn = document.getElementById('tmCreateBtn');
+const tmFormMsg = document.getElementById('tmFormMsg');
+let tournamentsCache = {};
+
+function escHtml(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function pad2(n){ return String(n).padStart(2,'0'); }
+function toLocalInputValue(iso){
+  const d = new Date(iso);
+  if(isNaN(d)) return '';
+  return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}T${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+}
+function todayStr(){
+  const d = new Date();
+  return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+}
+
+const TM_BADGE = {
+  upcoming: ['up', 'Upcoming'], delayed: ['delay', 'Delayed'], live: ['live', 'Live'],
+  win: ['win', 'Win'], loss: ['loss', 'Loss'], dsq: ['dsq', 'DSQ']
+};
+
+function tmRowHtml(id, t){
+  const finished = t.status === 'win' || t.status === 'loss' || t.status === 'dsq';
+  const [badgeClass, badgeLabel] = TM_BADGE[t.status] || ['up', t.status || 'Upcoming'];
+  const startVal = t.startTime ? toLocalInputValue(t.startTime) : '';
+
+  let body;
+  if(!finished){
+    body = `
+      <div class="tm-row">
+        <input type="datetime-local" class="tm-start" value="${startVal}">
+        <button type="button" class="tm-mini" data-action="schedule" data-id="${id}">Schedule</button>
+      </div>
+      <div class="tm-row">
+        <button type="button" class="tm-mini" data-action="delay" data-id="${id}">Delay</button>
+        <button type="button" class="tm-mini" data-action="live" data-id="${id}">Go Live</button>
+      </div>
+      <div class="tm-row">
+        <input type="number" class="tm-byts" placeholder="BYTS" min="0" value="${t.byts ?? ''}">
+        <input type="number" class="tm-opp" placeholder="OPP" min="0" value="${t.opp ?? ''}">
+      </div>
+      <div class="tm-row">
+        <button type="button" class="tm-mini tm-win" data-action="win" data-id="${id}">Win</button>
+        <button type="button" class="tm-mini tm-loss" data-action="loss" data-id="${id}">Loss</button>
+        <button type="button" class="tm-mini tm-dsq" data-action="dsq" data-id="${id}">DSQ</button>
+      </div>`;
+  } else {
+    const scoreText = t.status === 'dsq' ? escHtml(t.note || 'Disqualified') : `BYTS ${t.byts ?? 0} – ${t.opp ?? 0}`;
+    body = `
+      <div class="tm-result-line">${scoreText}<span class="tm-date-sm">${escHtml(t.date || '')}</span></div>
+      <div class="tm-row">
+        <button type="button" class="tm-mini" data-action="reopen" data-id="${id}">Reopen</button>
+      </div>`;
+  }
+
+  return `<div class="tm-item">
+    <div class="tm-item-top">
+      <div>
+        <div class="tm-item-name">${escHtml(t.name || '')}</div>
+        <div class="tm-item-sub">${escHtml(t.game || '')}${t.opponent ? ' · vs ' + escHtml(t.opponent) : ''}</div>
+      </div>
+      <span class="tm-badge tm-badge-${badgeClass}">${badgeLabel}</span>
+    </div>
+    ${body}
+    <button type="button" class="tm-remove" data-action="remove" data-id="${id}">Remove Tournament</button>
+  </div>`;
+}
+
+function renderTM(){
+  const entries = Object.entries(tournamentsCache);
+  if(!entries.length){
+    tmList.innerHTML = '<div class="tm-empty">No tournaments yet. Add one above.</div>';
+    return;
+  }
+  entries.sort((a, b) => {
+    const fa = ['win','loss','dsq'].includes(a[1].status);
+    const fb = ['win','loss','dsq'].includes(b[1].status);
+    if(fa !== fb) return fa ? 1 : -1;
+    if(!fa){
+      const sa = a[1].startTime ? new Date(a[1].startTime).getTime() : Infinity;
+      const sb = b[1].startTime ? new Date(b[1].startTime).getTime() : Infinity;
+      return sa - sb;
+    }
+    return (b[1].date || '').localeCompare(a[1].date || '');
+  });
+  tmList.innerHTML = entries.map(([id, t]) => tmRowHtml(id, t)).join('');
+}
+
+onValue(tournRef, (snap) => {
+  tournamentsCache = snap.exists() ? snap.val() : {};
+  renderTM();
+}, (err) => {
+  tmList.innerHTML = '<div class="tm-empty">Could not load tournaments: ' + escHtml(err.message) + '</div>';
+});
+
+tmAddToggle.addEventListener('click', () => {
+  tmForm.style.display = tmForm.style.display === 'none' ? 'block' : 'none';
+});
+
+tmCreateBtn.addEventListener('click', async () => {
+  const name = document.getElementById('tName').value.trim();
+  const game = document.getElementById('tGame').value.trim();
+  const opponent = document.getElementById('tOpponent').value.trim();
+  const startVal = document.getElementById('tStart').value;
+
+  if(!name){
+    tmFormMsg.textContent = 'Tournament name is required.';
+    tmFormMsg.className = 'status-msg err';
+    return;
+  }
+
+  const newTourn = {
+    name,
+    game: game || 'Brawl Stars',
+    opponent: opponent || 'TBA',
+    status: startVal ? 'upcoming' : 'delayed',
+    createdAt: serverTimestamp()
+  };
+  if(startVal) newTourn.startTime = new Date(startVal).toISOString();
+
+  tmCreateBtn.disabled = true;
+  tmFormMsg.textContent = 'Saving...';
+  tmFormMsg.className = 'status-msg';
+  try{
+    await push(tournRef, newTourn);
+    tmFormMsg.textContent = 'Tournament added.';
+    tmFormMsg.className = 'status-msg ok';
+    document.getElementById('tName').value = '';
+    document.getElementById('tGame').value = '';
+    document.getElementById('tOpponent').value = '';
+    document.getElementById('tStart').value = '';
+  } catch(e){
+    tmFormMsg.textContent = 'Error: ' + e.message;
+    tmFormMsg.className = 'status-msg err';
+  } finally {
+    tmCreateBtn.disabled = false;
+  }
+});
+
+tmList.addEventListener('click', async (e) => {
+  const btn = e.target.closest('button[data-action]');
+  if(!btn) return;
+  const id = btn.dataset.id;
+  const action = btn.dataset.action;
+  const item = btn.closest('.tm-item');
+  const rowRef = ref(db, 'tournaments/' + id);
+
+  try{
+    if(action === 'schedule'){
+      const startInput = item.querySelector('.tm-start');
+      if(!startInput.value){ alert('Pick a start date/time first.'); return; }
+      await update(rowRef, { status: 'upcoming', startTime: new Date(startInput.value).toISOString() });
+    } else if(action === 'delay'){
+      await update(rowRef, { status: 'delayed' });
+    } else if(action === 'live'){
+      await update(rowRef, { status: 'live' });
+    } else if(action === 'win' || action === 'loss'){
+      const byts = Number(item.querySelector('.tm-byts').value || 0);
+      const opp = Number(item.querySelector('.tm-opp').value || 0);
+      await update(rowRef, { status: action, byts, opp, date: todayStr() });
+    } else if(action === 'dsq'){
+      await update(rowRef, { status: 'dsq', date: todayStr(), note: 'Disqualified' });
+    } else if(action === 'reopen'){
+      await update(rowRef, { status: 'delayed' });
+    } else if(action === 'remove'){
+      if(!confirm('Remove this tournament permanently? This cannot be undone.')) return;
+      await remove(rowRef);
+    }
+  } catch(err){
+    alert('Error: ' + err.message);
   }
 });
 </script>
