@@ -76,6 +76,12 @@
   .tm-empty{font-size:13px;color:var(--m2);text-align:center;padding:20px 0}
   .tm-item{border:1px solid var(--b2);border-radius:10px;padding:14px 16px;background:#0d0d0d}
   .tm-item-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+  .tm-item-edit{margin-bottom:10px}
+  .tm-item-edit input[type=text]{
+    width:100%; background:#0a0a0a; border:1px solid var(--b2); color:var(--txt);
+    border-radius:7px; padding:8px 9px; font-size:12.5px; font-family:inherit;
+  }
+  .tm-edit-name{font-weight:800;font-size:13.5px}
   .tm-item-name{font-size:14px;font-weight:800}
   .tm-item-sub{font-size:11.5px;color:var(--m1);margin-top:2px}
   .tm-badge{flex-shrink:0;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:20px;border:1px solid var(--b2);color:var(--m1)}
@@ -438,6 +444,7 @@ function tmRowHtml(id, t){
   const finished = t.status === 'win' || t.status === 'loss' || t.status === 'dsq';
   const [badgeClass, badgeLabel] = TM_BADGE[t.status] || ['up', t.status || 'Upcoming'];
   const startVal = t.startTime ? toLocalInputValue(t.startTime) : '';
+  const roundVal = t.round ?? 1;
 
   let body;
   if(!finished){
@@ -451,6 +458,7 @@ function tmRowHtml(id, t){
         <button type="button" class="tm-mini" data-action="live" data-id="${id}">Go Live</button>
       </div>
       <div class="tm-row">
+        <input type="number" class="tm-round" placeholder="Round" min="1" value="${roundVal}" title="Round #">
         <input type="number" class="tm-byts" placeholder="BYTS" min="0" value="${t.byts ?? ''}">
         <input type="number" class="tm-opp" placeholder="OPP" min="0" value="${t.opp ?? ''}">
       </div>
@@ -462,18 +470,26 @@ function tmRowHtml(id, t){
   } else {
     const scoreText = t.status === 'dsq' ? escHtml(t.note || 'Disqualified') : `BYTS ${t.byts ?? 0} – ${t.opp ?? 0}`;
     body = `
-      <div class="tm-result-line">${scoreText}<span class="tm-date-sm">${escHtml(t.date || '')}</span></div>
+      <div class="tm-result-line">Round ${roundVal} · ${scoreText}<span class="tm-date-sm">${escHtml(t.date || '')}</span></div>
+      <div class="tm-row">
+        <input type="number" class="tm-round" min="1" value="${roundVal}" title="Round #">
+        <button type="button" class="tm-mini" data-action="saveround" data-id="${id}">Save Round</button>
+      </div>
       <div class="tm-row">
         <button type="button" class="tm-mini" data-action="reopen" data-id="${id}">Reopen</button>
       </div>`;
   }
 
   return `<div class="tm-item">
-    <div class="tm-item-top">
-      <div>
-        <div class="tm-item-name">${escHtml(t.name || '')}</div>
-        <div class="tm-item-sub">${escHtml(t.game || '')}${t.opponent ? ' · vs ' + escHtml(t.opponent) : ''}</div>
+    <div class="tm-item-edit">
+      <input type="text" class="tm-edit-name" placeholder="Tournament name" value="${escHtml(t.name || '')}">
+      <div class="tm-row" style="margin-top:6px">
+        <input type="text" class="tm-edit-game" placeholder="Game" value="${escHtml(t.game || '')}">
+        <input type="text" class="tm-edit-opponent" placeholder="Opponent" value="${escHtml(t.opponent || '')}">
       </div>
+      <button type="button" class="tm-mini" style="margin-top:8px;width:100%" data-action="savedetails" data-id="${id}">Save Details</button>
+    </div>
+    <div class="tm-item-top">
       <span class="tm-badge tm-badge-${badgeClass}">${badgeLabel}</span>
     </div>
     ${body}
@@ -496,7 +512,10 @@ function renderTM(){
       const sb = b[1].startTime ? new Date(b[1].startTime).getTime() : Infinity;
       return sa - sb;
     }
-    return (b[1].date || '').localeCompare(a[1].date || '');
+    // Finished: newest date first; same date -> higher round (later match) first
+    const dCmp = (b[1].date || '').localeCompare(a[1].date || '');
+    if(dCmp !== 0) return dCmp;
+    return (b[1].round ?? 1) - (a[1].round ?? 1);
   });
   tmList.innerHTML = entries.map(([id, t]) => tmRowHtml(id, t)).join('');
 }
@@ -561,7 +580,16 @@ tmList.addEventListener('click', async (e) => {
   const rowRef = ref(db, 'tournaments/' + id);
 
   try{
-    if(action === 'schedule'){
+    if(action === 'savedetails'){
+      const name = item.querySelector('.tm-edit-name').value.trim();
+      const game = item.querySelector('.tm-edit-game').value.trim();
+      const opponent = item.querySelector('.tm-edit-opponent').value.trim();
+      if(!name){ alert('Tournament name cannot be empty.'); return; }
+      await update(rowRef, { name, game: game || 'Brawl Stars', opponent: opponent || 'TBA' });
+    } else if(action === 'saveround'){
+      const round = Number(item.querySelector('.tm-round').value || 1);
+      await update(rowRef, { round });
+    } else if(action === 'schedule'){
       const startInput = item.querySelector('.tm-start');
       if(!startInput.value){ alert('Pick a start date/time first.'); return; }
       await update(rowRef, { status: 'upcoming', startTime: new Date(startInput.value).toISOString() });
@@ -570,11 +598,13 @@ tmList.addEventListener('click', async (e) => {
     } else if(action === 'live'){
       await update(rowRef, { status: 'live' });
     } else if(action === 'win' || action === 'loss'){
+      const round = Number(item.querySelector('.tm-round').value || 1);
       const byts = Number(item.querySelector('.tm-byts').value || 0);
       const opp = Number(item.querySelector('.tm-opp').value || 0);
-      await update(rowRef, { status: action, byts, opp, date: todayStr() });
+      await update(rowRef, { status: action, byts, opp, round, date: todayStr() });
     } else if(action === 'dsq'){
-      await update(rowRef, { status: 'dsq', date: todayStr(), note: 'Disqualified' });
+      const round = Number(item.querySelector('.tm-round').value || 1);
+      await update(rowRef, { status: 'dsq', date: todayStr(), round, note: 'Disqualified' });
     } else if(action === 'reopen'){
       await update(rowRef, { status: 'delayed' });
     } else if(action === 'remove'){
@@ -596,17 +626,17 @@ const tmSeedMsg = document.getElementById('tmSeedMsg');
 
 const SEED_DATA = [
   { name:'AS™#47', game:'Brawl Stars', opponent:'TBA', status:'upcoming', startTime:'2026-07-31T13:00:00Z' },
-  { name:'AS™#46', game:'Brawl Stars', opponent:'DC: Wider215', status:'loss', byts:0, opp:1, date:'2026-07-23' },
-  { name:'AS™#46', game:'Brawl Stars', opponent:'292', status:'win', byts:1, opp:0, date:'2026-07-23' },
-  { name:'ATN Legion APAC #7', game:'Brawl Stars', opponent:'Underdogs', status:'loss', byts:0, opp:2, date:'2026-07-22' },
-  { name:'ATN Legion APAC #7', game:'Brawl Stars', opponent:'QRN Ballers', status:'win', byts:2, opp:0, date:'2026-07-22' },
-  { name:'SPORTSTARS (EMEA #45)', game:'Brawl Stars', opponent:'The Reals Fan of Carlily', status:'loss', byts:1, opp:2, date:'2026-07-21' },
-  { name:'Wildcard Weekend #18', game:'Brawl Stars', opponent:'DC: Raiobs', status:'loss', byts:0, opp:2, date:'2026-07-17' },
-  { name:'Wildcard Weekend #18', game:'Brawl Stars', opponent:'Aura', status:'win', byts:2, opp:0, date:'2026-07-17' },
-  { name:'BATTLE OF DRAFTS APAC#12', game:'Brawl Stars', opponent:'', status:'dsq', note:'Disqualified — no-show', date:'2026-07-14' },
-  { name:'Dach BSCS Tournament', game:'Brawl Stars', opponent:'Vortex Unit', status:'loss', byts:0, opp:2, date:'2026-04-26' },
-  { name:'Dach BSCS Tournament', game:'Brawl Stars', opponent:'Noone', status:'win', byts:2, opp:0, date:'2026-04-26' },
-  { name:'MasterCup', game:'Brawl Stars', opponent:'Soulless Team', status:'loss', byts:0, opp:2, date:'2026-03-01' }
+  { name:'AS™#46', game:'Brawl Stars', opponent:'DC: Wider215', status:'loss', byts:0, opp:1, date:'2026-07-23', round:2 },
+  { name:'AS™#46', game:'Brawl Stars', opponent:'292', status:'win', byts:1, opp:0, date:'2026-07-23', round:1 },
+  { name:'ATN Legion APAC #7', game:'Brawl Stars', opponent:'Underdogs', status:'loss', byts:0, opp:2, date:'2026-07-22', round:2 },
+  { name:'ATN Legion APAC #7', game:'Brawl Stars', opponent:'QRN Ballers', status:'win', byts:2, opp:0, date:'2026-07-22', round:1 },
+  { name:'SPORTSTARS (EMEA #45)', game:'Brawl Stars', opponent:'The Reals Fan of Carlily', status:'loss', byts:1, opp:2, date:'2026-07-21', round:1 },
+  { name:'Wildcard Weekend #18', game:'Brawl Stars', opponent:'DC: Raiobs', status:'loss', byts:0, opp:2, date:'2026-07-17', round:2 },
+  { name:'Wildcard Weekend #18', game:'Brawl Stars', opponent:'Aura', status:'win', byts:2, opp:0, date:'2026-07-17', round:1 },
+  { name:'BATTLE OF DRAFTS APAC#12', game:'Brawl Stars', opponent:'', status:'dsq', note:'Disqualified — no-show', date:'2026-07-14', round:1 },
+  { name:'Dach BSCS Tournament', game:'Brawl Stars', opponent:'Vortex Unit', status:'loss', byts:0, opp:2, date:'2026-04-26', round:2 },
+  { name:'Dach BSCS Tournament', game:'Brawl Stars', opponent:'Noone', status:'win', byts:2, opp:0, date:'2026-04-26', round:1 },
+  { name:'MasterCup', game:'Brawl Stars', opponent:'Soulless Team', status:'loss', byts:0, opp:2, date:'2026-03-01', round:1 }
 ];
 
 tmSeedBtn.addEventListener('click', async () => {
