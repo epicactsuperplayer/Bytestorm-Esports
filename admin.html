@@ -176,6 +176,14 @@
   .nm-empty{font-size:13px;color:var(--m2);text-align:center;padding:20px 0}
   .nm-label{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--m1); margin:10px 0 5px; display:block}
 
+  /* ── Persistent Topbar (Lock always visible) ── */
+  .admin-topbar{
+    width:100%; max-width:1100px; display:flex; align-items:center; justify-content:space-between;
+    padding:2px 4px 0;
+  }
+  .admin-topbar-label{font-size:12px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--m1)}
+  .admin-topbar-lock{width:auto; margin-top:0; padding:8px 18px; font-size:12px}
+
   /* ── Blades-style Carousel ── */
   .blades-wrap{
     width:100%; max-width:1100px; position:relative;
@@ -256,6 +264,11 @@
   <input type="password" id="pwInput" placeholder="Password" autocomplete="off">
   <button id="pwBtn">Unlock</button>
   <div class="status-msg" id="gateMsg"></div>
+</div>
+
+<div class="admin-topbar" id="adminTopbar" style="display:none">
+  <span class="admin-topbar-label">Bytestorm Admin</span>
+  <button type="button" class="logout admin-topbar-lock" id="topbarLogoutBtn">Lock</button>
 </div>
 
 <div class="blades-wrap" id="bladesWrap" style="display:none">
@@ -453,14 +466,17 @@ const gateCard = document.getElementById('gateCard');
 const bladesWrap = document.getElementById('bladesWrap');
 const bladesDots = document.getElementById('bladesDots');
 const bladesLabel = document.getElementById('bladesLabel');
+const adminTopbar = document.getElementById('adminTopbar');
 const emailInput = document.getElementById('emailInput');
 const pwInput = document.getElementById('pwInput');
 const pwBtn = document.getElementById('pwBtn');
 const gateMsg = document.getElementById('gateMsg');
 const logoutBtn = document.getElementById('logoutBtn');
+const topbarLogoutBtn = document.getElementById('topbarLogoutBtn');
 
 function showForm(){
   gateCard.style.display = 'none';
+  adminTopbar.style.display = 'flex';
   bladesWrap.style.display = 'flex';
   bladesDots.style.display = 'flex';
   bladesLabel.style.display = 'block';
@@ -469,6 +485,7 @@ function showForm(){
 }
 
 function showGate(msg){
+  adminTopbar.style.display = 'none';
   bladesWrap.style.display = 'none';
   bladesDots.style.display = 'none';
   bladesLabel.style.display = 'none';
@@ -497,6 +514,9 @@ pwInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') pwBtn.click()
 emailInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') pwBtn.click(); });
 
 logoutBtn.addEventListener('click', async () => {
+  await signOut(auth);
+});
+topbarLogoutBtn.addEventListener('click', async () => {
   await signOut(auth);
 });
 
