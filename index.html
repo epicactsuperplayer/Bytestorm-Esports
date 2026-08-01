@@ -1728,7 +1728,11 @@ document.querySelectorAll('.tourn-list').forEach(function(el){
         return b.getAttribute('data-date').localeCompare(a.getAttribute('data-date'));
       } else {
         var da = a.getAttribute('data-date'), db = b.getAttribute('data-date');
-        return sortDesc ? db.localeCompare(da) : da.localeCompare(db);
+        if(da !== db) return sortDesc ? db.localeCompare(da) : da.localeCompare(db);
+        // same date: tie-break by round (later round = happened more recently that day)
+        var roa = parseInt(a.getAttribute('data-round') || '1', 10);
+        var rob = parseInt(b.getAttribute('data-round') || '1', 10);
+        return sortDesc ? rob - roa : roa - rob;
       }
     });
     sorted.forEach(function(c){ list.appendChild(c); });
@@ -1860,7 +1864,7 @@ function buildResultCard(id, t){
   const teamsHtml = outcome === 'dsq'
     ? '<b>Bytestorm Esports</b>'
     : `<b>Bytestorm Esports</b><span class="vs">vs</span>${esc(t.opponent || 'TBA')}`;
-  return `<div class="th-card" data-outcome="${esc(outcome)}"${bytsAttr}${oppAttr} data-date="${esc(t.date || '')}" data-id="${esc(id)}">
+  return `<div class="th-card" data-outcome="${esc(outcome)}"${bytsAttr}${oppAttr} data-date="${esc(t.date || '')}" data-round="${Number(t.round || 1)}" data-id="${esc(id)}">
     <div class="th-trophy">${TROPHY_SVG}</div>
     <div class="th-info">
       <div class="th-name">${esc(t.name)}</div>
@@ -1898,7 +1902,11 @@ function render(tournaments){
   }
 
   // Results: newest first by default (results filter/sort script re-sorts on top of this)
-  results.sort(function(a,b){ return (b[1].date||'').localeCompare(a[1].date||''); });
+  results.sort(function(a,b){
+    const dCmp = (b[1].date||'').localeCompare(a[1].date||'');
+    if(dCmp !== 0) return dCmp;
+    return (Number(b[1].round||1)) - (Number(a[1].round||1));
+  });
 
   if(results.length){
     resultsList.innerHTML = results.map(function(p){ return buildResultCard(p[0], p[1]); }).join('');
