@@ -1789,7 +1789,7 @@ document.querySelectorAll('.tourn-list').forEach(function(el){
 // so the Admin panel can add / delay / finish (win, loss, dsq) / remove tournaments
 // and have the site update instantly. Seeds the historical results once if empty.
 import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getDatabase, ref, onValue, set, get, child } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAY49sWaN-DSKV10uyBB3CeOiABLCtFrSI",
@@ -1909,30 +1909,6 @@ function render(tournaments){
   if(typeof window.tickTournAuto === 'function') window.tickTournAuto();
   if(typeof window.refreshResultsControls === 'function') window.refreshResultsControls();
 }
-
-// One-time seed of historical results, only if the node has never been written to.
-const SEED = [
-  { name:'AS™#47', game:'Brawl Stars', opponent:'TBA', status:'upcoming', startTime:'2026-07-31T13:00:00Z' },
-  { name:'AS™#46', game:'Brawl Stars', opponent:'DC: Wider215', status:'loss', byts:0, opp:1, date:'2026-07-23' },
-  { name:'AS™#46', game:'Brawl Stars', opponent:'292', status:'win', byts:1, opp:0, date:'2026-07-23' },
-  { name:'ATN Legion APAC #7', game:'Brawl Stars', opponent:'Underdogs', status:'loss', byts:0, opp:2, date:'2026-07-22' },
-  { name:'ATN Legion APAC #7', game:'Brawl Stars', opponent:'QRN Ballers', status:'win', byts:2, opp:0, date:'2026-07-22' },
-  { name:'SPORTSTARS (EMEA #45)', game:'Brawl Stars', opponent:'The Reals Fan of Carlily', status:'loss', byts:1, opp:2, date:'2026-07-21' },
-  { name:'Wildcard Weekend #18', game:'Brawl Stars', opponent:'DC: Raiobs', status:'loss', byts:0, opp:2, date:'2026-07-17' },
-  { name:'Wildcard Weekend #18', game:'Brawl Stars', opponent:'Aura', status:'win', byts:2, opp:0, date:'2026-07-17' },
-  { name:'BATTLE OF DRAFTS APAC#12', game:'Brawl Stars', opponent:'', status:'dsq', note:'Disqualified — no-show', date:'2026-07-14' },
-  { name:'Dach BSCS Tournament', game:'Brawl Stars', opponent:'Vortex Unit', status:'loss', byts:0, opp:2, date:'2026-04-26' },
-  { name:'Dach BSCS Tournament', game:'Brawl Stars', opponent:'Noone', status:'win', byts:2, opp:0, date:'2026-04-26' },
-  { name:'MasterCup', game:'Brawl Stars', opponent:'Soulless Team', status:'loss', byts:0, opp:2, date:'2026-03-01' }
-];
-
-get(tournRef).then(function(snap){
-  if(!snap.exists()){
-    const seeded = {};
-    SEED.forEach(function(t, i){ seeded['seed_' + i] = t; });
-    set(tournRef, seeded).catch(function(e){ console.error('Seed failed:', e); });
-  }
-}).catch(function(e){ console.error('Seed check failed:', e); });
 
 onValue(tournRef, function(snap){
   const data = snap.exists() ? snap.val() : {};
