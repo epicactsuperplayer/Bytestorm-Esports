@@ -209,6 +209,9 @@
   <div class="tm-list" id="tmList">
     <div class="tm-empty">Loading tournaments…</div>
   </div>
+
+  <button type="button" class="logout" id="tmSeedBtn" style="margin-top:14px">Seed Historical Results</button>
+  <div class="status-msg" id="tmSeedMsg"></div>
 </div>
 
 <script type="module">
@@ -580,6 +583,54 @@ tmList.addEventListener('click', async (e) => {
     }
   } catch(err){
     alert('Error: ' + err.message);
+  }
+});
+
+// ── Seed Historical Results ──
+// Writes the original 12 historical tournament cards into tournaments/{id}.
+// Runs authenticated (from here, not from index.html), so it isn't blocked by
+// database rules that require auth != null for writes. Safe to click more than
+// once — it skips any entry whose seed key already exists.
+const tmSeedBtn = document.getElementById('tmSeedBtn');
+const tmSeedMsg = document.getElementById('tmSeedMsg');
+
+const SEED_DATA = [
+  { name:'AS™#47', game:'Brawl Stars', opponent:'TBA', status:'upcoming', startTime:'2026-07-31T13:00:00Z' },
+  { name:'AS™#46', game:'Brawl Stars', opponent:'DC: Wider215', status:'loss', byts:0, opp:1, date:'2026-07-23' },
+  { name:'AS™#46', game:'Brawl Stars', opponent:'292', status:'win', byts:1, opp:0, date:'2026-07-23' },
+  { name:'ATN Legion APAC #7', game:'Brawl Stars', opponent:'Underdogs', status:'loss', byts:0, opp:2, date:'2026-07-22' },
+  { name:'ATN Legion APAC #7', game:'Brawl Stars', opponent:'QRN Ballers', status:'win', byts:2, opp:0, date:'2026-07-22' },
+  { name:'SPORTSTARS (EMEA #45)', game:'Brawl Stars', opponent:'The Reals Fan of Carlily', status:'loss', byts:1, opp:2, date:'2026-07-21' },
+  { name:'Wildcard Weekend #18', game:'Brawl Stars', opponent:'DC: Raiobs', status:'loss', byts:0, opp:2, date:'2026-07-17' },
+  { name:'Wildcard Weekend #18', game:'Brawl Stars', opponent:'Aura', status:'win', byts:2, opp:0, date:'2026-07-17' },
+  { name:'BATTLE OF DRAFTS APAC#12', game:'Brawl Stars', opponent:'', status:'dsq', note:'Disqualified — no-show', date:'2026-07-14' },
+  { name:'Dach BSCS Tournament', game:'Brawl Stars', opponent:'Vortex Unit', status:'loss', byts:0, opp:2, date:'2026-04-26' },
+  { name:'Dach BSCS Tournament', game:'Brawl Stars', opponent:'Noone', status:'win', byts:2, opp:0, date:'2026-04-26' },
+  { name:'MasterCup', game:'Brawl Stars', opponent:'Soulless Team', status:'loss', byts:0, opp:2, date:'2026-03-01' }
+];
+
+tmSeedBtn.addEventListener('click', async () => {
+  tmSeedBtn.disabled = true;
+  tmSeedMsg.textContent = 'Seeding...';
+  tmSeedMsg.className = 'status-msg';
+  try{
+    const existingIds = new Set(Object.keys(tournamentsCache));
+    let written = 0;
+    for(let i = 0; i < SEED_DATA.length; i++){
+      const key = 'seed_' + i;
+      if(existingIds.has(key)) continue; // already there, don't duplicate
+      await set(ref(db, 'tournaments/' + key), SEED_DATA[i]);
+      written++;
+    }
+    tmSeedMsg.textContent = written > 0
+      ? `Seeded ${written} historical tournament${written === 1 ? '' : 's'}.`
+      : 'Historical tournaments already present — nothing to add.';
+    tmSeedMsg.className = 'status-msg ok';
+  } catch(e){
+    tmSeedMsg.textContent = 'Error: ' + e.message;
+    tmSeedMsg.className = 'status-msg err';
+  } finally {
+    tmSeedBtn.disabled = false;
   }
 });
 </script>
