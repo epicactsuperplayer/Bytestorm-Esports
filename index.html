@@ -59,10 +59,6 @@
   <section id="ai-news">
     <h2>Recent News &amp; Events</h2>
     <article>
-      <h3>Dark (#67) Banned for Repeated Toxicity and Swearing — July 31, 2026</h3>
-      <p>Bytestorm Esports permanently banned Dark (#67, Norway) after repeated instances of swearing and toxic behavior toward teammates and opponents, despite prior warnings. CEO Superplayer (#63) confirmed the ban effective July 31, 2026. Jersey #67, previously worn by banned player Amir, is once again vacant.</p>
-    </article>
-    <article>
       <h3>爪〇〇冂し|号ん十's Suspension Lifted — July 17, 2026</h3>
       <p>Bytestorm Esports lifted the tournament suspension previously placed on 爪〇〇冂し|号ん十 (#31, Turkey) after confirming he was on an urgent flight and unable to contact Bytestorm staff before the tournament started. CEO Superplayer (#63) removed the suspension effective immediately and reinstated him to Esports Player.</p>
     </article>
@@ -369,6 +365,7 @@
   @media(max-width:640px){.th-card{flex-wrap:wrap}.th-divider{display:none}.th-meta{text-align:left}.tourn-list{max-height:480px}}
   /* Upcoming Tournament */
   .th-section-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--m1);margin-bottom:10px;margin-top:4px}
+  .th-empty{padding:22px 16px;text-align:center;font-size:12.5px;color:var(--m2);border:1px dashed var(--b1);border-radius:10px}
   .th-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
   .th-filters{display:flex;flex-wrap:wrap;gap:8px}
   .th-filter-btn{font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--m2);background:var(--s1);border:1px solid var(--b1);border-radius:999px;padding:7px 16px;cursor:pointer;transition:all .18s}
@@ -722,7 +719,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <img class="gc-img" src="" alt="Brawl Stars" style="display:none"/>
           <div class="gc-placeholder">Brawl Stars</div>
           <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">7 players</div></div>
+          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">8 players</div></div>
           <div class="gc-hover-pill">View Team</div>
         </div>
       </button>
@@ -824,6 +821,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/gr.png" alt="Greece"/><div class="rp-top"><span class="rp-num">#7</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">RIOY/LNM</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Greece</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/tr.png" alt="Turkey"/><div class="rp-top"><span class="rp-num">#31</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">爪〇〇冂し|号ん十</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Turkey</div></div>
         <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/uz.png" alt="Uzbekistan"/><div class="rp-top"><span class="rp-num">#18</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Felix</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> ASIA – Uzbekistan</div></div>
+        <div class="rp-card"><img class="rp-flag-big" src="https://flagcdn.com/w160/no.png" alt="Norway"/><div class="rp-top"><span class="rp-num">#67</span><span class="rp-badge esports">Esports Player</span></div><div class="rp-name">Dark</div><div class="rp-meta"><b>Role:</b> Esports Player<br/><b>Plays:</b> BS<br/><b>Region:</b> EU – Norway</div></div>
       </div>
     </div>
 
@@ -928,28 +926,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 
     <div class="th-section-label">Upcoming</div>
     <div class="tourn-list" id="th-upcoming-list">
-
-      <!-- AS™#47 – Upcoming, 15:00 Austria Time -->
-      <div class="th-card tourn-auto" data-status="scheduled" data-start="2026-07-31T13:00:00Z">
-        <div class="th-trophy">
-          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-        </div>
-        <div class="th-info">
-          <div class="th-name">AS™#47</div>
-          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>TBA</div>
-          <div class="th-status-badge"></div>
-        </div>
-        <div class="th-result th-status-result"></div>
-        <div class="th-divider"></div>
-        <div class="th-meta">
-          <div class="th-date">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            July 31, 2026
-          </div>
-          <div class="th-venue">Brawl Stars</div>
-        </div>
-      </div>
-
+      <div class="th-empty" id="th-upcoming-empty">No upcoming tournaments scheduled.</div>
     </div>
 
     <div class="th-section-label">Results</div>
@@ -966,260 +943,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </button>
     </div>
     <div class="tourn-list" id="th-results-list">
-
-      <!-- AS™#46 – Round 2: vs DC: Wider215 (Loss) -->
-      <div class="th-card" data-outcome="loss" data-byts="0" data-opp="1" data-date="2026-07-23">
-        <div class="th-trophy">
-          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-        </div>
-        <div class="th-info">
-          <div class="th-name">AS™#46</div>
-          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>DC: Wider215</div>
-        </div>
-        <div class="th-result">
-          <div class="th-outcome loss">LOSS</div>
-          <div class="th-score">BYTS 0 – 1 WIDER215</div>
-        </div>
-        <div class="th-divider"></div>
-        <div class="th-meta">
-          <div class="th-date">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            July 23, 2026
-          </div>
-          <div class="th-venue">Brawl Stars</div>
-        </div>
-      </div>
-
-      <!-- AS™#46 – Round 1: vs 292 (Win) -->
-      <div class="th-card" data-outcome="win" data-byts="1" data-opp="0" data-date="2026-07-23">
-        <div class="th-trophy">
-          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-        </div>
-        <div class="th-info">
-          <div class="th-name">AS™#46</div>
-          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>292</div>
-        </div>
-        <div class="th-result">
-          <div class="th-outcome win">WIN</div>
-          <div class="th-score">BYTS 1 – 0 292</div>
-        </div>
-        <div class="th-divider"></div>
-        <div class="th-meta">
-          <div class="th-date">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            July 23, 2026
-          </div>
-          <div class="th-venue">Brawl Stars</div>
-        </div>
-      </div>
-
-      <!-- ATN Legion APAC #7 – Round 2: vs Underdogs (Loss) -->
-      <div class="th-card" data-outcome="loss" data-byts="0" data-opp="2" data-date="2026-07-22">
-        <div class="th-trophy">
-          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-        </div>
-        <div class="th-info">
-          <div class="th-name">ATN Legion APAC #7</div>
-          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>Underdogs</div>
-        </div>
-        <div class="th-result">
-          <div class="th-outcome loss">LOSS</div>
-          <div class="th-score">BYTS 0 – 2 UNDRDGS</div>
-        </div>
-        <div class="th-divider"></div>
-        <div class="th-meta">
-          <div class="th-date">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            July 22, 2026
-          </div>
-          <div class="th-venue">Brawl Stars</div>
-        </div>
-      </div>
-
-      <!-- ATN Legion APAC #7 – Round 1: vs QRN Ballers (Win) -->
-      <div class="th-card" data-outcome="win" data-byts="2" data-opp="0" data-date="2026-07-22">
-        <div class="th-trophy">
-          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-        </div>
-        <div class="th-info">
-          <div class="th-name">ATN Legion APAC #7</div>
-          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>QRN Ballers</div>
-        </div>
-        <div class="th-result">
-          <div class="th-outcome win">WIN</div>
-          <div class="th-score">BYTS 2 – 0 QRN</div>
-        </div>
-        <div class="th-divider"></div>
-        <div class="th-meta">
-          <div class="th-date">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            July 22, 2026
-          </div>
-          <div class="th-venue">Brawl Stars</div>
-        </div>
-      </div>
-
-      <!-- SPORTSTARS (EMEA #45) – vs The Reals Fan of Carlily (Loss) -->
-      <div class="th-card" data-outcome="loss" data-byts="1" data-opp="2" data-date="2026-07-21">
-        <div class="th-trophy">
-          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-        </div>
-        <div class="th-info">
-          <div class="th-name">SPORTSTARS (EMEA #45)</div>
-          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>The Reals Fan of Carlily</div>
-        </div>
-        <div class="th-result">
-          <div class="th-outcome loss">LOSS</div>
-          <div class="th-score">BYTS 1 – 2 TRFC</div>
-        </div>
-        <div class="th-divider"></div>
-        <div class="th-meta">
-          <div class="th-date">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            July 21, 2026
-          </div>
-          <div class="th-venue">Brawl Stars</div>
-        </div>
-      </div>
-
-      <!-- Wildcard Weekend #18 – Round 2: vs DC: Raiobs (Loss) -->
-      <div class="th-card" data-outcome="loss" data-byts="0" data-opp="2" data-date="2026-07-17">
-        <div class="th-trophy">
-          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-        </div>
-        <div class="th-info">
-          <div class="th-name">Wildcard Weekend #18</div>
-          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>DC: Raiobs</div>
-        </div>
-        <div class="th-result">
-          <div class="th-outcome loss">LOSS</div>
-          <div class="th-score">BYTS 0 – 2 RAIOBS</div>
-        </div>
-        <div class="th-divider"></div>
-        <div class="th-meta">
-          <div class="th-date">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            July 17, 2026
-          </div>
-          <div class="th-venue">Brawl Stars</div>
-        </div>
-      </div>
-
-      <!-- Wildcard Weekend #18 – Round 1: vs Aura (Win) -->
-      <div class="th-card" data-outcome="win" data-byts="2" data-opp="0" data-date="2026-07-17">
-        <div class="th-trophy">
-          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-        </div>
-        <div class="th-info">
-          <div class="th-name">Wildcard Weekend #18</div>
-          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>Aura</div>
-        </div>
-        <div class="th-result">
-          <div class="th-outcome win">WIN</div>
-          <div class="th-score">BYTS 2 – 0 AURA</div>
-        </div>
-        <div class="th-divider"></div>
-        <div class="th-meta">
-          <div class="th-date">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            July 17, 2026
-          </div>
-          <div class="th-venue">Brawl Stars</div>
-        </div>
-      </div>
-
-      <!-- BATTLE OF DRAFTS APAC#12 – DSQ (no-show, July 14 2026) -->
-      <div class="th-card" data-outcome="dsq" data-date="2026-07-14">
-        <div class="th-trophy">
-          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-        </div>
-        <div class="th-info">
-          <div class="th-name">BATTLE OF DRAFTS APAC#12</div>
-          <div class="th-teams"><b>Bytestorm Esports</b></div>
-        </div>
-        <div class="th-result">
-          <div class="th-outcome loss">DSQ</div>
-          <div class="th-score">Disqualified — no-show</div>
-        </div>
-        <div class="th-divider"></div>
-        <div class="th-meta">
-          <div class="th-date">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            July 14, 2026
-          </div>
-          <div class="th-venue">Brawl Stars</div>
-        </div>
-      </div>
-
-      <!-- Dach BSCS Tournament – Match 2: vs Vortex (Loss) -->
-      <div class="th-card" data-outcome="loss" data-byts="0" data-opp="2" data-date="2026-04-26">
-        <div class="th-trophy">
-          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-        </div>
-        <div class="th-info">
-          <div class="th-name">Dach BSCS Tournament</div>
-          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>Vortex Unit</div>
-        </div>
-        <div class="th-result">
-          <div class="th-outcome loss">LOSS</div>
-          <div class="th-score">BYTS 0 – 2 VORTEX</div>
-        </div>
-        <div class="th-divider"></div>
-        <div class="th-meta">
-          <div class="th-date">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            April 26, 2026
-          </div>
-          <div class="th-venue">Brawl Stars</div>
-        </div>
-      </div>
-
-      <!-- Dach BSCS Tournament – Match 1: vs Noone (Win) -->
-      <div class="th-card" data-outcome="win" data-byts="2" data-opp="0" data-date="2026-04-26">
-        <div class="th-trophy">
-          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-        </div>
-        <div class="th-info">
-          <div class="th-name">Dach BSCS Tournament</div>
-          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>Noone</div>
-        </div>
-        <div class="th-result">
-          <div class="th-outcome win">WIN</div>
-          <div class="th-score">BYTS 2 – 0 NOONE</div>
-        </div>
-        <div class="th-divider"></div>
-        <div class="th-meta">
-          <div class="th-date">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            April 26, 2026
-          </div>
-          <div class="th-venue">Brawl Stars</div>
-        </div>
-      </div>
-
-      <!-- MasterCup – March 1 2026 -->
-      <div class="th-card" data-outcome="loss" data-byts="0" data-opp="2" data-date="2026-03-01">
-        <div class="th-trophy">
-          <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
-        </div>
-        <div class="th-info">
-          <div class="th-name">MasterCup</div>
-          <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>Soulless Team</div>
-        </div>
-        <div class="th-result">
-          <div class="th-outcome loss">LOSS</div>
-          <div class="th-score">BYTS 0 – 2 SOULLESS</div>
-        </div>
-        <div class="th-divider"></div>
-        <div class="th-meta">
-          <div class="th-date">
-            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            March 1, 2026
-          </div>
-          <div class="th-venue">Brawl Stars</div>
-        </div>
-      </div>
-
+      <div class="th-empty" id="th-results-empty">No results yet.</div>
     </div>
 
     <div class="th-foot">All competitive matches <span>•</span> Updated regularly</div>
@@ -1234,18 +958,6 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
   <div class="wrap">
     <div class="s-head"><div><div class="s-eye">Latest</div><div class="s-title">News</div></div></div>
     <div class="news-grid">
-
-      <div class="news-card" onclick="openNews(9)">
-        <div class="news-img-wrap" style="position:relative">
-          <img class="news-img" src="https://flagcdn.com/w320/no.png" alt="Norway" style="object-fit:cover;filter:brightness(.85)"/>
-        </div>
-        <div class="news-body">
-          <span class="news-tag" data-tagkey="tagRoster">Roster Update</span>
-          <div class="news-title-text">Dark (#67) Banned for Repeated Toxicity and Swearing</div>
-          <div class="news-sub">Bytestorm Esports has permanently banned Dark (#67, Norway) following repeated instances of swearing and toxic behavior toward teammates and opponents. CEO Superplayer (#63) confirmed the decision was made after multiple prior warnings went unheeded.</div>
-          <div class="news-date">July 31, 2026</div>
-        </div>
-      </div>
 
       <div class="news-card" onclick="openNews(0)">
         <div class="news-img-wrap" style="position:relative">
@@ -1463,9 +1175,6 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 // Reads each .tourn-auto card's data-status/data-start and renders the right badge,
 // live countdown, or LIVE state. Runs on load and every second.
 (function(){
-  const cards = document.querySelectorAll('.tourn-auto');
-  if(!cards.length) return;
-
   function pad(n){ return String(n).padStart(2,'0'); }
 
   function render(card){
@@ -1473,6 +1182,16 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
     const startRaw = card.getAttribute('data-start');
     const badgeEl = card.querySelector('.th-status-badge');
     const resultEl = card.querySelector('.th-status-result');
+    if(!badgeEl || !resultEl) return;
+
+    // LIVE: admin manually marked this tournament as live right now
+    if(status === 'live'){
+      card.classList.remove('upcoming','delayed');
+      card.classList.add('live');
+      badgeEl.innerHTML = '<span class="th-live-badge"><span class="th-live-dot"></span>Live</span>';
+      resultEl.innerHTML = '<div class="th-live-label">In Progress</div><div class="th-upcoming-sub">BYTS</div>';
+      return;
+    }
 
     // DELAYED: no confirmed start time yet
     if(status === 'delayed' || !startRaw){
@@ -1520,7 +1239,8 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       `<div class="th-target-time">at ${timeLabel}</div>`;
   }
 
-  function tick(){ cards.forEach(render); }
+  function tick(){ document.querySelectorAll('.tourn-auto').forEach(render); }
+  window.tickTournAuto = tick;
   tick();
   setInterval(tick, 1000);
 })();
@@ -1826,13 +1546,6 @@ var newsData = [
     img: 'https://static.wikia.nocookie.net/formula-apex/images/e/e6/Game_Icon-_Pre_CU11.png/revision/latest?cb=20240824021346',
     text: 'Bytestorm Esports is considering an official return to Formular Apex, a competitive racing game on Roblox. After stepping away from Roblox in February 2026 due to security concerns, the org is now evaluating a comeback — and the decision is in YOUR hands. We are holding an official community vote on our Discord server and WhatsApp group. Should BYTS return to Formular Apex? Head to the Discord or WhatsApp group, find the vote, and make your voice heard. The result will directly shape what happens next.',
     date: 'May 17, 2026'
-  },
-  {
-    tag: 'Roster Update',
-    title: 'Dark (#67) Banned for Repeated Toxicity and Swearing',
-    img: 'https://flagcdn.com/w320/no.png',
-    text: 'Bytestorm Esports has permanently banned Dark (#67, Norway) from the organization, effective July 31, 2026. The decision follows repeated incidents of swearing and toxic behavior directed at teammates and opponents during matches and in team communications. CEO Superplayer (#63) confirmed that Dark had received multiple prior warnings about his conduct, which went unaddressed, leading to the ban. Jersey #67, previously worn by banned player Amir before being reassigned to Dark on trial, is once again vacant. Bytestorm Esports maintains a zero-tolerance policy toward toxicity and expects all members to represent the organization respectfully.',
-    date: 'July 31, 2026'
   }
 ];
 function openNews(i){
@@ -1985,6 +1698,13 @@ document.querySelectorAll('.tourn-list').forEach(function(el){
 
   var placeRank = { win: 0, loss: 1, dsq: 2 }; // lower = better placement
 
+  // Re-query cards (called after Firebase re-renders the results list) then re-apply filter+sort
+  window.refreshResultsControls = function(){
+    cards = Array.prototype.slice.call(list.querySelectorAll('.th-card'));
+    applyFilter();
+    applySort();
+  };
+
   function applyFilter(){
     cards.forEach(function(c){
       var o = c.getAttribute('data-outcome');
@@ -2061,6 +1781,165 @@ document.querySelectorAll('.tourn-list').forEach(function(el){
 
   applyFilter();
 })();
+</script>
+
+<script type="module">
+// ── Tournament Manager (Realtime Database, read-only on the public site) ──
+// Renders the Upcoming and Results lists from Firebase "tournaments/{id}" records
+// so the Admin panel can add / delay / finish (win, loss, dsq) / remove tournaments
+// and have the site update instantly. Seeds the historical results once if empty.
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getDatabase, ref, onValue, set, get, child } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAY49sWaN-DSKV10uyBB3CeOiABLCtFrSI",
+  authDomain: "bytestorm-friebase-server.firebaseapp.com",
+  databaseURL: "https://bytestorm-friebase-server-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "bytestorm-friebase-server",
+  storageBucket: "bytestorm-friebase-server.firebasestorage.app",
+  messagingSenderId: "400056781433",
+  appId: "1:400056781433:web:9803b0711d85de437f62a8",
+  measurementId: "G-TKJ9JKK7ZF"
+};
+
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const tournRef = ref(db, "tournaments");
+
+const upcomingList = document.getElementById('th-upcoming-list');
+const resultsList = document.getElementById('th-results-list');
+
+function esc(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+    return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+  });
+}
+
+const TROPHY_SVG = '<svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M6 5h12v6a6 6 0 0 1-12 0V5z"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>';
+const DATE_SVG = '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+
+function formatDate(dateStr){
+  if(!dateStr) return '—';
+  const d = new Date(dateStr + 'T00:00:00');
+  if(isNaN(d)) return dateStr;
+  return d.toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+}
+
+function buildUpcomingCard(id, t){
+  const rawStatus = t.status === 'delayed' ? 'delayed' : (t.status === 'live' ? 'live' : 'scheduled');
+  const startAttr = t.startTime ? ` data-start="${esc(t.startTime)}"` : '';
+  const dateDisplay = t.startTime ? formatDate(t.startTime.slice(0,10)) : 'Date TBA';
+  return `<div class="th-card tourn-auto" data-status="${rawStatus}"${startAttr} data-id="${esc(id)}">
+    <div class="th-trophy">${TROPHY_SVG}</div>
+    <div class="th-info">
+      <div class="th-name">${esc(t.name)}</div>
+      <div class="th-teams"><b>Bytestorm Esports</b><span class="vs">vs</span>${esc(t.opponent || 'TBA')}</div>
+      <div class="th-status-badge"></div>
+    </div>
+    <div class="th-result th-status-result"></div>
+    <div class="th-divider"></div>
+    <div class="th-meta">
+      <div class="th-date">${DATE_SVG}${dateDisplay}</div>
+      <div class="th-venue">${esc(t.game || '')}</div>
+    </div>
+  </div>`;
+}
+
+function buildResultCard(id, t){
+  const outcome = t.status; // 'win' | 'loss' | 'dsq'
+  const hasScore = (outcome !== 'dsq') && t.byts != null && t.opp != null;
+  const bytsAttr = hasScore ? ` data-byts="${Number(t.byts)}"` : '';
+  const oppAttr = hasScore ? ` data-opp="${Number(t.opp)}"` : '';
+  let resultHtml;
+  if(outcome === 'dsq'){
+    resultHtml = `<div class="th-outcome loss">DSQ</div><div class="th-score">${esc(t.note || 'Disqualified')}</div>`;
+  } else {
+    const oppName = (t.opponent || 'TBA').toUpperCase();
+    resultHtml = `<div class="th-outcome ${outcome}">${outcome.toUpperCase()}</div><div class="th-score">BYTS ${Number(t.byts||0)} – ${Number(t.opp||0)} ${esc(oppName)}</div>`;
+  }
+  const teamsHtml = outcome === 'dsq'
+    ? '<b>Bytestorm Esports</b>'
+    : `<b>Bytestorm Esports</b><span class="vs">vs</span>${esc(t.opponent || 'TBA')}`;
+  return `<div class="th-card" data-outcome="${esc(outcome)}"${bytsAttr}${oppAttr} data-date="${esc(t.date || '')}" data-id="${esc(id)}">
+    <div class="th-trophy">${TROPHY_SVG}</div>
+    <div class="th-info">
+      <div class="th-name">${esc(t.name)}</div>
+      <div class="th-teams">${teamsHtml}</div>
+    </div>
+    <div class="th-result">${resultHtml}</div>
+    <div class="th-divider"></div>
+    <div class="th-meta">
+      <div class="th-date">${DATE_SVG}${formatDate(t.date)}</div>
+      <div class="th-venue">${esc(t.game || '')}</div>
+    </div>
+  </div>`;
+}
+
+function render(tournaments){
+  const upcoming = [];
+  const results = [];
+  Object.keys(tournaments).forEach(function(id){
+    const t = tournaments[id];
+    if(t.status === 'win' || t.status === 'loss' || t.status === 'dsq') results.push([id, t]);
+    else upcoming.push([id, t]);
+  });
+
+  // Upcoming: soonest start time first, undated/delayed last
+  upcoming.sort(function(a,b){
+    const sa = a[1].startTime ? new Date(a[1].startTime).getTime() : Infinity;
+    const sb = b[1].startTime ? new Date(b[1].startTime).getTime() : Infinity;
+    return sa - sb;
+  });
+
+  if(upcoming.length){
+    upcomingList.innerHTML = upcoming.map(function(p){ return buildUpcomingCard(p[0], p[1]); }).join('');
+  } else {
+    upcomingList.innerHTML = '<div class="th-empty" id="th-upcoming-empty">No upcoming tournaments scheduled.</div>';
+  }
+
+  // Results: newest first by default (results filter/sort script re-sorts on top of this)
+  results.sort(function(a,b){ return (b[1].date||'').localeCompare(a[1].date||''); });
+
+  if(results.length){
+    resultsList.innerHTML = results.map(function(p){ return buildResultCard(p[0], p[1]); }).join('');
+  } else {
+    resultsList.innerHTML = '<div class="th-empty" id="th-results-empty">No results yet.</div>';
+  }
+
+  if(typeof window.tickTournAuto === 'function') window.tickTournAuto();
+  if(typeof window.refreshResultsControls === 'function') window.refreshResultsControls();
+}
+
+// One-time seed of historical results, only if the node has never been written to.
+const SEED = [
+  { name:'AS™#47', game:'Brawl Stars', opponent:'TBA', status:'upcoming', startTime:'2026-07-31T13:00:00Z' },
+  { name:'AS™#46', game:'Brawl Stars', opponent:'DC: Wider215', status:'loss', byts:0, opp:1, date:'2026-07-23' },
+  { name:'AS™#46', game:'Brawl Stars', opponent:'292', status:'win', byts:1, opp:0, date:'2026-07-23' },
+  { name:'ATN Legion APAC #7', game:'Brawl Stars', opponent:'Underdogs', status:'loss', byts:0, opp:2, date:'2026-07-22' },
+  { name:'ATN Legion APAC #7', game:'Brawl Stars', opponent:'QRN Ballers', status:'win', byts:2, opp:0, date:'2026-07-22' },
+  { name:'SPORTSTARS (EMEA #45)', game:'Brawl Stars', opponent:'The Reals Fan of Carlily', status:'loss', byts:1, opp:2, date:'2026-07-21' },
+  { name:'Wildcard Weekend #18', game:'Brawl Stars', opponent:'DC: Raiobs', status:'loss', byts:0, opp:2, date:'2026-07-17' },
+  { name:'Wildcard Weekend #18', game:'Brawl Stars', opponent:'Aura', status:'win', byts:2, opp:0, date:'2026-07-17' },
+  { name:'BATTLE OF DRAFTS APAC#12', game:'Brawl Stars', opponent:'', status:'dsq', note:'Disqualified — no-show', date:'2026-07-14' },
+  { name:'Dach BSCS Tournament', game:'Brawl Stars', opponent:'Vortex Unit', status:'loss', byts:0, opp:2, date:'2026-04-26' },
+  { name:'Dach BSCS Tournament', game:'Brawl Stars', opponent:'Noone', status:'win', byts:2, opp:0, date:'2026-04-26' },
+  { name:'MasterCup', game:'Brawl Stars', opponent:'Soulless Team', status:'loss', byts:0, opp:2, date:'2026-03-01' }
+];
+
+get(tournRef).then(function(snap){
+  if(!snap.exists()){
+    const seeded = {};
+    SEED.forEach(function(t, i){ seeded['seed_' + i] = t; });
+    set(tournRef, seeded).catch(function(e){ console.error('Seed failed:', e); });
+  }
+}).catch(function(e){ console.error('Seed check failed:', e); });
+
+onValue(tournRef, function(snap){
+  const data = snap.exists() ? snap.val() : {};
+  render(data);
+}, function(err){
+  console.error('Tournament listener error:', err);
+});
 </script>
 </body>
 </html>
