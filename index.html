@@ -516,6 +516,19 @@
   }
   @media(max-width:640px){.games-grid{grid-template-columns:repeat(2,1fr)}.soc-grid{grid-template-columns:1fr}.s-head{flex-direction:column;align-items:flex-start}.fgr{grid-template-columns:1fr}.modal{padding:26px 18px}}
   @media(max-width:420px){.games-grid{grid-template-columns:1fr 1fr}}
+  /* ── Earnings ── */
+  .earn-total-card{background:linear-gradient(160deg,#111,#0a0a0a);border:1px solid var(--b2);border-radius:14px;padding:32px;text-align:center;margin-bottom:28px}
+  .earn-total-eye{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--m1);margin-bottom:10px}
+  .earn-total-num{font-family:'Barlow Condensed',sans-serif;font-size:clamp(38px,6vw,64px);font-weight:900;color:#fff;line-height:1}
+  .earn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--b1);border:1px solid var(--b1);border-radius:10px;overflow:hidden}
+  .earn-card{background:var(--s1);padding:20px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:background .2s}
+  .earn-card:hover{background:var(--s2)}
+  .earn-who{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .earn-name{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .earn-num{font-size:10px;color:var(--m1);letter-spacing:.06em}
+  .earn-amt{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:#4ade80;white-space:nowrap;flex-shrink:0}
+  .earn-empty{grid-column:1/-1;padding:24px;text-align:center;font-size:12px;color:var(--m2)}
+  @media(max-width:640px){.earn-total-card{padding:24px 18px}}
   /* ── News ── */
   .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
   .news-card{background:var(--s1);border:1px solid var(--b1);border-radius:10px;overflow:hidden;cursor:pointer;transition:background .2s,border-color .2s}
@@ -672,6 +685,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
     <ul class="nav-links">
       <li><a href="#games" class="active">Games</a></li>
       <li><a href="#tournaments">Tournaments</a></li>
+      <li><a href="#earnings">Earnings</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#socials">Contact</a></li>
     </ul>
@@ -704,161 +718,19 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 </nav>
 
 <!-- ── GAMES ── -->
+<!-- Game cards + roster panels are rendered dynamically from Firebase
+     "games/{gameKey}" + "roster/{gameKey}/{id}" — see the Games Manager
+     module near the end of the page. Adding a game in the admin's Game
+     Card Creator makes it appear here automatically, with a live player
+     count read straight from that game's roster. -->
 <section class="pad" id="games" style="padding-top:100px">
   <div class="wrap">
     <div class="s-head"><div><div class="s-eye">Competing in</div><div class="s-title">Our Games</div></div></div>
-    <div class="games-grid">
-
-      <button class="game-card" data-img="https://i.ytimg.com/vi/adGdyCdvKz4/maxresdefault.jpg" onclick="toggleRoster('fn')">
-        <div class="gc-img-wrap">
-          <img class="gc-img" src="" alt="Fortnite" style="display:none"/>
-          <div class="gc-placeholder">Fortnite</div>
-          <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Fortnite</div><div class="gc-sub">3 players</div></div>
-          <div class="gc-hover-pill">View Team</div>
-        </div>
-      </button>
-
-      <button class="game-card" data-img="https://www.klicksafe.de/fileadmin/_processed_/0/5/csm_Sharepic_Brawl-Stars_905ff3013c.png" onclick="toggleRoster('bs')">
-        <div class="gc-img-wrap">
-          <img class="gc-img" src="" alt="Brawl Stars" style="display:none"/>
-          <div class="gc-placeholder">Brawl Stars</div>
-          <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Brawl Stars</div><div class="gc-sub">7 players</div></div>
-          <div class="gc-hover-pill">View Team</div>
-        </div>
-      </button>
-
-      <button class="game-card" data-img="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/252950/capsule_616x353.jpg" onclick="toggleRoster('rl')">
-        <div class="gc-img-wrap">
-          <img class="gc-img" src="" alt="Rocket League" style="display:none"/>
-          <div class="gc-placeholder">Rocket League</div>
-          <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Rocket League</div><div class="gc-sub">1 player</div></div>
-          <div class="gc-hover-pill">View Team</div>
-        </div>
-      </button>
-
-      <button class="game-card" data-img="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/capsule_616x353.jpg" onclick="toggleRoster('cs2')">
-        <div class="gc-img-wrap">
-          <img class="gc-img" src="" alt="CS2" style="display:none"/>
-          <div class="gc-placeholder">CS2</div>
-          <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">CS2</div><div class="gc-sub">1 player</div></div>
-          <div class="gc-hover-pill">View Team</div>
-        </div>
-      </button>
-
-      <button class="game-card" data-img="https://images.mein-mmo.de/medien/2022/03/GTA-Online-Next-Gen-Titel-Autos-Polizei.jpg" onclick="toggleRoster('gta')">
-        <div class="gc-img-wrap">
-          <img class="gc-img" src="" alt="GTA V Online" style="display:none"/>
-          <div class="gc-placeholder">GTA V</div>
-          <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">GTA V Online</div><div class="gc-sub">1 player</div></div>
-          <div class="gc-hover-pill">View Team</div>
-        </div>
-      </button>
-
-      <button class="game-card" data-img="https://static.wikia.nocookie.net/formula-apex/images/e/e6/Game_Icon-_Pre_CU11.png/revision/latest?cb=20240824021346" onclick="toggleRoster('fa')">
-        <div class="gc-img-wrap">
-          <img class="gc-img" src="" alt="Formula Apex" style="display:none"/>
-          <div class="gc-placeholder">Formula Apex</div>
-          <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Formula Apex</div><div class="gc-sub">2 players</div></div>
-          <div class="gc-hover-pill">View Team</div>
-        </div>
-      </button>
-
-      <button class="game-card" data-img="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/capsule_616x353.jpg" onclick="toggleRoster('ef')">
-        <div class="gc-img-wrap">
-          <img class="gc-img" src="" alt="eFootball" style="display:none"/>
-          <div class="gc-placeholder">eFootball</div>
-          <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">eFootball</div><div class="gc-sub">2 players</div></div>
-          <div class="gc-hover-pill">View Team</div>
-        </div>
-      </button>
-
-      <button class="game-card" style="background:#1a1a1a" onclick="toggleRoster('staff')">
-        <div class="gc-img-wrap">
-          <div class="gc-placeholder" style="display:flex;color:#fff;opacity:1;">
-            <svg viewBox="0 0 24 24" style="stroke:#fff;width:26px;fill:none;stroke-width:1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            STAFF
-          </div>
-          <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Staff</div><div class="gc-sub">Management</div></div>
-          <div class="gc-hover-pill">View Staff</div>
-        </div>
-      </button>
-
-      <button class="game-card" style="background:#1a1a1a" onclick="toggleRoster('academy')">
-        <div class="gc-img-wrap">
-          <div class="gc-placeholder" style="display:flex;color:#fff;opacity:1;">
-            <svg viewBox="0 0 24 24" style="stroke:#fff;width:26px;fill:none;stroke-width:1.5"><path d="M22 10L12 4 2 10l10 6 10-6z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
-            ACADEMY
-          </div>
-          <div class="gc-overlay"></div>
-          <div class="gc-label"><div class="gc-name">Academy</div><div class="gc-sub">Learn &amp; Train</div></div>
-          <div class="gc-hover-pill">View Academy</div>
-        </div>
-      </button>
-
+    <div class="games-grid" id="gamesGrid">
+      <div class="rp-loading" style="grid-column:1/-1">Loading games…</div>
     </div><!-- /games-grid -->
 
-    <!-- Fortnite Roster -->
-    <div class="roster-panel" id="rp-fn">
-      <div class="rp-head"><span class="rp-tag">FN</span><span class="rp-game">Fortnite</span><button class="rp-close" onclick="closeRoster('fn')">&#215;</button></div>
-      <div class="rp-grid" id="rp-grid-fn"><div class="rp-loading">Loading roster…</div></div>
-    </div>
-
-    <!-- Brawl Stars Roster -->
-    <div class="roster-panel" id="rp-bs">
-      <div class="rp-head"><span class="rp-tag">BS</span><span class="rp-game">Brawl Stars</span><button class="rp-close" onclick="closeRoster('bs')">&#215;</button></div>
-      <div class="rp-grid" id="rp-grid-bs"><div class="rp-loading">Loading roster…</div></div>
-    </div>
-
-    <!-- Rocket League Roster -->
-    <div class="roster-panel" id="rp-rl">
-      <div class="rp-head"><span class="rp-tag">RL</span><span class="rp-game">Rocket League</span><button class="rp-close" onclick="closeRoster('rl')">&#215;</button></div>
-      <div class="rp-grid" id="rp-grid-rl"><div class="rp-loading">Loading roster…</div></div>
-    </div>
-
-    <!-- CS2 Roster -->
-    <div class="roster-panel" id="rp-cs2">
-      <div class="rp-head"><span class="rp-tag">CS2</span><span class="rp-game">CS2</span><button class="rp-close" onclick="closeRoster('cs2')">&#215;</button></div>
-      <div class="rp-grid" id="rp-grid-cs2"><div class="rp-loading">Loading roster…</div></div>
-    </div>
-
-    <!-- GTA Roster -->
-    <div class="roster-panel" id="rp-gta">
-      <div class="rp-head"><span class="rp-tag">GTA</span><span class="rp-game">GTA V Online</span><button class="rp-close" onclick="closeRoster('gta')">&#215;</button></div>
-      <div class="rp-grid" id="rp-grid-gta"><div class="rp-loading">Loading roster…</div></div>
-    </div>
-
-    <!-- Formula Apex Roster -->
-    <div class="roster-panel" id="rp-fa">
-      <div class="rp-head"><span class="rp-tag">FA</span><span class="rp-game">Formula Apex <span style="font-size:12px;color:#a78bfa;font-family:'Inter',sans-serif;font-weight:500;letter-spacing:.04em;text-transform:none;">Roblox</span></span><button class="rp-close" onclick="closeRoster('fa')">&#215;</button></div>
-      <div class="rp-grid" id="rp-grid-fa"><div class="rp-loading">Loading roster…</div></div>
-    </div>
-
-    <!-- eFootball Roster -->
-    <div class="roster-panel" id="rp-ef">
-      <div class="rp-head"><span class="rp-tag">EF</span><span class="rp-game">eFootball</span><button class="rp-close" onclick="closeRoster('ef')">&#215;</button></div>
-      <div class="rp-banner"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/header.jpg" alt="eFootball Gameplay"/></div>
-      <div class="rp-grid" id="rp-grid-ef"><div class="rp-loading">Loading roster…</div></div>
-    </div>
-
-    <!-- Staff Roster -->
-    <div class="roster-panel" id="rp-staff">
-      <div class="rp-head"><span class="rp-tag">STAFF</span><span class="rp-game">Management</span><button class="rp-close" onclick="closeRoster('staff')">&#215;</button></div>
-      <div class="rp-grid" id="rp-grid-staff"><div class="rp-loading">Loading roster…</div></div>
-    </div>
-
-    <!-- Academy Roster -->
-    <div class="roster-panel" id="rp-academy">
-      <div class="rp-head"><span class="rp-tag">ACADEMY</span><span class="rp-game">Learn &amp; Train</span><button class="rp-close" onclick="closeRoster('academy')">&#215;</button></div>
-      <div class="rp-grid" id="rp-grid-academy"><div class="rp-loading">Loading roster…</div></div>
-    </div>
+    <div id="rosterPanels"></div>
 
   </div>
 </section>
@@ -919,6 +791,26 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 
     <div class="th-foot">All competitive matches <span>•</span> Updated regularly</div>
 
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── EARNINGS ── -->
+<!-- Rendered from Firebase "earnings/{id}" — see the Earnings Tracker
+     module near the end of the page. Total sums every tracked player. -->
+<section class="pad" id="earnings">
+  <div class="wrap">
+    <div class="s-head"><div><div class="s-eye earn-eye">Prize Money</div><div class="s-title earn-title">Earnings</div></div></div>
+
+    <div class="earn-total-card">
+      <div class="earn-total-eye">Total Org Earnings</div>
+      <div class="earn-total-num" id="earnTotalNum">$0</div>
+    </div>
+
+    <div class="earn-grid" id="earnGrid">
+      <div class="earn-empty">Loading earnings…</div>
+    </div>
   </div>
 </section>
 
@@ -1194,16 +1086,22 @@ function closeAbout(){
 function overlayAboutClose(e){if(e.target===document.getElementById('aboutModal'))closeAbout()}
 
 // ── Image lazy-load ──
-document.querySelectorAll('.game-card').forEach(function(c){
-  var u=c.getAttribute('data-img');
-  if(u&&u.trim()){
-    var i=c.querySelector('.gc-img'),p=c.querySelector('.gc-placeholder');
-    if(i){
-      i.src=u;i.style.display='block';if(p)p.style.display='none';
-      i.onerror=function(){i.style.display='none';if(p)p.style.display='flex'};
+// Re-run whenever game cards are (re)rendered from Firebase, since new
+// cards are injected dynamically rather than present at initial page load.
+function lazyLoadGameCards(){
+  document.querySelectorAll('.game-card').forEach(function(c){
+    var u=c.getAttribute('data-img');
+    if(u&&u.trim()){
+      var i=c.querySelector('.gc-img'),p=c.querySelector('.gc-placeholder');
+      if(i && i.getAttribute('src')!==u){
+        i.src=u;i.style.display='block';if(p)p.style.display='none';
+        i.onerror=function(){i.style.display='none';if(p)p.style.display='flex'};
+      }
     }
-  }
-});
+  });
+}
+window.lazyLoadGameCards = lazyLoadGameCards;
+lazyLoadGameCards();
 
 // ── Modal ──
 var appType='gamer';
@@ -1414,7 +1312,11 @@ function changeLang(lang){
     else if(a.href.includes('#socials'))a.textContent=t.navSocials;
     else if(a.classList.contains('nav-cta'))a.textContent=t.applyBtn;
   });
-  var eyes=document.querySelectorAll('.s-eye'),titles=document.querySelectorAll('.s-title');
+  // Earnings' heading (.earn-eye/.earn-title) is excluded from this
+  // positional lookup and stays static English — it isn't part of the
+  // 11-language translation set, so indices below still line up with
+  // Games / News / Socials exactly as before.
+  var eyes=document.querySelectorAll('.s-eye:not(.earn-eye)'),titles=document.querySelectorAll('.s-title:not(.earn-title)');
   if(eyes[0])eyes[0].textContent=t.gamesEye;
   if(titles[0])titles[0].textContent=t.gamesTitle;
   if(eyes[1])eyes[1].textContent=t.newsEye;
@@ -1711,10 +1613,13 @@ onValue(tournRef, function(snap){
 </script>
 
 <script type="module">
-// ── Roster Manager (Realtime Database, read-only on the public site) ──
-// Renders each game's roster grid from Firebase "roster/{game}/{id}" records
-// so the Admin panel can add / edit / suspend / remove players and have the
-// site's roster panels update instantly.
+// ── Games + Roster Manager (Realtime Database, read-only on the public site) ──
+// Renders the Game Cards grid AND each game's roster panel from Firebase
+// "games/{gameKey}" (name/img/order) + "roster/{gameKey}/{id}" records, so
+// the admin's Game Card Creator and Roster Manager update the site instantly
+// — including brand-new games that didn't exist when this page shipped.
+// "Staff" and "Academy" are two fixed non-game groups appended after
+// whatever games are in Firebase.
 import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 
@@ -1743,6 +1648,10 @@ const OPEN_ROLE_TEXT = {
   trainer:'Teaches Academy members game mechanics, strategy, and tricks.',
   trainee:"For players who aren't yet at a competitive level but want to learn and improve."
 };
+const STATIC_GROUPS = [
+  { key:'staff', name:'Staff', tag:'STAFF', sub:'Management', icon:'staff' },
+  { key:'academy', name:'Academy', tag:'ACADEMY', sub:'Learn &amp; Train', icon:'academy' }
+];
 
 function esc(s){
   return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
@@ -1781,24 +1690,96 @@ function buildPlayerCard(p){
   return `<div class="rp-card">${flagImg}<div class="rp-top"><span class="rp-num">${esc(p.num || '—')}</span><span class="rp-badge ${esc(badgeClass)}">${esc(badgeLabel)}</span></div><div class="rp-name">${esc(p.name || 'Unnamed')}</div><div class="rp-meta">${metaHtml}</div></div>`;
 }
 
-const GAME_KEYS = ['fn','bs','rl','cs2','gta','fa','ef','staff','academy'];
+const gamesGrid = document.getElementById('gamesGrid');
+const rosterPanels = document.getElementById('rosterPanels');
+let gamesCache = {};
+let rosterCounts = {}; // gameKey -> player count, updated live
+let rosterUnsubs = {}; // gameKey -> true once we've attached a roster listener
 
-GAME_KEYS.forEach(function(gameKey){
-  const grid = document.getElementById('rp-grid-' + gameKey);
-  if(!grid) return;
+function gameCardHtml(g){
+  const count = rosterCounts[g.key];
+  const subText = g.isStatic ? g.sub : (count == null ? 'Loading…' : (count + ' player' + (count === 1 ? '' : 's')));
+  if(g.isStatic){
+    const iconSvg = g.icon === 'staff'
+      ? '<svg viewBox="0 0 24 24" style="stroke:#fff;width:26px;fill:none;stroke-width:1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>'
+      : '<svg viewBox="0 0 24 24" style="stroke:#fff;width:26px;fill:none;stroke-width:1.5"><path d="M22 10L12 4 2 10l10 6 10-6z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>';
+    return `<button class="game-card" style="background:#1a1a1a" onclick="toggleRoster('${g.key}')">
+      <div class="gc-img-wrap">
+        <div class="gc-placeholder" style="display:flex;color:#fff;opacity:1;">${iconSvg}${esc(g.tag)}</div>
+        <div class="gc-overlay"></div>
+        <div class="gc-label"><div class="gc-name">${esc(g.name)}</div><div class="gc-sub">${g.sub}</div></div>
+        <div class="gc-hover-pill">View ${esc(g.name)}</div>
+      </div>
+    </button>`;
+  }
+  return `<button class="game-card" data-img="${esc(g.img || '')}" onclick="toggleRoster('${esc(g.key)}')">
+    <div class="gc-img-wrap">
+      <img class="gc-img" src="" alt="${esc(g.name)}" style="display:none"/>
+      <div class="gc-placeholder">${esc(g.name)}</div>
+      <div class="gc-overlay"></div>
+      <div class="gc-label"><div class="gc-name">${esc(g.name)}</div><div class="gc-sub">${subText}</div></div>
+      <div class="gc-hover-pill">View Team</div>
+    </div>
+  </button>`;
+}
+
+function rosterPanelHtml(g){
+  const tag = g.isStatic ? g.tag : g.key.toUpperCase();
+  return `<div class="roster-panel" id="rp-${esc(g.key)}">
+    <div class="rp-head"><span class="rp-tag">${esc(tag)}</span><span class="rp-game">${esc(g.name)}</span><button class="rp-close" onclick="closeRoster('${esc(g.key)}')">&#215;</button></div>
+    <div class="rp-grid" id="rp-grid-${esc(g.key)}"><div class="rp-loading">Loading roster…</div></div>
+  </div>`;
+}
+
+function watchRosterCount(gameKey){
+  if(rosterUnsubs[gameKey]) return;
+  rosterUnsubs[gameKey] = true;
   const gRef = ref(db, 'roster/' + gameKey);
   onValue(gRef, function(snap){
-    if(!snap.exists()){
-      grid.innerHTML = '<div class="rp-loading">Roster coming soon.</div>';
-      return;
-    }
-    const players = snap.val();
+    const players = snap.exists() ? snap.val() : {};
     const entries = Object.values(players);
-    grid.innerHTML = entries.map(buildPlayerCard).join('');
+    rosterCounts[gameKey] = entries.length;
+
+    const grid = document.getElementById('rp-grid-' + gameKey);
+    if(grid){
+      grid.innerHTML = entries.length ? entries.map(buildPlayerCard).join('') : '<div class="rp-loading">Roster coming soon.</div>';
+    }
+    // Update just this card's live player-count subtitle in place.
+    const sub = document.querySelector('.game-card[onclick="toggleRoster(\'' + gameKey + '\')"] .gc-sub');
+    if(sub) sub.textContent = rosterCounts[gameKey] + ' player' + (rosterCounts[gameKey] === 1 ? '' : 's');
   }, function(err){
     console.error('Roster listener error (' + gameKey + '):', err);
-    grid.innerHTML = '<div class="rp-loading">Could not load roster.</div>';
+    const grid = document.getElementById('rp-grid-' + gameKey);
+    if(grid) grid.innerHTML = '<div class="rp-loading">Could not load roster.</div>';
   });
+}
+
+function renderGamesAndPanels(){
+  const dynamicGames = Object.entries(gamesCache)
+    .sort(function(a, b){ return (a[1].order ?? 0) - (b[1].order ?? 0); })
+    .map(function([key, g]){ return { key, name: g.name || key, img: g.img, isStatic: false }; });
+  const allGroups = dynamicGames.concat(STATIC_GROUPS.map(function(s){ return Object.assign({ isStatic:true }, s); }));
+
+  if(!allGroups.length){
+    gamesGrid.innerHTML = '<div class="rp-loading" style="grid-column:1/-1">No games added yet.</div>';
+    rosterPanels.innerHTML = '';
+    return;
+  }
+
+  gamesGrid.innerHTML = allGroups.map(gameCardHtml).join('');
+  rosterPanels.innerHTML = allGroups.map(rosterPanelHtml).join('');
+  allGroups.forEach(function(g){ watchRosterCount(g.key); });
+
+  if(typeof window.lazyLoadGameCards === 'function') window.lazyLoadGameCards();
+}
+
+const gamesRef = ref(db, 'games');
+onValue(gamesRef, function(snap){
+  gamesCache = snap.exists() ? snap.val() : {};
+  renderGamesAndPanels();
+}, function(err){
+  console.error('Games listener error:', err);
+  gamesGrid.innerHTML = '<div class="rp-loading" style="grid-column:1/-1">Could not load games.</div>';
 });
 </script>
 
@@ -1887,6 +1868,69 @@ onValue(newsRef, function(snap){
 }, function(err){
   console.error('News listener error:', err);
   newsGrid.innerHTML = '<div class="rp-loading">Could not load news.</div>';
+});
+</script>
+
+<script type="module">
+// ── Earnings Tracker (Realtime Database, read-only on the public site) ──
+// Renders the Earnings section from Firebase "earnings/{id}" = { name, num,
+// total } records so the admin's Earnings Tracker blade updates the site
+// instantly. The org-wide total sums every tracked player's earnings.
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAY49sWaN-DSKV10uyBB3CeOiABLCtFrSI",
+  authDomain: "bytestorm-friebase-server.firebaseapp.com",
+  databaseURL: "https://bytestorm-friebase-server-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "bytestorm-friebase-server",
+  storageBucket: "bytestorm-friebase-server.firebasestorage.app",
+  messagingSenderId: "400056781433",
+  appId: "1:400056781433:web:9803b0711d85de437f62a8",
+  measurementId: "G-TKJ9JKK7ZF"
+};
+
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const earningsRef = ref(db, 'earnings');
+const earnGrid = document.getElementById('earnGrid');
+const earnTotalNum = document.getElementById('earnTotalNum');
+
+function escE(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+    return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+  });
+}
+function fmtMoneyE(n){
+  const v = Number(n) || 0;
+  return '$' + v.toLocaleString('en-US', { maximumFractionDigits: 2 });
+}
+function earnCardHtml(p){
+  return `<div class="earn-card">
+    <div class="earn-who">
+      <div class="earn-name">${escE(p.name || 'Unnamed')}</div>
+      ${p.num ? `<div class="earn-num">${escE(p.num)}</div>` : ''}
+    </div>
+    <div class="earn-amt">${fmtMoneyE(p.total)}</div>
+  </div>`;
+}
+
+onValue(earningsRef, function(snap){
+  if(!snap.exists()){
+    earnGrid.innerHTML = '<div class="earn-empty">No earnings tracked yet.</div>';
+    earnTotalNum.textContent = fmtMoneyE(0);
+    return;
+  }
+  const raw = snap.val();
+  const entries = Object.values(raw);
+  const total = entries.reduce(function(sum, p){ return sum + (Number(p.total) || 0); }, 0);
+  earnTotalNum.textContent = fmtMoneyE(total);
+
+  entries.sort(function(a, b){ return (Number(b.total) || 0) - (Number(a.total) || 0); });
+  earnGrid.innerHTML = entries.length ? entries.map(earnCardHtml).join('') : '<div class="earn-empty">No earnings tracked yet.</div>';
+}, function(err){
+  console.error('Earnings listener error:', err);
+  earnGrid.innerHTML = '<div class="earn-empty">Could not load earnings.</div>';
 });
 </script>
 </body>
