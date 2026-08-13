@@ -176,6 +176,69 @@
   .nm-empty{font-size:13px;color:var(--m2);text-align:center;padding:20px 0}
   .nm-label{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--m1); margin:10px 0 5px; display:block}
 
+  /* ── Game Manager ── */
+  .gm-item{border:1px solid var(--b2);border-radius:10px;padding:14px 16px;background:#0d0d0d;margin-bottom:12px}
+  .gm-item input[type=text], .gm-item input[type=number]{
+    width:100%; background:#0a0a0a; border:1px solid var(--b2); color:var(--txt);
+    border-radius:7px; padding:8px 9px; font-size:12.5px; font-family:inherit;
+  }
+  .gm-item-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+  .gm-count-preview{font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:20px;border:1px solid var(--b2);color:var(--m1)}
+  .gm-row{display:flex;gap:8px;margin-top:8px}
+  .gm-row > *{flex:1}
+  .gm-thumb{width:40px;height:40px;border-radius:6px;object-fit:cover;background:#000;border:1px solid var(--b2);flex-shrink:0}
+  .gm-mini{
+    flex:1; width:auto; margin-top:8px; background:#181818; color:var(--txt);
+    border:1px solid var(--b2); border-radius:7px; padding:8px 6px;
+    font-size:11.5px; font-weight:700; letter-spacing:.02em; cursor:pointer;
+  }
+  .gm-mini:hover{border-color:#666}
+  .gm-remove{
+    width:100%; margin-top:8px; background:transparent; color:var(--loss);
+    border:1px solid #4a1f1f; border-radius:7px; padding:8px; font-size:11px; font-weight:700; cursor:pointer;
+  }
+  .gm-remove:hover{background:#210b0b}
+  .gm-add{
+    width:100%; background:#181818; color:var(--txt);
+    border:1px solid var(--b2); border-radius:8px; padding:11px; font-size:13px; font-weight:800; cursor:pointer;
+  }
+  .gm-add:hover{border-color:#666}
+  .gm-empty{font-size:13px;color:var(--m2);text-align:center;padding:20px 0}
+  .gm-label{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--m1); margin:10px 0 5px; display:block}
+  .gm-hint{font-size:11px;color:var(--m2);margin-top:2px}
+
+  /* ── Earnings Tracker ── */
+  .em-total-card{border:1px solid var(--b2);border-radius:10px;padding:18px 16px;background:#0d0d0d;text-align:center;margin-bottom:16px}
+  .em-total-label{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--m1)}
+  .em-total-value{font-size:30px;font-weight:900;color:var(--win);margin-top:4px;font-family:'Inter',sans-serif}
+  .em-item{border:1px solid var(--b2);border-radius:10px;padding:14px 16px;background:#0d0d0d;margin-bottom:12px}
+  .em-item input[type=text], .em-item input[type=number]{
+    width:100%; background:#0a0a0a; border:1px solid var(--b2); color:var(--txt);
+    border-radius:7px; padding:8px 9px; font-size:12.5px; font-family:inherit;
+  }
+  .em-item-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+  .em-earned-preview{font-size:12px;font-weight:800;color:var(--win)}
+  .em-row{display:flex;gap:8px;margin-top:8px}
+  .em-row > *{flex:1}
+  .em-mini{
+    flex:1; width:auto; margin-top:8px; background:#181818; color:var(--txt);
+    border:1px solid var(--b2); border-radius:7px; padding:8px 6px;
+    font-size:11.5px; font-weight:700; letter-spacing:.02em; cursor:pointer;
+  }
+  .em-mini:hover{border-color:#666}
+  .em-remove{
+    width:100%; margin-top:8px; background:transparent; color:var(--loss);
+    border:1px solid #4a1f1f; border-radius:7px; padding:8px; font-size:11px; font-weight:700; cursor:pointer;
+  }
+  .em-remove:hover{background:#210b0b}
+  .em-add{
+    width:100%; background:#181818; color:var(--txt);
+    border:1px solid var(--b2); border-radius:8px; padding:11px; font-size:13px; font-weight:800; cursor:pointer;
+  }
+  .em-add:hover{border-color:#666}
+  .em-empty{font-size:13px;color:var(--m2);text-align:center;padding:20px 0}
+  .em-label{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--m1); margin:10px 0 5px; display:block}
+
   /* ── Persistent Topbar (Lock always visible) ── */
   .admin-topbar{
     width:100%; max-width:1100px; display:flex; align-items:center; justify-content:space-between;
@@ -384,13 +447,6 @@
 
         <label class="nm-label">Game / Group</label>
         <select id="rmGameSelect" class="rm-select">
-          <option value="fn">Fortnite</option>
-          <option value="bs">Brawl Stars</option>
-          <option value="rl">Rocket League</option>
-          <option value="cs2">CS2</option>
-          <option value="gta">GTA V Online</option>
-          <option value="fa">Formula Apex</option>
-          <option value="ef">eFootball</option>
           <option value="staff">Staff</option>
           <option value="academy">Academy</option>
         </select>
@@ -421,6 +477,46 @@
 
         <button type="button" class="logout" id="nmSeedBtn" style="margin-top:14px">Seed Current News</button>
         <div class="status-msg" id="nmSeedMsg"></div>
+      </div>
+    </div>
+
+    <div class="blade" data-blade="4">
+      <div class="card" id="gmCard" style="max-width:none">
+        <h1>Game Card Creator</h1>
+        <p class="sub">Add a new game and it instantly appears as a Game Card and Roster panel on the public site. Player counts below update live from the actual roster.</p>
+
+        <div class="gm-list" id="gmList">
+          <div class="gm-empty">Loading games…</div>
+        </div>
+
+        <div class="gm-form" style="margin-top:18px;padding-top:4px;border-top:1px solid var(--b1)">
+          <label class="gm-label">Game Name</label>
+          <input type="text" id="gNewName" placeholder="e.g. Valorant">
+          <label class="gm-label">Cover Image URL (optional)</label>
+          <input type="text" id="gNewImg" placeholder="https://...">
+          <div class="gm-hint">Leave blank to use a plain placeholder tile like Staff/Academy.</div>
+          <button type="button" class="gm-add" id="gmAddBtn" style="margin-top:14px">+ Add Game</button>
+          <div class="status-msg" id="gmMsg"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blade" data-blade="5">
+      <div class="card" id="emCard" style="max-width:none">
+        <h1>Earnings Tracker</h1>
+        <p class="sub">Track total prize earnings per player. The org total below sums every player automatically.</p>
+
+        <div class="em-total-card">
+          <div class="em-total-label">Total Org Earnings</div>
+          <div class="em-total-value" id="emTotalValue">$0</div>
+        </div>
+
+        <div class="em-list" id="emList">
+          <div class="em-empty">Loading earnings…</div>
+        </div>
+
+        <button type="button" class="em-add" id="emAddBtn">+ Add Player</button>
+        <div class="status-msg" id="emMsg"></div>
       </div>
     </div>
 
@@ -529,7 +625,7 @@ onAuthStateChanged(auth, (user) => {
 });
 
 // ── Blades Carousel (Xbox 360 Dashboard style) ──
-const BLADE_NAMES = ['Live Match Tracker', 'Tournament Manager', 'Roster Manager', 'News Manager'];
+const BLADE_NAMES = ['Live Match Tracker', 'Tournament Manager', 'Roster Manager', 'News Manager', 'Game Card Creator', 'Earnings Tracker'];
 const blades = Array.from(document.querySelectorAll('.blade'));
 const bladeLeft = document.getElementById('bladeLeft');
 const bladeRight = document.getElementById('bladeRight');
@@ -952,11 +1048,10 @@ tmSeedBtn.addEventListener('click', async () => {
 // ── Roster Manager ──
 // Writes to roster/{game}/{id}. index.html reads this node to render the
 // roster panels for each game group (see the Roster Manager module there).
-const GAMES = {
-  fn:'Fortnite', bs:'Brawl Stars', rl:'Rocket League', cs2:'CS2',
-  gta:'GTA V Online', fa:'Formula Apex', ef:'eFootball',
-  staff:'Staff', academy:'Academy'
-};
+// The game list itself is dynamic — see the Game Card Creator section below,
+// which writes to games/{gameKey} and this module watches it live.
+const STATIC_GROUPS = { staff:'Staff', academy:'Academy' };
+let GAMES = { ...STATIC_GROUPS };
 const ROLE_BADGES = {
   ceo:'CEO', captain:'Team Captain', esports:'Esports Player', normal:'Normal Player',
   editor:'Editor', recruiter:'Recruiter', moderator:'Moderator',
@@ -967,7 +1062,8 @@ const rmList = document.getElementById('rmList');
 const rmAddBtn = document.getElementById('rmAddBtn');
 const rmMsg = document.getElementById('rmMsg');
 let rosterCache = {};
-let currentGame = 'fn';
+let currentGame = 'staff';
+const watchedRosterGames = new Set();
 
 function rmRowHtml(gameKey, id, p){
   const status = p.status || 'active';
@@ -1016,10 +1112,13 @@ function renderRM(){
 }
 
 function watchRoster(gameKey){
+  if(watchedRosterGames.has(gameKey)) return;
+  watchedRosterGames.add(gameKey);
   const gRef = ref(db, 'roster/' + gameKey);
   onValue(gRef, (snap) => {
     rosterCache[gameKey] = snap.exists() ? snap.val() : {};
     if(currentGame === gameKey) renderRM();
+    renderGMList(); // keep game manager's live player counts in sync
   }, (err) => {
     if(currentGame === gameKey){
       rmList.innerHTML = '<div class="rm-empty">Could not load roster: ' + escHtml(err.message) + '</div>';
@@ -1027,6 +1126,19 @@ function watchRoster(gameKey){
   });
 }
 Object.keys(GAMES).forEach(watchRoster);
+
+function rebuildRmGameSelect(){
+  const prev = currentGame;
+  rmGameSelect.innerHTML = Object.entries(GAMES).map(([k, name]) =>
+    `<option value="${k}">${escHtml(name)}</option>`).join('');
+  if(GAMES[prev]){
+    rmGameSelect.value = prev;
+  } else {
+    currentGame = Object.keys(GAMES)[0] || 'staff';
+    rmGameSelect.value = currentGame;
+  }
+  renderRM();
+}
 
 rmGameSelect.addEventListener('change', () => {
   currentGame = rmGameSelect.value;
@@ -1158,6 +1270,234 @@ rmSeedBtn.addEventListener('click', async () => {
     rmSeedMsg.className = 'status-msg err';
   } finally {
     rmSeedBtn.disabled = false;
+  }
+});
+
+// ── Game Manager (Game Card Creator) ──
+// Writes to games/{gameKey} = { name, img, order }. index.html reads this
+// node to render a Game Card + Roster panel for every game, including any
+// games already added (fn/bs/rl/cs2/gta/fa/ef) plus new ones created here.
+// Player counts shown here and on the public site come live from
+// roster/{gameKey} — this module never stores a count, it just reads one.
+const GAMES_SEED = {
+  fn:  { name:'Fortnite', img:'https://i.ytimg.com/vi/adGdyCdvKz4/maxresdefault.jpg', order:0 },
+  bs:  { name:'Brawl Stars', img:'https://www.klicksafe.de/fileadmin/_processed_/0/5/csm_Sharepic_Brawl-Stars_905ff3013c.png', order:1 },
+  rl:  { name:'Rocket League', img:'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/252950/capsule_616x353.jpg', order:2 },
+  cs2: { name:'CS2', img:'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/capsule_616x353.jpg', order:3 },
+  gta: { name:'GTA V Online', img:'https://images.mein-mmo.de/medien/2022/03/GTA-Online-Next-Gen-Titel-Autos-Polizei.jpg', order:4 },
+  fa:  { name:'Formula Apex', img:'https://static.wikia.nocookie.net/formula-apex/images/e/e6/Game_Icon-_Pre_CU11.png/revision/latest?cb=20240824021346', order:5 },
+  ef:  { name:'eFootball', img:'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1665460/capsule_616x353.jpg', order:6 }
+};
+
+const gmList = document.getElementById('gmList');
+const gmAddBtn = document.getElementById('gmAddBtn');
+const gmMsg = document.getElementById('gmMsg');
+const gNewName = document.getElementById('gNewName');
+const gNewImg = document.getElementById('gNewImg');
+let gamesCache = {};
+let gamesSeeded = false;
+
+function slugifyGameName(name){
+  let base = name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '');
+  if(!base) base = 'game';
+  let key = base, n = 1;
+  while(GAMES[key] || gamesCache[key]){ key = base + (++n); }
+  return key;
+}
+
+function gmRowHtml(key, g){
+  const count = Object.keys(rosterCache[key] || {}).length;
+  return `<div class="gm-item" data-key="${key}">
+    <div class="gm-item-top">
+      <img class="gm-thumb" src="${escHtml(g.img || '')}" onerror="this.style.visibility='hidden'" alt="">
+      <span class="gm-count-preview">${count} player${count === 1 ? '' : 's'}</span>
+    </div>
+    <label class="gm-label">Game Name</label>
+    <input type="text" class="gm-name" value="${escHtml(g.name || '')}">
+    <label class="gm-label">Cover Image URL</label>
+    <input type="text" class="gm-img" value="${escHtml(g.img || '')}" placeholder="https://...">
+    <div class="gm-row">
+      <button type="button" class="gm-mini" data-action="save" data-key="${key}">Save</button>
+      <button type="button" class="gm-mini" data-action="viewroster" data-key="${key}">Open in Roster Manager</button>
+    </div>
+    <button type="button" class="gm-remove" data-action="remove" data-key="${key}">Remove Game</button>
+  </div>`;
+}
+
+function renderGMList(){
+  const entries = Object.entries(gamesCache).sort((a, b) => (a[1].order ?? 0) - (b[1].order ?? 0));
+  if(!entries.length){
+    gmList.innerHTML = '<div class="gm-empty">No games yet. Add one below.</div>';
+    return;
+  }
+  gmList.innerHTML = entries.map(([key, g]) => gmRowHtml(key, g)).join('');
+}
+
+const gamesRef = ref(db, 'games');
+onValue(gamesRef, async (snap) => {
+  if(!snap.exists() && !gamesSeeded){
+    // First run: seed the games already added (Fortnite, Brawl Stars, etc.)
+    // so the Game Card Creator starts populated with the current lineup.
+    gamesSeeded = true;
+    try{
+      for(const [key, g] of Object.entries(GAMES_SEED)){
+        await set(ref(db, 'games/' + key), g);
+      }
+    } catch(e){ /* fall through to render whatever we have */ }
+    return;
+  }
+  gamesCache = snap.exists() ? snap.val() : {};
+  GAMES = { ...gamesCache_names(), ...STATIC_GROUPS };
+  Object.keys(gamesCache).forEach(watchRoster);
+  rebuildRmGameSelect();
+  renderGMList();
+}, (err) => {
+  gmList.innerHTML = '<div class="gm-empty">Could not load games: ' + escHtml(err.message) + '</div>';
+});
+
+function gamesCache_names(){
+  const out = {};
+  Object.entries(gamesCache).forEach(([k, g]) => { out[k] = g.name || k; });
+  return out;
+}
+
+gmAddBtn.addEventListener('click', async () => {
+  const name = gNewName.value.trim();
+  if(!name){
+    gmMsg.textContent = 'Enter a game name first.';
+    gmMsg.className = 'status-msg err';
+    return;
+  }
+  const key = slugifyGameName(name);
+  const order = Object.keys(gamesCache).length + Object.keys(STATIC_GROUPS).length;
+  try{
+    await set(ref(db, 'games/' + key), { name, img: gNewImg.value.trim(), order });
+    gNewName.value = '';
+    gNewImg.value = '';
+    gmMsg.textContent = `Added "${name}" — it now appears as a Game Card on the site.`;
+    gmMsg.className = 'status-msg ok';
+  } catch(e){
+    gmMsg.textContent = 'Error: ' + e.message;
+    gmMsg.className = 'status-msg err';
+  }
+});
+
+gmList.addEventListener('click', async (e) => {
+  const btn = e.target.closest('button[data-action]');
+  if(!btn) return;
+  const key = btn.dataset.key;
+  const action = btn.dataset.action;
+  const item = btn.closest('.gm-item');
+
+  try{
+    if(action === 'save'){
+      await update(ref(db, 'games/' + key), {
+        name: item.querySelector('.gm-name').value.trim(),
+        img: item.querySelector('.gm-img').value.trim()
+      });
+      gmMsg.textContent = 'Saved.';
+      gmMsg.className = 'status-msg ok';
+    } else if(action === 'remove'){
+      if(!confirm('Remove this game card and its roster permanently? This deletes the roster/' + key + ' data too.')) return;
+      await remove(ref(db, 'games/' + key));
+      await remove(ref(db, 'roster/' + key));
+    } else if(action === 'viewroster'){
+      currentGame = key;
+      rmGameSelect.value = key;
+      renderRM();
+      goToBlade(2);
+    }
+  } catch(err){
+    alert('Error: ' + err.message);
+  }
+});
+
+// ── Earnings Tracker ──
+// Writes to earnings/{id} = { name, num, total }. index.html reads this
+// node to render a public Earnings section, summing every player's total
+// automatically for the org-wide figure.
+const emList = document.getElementById('emList');
+const emAddBtn = document.getElementById('emAddBtn');
+const emMsg = document.getElementById('emMsg');
+const emTotalValue = document.getElementById('emTotalValue');
+let earningsCache = {};
+
+function fmtMoney(n){
+  const v = Number(n) || 0;
+  return '$' + v.toLocaleString('en-US', { maximumFractionDigits: 2 });
+}
+
+function emRowHtml(id, p){
+  return `<div class="em-item" data-id="${id}">
+    <div class="em-item-top">
+      <span class="em-earned-preview">${fmtMoney(p.total)}</span>
+    </div>
+    <div class="em-row">
+      <input type="text" class="em-name" placeholder="Player name" value="${escHtml(p.name || '')}">
+      <input type="text" class="em-num" placeholder="#63" value="${escHtml(p.num || '')}" style="max-width:90px">
+    </div>
+    <label class="em-label">Total Earned (USD)</label>
+    <input type="number" class="em-total" min="0" step="0.01" value="${p.total != null ? p.total : 0}">
+    <div class="em-row">
+      <button type="button" class="em-mini" data-action="save" data-id="${id}">Save</button>
+    </div>
+    <button type="button" class="em-remove" data-action="remove" data-id="${id}">Remove Player</button>
+  </div>`;
+}
+
+function renderEM(){
+  const entries = Object.entries(earningsCache);
+  const orgTotal = entries.reduce((sum, [, p]) => sum + (Number(p.total) || 0), 0);
+  emTotalValue.textContent = fmtMoney(orgTotal);
+  if(!entries.length){
+    emList.innerHTML = '<div class="em-empty">No players tracked yet. Add one below.</div>';
+    return;
+  }
+  entries.sort((a, b) => (Number(b[1].total) || 0) - (Number(a[1].total) || 0));
+  emList.innerHTML = entries.map(([id, p]) => emRowHtml(id, p)).join('');
+}
+
+const earningsRef = ref(db, 'earnings');
+onValue(earningsRef, (snap) => {
+  earningsCache = snap.exists() ? snap.val() : {};
+  renderEM();
+}, (err) => {
+  emList.innerHTML = '<div class="em-empty">Could not load earnings: ' + escHtml(err.message) + '</div>';
+});
+
+emAddBtn.addEventListener('click', async () => {
+  try{
+    await push(earningsRef, { name: 'New Player', num: '', total: 0 });
+  } catch(e){
+    emMsg.textContent = 'Error: ' + e.message;
+    emMsg.className = 'status-msg err';
+  }
+});
+
+emList.addEventListener('click', async (e) => {
+  const btn = e.target.closest('button[data-action]');
+  if(!btn) return;
+  const id = btn.dataset.id;
+  const action = btn.dataset.action;
+  const item = btn.closest('.em-item');
+  const rowRef = ref(db, 'earnings/' + id);
+
+  try{
+    if(action === 'save'){
+      const totalVal = parseFloat(item.querySelector('.em-total').value);
+      await update(rowRef, {
+        name: item.querySelector('.em-name').value.trim(),
+        num: item.querySelector('.em-num').value.trim(),
+        total: isNaN(totalVal) ? 0 : totalVal
+      });
+      emMsg.textContent = 'Saved.';
+      emMsg.className = 'status-msg ok';
+    } else if(action === 'remove'){
+      if(!confirm('Remove this player from the earnings tracker?')) return;
+      await remove(rowRef);
+    }
+  } catch(err){
+    alert('Error: ' + err.message);
   }
 });
 
