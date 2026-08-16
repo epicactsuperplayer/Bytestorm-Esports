@@ -133,6 +133,14 @@
 
     <div class="card">
       <div class="card-head">
+        <h2>Login Attempts</h2>
+        <button class="clear-btn" id="clearLoginAttemptsBtn" type="button">Clear All</button>
+      </div>
+      <div id="loginAttemptsList"><div class="empty">Loading…</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
         <h2>Audit Log</h2>
         <button class="clear-btn" id="clearAuditBtn" type="button">Clear All</button>
       </div>
@@ -182,6 +190,16 @@ const auth = getAuth(app);
   } catch(e){ /* fail open on network error */ }
 })();
 
+function logMonitorEvent(payload){
+  fetch('/api/monitor-log', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).catch(() => {});
+}
+
+logMonitorEvent({ event: 'visit' });
+
 const gateCard = document.getElementById('gateCard');
 const deniedCard = document.getElementById('deniedCard');
 const mainWrap = document.getElementById('mainWrap');
@@ -194,11 +212,14 @@ pwBtn.addEventListener('click', async () => {
   pwBtn.disabled = true;
   gateMsg.textContent = 'Signing in...';
   gateMsg.className = 'status-msg';
+  const attemptedEmail = emailInput.value.trim();
   try{
-    await signInWithEmailAndPassword(auth, emailInput.value.trim(), pwInput.value);
+    await signInWithEmailAndPassword(auth, attemptedEmail, pwInput.value);
+    logMonitorEvent({ event: 'login_attempt', email: attemptedEmail, success: true });
   } catch(e){
     gateMsg.textContent = 'Sign-in failed.';
     gateMsg.className = 'status-msg err';
+    logMonitorEvent({ event: 'login_attempt', email: attemptedEmail, success: false, errorCode: e.code || 'unknown' });
   } finally {
     pwBtn.disabled = false;
   }
@@ -348,7 +369,49 @@ function renderIpLog(ipLog){
   }).join('');
 }
 
-// ── Audit Log ──
+// ── Login Attempts ──
+const loginAttemptsList = document.getElementById('loginAttemptsList');
+
+function renderLoginAttempts(monitorLog){
+  const rows = Object.entries(monitorLog || {})
+    .map(([id, v]) => ({ id, ...v }))
+    .filter(r => r.event === 'login_attempt');
+  rows.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+
+  if(!rows.length){
+    loginAttemptsList.innerHTML = '<div class="empty">No login attempts recorded yet.</div>';
+    return;
+  }
+
+  loginAttemptsList.innerHTML = rows.slice(0, 200).map(r => {
+    const badgeClass = r.success ? 'active' : 'revoked';
+    const badgeText = r.success ? 'Success' : 'Failed';
+    const details = [
+      r.ip ? escHtml(r.ip) : null,
+      r.country && r.country !== 'unknown' ? escHtml(r.country) : null,
+      r.browser ? escHtml(r.browser) : null,
+      r.device ? escHtml(r.device) : null,
+      !r.success && r.errorCode ? escHtml(r.errorCode) : null,
+    ].filter(Boolean).join(' · ');
+    return `<div class="log-item${r.success ? ' recent' : ''}">
+      <div class="log-top">
+        <span class="log-action">${escHtml(r.email || 'unknown')}</span>
+        <span class="log-time">${fmtTime(r.timestamp)}</span>
+      </div>
+      <span class="log-meta">${badgeText ? `<span class="session-badge ${badgeClass}" style="margin-right:6px">${badgeText}</span>` : ''}${details}</span>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('clearLoginAttemptsBtn').addEventListener('click', async () => {
+  if(!confirm('Clear all login attempts and visit history for this page? This cannot be undone. Continue?')) return;
+  try{
+    await remove(ref(db, 'monitorLog'));
+  } catch(err){
+    alert('Could not clear login attempts: ' + err.message);
+  }
+});
+
 const logList = document.getElementById('logList');
 const filterRow = document.getElementById('filterRow');
 let auditCache = {};
@@ -438,7 +501,14 @@ function startWatchers(){
     console.error('Could not load bannedIPs:', err.message);
   });
 
-  dataUnsubs.push(u1, u2, u3, u4);
+  const monitorLogRef = ref(db, 'monitorLog');
+  const u5 = onValue(monitorLogRef, (snap) => {
+    renderLoginAttempts(snap.exists() ? snap.val() : {});
+  }, (err) => {
+    loginAttemptsList.innerHTML = '<div class="empty">Could not load login attempts: ' + escHtml(err.message) + '</div>';
+  });
+
+  dataUnsubs.push(u1, u2, u3, u4, u5);
 }
 </script>
 </body>
