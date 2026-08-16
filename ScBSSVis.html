@@ -268,7 +268,7 @@ function renderSessions(allSessions){
         <span class="session-device">${escHtml(s.device || 'Unknown device')}</span>
         <span class="session-badge ${badgeClass}">${badgeText}</span>
       </div>
-      <span class="session-email">${escHtml(s.email || s.uid)}</span>
+      <span class="session-email">${escHtml(s.email || s.uid)}${s.ip ? ' · ' + escHtml(s.ip) : ''}</span>
       <span class="session-meta">Logged in ${fmtTime(s.loginTime)} · last seen ${timeAgo(s.lastSeen)}${isRevoked ? '' : ' · click to revoke'}</span>
     </div>`;
   }).join('');
@@ -368,7 +368,7 @@ function renderLog(){
         <span class="log-action">${escHtml(e.action || 'unknown action')}</span>
         <span class="log-time">${fmtTime(e.timestamp)}</span>
       </div>
-      <span class="log-meta">${escHtml(e.email || e.uid || 'unknown')}${e.path ? ' · ' + escHtml(e.path) : ''}</span>
+      <span class="log-meta">${escHtml(e.email || e.uid || 'unknown')}${e.ip ? ' · ' + escHtml(e.ip) : ''}${e.path ? ' · ' + escHtml(e.path) : ''}</span>
     </div>`;
   }).join('');
 }
