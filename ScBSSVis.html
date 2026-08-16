@@ -358,16 +358,36 @@ function renderIpLog(ipLog){
       r.browser ? escHtml(r.browser) : null,
       r.device ? escHtml(r.device) : null,
     ].filter(Boolean).join(' · ');
-    return `<div class="session-item" style="cursor:default">
+    return `<div class="session-item" data-key="${escHtml(r.key)}" data-ip="${escHtml(r.ip || r.key)}" data-banned="${isBanned}">
       <div class="session-top">
         <span class="session-device">${escHtml(r.ip || r.key)}</span>
         <span style="display:flex; gap:6px">${vpnBadge}<span class="session-badge ${badgeClass}">${badgeText}</span></span>
       </div>
       <span class="session-email">${details}</span>
-      <span class="session-meta">last path: ${escHtml(r.lastPath || 'unknown')} · last seen ${timeAgo(r.lastSeen)}</span>
+      <span class="session-meta">last path: ${escHtml(r.lastPath || 'unknown')} · last seen ${timeAgo(r.lastSeen)} · click to ${isBanned ? 'unban' : 'ban'}</span>
     </div>`;
   }).join('');
 }
+
+ipLogList.addEventListener('click', async (e) => {
+  const item = e.target.closest('.session-item');
+  if(!item) return;
+  const key = item.dataset.key;
+  const ip = item.dataset.ip;
+  if(!key) return;
+  const isBanned = item.dataset.banned === 'true';
+  const label = isBanned ? 'Unban' : 'Ban';
+  if(!confirm(`${label} ${ip}? ${isBanned ? 'They will regain access immediately.' : 'They will be blocked from admin.html and ScBSSVis.html immediately.'}`)) return;
+  try{
+    if(isBanned){
+      await remove(ref(db, 'bannedIPs/' + key));
+    } else {
+      await update(ref(db, 'bannedIPs'), { [key]: true });
+    }
+  } catch(err){
+    alert('Could not update ban status: ' + err.message);
+  }
+});
 
 // ── Login Attempts ──
 const loginAttemptsList = document.getElementById('loginAttemptsList');
