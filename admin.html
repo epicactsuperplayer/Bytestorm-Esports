@@ -556,10 +556,12 @@ const auth = getAuth(app);
 const liveRef = ref(db, "liveMatch/current");
 
 // ── IP gate check (fails open if /api/ip-gate isn't deployed) ──
-(async () => {
+let clientIP = 'unknown';
+const ipGateReady = (async () => {
   try{
     const res = await fetch('/api/ip-gate?path=admin.html');
     const data = await res.json();
+    if(data && data.ip) clientIP = data.ip;
     if(data && data.allowed === false){
       document.body.innerHTML = '<div style="padding:60px 20px;text-align:center;color:#e74c3c;font-family:Inter,sans-serif">Access denied.</div>';
       throw new Error('blocked');
@@ -572,12 +574,14 @@ let currentSessionId = null;
 let heartbeatTimer = null;
 let revokeCheckUnsub = null;
 
-function logAction(action, path){
+async function logAction(action, path){
   const user = auth.currentUser;
   if(!user) return;
+  await ipGateReady;
   push(ref(db, 'auditLog'), {
     uid: user.uid,
     email: user.email || 'unknown',
+    ip: clientIP,
     action: action,
     path: path || '',
     timestamp: serverTimestamp()
@@ -600,7 +604,8 @@ function getDeviceLabel(){
   return browser + ' on ' + os;
 }
 
-function startSessionTracking(user){
+async function startSessionTracking(user){
+  await ipGateReady;
   currentSessionId = 'sess_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
   const sessionRef = ref(db, 'sessions/' + user.uid + '/' + currentSessionId);
   const sessionData = {
@@ -608,6 +613,7 @@ function startSessionTracking(user){
     lastSeen: serverTimestamp(),
     device: getDeviceLabel(),
     email: user.email || 'unknown',
+    ip: clientIP,
     revoked: false
   };
   set(sessionRef, sessionData).catch(() => {});
