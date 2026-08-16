@@ -158,20 +158,24 @@ export default async function handler(request) {
   // since we need the result to store it, but it's a single fast external call.
   const vpn = await checkVpn(ip);
 
-  fetch(`${dbUrl}/ipLog/${ipKey}.json`, {
-    method: 'PATCH',
-    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      ip,
-      lastPath: path,
-      lastSeen: Date.now(),
-      device,
-      browser,
-      os,
-      country,
-      vpn,
-    }),
-  }).catch(() => {});
+  try {
+    await fetch(`${dbUrl}/ipLog/${ipKey}.json`, {
+      method: 'PATCH',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ip,
+        lastPath: path,
+        lastSeen: Date.now(),
+        device,
+        browser,
+        os,
+        country,
+        vpn,
+      }),
+    });
+  } catch {
+    // don't block the response on a logging failure
+  }
 
   return new Response(JSON.stringify({ allowed: !isBanned, ip }), {
     headers: { 'Content-Type': 'application/json' },
