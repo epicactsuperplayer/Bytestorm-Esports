@@ -555,6 +555,18 @@ const db = getDatabase(app);
 const auth = getAuth(app);
 const liveRef = ref(db, "liveMatch/current");
 
+// ── IP gate check (fails open if /api/ip-gate isn't deployed) ──
+(async () => {
+  try{
+    const res = await fetch('/api/ip-gate?path=admin.html');
+    const data = await res.json();
+    if(data && data.allowed === false){
+      document.body.innerHTML = '<div style="padding:60px 20px;text-align:center;color:#e74c3c;font-family:Inter,sans-serif">Access denied.</div>';
+      throw new Error('blocked');
+    }
+  } catch(e){ /* fail open on network error so admin isn't locked out by an outage */ }
+})();
+
 // ── Audit log + session tracking (silent, no UI) ──
 let currentSessionId = null;
 let heartbeatTimer = null;
