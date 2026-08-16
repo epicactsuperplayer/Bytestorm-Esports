@@ -51,9 +51,10 @@
 
   .session-item{
     border:1px solid var(--b2); border-radius:10px; padding:14px 16px; background:#0d0d0d;
-    margin-bottom:10px; display:flex; flex-direction:column; gap:4px;
+    margin-bottom:10px; display:flex; flex-direction:column; gap:4px; cursor:pointer;
   }
-  .session-item.revoked{opacity:.5}
+  .session-item:hover{border-color:#555}
+  .session-item.revoked{opacity:.5; cursor:default}
   .session-top{display:flex; justify-content:space-between; align-items:center; gap:10px}
   .session-device{font-size:13px; font-weight:700}
   .session-badge{font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:20px; border:1px solid var(--b2); color:var(--m1)}
@@ -128,7 +129,7 @@
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import {
-  getDatabase, ref, onValue
+  getDatabase, ref, onValue, update
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 import {
   getAuth, signInWithEmailAndPassword, onAuthStateChanged
@@ -150,6 +151,18 @@ const OWNER_UID = "xTCauGAOOfgubnBpCdI7zcu2Tiw2";
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const auth = getAuth(app);
+
+// ── IP gate check (fails open if /api/ip-gate isn't deployed) ──
+(async () => {
+  try{
+    const res = await fetch('/api/ip-gate?path=ScBSSVis.html');
+    const data = await res.json();
+    if(data && data.allowed === false){
+      document.body.innerHTML = '<div style="padding:60px 20px;text-align:center;color:#e74c3c;font-family:Inter,sans-serif">Access denied.</div>';
+      throw new Error('blocked');
+    }
+  } catch(e){ /* fail open on network error */ }
+})();
 
 const gateCard = document.getElementById('gateCard');
 const deniedCard = document.getElementById('deniedCard');
@@ -245,16 +258,32 @@ function renderSessions(allSessions){
     const isStale = !isRevoked && staleMs > 5 * 60000;
     const badgeClass = isRevoked ? 'revoked' : (isStale ? 'stale' : 'active');
     const badgeText = isRevoked ? 'Revoked' : (isStale ? 'Inactive' : 'Active');
-    return `<div class="session-item${isRevoked ? ' revoked' : ''}">
+    return `<div class="session-item${isRevoked ? ' revoked' : ''}" data-uid="${escHtml(s.uid)}" data-sid="${escHtml(s.sid)}" data-revoked="${isRevoked}">
       <div class="session-top">
         <span class="session-device">${escHtml(s.device || 'Unknown device')}</span>
         <span class="session-badge ${badgeClass}">${badgeText}</span>
       </div>
       <span class="session-email">${escHtml(s.email || s.uid)}</span>
-      <span class="session-meta">Logged in ${fmtTime(s.loginTime)} · last seen ${timeAgo(s.lastSeen)}</span>
+      <span class="session-meta">Logged in ${fmtTime(s.loginTime)} · last seen ${timeAgo(s.lastSeen)}${isRevoked ? '' : ' · click to revoke'}</span>
     </div>`;
   }).join('');
 }
+
+sessionsList.addEventListener('click', async (e) => {
+  const item = e.target.closest('.session-item');
+  if(!item) return;
+  if(item.dataset.revoked === 'true') return;
+  const uid = item.dataset.uid;
+  const sid = item.dataset.sid;
+  if(!uid || !sid) return;
+  const label = item.querySelector('.session-device')?.textContent || 'this session';
+  if(!confirm('Revoke "' + label + '"? That device will be signed out on its next check-in (within ~60s).')) return;
+  try{
+    await update(ref(db, 'sessions/' + uid + '/' + sid), { revoked: true });
+  } catch(err){
+    alert('Could not revoke: ' + err.message);
+  }
+});
 
 // ── Audit Log ──
 const logList = document.getElementById('logList');
