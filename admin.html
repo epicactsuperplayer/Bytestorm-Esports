@@ -555,6 +555,72 @@ const db = getDatabase(app);
 const auth = getAuth(app);
 const liveRef = ref(db, "liveMatch/current");
 
+// ── Audit log + session tracking (silent, no UI) ──
+let currentSessionId = null;
+let heartbeatTimer = null;
+let revokeCheckUnsub = null;
+
+function logAction(action, path){
+  const user = auth.currentUser;
+  if(!user) return;
+  push(ref(db, 'auditLog'), {
+    uid: user.uid,
+    email: user.email || 'unknown',
+    action: action,
+    path: path || '',
+    timestamp: serverTimestamp()
+  }).catch(() => {});
+}
+
+function getDeviceLabel(){
+  const ua = navigator.userAgent;
+  let browser = 'Unknown browser';
+  if(ua.includes('Firefox')) browser = 'Firefox';
+  else if(ua.includes('Edg')) browser = 'Edge';
+  else if(ua.includes('Chrome')) browser = 'Chrome';
+  else if(ua.includes('Safari')) browser = 'Safari';
+  let os = 'Unknown OS';
+  if(ua.includes('Windows')) os = 'Windows';
+  else if(ua.includes('Mac OS')) os = 'macOS';
+  else if(ua.includes('Android')) os = 'Android';
+  else if(ua.includes('iPhone') || ua.includes('iPad')) os = 'iOS';
+  else if(ua.includes('Linux')) os = 'Linux';
+  return browser + ' on ' + os;
+}
+
+function startSessionTracking(user){
+  currentSessionId = 'sess_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+  const sessionRef = ref(db, 'sessions/' + user.uid + '/' + currentSessionId);
+  const sessionData = {
+    loginTime: serverTimestamp(),
+    lastSeen: serverTimestamp(),
+    device: getDeviceLabel(),
+    email: user.email || 'unknown',
+    revoked: false
+  };
+  set(sessionRef, sessionData).catch(() => {});
+
+  heartbeatTimer = setInterval(() => {
+    update(sessionRef, { lastSeen: serverTimestamp() }).catch(() => {});
+  }, 60000);
+
+  revokeCheckUnsub = onValue(sessionRef, (snap) => {
+    const val = snap.val();
+    if(val && val.revoked === true){
+      clearInterval(heartbeatTimer);
+      signOut(auth);
+    }
+  });
+}
+
+function stopSessionTracking(){
+  if(heartbeatTimer) clearInterval(heartbeatTimer);
+  if(revokeCheckUnsub) revokeCheckUnsub();
+  heartbeatTimer = null;
+  revokeCheckUnsub = null;
+  currentSessionId = null;
+}
+
 // ── Real Firebase Auth gate ──
 // Access is enforced server-side by the Realtime Database rules
 // (liveMatch write requires auth !== null, ideally scoped to the admin email).
@@ -619,7 +685,10 @@ topbarLogoutBtn.addEventListener('click', async () => {
 onAuthStateChanged(auth, (user) => {
   if(user){
     showForm();
+    startSessionTracking(user);
+    logAction('login', '');
   } else {
+    stopSessionTracking();
     showGate();
   }
 });
@@ -783,6 +852,7 @@ saveBtn.addEventListener('click', async () => {
     });
     saveMsg.textContent = 'Published — live on site now.';
     saveMsg.className = 'status-msg ok';
+    logAction('update liveMatch', 'liveMatch/current');
   } catch(e){
     saveMsg.textContent = 'Error: ' + e.message;
     saveMsg.className = 'status-msg err';
@@ -940,6 +1010,7 @@ tmCreateBtn.addEventListener('click', async () => {
     await push(tournRef, newTourn);
     tmFormMsg.textContent = 'Tournament added.';
     tmFormMsg.className = 'status-msg ok';
+    logAction('create tournament: ' + name, 'tournaments');
     document.getElementById('tName').value = '';
     document.getElementById('tGame').value = '';
     document.getElementById('tOpponent').value = '';
@@ -992,6 +1063,7 @@ tmList.addEventListener('click', async (e) => {
       if(!confirm('Remove this tournament permanently? This cannot be undone.')) return;
       await remove(rowRef);
     }
+    logAction('tournament: ' + action, 'tournaments/' + id);
   } catch(err){
     alert('Error: ' + err.message);
   }
@@ -1037,6 +1109,7 @@ tmSeedBtn.addEventListener('click', async () => {
       ? `Seeded ${written} historical tournament${written === 1 ? '' : 's'}.`
       : 'Historical tournaments already present — nothing to add.';
     tmSeedMsg.className = 'status-msg ok';
+    if(written > 0) logAction('seed tournaments (' + written + ')', 'tournaments');
   } catch(e){
     tmSeedMsg.textContent = 'Error: ' + e.message;
     tmSeedMsg.className = 'status-msg err';
@@ -1149,6 +1222,7 @@ rmAddBtn.addEventListener('click', async () => {
   const gRef = ref(db, 'roster/' + currentGame);
   try{
     await push(gRef, { name: 'New Player', num: '', roleKey: 'esports', plays: '', region: '', flag: '', status: 'active' });
+    logAction('add roster player', 'roster/' + currentGame);
   } catch(e){
     rmMsg.textContent = 'Error: ' + e.message;
     rmMsg.className = 'status-msg err';
@@ -1184,6 +1258,7 @@ rmList.addEventListener('click', async (e) => {
       if(!confirm('Remove this player permanently?')) return;
       await remove(rowRef);
     }
+    logAction('roster: ' + action, 'roster/' + currentGame + '/' + id);
   } catch(err){
     alert('Error: ' + err.message);
   }
@@ -1194,6 +1269,7 @@ rmList.addEventListener('change', async (e) => {
     const item = e.target.closest('.rm-item');
     const id = item.dataset.id;
     await update(ref(db, 'roster/' + currentGame + '/' + id), { suspendedUntil: e.target.value });
+    logAction('roster: suspend date', 'roster/' + currentGame + '/' + id);
   }
 });
 
@@ -1265,6 +1341,7 @@ rmSeedBtn.addEventListener('click', async () => {
       ? `Seeded ${written} player entr${written === 1 ? 'y' : 'ies'}.`
       : 'Roster already present — nothing to add.';
     rmSeedMsg.className = 'status-msg ok';
+    if(written > 0) logAction('seed roster (' + written + ')', 'roster');
   } catch(e){
     rmSeedMsg.textContent = 'Error: ' + e.message;
     rmSeedMsg.className = 'status-msg err';
@@ -1376,6 +1453,7 @@ gmAddBtn.addEventListener('click', async () => {
     gNewImg.value = '';
     gmMsg.textContent = `Added "${name}" — it now appears as a Game Card on the site.`;
     gmMsg.className = 'status-msg ok';
+    logAction('add game: ' + name, 'games/' + key);
   } catch(e){
     gmMsg.textContent = 'Error: ' + e.message;
     gmMsg.className = 'status-msg err';
@@ -1407,6 +1485,7 @@ gmList.addEventListener('click', async (e) => {
       renderRM();
       goToBlade(2);
     }
+    if(action === 'save' || action === 'remove') logAction('game: ' + action, 'games/' + key);
   } catch(err){
     alert('Error: ' + err.message);
   }
@@ -1468,6 +1547,7 @@ onValue(earningsRef, (snap) => {
 emAddBtn.addEventListener('click', async () => {
   try{
     await push(earningsRef, { name: 'New Player', num: '', total: 0 });
+    logAction('add earnings entry', 'earnings');
   } catch(e){
     emMsg.textContent = 'Error: ' + e.message;
     emMsg.className = 'status-msg err';
@@ -1496,6 +1576,7 @@ emList.addEventListener('click', async (e) => {
       if(!confirm('Remove this player from the earnings tracker?')) return;
       await remove(rowRef);
     }
+    logAction('earnings: ' + action, 'earnings/' + id);
   } catch(err){
     alert('Error: ' + err.message);
   }
@@ -1577,6 +1658,7 @@ nmAddBtn.addEventListener('click', async () => {
       title: 'New Post', tagKey: 'tagAnnouncement', date: todayStr(),
       img: '', sub: '', text: '', order: maxOrder + 1
     });
+    logAction('add news post', 'news');
   } catch(e){
     nmMsg.textContent = 'Error: ' + e.message;
     nmMsg.className = 'status-msg err';
@@ -1619,6 +1701,7 @@ nmList.addEventListener('click', async (e) => {
       await update(ref(db, 'news/' + idA), { order: orderB });
       await update(ref(db, 'news/' + idB), { order: orderA });
     }
+    logAction('news: ' + action, 'news/' + id);
   } catch(err){
     alert('Error: ' + err.message);
   }
@@ -1684,6 +1767,7 @@ nmSeedBtn.addEventListener('click', async () => {
       ? `Seeded ${written} news post${written === 1 ? '' : 's'}.`
       : 'News already present — nothing to add.';
     nmSeedMsg.className = 'status-msg ok';
+    if(written > 0) logAction('seed news (' + written + ')', 'news');
   } catch(e){
     nmSeedMsg.textContent = 'Error: ' + e.message;
     nmSeedMsg.className = 'status-msg err';
