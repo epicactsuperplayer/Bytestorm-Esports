@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Bytestorm Esports — System Monitor</title>
+<style>
+  :root{
+    --bg:#0a0a0a; --panel:#111; --b1:#242424; --b2:#333;
+    --txt:#f5f5f5; --m1:#9a9a9a; --m2:#6f6f6f;
+    --accent:#ffffff; --win:#2ecc71; --loss:#e74c3c; --live:#ff3b3b; --warn:#fbbf24;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; background:var(--bg); color:var(--txt);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    display:flex; flex-direction:column; align-items:center; padding:32px 20px 80px; gap:20px;
+  }
+  .wrap{width:100%; max-width:760px; display:flex; flex-direction:column; gap:20px}
+  .banner{
+    width:100%; background:#1a1206; border:1px solid #7a5b12; border-radius:10px;
+    padding:14px 16px; font-size:12px; color:var(--warn); line-height:1.5;
+  }
+  .banner b{color:#fff9e6}
+  h1{font-size:18px; font-weight:800; letter-spacing:.02em; margin:0 0 4px}
+  .sub{font-size:12px; color:var(--m1); margin:0 0 4px}
+  .card{
+    width:100%; background:var(--panel);
+    border:1px solid var(--b1); border-radius:14px; padding:22px;
+  }
+  .card h2{font-size:13px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--m1); margin:0 0 16px}
+  .gate{max-width:440px; margin:0 auto}
+  .gate input[type=text], .gate input[type=password]{
+    width:100%; background:#0d0d0d; border:1px solid var(--b2); color:var(--txt);
+    border-radius:8px; padding:11px 12px; font-size:14px; font-family:inherit; margin-bottom:12px;
+  }
+  .gate input:focus{outline:none; border-color:#666}
+  .gate label{display:block; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--m1); margin:14px 0 6px}
+  .gate button{
+    width:100%; margin-top:8px; background:var(--accent); color:#0a0a0a;
+    border:none; border-radius:8px; padding:13px; font-size:14px; font-weight:800;
+    letter-spacing:.02em; cursor:pointer;
+  }
+  .gate button:active{transform:scale(0.98)}
+  .gate button:disabled{opacity:.5; cursor:default}
+  .status-msg{margin-top:12px; font-size:13px; text-align:center; min-height:18px}
+  .status-msg.err{color:var(--loss)}
+  .status-msg.ok{color:var(--win)}
+  .denied{max-width:440px; text-align:center; margin:60px auto; font-size:13px; color:var(--m1)}
+
+  .session-item{
+    border:1px solid var(--b2); border-radius:10px; padding:14px 16px; background:#0d0d0d;
+    margin-bottom:10px; display:flex; flex-direction:column; gap:4px;
+  }
+  .session-item.revoked{opacity:.5}
+  .session-top{display:flex; justify-content:space-between; align-items:center; gap:10px}
+  .session-device{font-size:13px; font-weight:700}
+  .session-badge{font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:20px; border:1px solid var(--b2); color:var(--m1)}
+  .session-badge.active{color:var(--win); border-color:#1f6b3d; background:#0d1f14}
+  .session-badge.stale{color:var(--warn); border-color:#7a5b12; background:#241a05}
+  .session-badge.revoked{color:var(--loss); border-color:#7a1f1f; background:#210b0b}
+  .session-meta{font-size:11.5px; color:var(--m1)}
+  .session-email{font-size:11px; color:var(--m2)}
+
+  .log-item{
+    border-left:2px solid var(--b2); padding:8px 0 8px 14px; margin-bottom:2px;
+    font-size:12.5px; display:flex; flex-direction:column; gap:2px;
+  }
+  .log-item.recent{border-left-color:var(--win)}
+  .log-top{display:flex; justify-content:space-between; gap:10px; align-items:baseline}
+  .log-action{font-weight:700; color:var(--txt)}
+  .log-time{font-size:10.5px; color:var(--m2); white-space:nowrap}
+  .log-meta{font-size:11px; color:var(--m1)}
+  .log-list{max-height:560px; overflow-y:auto; padding-right:4px}
+  .empty{font-size:13px; color:var(--m2); text-align:center; padding:20px 0}
+
+  .filter-row{display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap}
+  .filter-btn{
+    background:#181818; color:var(--m1); border:1px solid var(--b2); border-radius:20px;
+    padding:6px 12px; font-size:11px; font-weight:700; cursor:pointer;
+  }
+  .filter-btn.active{background:var(--accent); color:#0a0a0a; border-color:var(--accent)}
+
+  .logoff-note{font-size:11px; color:var(--m2); text-align:center; margin-top:10px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="banner">
+    <b>Restricted — Bytestorm Esports internal system.</b><br>
+    This page is not part of the public site and is not linked from it. Access is logged. If you were not given this URL directly by Bytestorm Esports leadership, please close this page.
+  </div>
+
+  <div id="gateCard" class="card gate" style="display:none">
+    <h1>System Monitor</h1>
+    <p class="sub">Owner sign-in required.</p>
+    <label>Email</label>
+    <input type="text" id="emailInput" autocomplete="username">
+    <label>Password</label>
+    <input type="password" id="pwInput" autocomplete="current-password">
+    <button id="pwBtn" type="button">Sign In</button>
+    <div id="gateMsg" class="status-msg"></div>
+  </div>
+
+  <div id="deniedCard" class="denied" style="display:none">
+    Signed in, but this account does not have access to this page.
+  </div>
+
+  <div id="mainWrap" style="display:none; width:100%; flex-direction:column; gap:20px">
+
+    <div class="card">
+      <h2>Active Sessions</h2>
+      <div id="sessionsList"><div class="empty">Loading…</div></div>
+    </div>
+
+    <div class="card">
+      <h2>Audit Log</h2>
+      <div class="filter-row" id="filterRow"></div>
+      <div class="log-list" id="logList"><div class="empty">Loading…</div></div>
+    </div>
+
+    <div class="logoff-note">Close this tab or navigate away to end this session. No changes can be made from this page.</div>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import {
+  getDatabase, ref, onValue
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+import {
+  getAuth, signInWithEmailAndPassword, onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAY49sWaN-DSKV10uyBB3CeOiABLCtFrSI",
+  authDomain: "bytestorm-friebase-server.firebaseapp.com",
+  databaseURL: "https://bytestorm-friebase-server-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "bytestorm-friebase-server",
+  storageBucket: "bytestorm-friebase-server.firebasestorage.app",
+  messagingSenderId: "400056781433",
+  appId: "1:400056781433:web:9803b0711d85de437f62a8",
+  measurementId: "G-TKJ9JKK7ZF"
+};
+
+const OWNER_UID = "xTCauGAOOfgubnBpCdI7zcu2Tiw2";
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const auth = getAuth(app);
+
+const gateCard = document.getElementById('gateCard');
+const deniedCard = document.getElementById('deniedCard');
+const mainWrap = document.getElementById('mainWrap');
+const emailInput = document.getElementById('emailInput');
+const pwInput = document.getElementById('pwInput');
+const pwBtn = document.getElementById('pwBtn');
+const gateMsg = document.getElementById('gateMsg');
+
+pwBtn.addEventListener('click', async () => {
+  pwBtn.disabled = true;
+  gateMsg.textContent = 'Signing in...';
+  gateMsg.className = 'status-msg';
+  try{
+    await signInWithEmailAndPassword(auth, emailInput.value.trim(), pwInput.value);
+  } catch(e){
+    gateMsg.textContent = 'Sign-in failed.';
+    gateMsg.className = 'status-msg err';
+  } finally {
+    pwBtn.disabled = false;
+  }
+});
+pwInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') pwBtn.click(); });
+emailInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') pwBtn.click(); });
+
+let dataUnsubs = [];
+function clearDataListeners(){
+  dataUnsubs.forEach(u => { try{ u(); }catch(e){} });
+  dataUnsubs = [];
+}
+
+onAuthStateChanged(auth, (user) => {
+  clearDataListeners();
+  if(!user){
+    gateCard.style.display = 'block';
+    deniedCard.style.display = 'none';
+    mainWrap.style.display = 'none';
+    return;
+  }
+  if(user.uid !== OWNER_UID){
+    gateCard.style.display = 'none';
+    deniedCard.style.display = 'block';
+    mainWrap.style.display = 'none';
+    return;
+  }
+  gateCard.style.display = 'none';
+  deniedCard.style.display = 'none';
+  mainWrap.style.display = 'flex';
+  startWatchers();
+});
+
+function fmtTime(ts){
+  if(!ts) return '—';
+  const d = new Date(ts);
+  return d.toLocaleString(undefined, { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+}
+
+function timeAgo(ts){
+  if(!ts) return '';
+  const diff = Date.now() - ts;
+  const mins = Math.floor(diff / 60000);
+  if(mins < 1) return 'just now';
+  if(mins < 60) return mins + 'm ago';
+  const hrs = Math.floor(mins / 60);
+  if(hrs < 24) return hrs + 'h ago';
+  return Math.floor(hrs / 24) + 'd ago';
+}
+
+function escHtml(s){
+  return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// ── Sessions ──
+const sessionsList = document.getElementById('sessionsList');
+
+function renderSessions(allSessions){
+  const rows = [];
+  Object.entries(allSessions || {}).forEach(([uid, sessions]) => {
+    Object.entries(sessions || {}).forEach(([sid, s]) => {
+      rows.push({ uid, sid, ...s });
+    });
+  });
+  rows.sort((a, b) => (b.lastSeen || 0) - (a.lastSeen || 0));
+
+  if(!rows.length){
+    sessionsList.innerHTML = '<div class="empty">No sessions recorded.</div>';
+    return;
+  }
+
+  sessionsList.innerHTML = rows.map(s => {
+    const isRevoked = s.revoked === true;
+    const staleMs = Date.now() - (s.lastSeen || 0);
+    const isStale = !isRevoked && staleMs > 5 * 60000;
+    const badgeClass = isRevoked ? 'revoked' : (isStale ? 'stale' : 'active');
+    const badgeText = isRevoked ? 'Revoked' : (isStale ? 'Inactive' : 'Active');
+    return `<div class="session-item${isRevoked ? ' revoked' : ''}">
+      <div class="session-top">
+        <span class="session-device">${escHtml(s.device || 'Unknown device')}</span>
+        <span class="session-badge ${badgeClass}">${badgeText}</span>
+      </div>
+      <span class="session-email">${escHtml(s.email || s.uid)}</span>
+      <span class="session-meta">Logged in ${fmtTime(s.loginTime)} · last seen ${timeAgo(s.lastSeen)}</span>
+    </div>`;
+  }).join('');
+}
+
+// ── Audit Log ──
+const logList = document.getElementById('logList');
+const filterRow = document.getElementById('filterRow');
+let auditCache = {};
+let currentFilter = 'all';
+
+function renderFilters(){
+  const emails = new Set(['all']);
+  Object.values(auditCache).forEach(e => emails.add(e.email || e.uid || 'unknown'));
+  filterRow.innerHTML = Array.from(emails).map(e =>
+    `<button class="filter-btn${e === currentFilter ? ' active' : ''}" data-f="${escHtml(e)}">${e === 'all' ? 'All' : escHtml(e)}</button>`
+  ).join('');
+  filterRow.querySelectorAll('.filter-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      currentFilter = b.dataset.f;
+      renderLog();
+      renderFilters();
+    });
+  });
+}
+
+function renderLog(){
+  let entries = Object.entries(auditCache);
+  if(currentFilter !== 'all'){
+    entries = entries.filter(([, e]) => (e.email || e.uid || 'unknown') === currentFilter);
+  }
+  entries.sort((a, b) => (b[1].timestamp || 0) - (a[1].timestamp || 0));
+  entries = entries.slice(0, 200);
+
+  if(!entries.length){
+    logList.innerHTML = '<div class="empty">No activity recorded yet.</div>';
+    return;
+  }
+
+  const now = Date.now();
+  logList.innerHTML = entries.map(([id, e]) => {
+    const isRecent = (now - (e.timestamp || 0)) < 5 * 60000;
+    return `<div class="log-item${isRecent ? ' recent' : ''}">
+      <div class="log-top">
+        <span class="log-action">${escHtml(e.action || 'unknown action')}</span>
+        <span class="log-time">${fmtTime(e.timestamp)}</span>
+      </div>
+      <span class="log-meta">${escHtml(e.email || e.uid || 'unknown')}${e.path ? ' · ' + escHtml(e.path) : ''}</span>
+    </div>`;
+  }).join('');
+}
+
+function startWatchers(){
+  const sessionsRef = ref(db, 'sessions');
+  const u1 = onValue(sessionsRef, (snap) => {
+    renderSessions(snap.exists() ? snap.val() : {});
+  }, (err) => {
+    sessionsList.innerHTML = '<div class="empty">Could not load sessions: ' + escHtml(err.message) + '</div>';
+  });
+
+  const auditRef = ref(db, 'auditLog');
+  const u2 = onValue(auditRef, (snap) => {
+    auditCache = snap.exists() ? snap.val() : {};
+    renderFilters();
+    renderLog();
+  }, (err) => {
+    logList.innerHTML = '<div class="empty">Could not load audit log: ' + escHtml(err.message) + '</div>';
+  });
+
+  dataUnsubs.push(u1, u2);
+}
+</script>
+</body>
+</html>
