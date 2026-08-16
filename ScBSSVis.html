@@ -30,6 +30,13 @@
     border:1px solid var(--b1); border-radius:14px; padding:22px;
   }
   .card h2{font-size:13px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--m1); margin:0 0 16px}
+  .card-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:16px}
+  .card-head h2{margin:0}
+  .clear-btn{
+    background:#1a0b0b; color:var(--loss); border:1px solid #5a2020; border-radius:8px;
+    padding:5px 10px; font-size:10.5px; font-weight:700; letter-spacing:.03em; cursor:pointer;
+  }
+  .clear-btn:hover{background:#2a0f0f}
   .gate{max-width:440px; margin:0 auto}
   .gate input[type=text], .gate input[type=password]{
     width:100%; background:#0d0d0d; border:1px solid var(--b2); color:var(--txt);
@@ -112,7 +119,10 @@
   <div id="mainWrap" style="display:none; width:100%; flex-direction:column; gap:20px">
 
     <div class="card">
-      <h2>Active Sessions</h2>
+      <div class="card-head">
+        <h2>Active Sessions</h2>
+        <button class="clear-btn" id="clearSessionsBtn" type="button">Clear All</button>
+      </div>
       <div id="sessionsList"><div class="empty">Loading…</div></div>
     </div>
 
@@ -122,19 +132,22 @@
     </div>
 
     <div class="card">
-      <h2>Audit Log</h2>
+      <div class="card-head">
+        <h2>Audit Log</h2>
+        <button class="clear-btn" id="clearAuditBtn" type="button">Clear All</button>
+      </div>
       <div class="filter-row" id="filterRow"></div>
       <div class="log-list" id="logList"><div class="empty">Loading…</div></div>
     </div>
 
-    <div class="logoff-note">Close this tab or navigate away to end this session. No changes can be made from this page.</div>
+    <div class="logoff-note">Close this tab or navigate away to end this session. Session revokes and "Clear All" actions are permanent.</div>
   </div>
 </div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import {
-  getDatabase, ref, onValue, update
+  getDatabase, ref, onValue, update, remove
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 import {
   getAuth, signInWithEmailAndPassword, onAuthStateChanged
@@ -290,6 +303,15 @@ sessionsList.addEventListener('click', async (e) => {
   }
 });
 
+document.getElementById('clearSessionsBtn').addEventListener('click', async () => {
+  if(!confirm('Clear ALL sessions? Anyone currently signed into admin.html will be signed out on their next check-in (within ~60s), and this history cannot be undone. Continue?')) return;
+  try{
+    await remove(ref(db, 'sessions'));
+  } catch(err){
+    alert('Could not clear sessions: ' + err.message);
+  }
+});
+
 // ── IP Log ──
 const ipLogList = document.getElementById('ipLogList');
 let bannedCache = {};
@@ -346,6 +368,15 @@ function renderFilters(){
     });
   });
 }
+
+document.getElementById('clearAuditBtn').addEventListener('click', async () => {
+  if(!confirm('Clear the entire audit log? This cannot be undone. Continue?')) return;
+  try{
+    await remove(ref(db, 'auditLog'));
+  } catch(err){
+    alert('Could not clear audit log: ' + err.message);
+  }
+});
 
 function renderLog(){
   let entries = Object.entries(auditCache);
