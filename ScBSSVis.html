@@ -117,6 +117,11 @@
     </div>
 
     <div class="card">
+      <h2>IP Log</h2>
+      <div id="ipLogList"><div class="empty">Loading…</div></div>
+    </div>
+
+    <div class="card">
       <h2>Audit Log</h2>
       <div class="filter-row" id="filterRow"></div>
       <div class="log-list" id="logList"><div class="empty">Loading…</div></div>
@@ -285,6 +290,33 @@ sessionsList.addEventListener('click', async (e) => {
   }
 });
 
+// ── IP Log ──
+const ipLogList = document.getElementById('ipLogList');
+let bannedCache = {};
+
+function renderIpLog(ipLog){
+  const rows = Object.entries(ipLog || {}).map(([key, v]) => ({ key, ...v }));
+  rows.sort((a, b) => (b.lastSeen || 0) - (a.lastSeen || 0));
+
+  if(!rows.length){
+    ipLogList.innerHTML = '<div class="empty">No IPs recorded yet.</div>';
+    return;
+  }
+
+  ipLogList.innerHTML = rows.map(r => {
+    const isBanned = !!bannedCache[r.key];
+    const badgeClass = isBanned ? 'revoked' : 'active';
+    const badgeText = isBanned ? 'Banned' : 'Allowed';
+    return `<div class="session-item" style="cursor:default">
+      <div class="session-top">
+        <span class="session-device">${escHtml(r.ip || r.key)}</span>
+        <span class="session-badge ${badgeClass}">${badgeText}</span>
+      </div>
+      <span class="session-meta">last path: ${escHtml(r.lastPath || 'unknown')} · last seen ${timeAgo(r.lastSeen)}</span>
+    </div>`;
+  }).join('');
+}
+
 // ── Audit Log ──
 const logList = document.getElementById('logList');
 const filterRow = document.getElementById('filterRow');
@@ -349,7 +381,24 @@ function startWatchers(){
     logList.innerHTML = '<div class="empty">Could not load audit log: ' + escHtml(err.message) + '</div>';
   });
 
-  dataUnsubs.push(u1, u2);
+  let latestIpLog = {};
+  const ipLogRef = ref(db, 'ipLog');
+  const u3 = onValue(ipLogRef, (snap) => {
+    latestIpLog = snap.exists() ? snap.val() : {};
+    renderIpLog(latestIpLog);
+  }, (err) => {
+    ipLogList.innerHTML = '<div class="empty">Could not load IP log: ' + escHtml(err.message) + '</div>';
+  });
+
+  const bannedRef = ref(db, 'bannedIPs');
+  const u4 = onValue(bannedRef, (snap) => {
+    bannedCache = snap.exists() ? snap.val() : {};
+    renderIpLog(latestIpLog);
+  }, (err) => {
+    console.error('Could not load bannedIPs:', err.message);
+  });
+
+  dataUnsubs.push(u1, u2, u3, u4);
 }
 </script>
 </body>
