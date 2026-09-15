@@ -1,6 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="original">
 <head>
+  <script>
+    // Apply saved theme choice before first paint to avoid a flash of the wrong style.
+    try {
+      var savedTheme = localStorage.getItem('byts-theme');
+      if (savedTheme === 'kawaii') document.documentElement.setAttribute('data-theme', 'kawaii');
+    } catch (e) {}
+  </script>
   <link rel="manifest" href="/manifest.json">
   <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png">
   <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/509cf33812608.js" data-cmp-host="d.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
@@ -224,7 +231,7 @@
   <meta name="twitter:title" content="Bytestorm Esports — Competitive Gaming Organization"/>
   <meta name="twitter:description" content="International esports org founded 2026 in Austria. Competing across major titles worldwide."/>
   <meta name="twitter:image" content="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png"/>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
   <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{--bg:#060606;--s1:#0e0e0e;--s2:#141414;--b1:#1c1c1c;--b2:#262626;--txt:#e8e8e8;--m1:#444;--m2:#777}
@@ -560,7 +567,167 @@
   .news-modal-body{padding:28px 32px 32px}
   .news-modal-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:#fff;line-height:1.1;margin:10px 0 14px}
   .news-modal-text{font-size:14px;color:#fff;line-height:1.8}
-  
+
+  /* ══════════════════════════════════════════════════════════════
+     THEME TOGGLE BUTTON (visible in both themes)
+     ══════════════════════════════════════════════════════════════ */
+  .theme-toggle-btn{display:inline-flex;align-items:center;gap:7px;background:#14161b;color:#c7c9d1;border:1px solid #262a33;border-radius:999px;padding:8px 16px;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;flex-shrink:0}
+  .theme-toggle-btn:hover{border-color:#3a3f4a;background:#181b21}
+  html[data-theme="kawaii"] .theme-toggle-btn{background:#fff;color:#D6467F;border:2px solid #FFB8DA}
+  html[data-theme="kawaii"] .theme-toggle-btn:hover{background:#FFF0F7;border-color:#FF9DC9}
+  @media(max-width:640px){#themeToggleLabel{display:none}.theme-toggle-btn{padding:8px 10px}}
+
+  /* ══════════════════════════════════════════════════════════════
+     KAWAII TSUNDERE THEME — activated via [data-theme="kawaii"] on <html>
+     ══════════════════════════════════════════════════════════════ */
+  html[data-theme="kawaii"]{
+    --bg:#FFF3F8;--s1:#FFEAF3;--s2:#FFDCEC;--b1:#FFC7E1;--b2:#FFADD2;
+    --txt:#5A2E52;--m1:#B25A85;--m2:#C983A8;
+  }
+  html[data-theme="kawaii"] body{
+    background:linear-gradient(180deg,#FFF3F8 0%,#FDEFFA 45%,#F6E9FB 100%);
+    font-family:'Nunito',sans-serif;
+  }
+  html[data-theme="kawaii"] ::-webkit-scrollbar-track{background:#FFEAF3}
+  html[data-theme="kawaii"] ::-webkit-scrollbar-thumb{background:#FF9DC9;border-radius:4px}
+
+  /* — Nav — */
+  html[data-theme="kawaii"] nav{background:rgba(255,243,248,0.92);border-bottom:2px solid #FFC7E1}
+  html[data-theme="kawaii"] .nav-brand{color:#D6467F;font-family:'Baloo 2',cursive;letter-spacing:.03em}
+  html[data-theme="kawaii"] .nav-links a{color:#8C5A79}
+  html[data-theme="kawaii"] .nav-links a:hover,html[data-theme="kawaii"] .nav-links a.active{color:#D6467F}
+  html[data-theme="kawaii"] .nav-cta,html[data-theme="kawaii"] .btn-send{background:linear-gradient(180deg,#FF8FB8,#FF6FA5)!important;color:#fff!important;box-shadow:0 4px 14px rgba(255,111,165,.35)}
+  html[data-theme="kawaii"] .nav-cta svg,html[data-theme="kawaii"] .btn-send svg{stroke:#fff}
+  html[data-theme="kawaii"] .btn-w{background:#FF6FA5;color:#fff}
+  html[data-theme="kawaii"] .lang-dd-btn{background:#fff;color:#8C5A79;border-color:#FFC7E1}
+  html[data-theme="kawaii"] .lang-dd-btn:hover{background:#FFF0F7;border-color:#FF9DC9}
+  html[data-theme="kawaii"] .lang-dd-btn svg{stroke:#D6467F}
+  html[data-theme="kawaii"] .lang-dd-menu{background:#fff;border-color:#FFC7E1;box-shadow:0 12px 32px rgba(255,111,165,.25)}
+  html[data-theme="kawaii"] .lang-dd-opt{color:#8C5A79}
+  html[data-theme="kawaii"] .lang-dd-opt:hover{background:#FFF0F7;color:#D6467F}
+  html[data-theme="kawaii"] .lang-dd-opt.active{background:#FFE1EE;color:#D6467F}
+  html[data-theme="kawaii"] .lang-dd-opt .lang-code{color:#C983A8}
+  html[data-theme="kawaii"] #hamburgerBtn{background:#fff;border-color:#FFC7E1;color:#D6467F}
+  html[data-theme="kawaii"] #byteNav{background:#fff;border-color:#FFC7E1}
+  html[data-theme="kawaii"] #byteNav a{color:#8C5A79;border-color:#FFE1EE}
+  html[data-theme="kawaii"] #byteNav a:hover{background:#FFF0F7;color:#D6467F}
+
+  /* — Section titles & display text (bubbly headline font) — */
+  html[data-theme="kawaii"] .s-title,html[data-theme="kawaii"] .th-title,
+  html[data-theme="kawaii"] .foot-contact h2,html[data-theme="kawaii"] .m-title,
+  html[data-theme="kawaii"] .th-upcoming-date,html[data-theme="kawaii"] .news-modal-title,
+  html[data-theme="kawaii"] .earn-total-num,html[data-theme="kawaii"] .m-success h3{
+    font-family:'Baloo 2',cursive;color:#D6467F;text-transform:none;letter-spacing:0;
+  }
+  html[data-theme="kawaii"] .s-eye,html[data-theme="kawaii"] .th-section-label,
+  html[data-theme="kawaii"] .earn-total-eye{color:#E08AB2}
+
+  /* — Names & labels (readable plum) — */
+  html[data-theme="kawaii"] .gc-name,html[data-theme="kawaii"] .rp-game,
+  html[data-theme="kawaii"] .soc-tile h3,html[data-theme="kawaii"] .th-name,
+  html[data-theme="kawaii"] .lm-team-name,html[data-theme="kawaii"] .lm-team-score,
+  html[data-theme="kawaii"] .foot-col h4,html[data-theme="kawaii"] .earn-name,
+  html[data-theme="kawaii"] .news-title-text,html[data-theme="kawaii"] .news-modal-text,
+  html[data-theme="kawaii"] .th-countdown{
+    color:#5A2E52;
+  }
+  html[data-theme="kawaii"] .gc-placeholder,html[data-theme="kawaii"] div[style*="color:#fff"]{color:#C983A8}
+
+  /* — Hover accents — */
+  html[data-theme="kawaii"] .rp-close:hover,html[data-theme="kawaii"] .m-x:hover,
+  html[data-theme="kawaii"] .news-close:hover,html[data-theme="kawaii"] .foot-col a:hover,
+  html[data-theme="kawaii"] .foot-bottom-social a:hover{color:#D6467F}
+  html[data-theme="kawaii"] .foot-social-row a:hover{background:#FFE1EE;color:#D6467F}
+
+  /* — Game cards / roster panel — */
+  html[data-theme="kawaii"] .games-grid,html[data-theme="kawaii"] .soc-grid,
+  html[data-theme="kawaii"] .earn-grid,html[data-theme="kawaii"] .rp-grid{background:#FFC7E1;border-color:#FFC7E1}
+  html[data-theme="kawaii"] .game-card,html[data-theme="kawaii"] .soc-tile,
+  html[data-theme="kawaii"] .earn-card,html[data-theme="kawaii"] .rp-card,
+  html[data-theme="kawaii"] .news-card,html[data-theme="kawaii"] .th-card{background:#fff}
+  html[data-theme="kawaii"] .game-card:hover,html[data-theme="kawaii"] .rp-card:hover,
+  html[data-theme="kawaii"] .soc-tile:hover,html[data-theme="kawaii"] .earn-card:hover,
+  html[data-theme="kawaii"] .news-card:hover,html[data-theme="kawaii"] .th-card:hover{background:#FFF3F8}
+  html[data-theme="kawaii"] .gc-hover-pill{background:#fff;color:#D6467F;border-color:#FFC7E1}
+  html[data-theme="kawaii"] .news-tag{background:#FFE1EE;color:#D6467F;border-color:#FFC7E1}
+  html[data-theme="kawaii"] .roster-panel{background:#fff}
+  html[data-theme="kawaii"] .rp-head{border-color:#FFE1EE}
+  html[data-theme="kawaii"] .rp-tag{background:#FF6FA5;color:#fff}
+
+  /* — Role badges (kept color-coded, pastel-tinted for legibility) — */
+  html[data-theme="kawaii"] .rp-badge{border-width:2px;font-weight:800}
+  html[data-theme="kawaii"] .rp-badge.normal,html[data-theme="kawaii"] .rp-badge.open{color:#B25A85;border-color:#FFC7E1;background:#FFF3F8}
+  html[data-theme="kawaii"] .rp-badge.ceo{color:#E0447E;border-color:#FFB8DA;background:#FFF0F7}
+  html[data-theme="kawaii"] .rp-badge.captain{color:#D97706;border-color:#FDE68A;background:#FFFBEB;box-shadow:none;text-shadow:none}
+  html[data-theme="kawaii"] .rp-badge.esports{color:#9333EA;border-color:#E9D5FF;background:#FAF5FF}
+  html[data-theme="kawaii"] .rp-badge.content{color:#7C3AED;border-color:#DDD6FE;background:#F5F3FF}
+  html[data-theme="kawaii"] .rp-badge.staff-r{color:#059669;border-color:#BBF7D0;background:#F0FDF4}
+  html[data-theme="kawaii"] .rp-badge.trainer{color:#0284C7;border-color:#BAE6FD;background:#F0F9FF}
+  html[data-theme="kawaii"] .rp-badge.trainee{color:#CA8A04;border-color:#FDE68A;background:#FEFCE8}
+  html[data-theme="kawaii"] .rp-badge.editor{color:#0D9488;border-color:#99F6E4;background:#F0FDFA}
+  html[data-theme="kawaii"] .rp-badge.recruiter{color:#DB2777;border-color:#FBCFE8;background:#FDF2F8}
+  html[data-theme="kawaii"] .rp-badge.moderator{color:#65A30D;border-color:#D9F99D;background:#F7FEE7}
+  html[data-theme="kawaii"] .rp-badge.trial{color:#EA580C;border-color:#FED7AA;background:#FFF7ED}
+  html[data-theme="kawaii"] .rp-badge.suspended{color:#D97706;border-color:#FDE68A;background:#FFFBEB}
+
+  /* — Tournaments / live match — */
+  html[data-theme="kawaii"] .th-filter-btn{background:#fff}
+  html[data-theme="kawaii"] .th-filter-btn.active{color:#fff;background:#FF6FA5;border-color:#FF6FA5}
+  html[data-theme="kawaii"] .th-sort-btn{background:#fff}
+  html[data-theme="kawaii"] .th-empty{border-color:#FFC7E1}
+  html[data-theme="kawaii"] .th-card.live{background:#FFF0F5;border-color:#FFC2D6}
+  html[data-theme="kawaii"] .th-card.delayed{background:#FFFBEB;border-color:#FDE9B0}
+  html[data-theme="kawaii"] .th-upcoming-badge{background:#FFE1EE;color:#D6467F;border-color:transparent}
+  html[data-theme="kawaii"] .lm-card.lm-upcoming{background:linear-gradient(180deg,#fff,#FFF7FB);border-color:#FFE1EE}
+  html[data-theme="kawaii"] .lm-card.lm-finished{background:linear-gradient(180deg,#F0FDF6,#FAFFFB);border-color:#D3F5E1}
+  html[data-theme="kawaii"] .lm-name{color:#C983A8}
+  html[data-theme="kawaii"] .th-upcoming-dot{background:#FF6FA5}
+
+  /* — News & earnings — */
+  html[data-theme="kawaii"] .earn-total-card{background:linear-gradient(160deg,#FFE1EE,#FFF3F8);border-color:#FFC7E1}
+  html[data-theme="kawaii"] .news-overlay,html[data-theme="kawaii"] .m-overlay{background:rgba(255,111,165,.28)}
+  html[data-theme="kawaii"] .news-modal,html[data-theme="kawaii"] .modal{background:#fff;border-color:#FFC7E1;box-shadow:0 20px 60px rgba(255,111,165,.3)}
+
+  /* — Forms — */
+  html[data-theme="kawaii"] .fg label{color:#B25A85}
+  html[data-theme="kawaii"] .fg input,html[data-theme="kawaii"] .fg select,html[data-theme="kawaii"] .fg textarea{
+    background:#FFF3F8;border-color:#FFC7E1;color:#5A2E52;border-radius:10px;
+  }
+  html[data-theme="kawaii"] .fg input:focus,html[data-theme="kawaii"] .fg select:focus,html[data-theme="kawaii"] .fg textarea:focus{border-color:#FF6FA5}
+  html[data-theme="kawaii"] .seg-btn{background:#FFF3F8;border-color:#FFC7E1;color:#B25A85;border-radius:10px}
+  html[data-theme="kawaii"] .seg-btn:hover{border-color:#FF9DC9;color:#D6467F}
+  html[data-theme="kawaii"] .seg-btn.active{background:#FF6FA5;color:#fff;border-color:#FF6FA5}
+  html[data-theme="kawaii"] .game-check-item{background:#FFF3F8;border-color:#FFC7E1;color:#B25A85;border-radius:10px}
+  html[data-theme="kawaii"] .game-check-item:hover{border-color:#FF9DC9;color:#D6467F}
+  html[data-theme="kawaii"] .game-check-item.active{background:#FF6FA5;color:#fff;border-color:#FF6FA5}
+  html[data-theme="kawaii"] .m-tiktok{color:#B25A85;border-color:#FFC7E1}
+  html[data-theme="kawaii"] .m-tiktok:hover{border-color:#FF9DC9}
+  html[data-theme="kawaii"] .m-tiktok svg{fill:#D6467F}
+
+  /* — Rounded, softer corners throughout for the cute feel — */
+  html[data-theme="kawaii"] .games-grid,html[data-theme="kawaii"] .game-card,
+  html[data-theme="kawaii"] .roster-panel,html[data-theme="kawaii"] .news-card,
+  html[data-theme="kawaii"] .th-card,html[data-theme="kawaii"] .soc-grid,
+  html[data-theme="kawaii"] .earn-grid,html[data-theme="kawaii"] .earn-card,
+  html[data-theme="kawaii"] .modal,html[data-theme="kawaii"] .news-modal{border-radius:18px}
+
+  /* — Tsundere mascot — */
+  .byts-mascot{display:none}
+  html[data-theme="kawaii"] .byts-mascot{
+    display:flex;align-items:flex-end;gap:10px;position:fixed;bottom:22px;right:22px;z-index:250;pointer-events:none;
+  }
+  .byts-mascot-bubble{
+    background:#fff;border:2px solid #FF9DC9;border-radius:16px 16px 4px 16px;
+    padding:10px 14px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;
+    color:#5A2E52;max-width:190px;box-shadow:0 6px 16px rgba(255,111,165,.25);
+  }
+  .byts-mascot-chibi{
+    width:50px;height:50px;border-radius:50%;background:linear-gradient(160deg,#FF8FB8,#FF6FA5);
+    display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;
+    box-shadow:0 6px 14px rgba(255,111,165,.4);
+  }
+  @media(max-width:640px){.byts-mascot{bottom:16px;right:16px}.byts-mascot-bubble{max-width:150px;font-size:12px}}
+
 </style>
 </head>
 <body>
@@ -701,6 +868,9 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       <li><a href="#socials">Contact</a></li>
     </ul>
     <div class="nav-actions">
+      <button type="button" class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleByteTheme()" aria-label="Switch site style">
+        <span id="themeToggleIcon">🎀</span><span id="themeToggleLabel">Kawaii Mode</span>
+      </button>
       <div class="lang-dd" id="langDD">
         <button type="button" class="lang-dd-btn" id="langDDBtn" onclick="toggleLangDD(event)">
           <img id="langDDFlag" src="https://flagcdn.com/w40/gb.png" alt=""/>
@@ -727,6 +897,12 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
     </div>
   </div>
 </nav>
+
+<!-- ── Kawaii Tsundere mascot (only visible in kawaii mode) ── -->
+<div class="byts-mascot" id="bytsMascot" aria-hidden="true">
+  <div class="byts-mascot-bubble" id="bytsMascotBubble">It's not like I redesigned this for you or anything... baka!</div>
+  <div class="byts-mascot-chibi">🐾</div>
+</div>
 
 <!-- ── GAMES ── -->
 <!-- Game cards + roster panels are rendered dynamically from Firebase
@@ -1967,6 +2143,52 @@ onValue(earningsRef, function(snap){
   console.error('Earnings listener error:', err);
   earnGrid.innerHTML = '<div class="earn-empty">Could not load earnings.</div>';
 });
+</script>
+
+<script>
+// ── Kawaii Tsundere theme toggle ──
+(function(){
+  var tsundereLines = [
+    "It's not like I redesigned this for you or anything... baka!",
+    "D-don't stare at the roster too long, weirdo!",
+    "I only made it pink because... because I felt like it, okay?!",
+    "Hmph. I guess you can stay a while.",
+    "This isn't for YOUR benefit! ...okay maybe a little.",
+    "S-stop looking at me and go check the tournaments already!"
+  ];
+
+  function syncToggleUI(theme){
+    var icon = document.getElementById('themeToggleIcon');
+    var label = document.getElementById('themeToggleLabel');
+    if(!icon || !label) return;
+    if(theme === 'kawaii'){
+      icon.textContent = '🌙';
+      label.textContent = 'Original Mode';
+    } else {
+      icon.textContent = '🎀';
+      label.textContent = 'Kawaii Mode';
+    }
+  }
+
+  function setMascotLine(){
+    var bubble = document.getElementById('bytsMascotBubble');
+    if(bubble) bubble.textContent = tsundereLines[Math.floor(Math.random() * tsundereLines.length)];
+  }
+
+  window.toggleByteTheme = function(){
+    var html = document.documentElement;
+    var next = html.getAttribute('data-theme') === 'kawaii' ? 'original' : 'kawaii';
+    html.setAttribute('data-theme', next);
+    try { localStorage.setItem('byts-theme', next); } catch(e) {}
+    syncToggleUI(next);
+    if(next === 'kawaii') setMascotLine();
+  };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    syncToggleUI(document.documentElement.getAttribute('data-theme') || 'original');
+    setMascotLine();
+  });
+})();
 </script>
 </body>
 </html>
