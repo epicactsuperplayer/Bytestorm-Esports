@@ -567,6 +567,12 @@
   .news-modal-body{padding:28px 32px 32px}
   .news-modal-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:#fff;line-height:1.1;margin:10px 0 14px}
   .news-modal-text{font-size:14px;color:#fff;line-height:1.8}
+  /* ── Coming Soon ── */
+  .cs-card{background:var(--s1);border:1px dashed var(--b1);border-radius:14px;padding:64px 24px;text-align:center}
+  .cs-icon{font-size:28px;margin-bottom:14px;opacity:.5}
+  .cs-logo{display:none;max-width:150px;width:100%;height:auto;margin:0 auto 18px}
+  .cs-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(24px,3.4vw,34px);font-weight:900;text-transform:uppercase;letter-spacing:.03em;color:#fff;margin-bottom:8px}
+  .cs-sub{font-size:13px;color:var(--m2);letter-spacing:.02em}
 
   /* ══════════════════════════════════════════════════════════════
      THEME TOGGLE BUTTON (visible in both themes)
@@ -709,7 +715,8 @@
   html[data-theme="kawaii"] .roster-panel,html[data-theme="kawaii"] .news-card,
   html[data-theme="kawaii"] .th-card,html[data-theme="kawaii"] .soc-grid,
   html[data-theme="kawaii"] .earn-grid,html[data-theme="kawaii"] .earn-card,
-  html[data-theme="kawaii"] .modal,html[data-theme="kawaii"] .news-modal{border-radius:18px}
+  html[data-theme="kawaii"] .modal,html[data-theme="kawaii"] .news-modal,
+  html[data-theme="kawaii"] .cs-card{border-radius:18px}
 
   /* — Tsundere mascot — */
   .byts-mascot{display:none}
@@ -727,6 +734,32 @@
     box-shadow:0 6px 14px rgba(255,111,165,.4);
   }
   @media(max-width:640px){.byts-mascot{bottom:16px;right:16px}.byts-mascot-bubble{max-width:150px;font-size:12px}}
+
+  /* — Coming Soon — */
+  html[data-theme="kawaii"] .cs-card{border-color:#FFADD2}
+  html[data-theme="kawaii"] .cs-icon{display:none}
+  html[data-theme="kawaii"] .cs-logo{display:inline-block;filter:drop-shadow(0 8px 18px rgba(255,111,165,.35))}
+  html[data-theme="kawaii"] .cs-title{font-family:'Baloo 2',cursive;color:#D6467F;text-transform:none;letter-spacing:0}
+  html[data-theme="kawaii"] .cs-sub{color:#C983A8}
+
+  /* — Extra kawaii footer note (hidden outside kawaii mode) — */
+  .kawaii-footer-note{display:none}
+  html[data-theme="kawaii"] .kawaii-footer-note{
+    display:block;max-width:560px;margin:0 auto 40px;text-align:center;
+    font-family:'Nunito',sans-serif;font-size:14px;font-weight:600;color:#8C5A79;line-height:1.8;
+  }
+  html[data-theme="kawaii"] .kawaii-footer-note p{margin-bottom:10px}
+
+  /* — Cherry blossom fall (Tournaments section, kawaii mode only) — */
+  #sakuraContainer{position:fixed;inset:0;pointer-events:none;z-index:120;overflow:hidden}
+  html:not([data-theme="kawaii"]) #sakuraContainer{display:none}
+  .sakura-petal{position:absolute;top:-8vh;will-change:transform,opacity;animation-name:sakuraFall;animation-timing-function:linear;animation-fill-mode:forwards;}
+  @keyframes sakuraFall{
+    0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0}
+    8%{opacity:1}
+    100%{transform:translateY(112vh) translateX(var(--sakura-drift,60px)) rotate(var(--sakura-spin,320deg));opacity:.85}
+  }
+  @media(prefers-reduced-motion:reduce){.sakura-petal{display:none}}
 
 </style>
 </head>
@@ -904,6 +937,9 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
   <div class="byts-mascot-chibi">🐾</div>
 </div>
 
+<!-- Cherry blossom petals — spawned only while Tournaments is in view in kawaii mode -->
+<div id="sakuraContainer" aria-hidden="true"></div>
+
 <!-- ── GAMES ── -->
 <!-- Game cards + roster panels are rendered dynamically from Firebase
      "games/{gameKey}" + "roster/{gameKey}/{id}" — see the Games Manager
@@ -919,6 +955,20 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 
     <div id="rosterPanels"></div>
 
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── COMING SOON ── -->
+<section class="pad" id="coming-soon">
+  <div class="wrap">
+    <div class="cs-card">
+      <div class="cs-icon" id="csIcon">🔒</div>
+      <img src="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo_BlackOutline.png" alt="Bytestorm Esports" class="cs-logo" id="csLogo"/>
+      <div class="cs-title" id="csTitle">Coming Soon</div>
+      <div class="cs-sub" id="csSub">Something new is on the way.</div>
+    </div>
   </div>
 </section>
 
@@ -1057,6 +1107,11 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           <span data-i18n="sendEmail">Send Email</span>
         </a>
+      </div>
+
+      <div class="kawaii-footer-note">
+        <p>I-It's not like we wrote this just for you or anything... b-baka! ✨ But since you scrolled all the way down here: Bytestorm isn't just a roster, okay? It's a bunch of people who yell at each other in Discord at 2AM and somehow still show up to win. We're kind of proud of them. Don't tell them we said that.</p>
+        <p>S-so yeah. Apply if you want. Or don't. See if we care. (We care.) 🌸</p>
       </div>
 
       <div class="foot-cols">
@@ -2175,18 +2230,136 @@ onValue(earningsRef, function(snap){
     if(bubble) bubble.textContent = tsundereLines[Math.floor(Math.random() * tsundereLines.length)];
   }
 
+  // Sets the anchor's own text (leaving any child <svg>/whitespace nodes alone)
+  function setLinkText(el, text){
+    if(!el) return;
+    var found = false;
+    Array.prototype.forEach.call(el.childNodes, function(n){
+      if(n.nodeType === 3 && n.textContent.trim().length){
+        n.textContent = text;
+        found = true;
+      }
+    });
+    if(!found) el.textContent = text; // no existing text node (e.g. icon-only) — safe fallback
+  }
+
+  // ── Kawaii section/button copy ──
+  function applyKawaiiText(){
+    setLinkText(document.querySelector('.nav-links a[href="#games"]'), "Senpai's Squadron");
+    var gamesTitle = document.querySelectorAll('.s-title:not(.earn-title)')[0];
+    if(gamesTitle) gamesTitle.textContent = "Senpai's Squadron";
+
+    var thTitle = document.querySelector('.th-title');
+    if(thTitle) thTitle.textContent = 'Tournament Histowy';
+
+    var earnTitle = document.querySelector('.s-title.earn-title');
+    if(earnTitle) earnTitle.textContent = "S-Senpai's Hard E-Earned Squadron Earnings";
+
+    setLinkText(document.querySelector('.nav-links a[href="#socials"]'), 'T-Text Us!');
+    var contactHeading = document.querySelector('.foot-contact h2');
+    if(contactHeading) contactHeading.textContent = "T-Text Us! It's Not Like We Want You To! 😤";
+
+    setLinkText(document.querySelector('.nav-cta'), 'Join Us, Baka');
+    var modalTitle = document.querySelector('.m-title');
+    if(modalTitle) modalTitle.textContent = "C-Come Join Us! It's Not Like We're Excited!";
+
+    var csTitle = document.getElementById('csTitle');
+    if(csTitle) csTitle.textContent = "D-don't peek! It's not ready yet!";
+  }
+
+  // Restores the elements applyKawaiiText() touched that the language
+  // pipeline doesn't already cover on its own (earnings title + Apply button
+  // aren't part of the i18n system — see changeLang() above).
+  function restoreOriginalText(){
+    var earnTitle = document.querySelector('.s-title.earn-title');
+    if(earnTitle) earnTitle.textContent = 'Earnings';
+    setLinkText(document.querySelector('.nav-cta'), 'Apply');
+    var csTitle = document.getElementById('csTitle');
+    if(csTitle) csTitle.textContent = 'Coming Soon';
+    var currentLang = document.documentElement.getAttribute('lang') || 'en';
+    if(typeof changeLang === 'function') changeLang(currentLang);
+  }
+
+  // Re-apply kawaii copy after a language switch, since changeLang() would
+  // otherwise stomp the games/tournaments/contact text back to that language.
+  if(typeof changeLang === 'function'){
+    var _origChangeLang = changeLang;
+    changeLang = function(lang){
+      _origChangeLang(lang);
+      if(document.documentElement.getAttribute('data-theme') === 'kawaii') applyKawaiiText();
+    };
+  }
+
   window.toggleByteTheme = function(){
     var html = document.documentElement;
     var next = html.getAttribute('data-theme') === 'kawaii' ? 'original' : 'kawaii';
     html.setAttribute('data-theme', next);
     try { localStorage.setItem('byts-theme', next); } catch(e) {}
     syncToggleUI(next);
-    if(next === 'kawaii') setMascotLine();
+    if(next === 'kawaii'){
+      setMascotLine();
+      applyKawaiiText();
+    } else {
+      restoreOriginalText();
+      clearSakuraPetals();
+    }
   };
+
+  // ── Cherry blossom fall — only while #tournaments is on screen in kawaii mode ──
+  var sakuraContainer = document.getElementById('sakuraContainer');
+  var sakuraTimer = null;
+  var sakuraGlyphs = ['🌸','🌸','🌸','💮'];
+
+  function spawnPetal(){
+    if(!sakuraContainer) return;
+    if(sakuraContainer.childElementCount > 30) return; // cap concurrent petals
+    var petal = document.createElement('span');
+    petal.className = 'sakura-petal';
+    petal.textContent = sakuraGlyphs[Math.floor(Math.random() * sakuraGlyphs.length)];
+    var size = 14 + Math.random() * 14;
+    var duration = 7 + Math.random() * 6;
+    var drift = (Math.random() * 140 - 70).toFixed(0) + 'px';
+    var spin = (200 + Math.random() * 250).toFixed(0) + 'deg';
+    petal.style.left = (Math.random() * 100) + 'vw';
+    petal.style.fontSize = size + 'px';
+    petal.style.opacity = (0.6 + Math.random() * 0.4).toFixed(2);
+    petal.style.setProperty('--sakura-drift', drift);
+    petal.style.setProperty('--sakura-spin', spin);
+    petal.style.animationDuration = duration + 's';
+    petal.addEventListener('animationend', function(){ petal.remove(); });
+    sakuraContainer.appendChild(petal);
+  }
+
+  function startSakuraSpawning(){
+    if(sakuraTimer) return;
+    spawnPetal();
+    sakuraTimer = setInterval(spawnPetal, 260);
+  }
+  function stopSakuraSpawning(){
+    if(sakuraTimer){ clearInterval(sakuraTimer); sakuraTimer = null; }
+  }
+  function clearSakuraPetals(){
+    stopSakuraSpawning();
+    if(sakuraContainer) sakuraContainer.innerHTML = '';
+  }
+
+  function isKawaii(){ return document.documentElement.getAttribute('data-theme') === 'kawaii'; }
 
   document.addEventListener('DOMContentLoaded', function(){
     syncToggleUI(document.documentElement.getAttribute('data-theme') || 'original');
     setMascotLine();
+    if(isKawaii()) applyKawaiiText();
+
+    var tournamentsSection = document.getElementById('tournaments');
+    if(tournamentsSection && 'IntersectionObserver' in window){
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting && isKawaii()) startSakuraSpawning();
+          else stopSakuraSpawning();
+        });
+      }, { threshold: 0.15 });
+      observer.observe(tournamentsSection);
+    }
   });
 })();
 </script>
