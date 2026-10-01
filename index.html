@@ -5,7 +5,7 @@
     // Apply saved theme choice before first paint to avoid a flash of the wrong style.
     try {
       var savedTheme = localStorage.getItem('byts-theme');
-      if (savedTheme === 'kawaii') document.documentElement.setAttribute('data-theme', 'kawaii');
+      if (savedTheme === 'halloween') document.documentElement.setAttribute('data-theme', 'halloween');
     } catch (e) {}
   </script>
   <link rel="manifest" href="/manifest.json">
@@ -231,7 +231,7 @@
   <meta name="twitter:title" content="Bytestorm Esports — Competitive Gaming Organization"/>
   <meta name="twitter:description" content="International esports org founded 2026 in Austria. Competing across major titles worldwide."/>
   <meta name="twitter:image" content="https://raw.githubusercontent.com/epicactsuperplayer/Bytestorm-Esports/main/ByteEsportLogo.png"/>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&family=Creepster&display=swap" rel="stylesheet"/>
   <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{--bg:#060606;--s1:#0e0e0e;--s2:#141414;--b1:#1c1c1c;--b2:#262626;--txt:#e8e8e8;--m1:#444;--m2:#777}
@@ -579,187 +579,212 @@
      ══════════════════════════════════════════════════════════════ */
   .theme-toggle-btn{display:inline-flex;align-items:center;gap:7px;background:#14161b;color:#c7c9d1;border:1px solid #262a33;border-radius:999px;padding:8px 16px;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;flex-shrink:0}
   .theme-toggle-btn:hover{border-color:#3a3f4a;background:#181b21}
-  html[data-theme="kawaii"] .theme-toggle-btn{background:#fff;color:#D6467F;border:2px solid #FFB8DA}
-  html[data-theme="kawaii"] .theme-toggle-btn:hover{background:#FFF0F7;border-color:#FF9DC9}
+  html[data-theme="halloween"] .theme-toggle-btn{background:#1A1026;color:#FF8A1F;border:2px solid #6B3FA0}
+  html[data-theme="halloween"] .theme-toggle-btn:hover{background:#2A1840;border-color:#7A4BB0}
   @media(max-width:640px){#themeToggleLabel{display:none}.theme-toggle-btn{padding:8px 10px}}
 
   /* ══════════════════════════════════════════════════════════════
-     KAWAII TSUNDERE THEME — activated via [data-theme="kawaii"] on <html>
+     HALLOWEEN THEME — activated via [data-theme="halloween"] on <html>
      ══════════════════════════════════════════════════════════════ */
-  html[data-theme="kawaii"]{
-    --bg:#FFF3F8;--s1:#FFEAF3;--s2:#FFDCEC;--b1:#FFC7E1;--b2:#FFADD2;
-    --txt:#5A2E52;--m1:#B25A85;--m2:#C983A8;
+  html[data-theme="halloween"]{
+    --bg:#120A1C;--s1:#1A1026;--s2:#231533;--b1:#3B2457;--b2:#54307A;
+    --txt:#F3E8D6;--m1:#BBA5D8;--m2:#8E78AE;
   }
-  html[data-theme="kawaii"] body{
-    background:linear-gradient(180deg,#FFF3F8 0%,#FDEFFA 45%,#F6E9FB 100%);
-    font-family:'Nunito',sans-serif;
+  html[data-theme="halloween"] body{
+    background:linear-gradient(180deg,#120A1C 0%,#160C24 45%,#1B0F2E 100%);
+    font-family:'Inter',sans-serif;
   }
-  html[data-theme="kawaii"] ::-webkit-scrollbar-track{background:#FFEAF3}
-  html[data-theme="kawaii"] ::-webkit-scrollbar-thumb{background:#FF9DC9;border-radius:4px}
+  html[data-theme="halloween"] ::-webkit-scrollbar-track{background:#1A1026}
+  html[data-theme="halloween"] ::-webkit-scrollbar-thumb{background:#7A4BB0;border-radius:4px}
 
   /* — Nav — */
-  html[data-theme="kawaii"] nav{background:rgba(255,243,248,0.92);border-bottom:2px solid #FFC7E1}
-  html[data-theme="kawaii"] .nav-brand{color:#D6467F;font-family:'Baloo 2',cursive;letter-spacing:.03em}
-  html[data-theme="kawaii"] .nav-links a{color:#8C5A79}
-  html[data-theme="kawaii"] .nav-links a:hover,html[data-theme="kawaii"] .nav-links a.active{color:#D6467F}
-  html[data-theme="kawaii"] .nav-cta,html[data-theme="kawaii"] .btn-send{background:linear-gradient(180deg,#FF8FB8,#FF6FA5)!important;color:#fff!important;box-shadow:0 4px 14px rgba(255,111,165,.35)}
-  html[data-theme="kawaii"] .nav-cta svg,html[data-theme="kawaii"] .btn-send svg{stroke:#fff}
-  html[data-theme="kawaii"] .btn-w{background:#FF6FA5;color:#fff}
-  html[data-theme="kawaii"] .lang-dd-btn{background:#fff;color:#8C5A79;border-color:#FFC7E1}
-  html[data-theme="kawaii"] .lang-dd-btn:hover{background:#FFF0F7;border-color:#FF9DC9}
-  html[data-theme="kawaii"] .lang-dd-btn svg{stroke:#D6467F}
-  html[data-theme="kawaii"] .lang-dd-menu{background:#fff;border-color:#FFC7E1;box-shadow:0 12px 32px rgba(255,111,165,.25)}
-  html[data-theme="kawaii"] .lang-dd-opt{color:#8C5A79}
-  html[data-theme="kawaii"] .lang-dd-opt:hover{background:#FFF0F7;color:#D6467F}
-  html[data-theme="kawaii"] .lang-dd-opt.active{background:#FFE1EE;color:#D6467F}
-  html[data-theme="kawaii"] .lang-dd-opt .lang-code{color:#C983A8}
-  html[data-theme="kawaii"] #hamburgerBtn{background:#fff;border-color:#FFC7E1;color:#D6467F}
-  html[data-theme="kawaii"] #byteNav{background:#fff;border-color:#FFC7E1}
-  html[data-theme="kawaii"] #byteNav a{color:#8C5A79;border-color:#FFE1EE}
-  html[data-theme="kawaii"] #byteNav a:hover{background:#FFF0F7;color:#D6467F}
+  html[data-theme="halloween"] nav{background:rgba(18,10,28,0.92);border-bottom:2px solid #3B2457}
+  html[data-theme="halloween"] .nav-brand{color:#FF8A1F;font-family:'Creepster',cursive;letter-spacing:.03em}
+  html[data-theme="halloween"] .nav-links a{color:#CDBBE6}
+  html[data-theme="halloween"] .nav-links a:hover,html[data-theme="halloween"] .nav-links a.active{color:#FF8A1F}
+  html[data-theme="halloween"] .nav-cta,html[data-theme="halloween"] .btn-send{background:linear-gradient(180deg,#FF9A3D,#FF7A18)!important;color:#fff!important;box-shadow:0 4px 14px rgba(255,122,24,.35)}
+  html[data-theme="halloween"] .nav-cta svg,html[data-theme="halloween"] .btn-send svg{stroke:#fff}
+  html[data-theme="halloween"] .btn-w{background:#FF7A18;color:#fff}
+  html[data-theme="halloween"] .lang-dd-btn{background:#1A1026;color:#CDBBE6;border-color:#3B2457}
+  html[data-theme="halloween"] .lang-dd-btn:hover{background:#2A1840;border-color:#7A4BB0}
+  html[data-theme="halloween"] .lang-dd-btn svg{stroke:#FF8A1F}
+  html[data-theme="halloween"] .lang-dd-menu{background:#1A1026;border-color:#3B2457;box-shadow:0 12px 32px rgba(255,122,24,.25)}
+  html[data-theme="halloween"] .lang-dd-opt{color:#CDBBE6}
+  html[data-theme="halloween"] .lang-dd-opt:hover{background:#2A1840;color:#FF8A1F}
+  html[data-theme="halloween"] .lang-dd-opt.active{background:#2F1C4A;color:#FF8A1F}
+  html[data-theme="halloween"] .lang-dd-opt .lang-code{color:#8E78AE}
+  html[data-theme="halloween"] #hamburgerBtn{background:#1A1026;border-color:#3B2457;color:#FF8A1F}
+  html[data-theme="halloween"] #byteNav{background:#1A1026;border-color:#3B2457}
+  html[data-theme="halloween"] #byteNav a{color:#CDBBE6;border-color:#2F1C4A}
+  html[data-theme="halloween"] #byteNav a:hover{background:#2A1840;color:#FF8A1F}
 
   /* — Section titles & display text (bubbly headline font) — */
-  html[data-theme="kawaii"] .s-title,html[data-theme="kawaii"] .th-title,
-  html[data-theme="kawaii"] .foot-contact h2,html[data-theme="kawaii"] .m-title,
-  html[data-theme="kawaii"] .th-upcoming-date,html[data-theme="kawaii"] .news-modal-title,
-  html[data-theme="kawaii"] .earn-total-num,html[data-theme="kawaii"] .m-success h3{
-    font-family:'Baloo 2',cursive;color:#D6467F;text-transform:none;letter-spacing:0;
+  html[data-theme="halloween"] .s-title,html[data-theme="halloween"] .th-title,
+  html[data-theme="halloween"] .foot-contact h2,html[data-theme="halloween"] .m-title,
+  html[data-theme="halloween"] .th-upcoming-date,html[data-theme="halloween"] .news-modal-title,
+  html[data-theme="halloween"] .earn-total-num,html[data-theme="halloween"] .m-success h3{
+    font-family:'Creepster',cursive;color:#FF8A1F;text-transform:none;letter-spacing:0;
   }
-  html[data-theme="kawaii"] .s-eye,html[data-theme="kawaii"] .th-section-label,
-  html[data-theme="kawaii"] .earn-total-eye{color:#E08AB2}
+  html[data-theme="halloween"] .s-eye,html[data-theme="halloween"] .th-section-label,
+  html[data-theme="halloween"] .earn-total-eye{color:#B07CE0}
 
   /* — Names & labels (readable plum) — */
-  html[data-theme="kawaii"] .gc-name,html[data-theme="kawaii"] .rp-game,
-  html[data-theme="kawaii"] .soc-tile h3,html[data-theme="kawaii"] .th-name,
-  html[data-theme="kawaii"] .lm-team-name,html[data-theme="kawaii"] .lm-team-score,
-  html[data-theme="kawaii"] .foot-col h4,html[data-theme="kawaii"] .earn-name,
-  html[data-theme="kawaii"] .news-title-text,html[data-theme="kawaii"] .news-modal-text,
-  html[data-theme="kawaii"] .th-countdown{
-    color:#5A2E52;
+  html[data-theme="halloween"] .gc-name,html[data-theme="halloween"] .rp-game,
+  html[data-theme="halloween"] .soc-tile h3,html[data-theme="halloween"] .th-name,
+  html[data-theme="halloween"] .lm-team-name,html[data-theme="halloween"] .lm-team-score,
+  html[data-theme="halloween"] .foot-col h4,html[data-theme="halloween"] .earn-name,
+  html[data-theme="halloween"] .news-title-text,html[data-theme="halloween"] .news-modal-text,
+  html[data-theme="halloween"] .th-countdown{
+    color:#F3E8D6;
   }
-  html[data-theme="kawaii"] .gc-placeholder,html[data-theme="kawaii"] div[style*="color:#fff"]{color:#C983A8}
+  html[data-theme="halloween"] .gc-placeholder,html[data-theme="halloween"] div[style*="color:#fff"]{color:#F3E8D6}
 
   /* — Hover accents — */
-  html[data-theme="kawaii"] .rp-close:hover,html[data-theme="kawaii"] .m-x:hover,
-  html[data-theme="kawaii"] .news-close:hover,html[data-theme="kawaii"] .foot-col a:hover,
-  html[data-theme="kawaii"] .foot-bottom-social a:hover{color:#D6467F}
-  html[data-theme="kawaii"] .foot-social-row a:hover{background:#FFE1EE;color:#D6467F}
+  html[data-theme="halloween"] .rp-close:hover,html[data-theme="halloween"] .m-x:hover,
+  html[data-theme="halloween"] .news-close:hover,html[data-theme="halloween"] .foot-col a:hover,
+  html[data-theme="halloween"] .foot-bottom-social a:hover{color:#FF8A1F}
+  html[data-theme="halloween"] .foot-social-row a:hover{background:#2F1C4A;color:#FF8A1F}
 
   /* — Game cards / roster panel — */
-  html[data-theme="kawaii"] .games-grid,html[data-theme="kawaii"] .soc-grid,
-  html[data-theme="kawaii"] .earn-grid,html[data-theme="kawaii"] .rp-grid{background:#FFC7E1;border-color:#FFC7E1}
-  html[data-theme="kawaii"] .game-card,html[data-theme="kawaii"] .soc-tile,
-  html[data-theme="kawaii"] .earn-card,html[data-theme="kawaii"] .rp-card,
-  html[data-theme="kawaii"] .news-card,html[data-theme="kawaii"] .th-card{background:#fff}
-  html[data-theme="kawaii"] .game-card:hover,html[data-theme="kawaii"] .rp-card:hover,
-  html[data-theme="kawaii"] .soc-tile:hover,html[data-theme="kawaii"] .earn-card:hover,
-  html[data-theme="kawaii"] .news-card:hover,html[data-theme="kawaii"] .th-card:hover{background:#FFF3F8}
-  html[data-theme="kawaii"] .gc-hover-pill{background:#fff;color:#D6467F;border-color:#FFC7E1}
-  html[data-theme="kawaii"] .news-tag{background:#FFE1EE;color:#D6467F;border-color:#FFC7E1}
-  html[data-theme="kawaii"] .roster-panel{background:#fff}
-  html[data-theme="kawaii"] .rp-head{border-color:#FFE1EE}
-  html[data-theme="kawaii"] .rp-tag{background:#FF6FA5;color:#fff}
+  html[data-theme="halloween"] .games-grid,html[data-theme="halloween"] .soc-grid,
+  html[data-theme="halloween"] .earn-grid,html[data-theme="halloween"] .rp-grid{background:#3B2457;border-color:#3B2457}
+  html[data-theme="halloween"] .game-card,html[data-theme="halloween"] .soc-tile,
+  html[data-theme="halloween"] .earn-card,html[data-theme="halloween"] .rp-card,
+  html[data-theme="halloween"] .news-card,html[data-theme="halloween"] .th-card{background:#1A1026}
+  html[data-theme="halloween"] .game-card:hover,html[data-theme="halloween"] .rp-card:hover,
+  html[data-theme="halloween"] .soc-tile:hover,html[data-theme="halloween"] .earn-card:hover,
+  html[data-theme="halloween"] .news-card:hover,html[data-theme="halloween"] .th-card:hover{background:#120A1C}
+  html[data-theme="halloween"] .gc-hover-pill{background:#1A1026;color:#FF8A1F;border-color:#3B2457}
+  html[data-theme="halloween"] .news-tag{background:#2F1C4A;color:#FF8A1F;border-color:#3B2457}
+  html[data-theme="halloween"] .roster-panel{background:#1A1026}
+  html[data-theme="halloween"] .rp-head{border-color:#2F1C4A}
+  html[data-theme="halloween"] .rp-tag{background:#FF7A18;color:#fff}
 
   /* — Role badges (kept color-coded, pastel-tinted for legibility) — */
-  html[data-theme="kawaii"] .rp-badge{border-width:2px;font-weight:800}
-  html[data-theme="kawaii"] .rp-badge.normal,html[data-theme="kawaii"] .rp-badge.open{color:#B25A85;border-color:#FFC7E1;background:#FFF3F8}
-  html[data-theme="kawaii"] .rp-badge.ceo{color:#E0447E;border-color:#FFB8DA;background:#FFF0F7}
-  html[data-theme="kawaii"] .rp-badge.captain{color:#D97706;border-color:#FDE68A;background:#FFFBEB;box-shadow:none;text-shadow:none}
-  html[data-theme="kawaii"] .rp-badge.esports{color:#9333EA;border-color:#E9D5FF;background:#FAF5FF}
-  html[data-theme="kawaii"] .rp-badge.content{color:#7C3AED;border-color:#DDD6FE;background:#F5F3FF}
-  html[data-theme="kawaii"] .rp-badge.staff-r{color:#059669;border-color:#BBF7D0;background:#F0FDF4}
-  html[data-theme="kawaii"] .rp-badge.trainer{color:#0284C7;border-color:#BAE6FD;background:#F0F9FF}
-  html[data-theme="kawaii"] .rp-badge.trainee{color:#CA8A04;border-color:#FDE68A;background:#FEFCE8}
-  html[data-theme="kawaii"] .rp-badge.editor{color:#0D9488;border-color:#99F6E4;background:#F0FDFA}
-  html[data-theme="kawaii"] .rp-badge.recruiter{color:#DB2777;border-color:#FBCFE8;background:#FDF2F8}
-  html[data-theme="kawaii"] .rp-badge.moderator{color:#65A30D;border-color:#D9F99D;background:#F7FEE7}
-  html[data-theme="kawaii"] .rp-badge.trial{color:#EA580C;border-color:#FED7AA;background:#FFF7ED}
-  html[data-theme="kawaii"] .rp-badge.suspended{color:#D97706;border-color:#FDE68A;background:#FFFBEB}
+  html[data-theme="halloween"] .rp-badge{border-width:2px;font-weight:800}
+  html[data-theme="halloween"] .rp-badge.normal,html[data-theme="halloween"] .rp-badge.open{color:#BBA5D8;border-color:#3B2457;background:#120A1C}
+  html[data-theme="halloween"] .rp-badge.ceo{color:#FF8A1F;border-color:#6B3FA0;background:#2A1840}
+  html[data-theme="halloween"] .rp-badge.captain{color:#D97706;border-color:#FDE68A;background:#FFFBEB;box-shadow:none;text-shadow:none}
+  html[data-theme="halloween"] .rp-badge.esports{color:#9333EA;border-color:#E9D5FF;background:#FAF5FF}
+  html[data-theme="halloween"] .rp-badge.content{color:#7C3AED;border-color:#DDD6FE;background:#F5F3FF}
+  html[data-theme="halloween"] .rp-badge.staff-r{color:#059669;border-color:#BBF7D0;background:#F0FDF4}
+  html[data-theme="halloween"] .rp-badge.trainer{color:#0284C7;border-color:#BAE6FD;background:#F0F9FF}
+  html[data-theme="halloween"] .rp-badge.trainee{color:#CA8A04;border-color:#FDE68A;background:#FEFCE8}
+  html[data-theme="halloween"] .rp-badge.editor{color:#0D9488;border-color:#99F6E4;background:#F0FDFA}
+  html[data-theme="halloween"] .rp-badge.recruiter{color:#DB2777;border-color:#FBCFE8;background:#FDF2F8}
+  html[data-theme="halloween"] .rp-badge.moderator{color:#65A30D;border-color:#D9F99D;background:#F7FEE7}
+  html[data-theme="halloween"] .rp-badge.trial{color:#EA580C;border-color:#FED7AA;background:#FFF7ED}
+  html[data-theme="halloween"] .rp-badge.suspended{color:#D97706;border-color:#FDE68A;background:#FFFBEB}
 
   /* — Tournaments / live match — */
-  html[data-theme="kawaii"] .th-filter-btn{background:#fff}
-  html[data-theme="kawaii"] .th-filter-btn.active{color:#fff;background:#FF6FA5;border-color:#FF6FA5}
-  html[data-theme="kawaii"] .th-sort-btn{background:#fff}
-  html[data-theme="kawaii"] .th-empty{border-color:#FFC7E1}
-  html[data-theme="kawaii"] .th-card.live{background:#FFF0F5;border-color:#FFC2D6}
-  html[data-theme="kawaii"] .th-card.delayed{background:#FFFBEB;border-color:#FDE9B0}
-  html[data-theme="kawaii"] .th-upcoming-badge{background:#FFE1EE;color:#D6467F;border-color:transparent}
-  html[data-theme="kawaii"] .lm-card.lm-upcoming{background:linear-gradient(180deg,#fff,#FFF7FB);border-color:#FFE1EE}
-  html[data-theme="kawaii"] .lm-card.lm-finished{background:linear-gradient(180deg,#F0FDF6,#FAFFFB);border-color:#D3F5E1}
-  html[data-theme="kawaii"] .lm-name{color:#C983A8}
-  html[data-theme="kawaii"] .th-upcoming-dot{background:#FF6FA5}
+  html[data-theme="halloween"] .th-filter-btn{background:#1A1026}
+  html[data-theme="halloween"] .th-filter-btn.active{color:#fff;background:#FF7A18;border-color:#FF7A18}
+  html[data-theme="halloween"] .th-sort-btn{background:#1A1026}
+  html[data-theme="halloween"] .th-empty{border-color:#3B2457}
+  html[data-theme="halloween"] .th-card.live{background:#2A1424;border-color:#7A2E1A}
+  html[data-theme="halloween"] .th-card.delayed{background:#FFFBEB;border-color:#FDE9B0}
+  html[data-theme="halloween"] .th-upcoming-badge{background:#2F1C4A;color:#FF8A1F;border-color:transparent}
+  html[data-theme="halloween"] .lm-card.lm-upcoming{background:linear-gradient(180deg,#1A1026,#1A1026);border-color:#2F1C4A}
+  html[data-theme="halloween"] .lm-card.lm-finished{background:linear-gradient(180deg,#F0FDF6,#FAFFFB);border-color:#D3F5E1}
+  html[data-theme="halloween"] .lm-name{color:#8E78AE}
+  html[data-theme="halloween"] .th-upcoming-dot{background:#FF7A18}
 
   /* — News & earnings — */
-  html[data-theme="kawaii"] .earn-total-card{background:linear-gradient(160deg,#FFE1EE,#FFF3F8);border-color:#FFC7E1}
-  html[data-theme="kawaii"] .news-overlay,html[data-theme="kawaii"] .m-overlay{background:rgba(255,111,165,.28)}
-  html[data-theme="kawaii"] .news-modal,html[data-theme="kawaii"] .modal{background:#fff;border-color:#FFC7E1;box-shadow:0 20px 60px rgba(255,111,165,.3)}
+  html[data-theme="halloween"] .earn-total-card{background:linear-gradient(160deg,#2F1C4A,#120A1C);border-color:#3B2457}
+  html[data-theme="halloween"] .news-overlay,html[data-theme="halloween"] .m-overlay{background:rgba(255,122,24,.28)}
+  html[data-theme="halloween"] .news-modal,html[data-theme="halloween"] .modal{background:#1A1026;border-color:#3B2457;box-shadow:0 20px 60px rgba(255,122,24,.3)}
 
   /* — Forms — */
-  html[data-theme="kawaii"] .fg label{color:#B25A85}
-  html[data-theme="kawaii"] .fg input,html[data-theme="kawaii"] .fg select,html[data-theme="kawaii"] .fg textarea{
-    background:#FFF3F8;border-color:#FFC7E1;color:#5A2E52;border-radius:10px;
+  html[data-theme="halloween"] .fg label{color:#BBA5D8}
+  html[data-theme="halloween"] .fg input,html[data-theme="halloween"] .fg select,html[data-theme="halloween"] .fg textarea{
+    background:#120A1C;border-color:#3B2457;color:#F3E8D6;border-radius:10px;
   }
-  html[data-theme="kawaii"] .fg input:focus,html[data-theme="kawaii"] .fg select:focus,html[data-theme="kawaii"] .fg textarea:focus{border-color:#FF6FA5}
-  html[data-theme="kawaii"] .seg-btn{background:#FFF3F8;border-color:#FFC7E1;color:#B25A85;border-radius:10px}
-  html[data-theme="kawaii"] .seg-btn:hover{border-color:#FF9DC9;color:#D6467F}
-  html[data-theme="kawaii"] .seg-btn.active{background:#FF6FA5;color:#fff;border-color:#FF6FA5}
-  html[data-theme="kawaii"] .game-check-item{background:#FFF3F8;border-color:#FFC7E1;color:#B25A85;border-radius:10px}
-  html[data-theme="kawaii"] .game-check-item:hover{border-color:#FF9DC9;color:#D6467F}
-  html[data-theme="kawaii"] .game-check-item.active{background:#FF6FA5;color:#fff;border-color:#FF6FA5}
-  html[data-theme="kawaii"] .m-tiktok{color:#B25A85;border-color:#FFC7E1}
-  html[data-theme="kawaii"] .m-tiktok:hover{border-color:#FF9DC9}
-  html[data-theme="kawaii"] .m-tiktok svg{fill:#D6467F}
+  html[data-theme="halloween"] .fg input:focus,html[data-theme="halloween"] .fg select:focus,html[data-theme="halloween"] .fg textarea:focus{border-color:#FF7A18}
+  html[data-theme="halloween"] .seg-btn{background:#120A1C;border-color:#3B2457;color:#BBA5D8;border-radius:10px}
+  html[data-theme="halloween"] .seg-btn:hover{border-color:#7A4BB0;color:#FF8A1F}
+  html[data-theme="halloween"] .seg-btn.active{background:#FF7A18;color:#fff;border-color:#FF7A18}
+  html[data-theme="halloween"] .game-check-item{background:#120A1C;border-color:#3B2457;color:#BBA5D8;border-radius:10px}
+  html[data-theme="halloween"] .game-check-item:hover{border-color:#7A4BB0;color:#FF8A1F}
+  html[data-theme="halloween"] .game-check-item.active{background:#FF7A18;color:#fff;border-color:#FF7A18}
+  html[data-theme="halloween"] .m-tiktok{color:#BBA5D8;border-color:#3B2457}
+  html[data-theme="halloween"] .m-tiktok:hover{border-color:#7A4BB0}
+  html[data-theme="halloween"] .m-tiktok svg{fill:#FF8A1F}
 
   /* — Rounded, softer corners throughout for the cute feel — */
-  html[data-theme="kawaii"] .games-grid,html[data-theme="kawaii"] .game-card,
-  html[data-theme="kawaii"] .roster-panel,html[data-theme="kawaii"] .news-card,
-  html[data-theme="kawaii"] .th-card,html[data-theme="kawaii"] .soc-grid,
-  html[data-theme="kawaii"] .earn-grid,html[data-theme="kawaii"] .earn-card,
-  html[data-theme="kawaii"] .modal,html[data-theme="kawaii"] .news-modal,
-  html[data-theme="kawaii"] .cs-card{border-radius:18px}
+  html[data-theme="halloween"] .games-grid,html[data-theme="halloween"] .game-card,
+  html[data-theme="halloween"] .roster-panel,html[data-theme="halloween"] .news-card,
+  html[data-theme="halloween"] .th-card,html[data-theme="halloween"] .soc-grid,
+  html[data-theme="halloween"] .earn-grid,html[data-theme="halloween"] .earn-card,
+  html[data-theme="halloween"] .modal,html[data-theme="halloween"] .news-modal,
+  html[data-theme="halloween"] .cs-card{border-radius:18px}
 
-  /* — Tsundere mascot — */
+  /* — Halloween mascot — */
   .byts-mascot{display:none}
-  html[data-theme="kawaii"] .byts-mascot{
+  html[data-theme="halloween"] .byts-mascot{
     display:flex;align-items:flex-end;gap:10px;position:fixed;bottom:22px;right:22px;z-index:250;pointer-events:none;
   }
   .byts-mascot-bubble{
-    background:#fff;border:2px solid #FF9DC9;border-radius:16px 16px 4px 16px;
-    padding:10px 14px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;
-    color:#5A2E52;max-width:190px;box-shadow:0 6px 16px rgba(255,111,165,.25);
+    background:#1A1026;border:2px solid #7A4BB0;border-radius:16px 16px 4px 16px;
+    padding:10px 14px;font-family:'Inter',sans-serif;font-weight:700;font-size:13px;
+    color:#F3E8D6;max-width:190px;box-shadow:0 6px 16px rgba(255,122,24,.25);
   }
   .byts-mascot-chibi{
-    width:50px;height:50px;border-radius:50%;background:linear-gradient(160deg,#FF8FB8,#FF6FA5);
+    width:50px;height:50px;border-radius:50%;background:linear-gradient(160deg,#FF9A3D,#FF7A18);
     display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;
-    box-shadow:0 6px 14px rgba(255,111,165,.4);
+    box-shadow:0 6px 14px rgba(255,122,24,.4);
   }
   @media(max-width:640px){.byts-mascot{bottom:16px;right:16px}.byts-mascot-bubble{max-width:150px;font-size:12px}}
 
   /* — Coming Soon — */
-  html[data-theme="kawaii"] .cs-card{border-color:#FFADD2}
-  html[data-theme="kawaii"] .cs-icon{display:none}
-  html[data-theme="kawaii"] .cs-logo{display:inline-block;filter:drop-shadow(0 8px 18px rgba(255,111,165,.35))}
-  html[data-theme="kawaii"] .cs-title{font-family:'Baloo 2',cursive;color:#D6467F;text-transform:none;letter-spacing:0}
-  html[data-theme="kawaii"] .cs-sub{color:#C983A8}
+  html[data-theme="halloween"] .cs-card{border-color:#54307A}
+  html[data-theme="halloween"] .cs-icon{display:none}
+  html[data-theme="halloween"] .cs-logo{display:inline-block;filter:drop-shadow(0 8px 18px rgba(255,122,24,.35))}
+  html[data-theme="halloween"] .cs-title{font-family:'Creepster',cursive;color:#FF8A1F;text-transform:none;letter-spacing:0}
+  html[data-theme="halloween"] .cs-sub{color:#8E78AE}
 
-  /* — Extra kawaii footer note (hidden outside kawaii mode) — */
-  .kawaii-footer-note{display:none}
-  html[data-theme="kawaii"] .kawaii-footer-note{
+  /* — Extra halloween footer note (hidden outside halloween mode) — */
+  .halloween-footer-note{display:none}
+  html[data-theme="halloween"] .halloween-footer-note{
     display:block;max-width:560px;margin:0 auto 40px;text-align:center;
-    font-family:'Nunito',sans-serif;font-size:14px;font-weight:600;color:#8C5A79;line-height:1.8;
+    font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:#CDBBE6;line-height:1.8;
   }
-  html[data-theme="kawaii"] .kawaii-footer-note p{margin-bottom:10px}
+  html[data-theme="halloween"] .halloween-footer-note p{margin-bottom:10px}
 
-  /* — Cherry blossom fall (Tournaments section, kawaii mode only) — */
-  #sakuraContainer{position:fixed;inset:0;pointer-events:none;z-index:120;overflow:hidden}
-  html:not([data-theme="kawaii"]) #sakuraContainer{display:none}
-  .sakura-petal{position:absolute;top:-8vh;will-change:transform,opacity;animation-name:sakuraFall;animation-timing-function:linear;animation-fill-mode:forwards;}
-  @keyframes sakuraFall{
+  /* — Cherry blossom fall (Tournaments section, halloween mode only) — */
+  #spookContainer{position:fixed;inset:0;pointer-events:none;z-index:120;overflow:hidden}
+  html:not([data-theme="halloween"]) #spookContainer{display:none}
+  .spook-petal{position:absolute;top:-8vh;will-change:transform,opacity;animation-name:spookFall;animation-timing-function:linear;animation-fill-mode:forwards;}
+  @keyframes spookFall{
     0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0}
     8%{opacity:1}
-    100%{transform:translateY(112vh) translateX(var(--sakura-drift,60px)) rotate(var(--sakura-spin,320deg));opacity:.85}
+    100%{transform:translateY(112vh) translateX(var(--spook-drift,60px)) rotate(var(--spook-spin,320deg));opacity:.85}
   }
-  @media(prefers-reduced-motion:reduce){.sakura-petal{display:none}}
+  @media(prefers-reduced-motion:reduce){.spook-petal{display:none}}
+
+  /* — Halloween refinements (dark badge tints, readable button text, glow) — */
+  html[data-theme="halloween"] .nav-cta,html[data-theme="halloween"] .btn-send,html[data-theme="halloween"] .btn-w,
+  html[data-theme="halloween"] .th-filter-btn.active,html[data-theme="halloween"] .seg-btn.active,
+  html[data-theme="halloween"] .game-check-item.active,html[data-theme="halloween"] .rp-tag{color:#1A0B00!important}
+  html[data-theme="halloween"] .nav-cta svg,html[data-theme="halloween"] .btn-send svg{stroke:#1A0B00}
+  html[data-theme="halloween"] .s-title,html[data-theme="halloween"] .th-title,html[data-theme="halloween"] .foot-contact h2,
+  html[data-theme="halloween"] .m-title,html[data-theme="halloween"] .cs-title{letter-spacing:.04em;text-shadow:0 0 18px rgba(255,122,24,.35)}
+  html[data-theme="halloween"] .nav-brand{text-shadow:0 0 12px rgba(255,122,24,.4)}
+  html[data-theme="halloween"] body{background:radial-gradient(ellipse at 50% -10%,#2B1442 0%,#120A1C 55%,#0A0510 100%) fixed}
+  html[data-theme="halloween"] .rp-badge.normal,html[data-theme="halloween"] .rp-badge.open{color:#BBA5D8;border-color:#3B2457;background:#1A1026}
+  html[data-theme="halloween"] .rp-badge.ceo{color:#FF8A1F;border-color:#7A3E0A;background:#2A1608}
+  html[data-theme="halloween"] .rp-badge.captain{color:#FBBF24;border-color:#78560A;background:#2A200A}
+  html[data-theme="halloween"] .rp-badge.esports{color:#C084FC;border-color:#4C2A78;background:#22123A}
+  html[data-theme="halloween"] .rp-badge.content{color:#A78BFA;border-color:#43307A;background:#1E1638}
+  html[data-theme="halloween"] .rp-badge.staff-r{color:#6EE7B7;border-color:#14532D;background:#0D2218}
+  html[data-theme="halloween"] .rp-badge.trainer{color:#7DD3FC;border-color:#0C4A6E;background:#0B1F30}
+  html[data-theme="halloween"] .rp-badge.trainee{color:#FDE047;border-color:#713F12;background:#241C08}
+  html[data-theme="halloween"] .rp-badge.editor{color:#5EEAD4;border-color:#115E59;background:#0A2220}
+  html[data-theme="halloween"] .rp-badge.recruiter{color:#F9A8D4;border-color:#831843;background:#2A0F1E}
+  html[data-theme="halloween"] .rp-badge.moderator{color:#BEF264;border-color:#365314;background:#1A240B}
+  html[data-theme="halloween"] .rp-badge.trial{color:#FDBA74;border-color:#7C2D12;background:#2A1508}
+  html[data-theme="halloween"] .rp-badge.suspended{color:#FBBF24;border-color:#78560A;background:#2A200A}
+  html[data-theme="halloween"] .th-card.delayed{background:#241C08;border-color:#78560A}
+  html[data-theme="halloween"] .lm-card.lm-finished{background:linear-gradient(180deg,#0D2218,#0A1A12);border-color:#14532D}
 
 </style>
 </head>
@@ -902,7 +927,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
     </ul>
     <div class="nav-actions">
       <button type="button" class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleByteTheme()" aria-label="Switch site style">
-        <span id="themeToggleIcon">🎀</span><span id="themeToggleLabel">Kawaii Mode</span>
+        <span id="themeToggleIcon">🎃</span><span id="themeToggleLabel">Halloween Mode</span>
       </button>
       <div class="lang-dd" id="langDD">
         <button type="button" class="lang-dd-btn" id="langDDBtn" onclick="toggleLangDD(event)">
@@ -931,14 +956,14 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
   </div>
 </nav>
 
-<!-- ── Kawaii Tsundere mascot (only visible in kawaii mode) ── -->
+<!-- ── Halloween mascot (only visible in halloween mode) ── -->
 <div class="byts-mascot" id="bytsMascot" aria-hidden="true">
-  <div class="byts-mascot-bubble" id="bytsMascotBubble">It's not like I redesigned this for you or anything... baka!</div>
-  <div class="byts-mascot-chibi">🐾</div>
+  <div class="byts-mascot-bubble" id="bytsMascotBubble">Boo! Welcome to the haunted Bytestorm...</div>
+  <div class="byts-mascot-chibi">🎃</div>
 </div>
 
-<!-- Cherry blossom petals — spawned only while Tournaments is in view in kawaii mode -->
-<div id="sakuraContainer" aria-hidden="true"></div>
+<!-- Floating spooky bits — spawned only while Tournaments is in view in halloween mode -->
+<div id="spookContainer" aria-hidden="true"></div>
 
 <!-- ── GAMES ── -->
 <!-- Game cards + roster panels are rendered dynamically from Firebase
@@ -1109,9 +1134,9 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
         </a>
       </div>
 
-      <div class="kawaii-footer-note">
-        <p>I-It's not like we wrote this just for you or anything... b-baka! ✨ But since you scrolled all the way down here: Bytestorm isn't just a roster, okay? It's a bunch of people who yell at each other in Discord at 2AM and somehow still show up to win. We're kind of proud of them. Don't tell them we said that.</p>
-        <p>S-so yeah. Apply if you want. Or don't. See if we care. (We care.) 🌸</p>
+      <div class="halloween-footer-note">
+        <p>Bytestorm isn't just a roster... it's a coven of players who haunt Discord at 2AM and still show up to win. 🦇</p>
+        <p>Dare to join us? Hit Apply... if you're brave enough. 🎃👻</p>
       </div>
 
       <div class="foot-cols">
@@ -2201,33 +2226,33 @@ onValue(earningsRef, function(snap){
 </script>
 
 <script>
-// ── Kawaii Tsundere theme toggle ──
+// ── Halloween theme toggle ──
 (function(){
-  var tsundereLines = [
-    "It's not like I redesigned this for you or anything... baka!",
-    "D-don't stare at the roster too long, weirdo!",
-    "I only made it pink because... because I felt like it, okay?!",
-    "Hmph. I guess you can stay a while.",
-    "This isn't for YOUR benefit! ...okay maybe a little.",
-    "S-stop looking at me and go check the tournaments already!"
+  var spookyLines = [
+    "Boo! Welcome to the haunted Bytestorm...",
+    "Don't look behind you. Seriously.",
+    "Trick or treat? We only accept wins.",
+    "The roster is alive... barely. Mwahaha!",
+    "Something wicked this way comes: a tournament.",
+    "Careful... the ghosts of old matches linger here."
   ];
 
   function syncToggleUI(theme){
     var icon = document.getElementById('themeToggleIcon');
     var label = document.getElementById('themeToggleLabel');
     if(!icon || !label) return;
-    if(theme === 'kawaii'){
+    if(theme === 'halloween'){
       icon.textContent = '🌙';
       label.textContent = 'Original Mode';
     } else {
-      icon.textContent = '🎀';
-      label.textContent = 'Kawaii Mode';
+      icon.textContent = '🎃';
+      label.textContent = 'Halloween Mode';
     }
   }
 
   function setMascotLine(){
     var bubble = document.getElementById('bytsMascotBubble');
-    if(bubble) bubble.textContent = tsundereLines[Math.floor(Math.random() * tsundereLines.length)];
+    if(bubble) bubble.textContent = spookyLines[Math.floor(Math.random() * spookyLines.length)];
   }
 
   // Sets the anchor's own text (leaving any child <svg>/whitespace nodes alone)
@@ -2243,31 +2268,31 @@ onValue(earningsRef, function(snap){
     if(!found) el.textContent = text; // no existing text node (e.g. icon-only) — safe fallback
   }
 
-  // ── Kawaii section/button copy ──
-  function applyKawaiiText(){
-    setLinkText(document.querySelector('.nav-links a[href="#games"]'), "Senpai's Squadron");
+  // ── Halloween section/button copy ──
+  function applyHalloweenText(){
+    setLinkText(document.querySelector('.nav-links a[href="#games"]'), "Monster Squad");
     var gamesTitle = document.querySelectorAll('.s-title:not(.earn-title)')[0];
-    if(gamesTitle) gamesTitle.textContent = "Senpai's Squadron";
+    if(gamesTitle) gamesTitle.textContent = "The Monster Squad";
 
     var thTitle = document.querySelector('.th-title');
-    if(thTitle) thTitle.textContent = 'Tournament Histowy';
+    if(thTitle) thTitle.textContent = 'Tournament Crypt';
 
     var earnTitle = document.querySelector('.s-title.earn-title');
-    if(earnTitle) earnTitle.textContent = "S-Senpai's Hard E-Earned Squadron Earnings";
+    if(earnTitle) earnTitle.textContent = "Spooky Loot & Earnings";
 
-    setLinkText(document.querySelector('.nav-links a[href="#socials"]'), 'T-Text Us!');
+    setLinkText(document.querySelector('.nav-links a[href="#socials"]'), 'Summon Us');
     var contactHeading = document.querySelector('.foot-contact h2');
-    if(contactHeading) contactHeading.textContent = "T-Text Us! It's Not Like We Want You To! 😤";
+    if(contactHeading) contactHeading.textContent = "Summon Us... If You Dare 🕯️";
 
-    setLinkText(document.querySelector('.nav-cta'), 'Join Us, Baka');
+    setLinkText(document.querySelector('.nav-cta'), 'Join the Coven');
     var modalTitle = document.querySelector('.m-title');
-    if(modalTitle) modalTitle.textContent = "C-Come Join Us! It's Not Like We're Excited!";
+    if(modalTitle) modalTitle.textContent = "Join the Coven... If You Dare 🎃";
 
     var csTitle = document.getElementById('csTitle');
-    if(csTitle) csTitle.textContent = "D-don't peek! It's not ready yet!";
+    if(csTitle) csTitle.textContent = "Something wicked is coming...";
   }
 
-  // Restores the elements applyKawaiiText() touched that the language
+  // Restores the elements applyHalloweenText() touched that the language
   // pipeline doesn't already cover on its own (earnings title + Apply button
   // aren't part of the i18n system — see changeLang() above).
   function restoreOriginalText(){
@@ -2280,42 +2305,42 @@ onValue(earningsRef, function(snap){
     if(typeof changeLang === 'function') changeLang(currentLang);
   }
 
-  // Re-apply kawaii copy after a language switch, since changeLang() would
+  // Re-apply halloween copy after a language switch, since changeLang() would
   // otherwise stomp the games/tournaments/contact text back to that language.
   if(typeof changeLang === 'function'){
     var _origChangeLang = changeLang;
     changeLang = function(lang){
       _origChangeLang(lang);
-      if(document.documentElement.getAttribute('data-theme') === 'kawaii') applyKawaiiText();
+      if(document.documentElement.getAttribute('data-theme') === 'halloween') applyHalloweenText();
     };
   }
 
   window.toggleByteTheme = function(){
     var html = document.documentElement;
-    var next = html.getAttribute('data-theme') === 'kawaii' ? 'original' : 'kawaii';
+    var next = html.getAttribute('data-theme') === 'halloween' ? 'original' : 'halloween';
     html.setAttribute('data-theme', next);
     try { localStorage.setItem('byts-theme', next); } catch(e) {}
     syncToggleUI(next);
-    if(next === 'kawaii'){
+    if(next === 'halloween'){
       setMascotLine();
-      applyKawaiiText();
+      applyHalloweenText();
     } else {
       restoreOriginalText();
-      clearSakuraPetals();
+      clearSpookPetals();
     }
   };
 
-  // ── Cherry blossom fall — only while #tournaments is on screen in kawaii mode ──
-  var sakuraContainer = document.getElementById('sakuraContainer');
-  var sakuraTimer = null;
-  var sakuraGlyphs = ['🌸','🌸','🌸','💮'];
+  // ── Spooky fall (pumpkins, bats, ghosts) — only while #tournaments is on screen in halloween mode ──
+  var spookContainer = document.getElementById('spookContainer');
+  var spookTimer = null;
+  var spookGlyphs = ['🎃','🦇','👻','🍂','🕸️','🦇'];
 
   function spawnPetal(){
-    if(!sakuraContainer) return;
-    if(sakuraContainer.childElementCount > 30) return; // cap concurrent petals
+    if(!spookContainer) return;
+    if(spookContainer.childElementCount > 30) return; // cap concurrent petals
     var petal = document.createElement('span');
-    petal.className = 'sakura-petal';
-    petal.textContent = sakuraGlyphs[Math.floor(Math.random() * sakuraGlyphs.length)];
+    petal.className = 'spook-petal';
+    petal.textContent = spookGlyphs[Math.floor(Math.random() * spookGlyphs.length)];
     var size = 14 + Math.random() * 14;
     var duration = 7 + Math.random() * 6;
     var drift = (Math.random() * 140 - 70).toFixed(0) + 'px';
@@ -2323,39 +2348,39 @@ onValue(earningsRef, function(snap){
     petal.style.left = (Math.random() * 100) + 'vw';
     petal.style.fontSize = size + 'px';
     petal.style.opacity = (0.6 + Math.random() * 0.4).toFixed(2);
-    petal.style.setProperty('--sakura-drift', drift);
-    petal.style.setProperty('--sakura-spin', spin);
+    petal.style.setProperty('--spook-drift', drift);
+    petal.style.setProperty('--spook-spin', spin);
     petal.style.animationDuration = duration + 's';
     petal.addEventListener('animationend', function(){ petal.remove(); });
-    sakuraContainer.appendChild(petal);
+    spookContainer.appendChild(petal);
   }
 
-  function startSakuraSpawning(){
-    if(sakuraTimer) return;
+  function startSpookSpawning(){
+    if(spookTimer) return;
     spawnPetal();
-    sakuraTimer = setInterval(spawnPetal, 260);
+    spookTimer = setInterval(spawnPetal, 260);
   }
-  function stopSakuraSpawning(){
-    if(sakuraTimer){ clearInterval(sakuraTimer); sakuraTimer = null; }
+  function stopSpookSpawning(){
+    if(spookTimer){ clearInterval(spookTimer); spookTimer = null; }
   }
-  function clearSakuraPetals(){
-    stopSakuraSpawning();
-    if(sakuraContainer) sakuraContainer.innerHTML = '';
+  function clearSpookPetals(){
+    stopSpookSpawning();
+    if(spookContainer) spookContainer.innerHTML = '';
   }
 
-  function isKawaii(){ return document.documentElement.getAttribute('data-theme') === 'kawaii'; }
+  function isHalloween(){ return document.documentElement.getAttribute('data-theme') === 'halloween'; }
 
   document.addEventListener('DOMContentLoaded', function(){
     syncToggleUI(document.documentElement.getAttribute('data-theme') || 'original');
     setMascotLine();
-    if(isKawaii()) applyKawaiiText();
+    if(isHalloween()) applyHalloweenText();
 
     var tournamentsSection = document.getElementById('tournaments');
     if(tournamentsSection && 'IntersectionObserver' in window){
       var observer = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
-          if(entry.isIntersecting && isKawaii()) startSakuraSpawning();
-          else stopSakuraSpawning();
+          if(entry.isIntersecting && isHalloween()) startSpookSpawning();
+          else stopSpookSpawning();
         });
       }, { threshold: 0.15 });
       observer.observe(tournamentsSection);
