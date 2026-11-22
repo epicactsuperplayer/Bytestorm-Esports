@@ -1142,8 +1142,8 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
       </div>
 
       <div class="winter-footer-note">
-        <p>Bytestorm isn't just a roster... it's a squad that stays up through the coldest nights and still shows up to win. ❄️</p>
-        <p>Ready to join us? Hit Apply and bring your warmest gloves. ⛄🧤</p>
+        <p id="winterFoot1">Bytestorm isn't just a roster... it's a squad that stays up through the coldest nights and still shows up to win. ❄️</p>
+        <p id="winterFoot2">Ready to join us? Hit Apply and bring your warmest gloves. ⛄🧤</p>
       </div>
 
       <div class="foot-cols">
@@ -2239,31 +2239,65 @@ onValue(earningsRef, function(snap){
 <script>
 // ── Cold Winter theme toggle ──
 (function(){
-  var winterLines = [
-    "Brrr! Welcome to the frozen Bytestorm...",
-    "Stay warm. The scrims are heating up.",
-    "Snow day? Not for us. Queue up!",
-    "Cold hands, warm clutch plays.",
-    "Winter is the season of champions.",
-    "Hot chocolate in one hand, controller in the other."
-  ];
+  // ── Winter-mode copy in every site language ──
+  var winterText = {
+    en: { toggleWinter:'Winter Mode', toggleOriginal:'Original Mode', navGames:'Frost Squad', gamesTitle:'The Frost Squad', tourTitle:'Frozen Arena', earnTitle:'Winter Loot & Earnings', navSocials:'Reach Out', contactHeading:'Come In From the Cold ❄️', applyBtn:'Join the Pack', modalTitle:'Join the Pack... Brave the Cold ❄️', csTitle:'Something cold is coming...',
+      foot1:"Bytestorm isn't just a roster... it's a squad that stays up through the coldest nights and still shows up to win. ❄️", foot2:'Ready to join us? Hit Apply and bring your warmest gloves. ⛄🧤',
+      lines:['Brrr! Welcome to the frozen Bytestorm...','Stay warm. The scrims are heating up.','Snow day? Not for us. Queue up!','Cold hands, warm clutch plays.','Winter is the season of champions.','Hot chocolate in one hand, controller in the other.'] },
+    de: { toggleWinter:'Wintermodus', toggleOriginal:'Originalmodus', navGames:'Frost-Team', gamesTitle:'Das Frost-Team', tourTitle:'Gefrorene Arena', earnTitle:'Winterbeute & Einnahmen', navSocials:'Melde dich', contactHeading:'Komm rein aus der Kälte ❄️', applyBtn:'Dem Rudel beitreten', modalTitle:'Tritt dem Rudel bei... trotze der Kälte ❄️', csTitle:'Etwas Kaltes kommt...',
+      foot1:'Bytestorm ist nicht nur ein Kader... es ist ein Team, das auch in den kältesten Nächten wach bleibt und trotzdem zum Siegen antritt. ❄️', foot2:'Bereit, dich uns anzuschließen? Klick auf Bewerben und bring deine wärmsten Handschuhe mit. ⛄🧤',
+      lines:['Brrr! Willkommen im gefrorenen Bytestorm...','Bleib warm. Die Scrims heizen sich auf.','Schneetag? Nicht bei uns. Ab in die Queue!','Kalte Hände, heiße Clutch-Plays.','Der Winter ist die Jahreszeit der Champions.','Heiße Schokolade in der einen Hand, Controller in der anderen.'] },
+    nl: { toggleWinter:'Wintermodus', toggleOriginal:'Originele modus', navGames:'Vorstsquad', gamesTitle:'De Vorstsquad', tourTitle:'Bevroren Arena', earnTitle:'Winterbuit & Inkomsten', navSocials:'Neem contact op', contactHeading:'Kom binnen uit de kou ❄️', applyBtn:'Word lid van de roedel', modalTitle:'Word lid van de roedel... trotseer de kou ❄️', csTitle:'Er komt iets kouds aan...',
+      foot1:'Bytestorm is niet zomaar een selectie... het is een squad dat de koudste nachten opblijft en nog steeds komt winnen. ❄️', foot2:'Klaar om je bij ons aan te sluiten? Klik op Solliciteer en neem je warmste handschoenen mee. ⛄🧤',
+      lines:['Brrr! Welkom bij het bevroren Bytestorm...','Blijf warm. De scrims worden heet.','Sneeuwdag? Niet voor ons. Ga in de queue!','Koude handen, warme clutch-plays.','De winter is het seizoen van kampioenen.','Warme chocolademelk in de ene hand, controller in de andere.'] },
+    it: { toggleWinter:'Modalità Inverno', toggleOriginal:'Modalità Originale', navGames:'Squadra del Gelo', gamesTitle:'La Squadra del Gelo', tourTitle:'Arena Ghiacciata', earnTitle:'Bottino Invernale e Guadagni', navSocials:'Contattaci', contactHeading:'Vieni dentro, fuori fa freddo ❄️', applyBtn:'Unisciti al Branco', modalTitle:'Unisciti al Branco... sfida il freddo ❄️', csTitle:'Sta arrivando qualcosa di gelido...',
+      foot1:'Bytestorm non è solo un roster... è una squadra che resta sveglia nelle notti più fredde e si presenta comunque per vincere. ❄️', foot2:'Pronto a unirti a noi? Premi Candidati e porta i guanti più caldi. ⛄🧤',
+      lines:['Brrr! Benvenuto nel Bytestorm ghiacciato...','Resta al caldo. Gli scrim si scaldano.','Giornata di neve? Non per noi. In coda!','Mani fredde, clutch bollenti.',"L'inverno è la stagione dei campioni.","Cioccolata calda in una mano, controller nell'altra."] },
+    fr: { toggleWinter:'Mode Hiver', toggleOriginal:'Mode Original', navGames:'Escouade du Givre', gamesTitle:"L'Escouade du Givre", tourTitle:'Arène Glacée', earnTitle:"Butin d'Hiver & Gains", navSocials:'Contactez-nous', contactHeading:'Viens te mettre à l’abri du froid ❄️', applyBtn:'Rejoins la Meute', modalTitle:'Rejoins la Meute... brave le froid ❄️', csTitle:'Quelque chose de glacial arrive...',
+      foot1:"Bytestorm n'est pas qu'un effectif... c'est une équipe qui veille pendant les nuits les plus froides et se présente quand même pour gagner. ❄️", foot2:'Prêt à nous rejoindre ? Clique sur Postuler et apporte tes gants les plus chauds. ⛄🧤',
+      lines:['Brrr ! Bienvenue dans Bytestorm gelé...','Reste au chaud. Les scrims chauffent.','Jour de neige ? Pas pour nous. En file !','Mains froides, clutchs brûlants.',"L'hiver est la saison des champions.","Chocolat chaud dans une main, manette dans l'autre."] },
+    es: { toggleWinter:'Modo Invierno', toggleOriginal:'Modo Original', navGames:'Escuadrón Helado', gamesTitle:'El Escuadrón Helado', tourTitle:'Arena Congelada', earnTitle:'Botín de Invierno y Ganancias', navSocials:'Contáctanos', contactHeading:'Entra, que fuera hace frío ❄️', applyBtn:'Únete a la Manada', modalTitle:'Únete a la Manada... desafía el frío ❄️', csTitle:'Algo helado se acerca...',
+      foot1:'Bytestorm no es solo una plantilla... es un equipo que se desvela en las noches más frías y aun así se presenta a ganar. ❄️', foot2:'¿Listo para unirte? Pulsa Aplicar y trae tus guantes más calientes. ⛄🧤',
+      lines:['¡Brrr! Bienvenido al Bytestorm congelado...','Mantente caliente. Los scrims se calientan.','¿Día de nieve? Para nosotros no. ¡A la cola!','Manos frías, jugadas clutch calientes.','El invierno es la temporada de los campeones.','Chocolate caliente en una mano, mando en la otra.'] },
+    ar: { toggleWinter:'الوضع الشتوي', toggleOriginal:'الوضع الأصلي', navGames:'فريق الصقيع', gamesTitle:'فريق الصقيع', tourTitle:'الساحة المتجمدة', earnTitle:'غنائم الشتاء والأرباح', navSocials:'تواصل معنا', contactHeading:'ادخل من البرد ❄️', applyBtn:'انضم إلى القطيع', modalTitle:'انضم إلى القطيع... واجه البرد ❄️', csTitle:'شيء بارد قادم...',
+      foot1:'Bytestorm ليس مجرد قائمة لاعبين... بل فريق يسهر في أبرد الليالي ويظهر مع ذلك ليفوز. ❄️', foot2:'هل أنت مستعد للانضمام إلينا؟ اضغط على تقديم وأحضر أدفأ قفازاتك. ⛄🧤',
+      lines:['برر! أهلاً بك في Bytestorm المتجمد...','ابقَ دافئاً. التمارين تشتعل.','يوم ثلجي؟ ليس عندنا. ادخل الطابور!','أيدٍ باردة، ولعبات كلتش ساخنة.','الشتاء موسم الأبطال.','شوكولاتة ساخنة في يد، ويد التحكم في الأخرى.'] },
+    'ar-sy': { toggleWinter:'الوضع الشتوي', toggleOriginal:'الوضع الأصلي', navGames:'فريق الصقيع', gamesTitle:'فريق الصقيع', tourTitle:'الساحة المجمدة', earnTitle:'غنائم الشتاء والأرباح', navSocials:'تواصل معنا', contactHeading:'تعا لجوّا من البرد ❄️', applyBtn:'إنضم للقطيع', modalTitle:'إنضم للقطيع... وواجه البرد ❄️', csTitle:'في شي بارد جاي...',
+      foot1:'Bytestorm مو بس فريق... هاد تيم بيضل صاحي بأبرد الليالي وبيجي ليفوز بكل الأحوال. ❄️', foot2:'جاهز تنضم لعنّا؟ دوس على تقديم وجيب أدفى كفوفك. ⛄🧤',
+      lines:['برر! أهلين فيك بـ Bytestorm المجمّد...','خليك دافي. السكرمات عم تسخن.','يوم تلج؟ مو عنا. إنضم للكيو!','إيدين باردة، ولعب كلتش سخن.','الشتا موسم الأبطال.','شوكولا سخنة بإيد، والكونترولر بالإيد التانية.'] },
+    tr: { toggleWinter:'Kış Modu', toggleOriginal:'Orijinal Mod', navGames:'Don Takımı', gamesTitle:'Don Takımı', tourTitle:'Donmuş Arena', earnTitle:'Kış Ganimeti ve Kazançlar', navSocials:'Bize Ulaş', contactHeading:'Soğuktan içeri gel ❄️', applyBtn:'Sürüye Katıl', modalTitle:'Sürüye Katıl... Soğuğa Meydan Oku ❄️', csTitle:'Soğuk bir şey geliyor...',
+      foot1:'Bytestorm sadece bir kadro değil... en soğuk gecelerde de ayakta kalıp yine de kazanmaya gelen bir ekip. ❄️', foot2:"Bize katılmaya hazır mısın? Başvur'a tıkla ve en sıcak eldivenlerini getir. ⛄🧤",
+      lines:["Brrr! Donmuş Bytestorm'a hoş geldin...",'Sıcak kal. Scrimler kızışıyor.','Kar tatili mi? Bizde yok. Sıraya gir!',"Soğuk eller, sıcak clutch'lar.",'Kış, şampiyonların mevsimidir.','Bir elinde sıcak çikolata, diğerinde kumanda.'] },
+    ja: { toggleWinter:'ウィンターモード', toggleOriginal:'オリジナルモード', navGames:'フロストスクワッド', gamesTitle:'フロストスクワッド', tourTitle:'凍てつくアリーナ', earnTitle:'冬の戦利品と収益', navSocials:'お問い合わせ', contactHeading:'寒さから抜け出して、こちらへ ❄️', applyBtn:'群れに加わろう', modalTitle:'群れに加わろう…寒さに立ち向かえ ❄️', csTitle:'冷たい何かが近づいている…',
+      foot1:'Bytestormはただのロスターではありません…最も寒い夜でも起きていて、それでも勝ちに来るチームです。❄️', foot2:'参加する準備はできましたか？「応募」を押して、一番暖かい手袋を用意してください。⛄🧤',
+      lines:['ブルッ！凍てつくBytestormへようこそ…','暖かくしてね。スクリムは熱くなっている。','雪の日？うちには関係ない。キューに入ろう！','冷たい手、熱いクラッチプレイ。','冬はチャンピオンの季節。','片手にホットココア、もう片手にコントローラー。'] },
+    hu: { toggleWinter:'Téli mód', toggleOriginal:'Eredeti mód', navGames:'Fagycsapat', gamesTitle:'A Fagycsapat', tourTitle:'Fagyott Aréna', earnTitle:'Téli zsákmány és bevételek', navSocials:'Keress minket', contactHeading:'Gyere be a hidegből ❄️', applyBtn:'Csatlakozz a falkához', modalTitle:'Csatlakozz a falkához... dacolj a hideggel ❄️', csTitle:'Valami hideg közeleg...',
+      foot1:'A Bytestorm nem csak egy keret... egy csapat, amely a leghidegebb éjszakákon is fennmarad, és mégis győzni jön. ❄️', foot2:'Készen állsz, hogy csatlakozz? Nyomd meg a Jelentkezés gombot, és hozd a legmelegebb kesztyűdet. ⛄🧤',
+      lines:['Brrr! Üdv a fagyos Bytestormban...','Maradj melegben. A scrimek hevülnek.','Havazás? Nálunk nem. Állj sorba!','Hideg kezek, forró clutch-játékok.','A tél a bajnokok évszaka.','Forró csoki az egyik kézben, kontroller a másikban.'] }
+  };
+  function wt(){
+    var lang = document.documentElement.getAttribute('lang') || 'en';
+    return winterText[lang] || winterText.en;
+  }
 
   function syncToggleUI(theme){
     var icon = document.getElementById('themeToggleIcon');
     var label = document.getElementById('themeToggleLabel');
     if(!icon || !label) return;
+    var t = wt();
     if(theme === 'winter'){
       icon.textContent = '☀️';
-      label.textContent = 'Original Mode';
+      label.textContent = t.toggleOriginal;
     } else {
       icon.textContent = '❄️';
-      label.textContent = 'Winter Mode';
+      label.textContent = t.toggleWinter;
     }
   }
 
   function setMascotLine(){
     var bubble = document.getElementById('bytsMascotBubble');
-    if(bubble) bubble.textContent = winterLines[Math.floor(Math.random() * winterLines.length)];
+    var lines = wt().lines;
+    if(bubble) bubble.textContent = lines[Math.floor(Math.random() * lines.length)];
   }
 
   // Sets the anchor's own text (leaving any child <svg>/whitespace nodes alone)
@@ -2281,26 +2315,31 @@ onValue(earningsRef, function(snap){
 
   // ── Winter section/button copy ──
   function applyWinterText(){
-    setLinkText(document.querySelector('.nav-links a[href="#games"]'), "Frost Squad");
+    var t = wt();
+    setLinkText(document.querySelector('.nav-links a[href="#games"]'), t.navGames);
     var gamesTitle = document.querySelectorAll('.s-title:not(.earn-title)')[0];
-    if(gamesTitle) gamesTitle.textContent = "The Frost Squad";
+    if(gamesTitle) gamesTitle.textContent = t.gamesTitle;
 
     var thTitle = document.querySelector('.th-title');
-    if(thTitle) thTitle.textContent = 'Frozen Arena';
+    if(thTitle) thTitle.textContent = t.tourTitle;
 
     var earnTitle = document.querySelector('.s-title.earn-title');
-    if(earnTitle) earnTitle.textContent = "Winter Loot & Earnings";
+    if(earnTitle) earnTitle.textContent = t.earnTitle;
 
-    setLinkText(document.querySelector('.nav-links a[href="#socials"]'), 'Reach Out');
+    setLinkText(document.querySelector('.nav-links a[href="#socials"]'), t.navSocials);
     var contactHeading = document.querySelector('.foot-contact h2');
-    if(contactHeading) contactHeading.textContent = "Come In From the Cold ❄️";
+    if(contactHeading) contactHeading.textContent = t.contactHeading;
 
-    setLinkText(document.querySelector('.nav-cta'), 'Join the Pack');
+    setLinkText(document.querySelector('.nav-cta'), t.applyBtn);
     var modalTitle = document.querySelector('.m-title');
-    if(modalTitle) modalTitle.textContent = "Join the Pack... Brave the Cold ❄️";
+    if(modalTitle) modalTitle.textContent = t.modalTitle;
 
     var csTitle = document.getElementById('csTitle');
-    if(csTitle) csTitle.textContent = "Something cold is coming...";
+    if(csTitle) csTitle.textContent = t.csTitle;
+
+    var f1 = document.getElementById('winterFoot1'), f2 = document.getElementById('winterFoot2');
+    if(f1) f1.textContent = t.foot1;
+    if(f2) f2.textContent = t.foot2;
   }
 
   // Restores the elements applyWinterText() touched that the language
@@ -2322,7 +2361,9 @@ onValue(earningsRef, function(snap){
     var _origChangeLang = changeLang;
     changeLang = function(lang){
       _origChangeLang(lang);
-      if(document.documentElement.getAttribute('data-theme') === 'winter') applyWinterText();
+      var isW = document.documentElement.getAttribute('data-theme') === 'winter';
+      if(isW){ applyWinterText(); setMascotLine(); }
+      syncToggleUI(isW ? 'winter' : 'original');
     };
   }
 
