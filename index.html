@@ -955,6 +955,59 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
   </div>
 </div>
 
+<div class="m-overlay" id="sponsorModal" onclick="overlaySponsorClose(event)">
+  <div class="modal">
+    <button class="m-x" onclick="closeSponsor()">&#215;</button>
+    <div id="sponsorForm">
+      <div class="m-title">Partnership / Sponsor Inquiry</div>
+      <p class="m-sub">Want to sponsor or partner with Bytestorm Esports? Tell us about your business — we'll get back to you.</p>
+      <div class="fgr">
+        <div class="fg"><label>Your Name *</label><input type="text" id="sp-name" placeholder="Full name"/></div>
+        <div class="fg"><label>Company Name *</label><input type="text" id="sp-company" placeholder="Company / brand"/></div>
+      </div>
+      <div class="fgr">
+        <div class="fg"><label>Email *</label><input type="email" id="sp-email" placeholder="name@company.com"/></div>
+        <div class="fg"><label>Phone Number *</label><input type="tel" id="sp-phone" placeholder="+43 ..."/></div>
+      </div>
+      <div class="fgr">
+        <div class="fg"><label>Type of Company *</label>
+          <select id="sp-type">
+            <option value="">Select…</option>
+            <option>Gaming / Esports</option>
+            <option>Hardware &amp; Peripherals</option>
+            <option>Apparel &amp; Merchandise</option>
+            <option>Food &amp; Beverage / Energy Drinks</option>
+            <option>Software / Technology</option>
+            <option>Streaming / Media / Marketing</option>
+            <option>Retail / E-Commerce</option>
+            <option>Services / Agency</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg"><label>How Old Is the Business? *</label>
+          <select id="sp-age">
+            <option value="">Select…</option>
+            <option>Less than 1 year</option>
+            <option>1–3 years</option>
+            <option>3–5 years</option>
+            <option>5–10 years</option>
+            <option>10+ years</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label>Business Location *</label><input type="text" id="sp-location" placeholder="City, Country"/></div>
+      <div class="fg"><label>What Do You Offer? *</label><textarea id="sp-offer" placeholder="e.g. money, products, services, discount codes — and what you expect in return"></textarea></div>
+      <div class="fg"><label>Proof of Service *</label><textarea id="sp-proof" placeholder="Website, social media, portfolio, reviews or past sponsorships (links)"></textarea></div>
+      <button class="btn-w m-submit" onclick="sendSponsor()">Send Inquiry</button>
+    </div>
+    <div class="m-success" id="sponsorSuccess">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <h3>Inquiry Sent!</h3>
+      <p>Thank you for your interest in Bytestorm Esports. We'll review your inquiry and get back to you by email.</p>
+    </div>
+  </div>
+</div>
+
 <nav>
   <div class="nav-in">
     <a href="#" class="nav-logo">
@@ -1181,10 +1234,16 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
 
       <div class="foot-contact">
         <h2 data-i18n="contactUs">Contact Us</h2>
-        <a href="mailto:bytestorm.marketing.team@gmail.com" class="btn-send">
-          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <span data-i18n="sendEmail">Send Email</span>
-        </a>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a href="mailto:bytestorm.marketing.team@gmail.com" class="btn-send">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span data-i18n="sendEmail">Send Email</span>
+          </a>
+          <a href="#" class="btn-send" onclick="openSponsor();return false;">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+            <span>Partnership / Sponsor Inquiry</span>
+          </a>
+        </div>
       </div>
 
       <div class="winter-footer-note">
@@ -1199,6 +1258,7 @@ document.addEventListener('click',function(e){const w=document.getElementById('h
           <a href="#games" onclick="setTimeout(function(){toggleRoster('staff')},400)">Staff</a>
           <a href="#games" onclick="setTimeout(function(){toggleRoster('academy')},400)">Academy</a>
           <a href="mailto:bytestorm.marketing.team@gmail.com">Contact</a>
+          <a href="#" onclick="openSponsor();return false;">Partnerships &amp; Sponsoring</a>
         </div>
         <div class="foot-col" id="resourcesCol">
           <h4>Resources</h4>
@@ -1526,12 +1586,129 @@ function buildAppData(){
   return {subject:subject, body:body};
 }
 
+// ── Automatic application sending (Web3Forms) ──
+// 1) Create a Web3Forms form that delivers to bytestorm.corp@gmail.com and copy its Access Key.
+// 2) Paste the key below. Applications then arrive in that inbox automatically — nobody has to press Send in Gmail.
+var WEB3FORMS_KEY = '4e926dac-74da-4c05-ab33-f08f32b6280f';
+var APPLY_EMAIL   = 'bytestorm.corp@gmail.com';
+
+function showApplySuccess(){
+  document.getElementById('applyForm').style.display='none';
+  document.getElementById('applySuccess').style.display='flex';
+}
+
+function sendAppFallbackMail(data){
+  window.location.href='mailto:'+APPLY_EMAIL+'?subject='+encodeURIComponent(data.subject)+'&body='+encodeURIComponent(data.body);
+  showApplySuccess();
+}
+
 function sendApp(){
   var data=buildAppData();
   if(!data) return;
-  window.location.href='mailto:bytestorm.marketing.team@gmail.com?subject='+encodeURIComponent(data.subject)+'&body='+encodeURIComponent(data.body);
-  document.getElementById('applyForm').style.display='none';
-  document.getElementById('applySuccess').style.display='flex';
+
+  // Key not set yet -> old behaviour (opens the email app) so the form never breaks.
+  if(!WEB3FORMS_KEY || WEB3FORMS_KEY==='YOUR_ACCESS_KEY_HERE'){
+    sendAppFallbackMail(data);
+    return;
+  }
+
+  var btn=document.querySelector('.m-submit');
+  var oldText=btn ? btn.textContent : '';
+  if(btn){ btn.disabled=true; btn.textContent='…'; }
+  var restore=function(){ if(btn){ btn.disabled=false; btn.textContent=oldText; } };
+
+  fetch('https://api.web3forms.com/submit',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({
+      access_key:WEB3FORMS_KEY,
+      subject:data.subject,
+      from_name:'Bytestorm Website Applications',
+      message:data.body,
+      botcheck:''
+    })
+  })
+  .then(function(r){ return r.json().catch(function(){ return {success:false}; }); })
+  .then(function(res){
+    restore();
+    if(res && res.success){ showApplySuccess(); }
+    else { throw new Error((res && res.message) || 'send failed'); }
+  })
+  .catch(function(){
+    restore();
+    alert('We could not send your application automatically. Your email app will open instead — please press Send there.');
+    sendAppFallbackMail(data);
+  });
+}
+
+// ── Partnership / Sponsor inquiries (Web3Forms, delivered to the marketing inbox) ──
+// Create a SECOND Web3Forms form that delivers to bytestorm.marketing.team@gmail.com and paste its Access Key here.
+var WEB3FORMS_SPONSOR_KEY = 'YOUR_SPONSOR_ACCESS_KEY_HERE';
+var SPONSOR_EMAIL = 'bytestorm.marketing.team@gmail.com';
+
+function openSponsor(){
+  ['sp-name','sp-company','sp-email','sp-phone','sp-location','sp-offer','sp-proof'].forEach(function(id){document.getElementById(id).value=''});
+  document.getElementById('sp-type').value='';
+  document.getElementById('sp-age').value='';
+  document.getElementById('sponsorForm').style.display='block';
+  document.getElementById('sponsorSuccess').style.display='none';
+  document.getElementById('sponsorModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeSponsor(){
+  document.getElementById('sponsorModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function overlaySponsorClose(e){ if(e.target===document.getElementById('sponsorModal')) closeSponsor(); }
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeSponsor(); });
+
+function sendSponsor(){
+  var v=function(id){return document.getElementById(id).value.trim()};
+  var name=v('sp-name'), company=v('sp-company'), email=v('sp-email'), phone=v('sp-phone'),
+      type=v('sp-type'), age=v('sp-age'), loc=v('sp-location'), offer=v('sp-offer'), proof=v('sp-proof');
+  if(!name||!company||!email||!phone||!type||!age||!loc||!offer||!proof){alert('Please fill in all required fields (marked with *).'); return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){alert('Please enter a valid email address.'); return}
+  if(phone.replace(/\D/g,'').length<6){alert('Please enter a valid phone number.'); return}
+
+  var subject='Bytestorm Sponsor Inquiry — '+company+' ('+type+')';
+  var body='=== BYTESTORM SPONSOR / PARTNERSHIP INQUIRY ===\n\n'
+    +'Contact Name:     '+name+'\n'
+    +'Company:          '+company+'\n'
+    +'Email:            '+email+'\n'
+    +'Phone:            '+phone+'\n'
+    +'Type of Company:  '+type+'\n'
+    +'Business Age:     '+age+'\n'
+    +'Location:         '+loc+'\n'
+    +'\n--- What they offer ---\n'+offer+'\n'
+    +'\n--- Proof of service ---\n'+proof+'\n\n'
+    +'==============================================';
+
+  var done=function(){
+    document.getElementById('sponsorForm').style.display='none';
+    document.getElementById('sponsorSuccess').style.display='flex';
+  };
+  var viaMail=function(){
+    window.location.href='mailto:'+SPONSOR_EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    done();
+  };
+  if(!WEB3FORMS_SPONSOR_KEY || WEB3FORMS_SPONSOR_KEY==='YOUR_SPONSOR_ACCESS_KEY_HERE'){ viaMail(); return; }
+
+  var btn=document.querySelector('#sponsorForm .m-submit');
+  var old=btn.textContent; btn.disabled=true; btn.textContent='…';
+  var restore=function(){ btn.disabled=false; btn.textContent=old; };
+  fetch('https://api.web3forms.com/submit',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({access_key:WEB3FORMS_SPONSOR_KEY,subject:subject,from_name:'Bytestorm Website Sponsor Inquiries',
+      name:name,email:email,message:body,botcheck:''})
+  })
+  .then(function(r){ return r.json().catch(function(){ return {success:false}; }); })
+  .then(function(res){ restore(); if(res && res.success){ done(); } else { throw new Error('send failed'); } })
+  .catch(function(){
+    restore();
+    alert('We could not send your inquiry automatically. Your email app will open instead — please press Send there.');
+    viaMail();
+  });
 }
 
 function sendAppTikTok(){
